@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  26 OCT 2023 12:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  26 OCT 2023 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -964,16 +964,14 @@ LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 8
 (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ot1jkp.fd
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
-(./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
-(./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
-(./Arhitektura.aux) (./Implementacija.aux) (./Zakljucak.aux) (./Literatura.aux)
-(./Dodatak.aux))
+(./PROGI_ProjektnaDokumentacija.aux)
 \openout1 = `PROGI_ProjektnaDokumentacija.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 85.
 LaTeX Font Info:    Trying to load font information for OML+jkp on input line 8
 5.
- (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/omljkp.fd
+
+(c:/texlive/2023/texmf-dist/tex/latex/kpfonts/omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    ... okay on input line 85.
@@ -1069,13 +1067,37 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 85.
-(./PROGI_ProjektnaDokumentacija.out) (./PROGI_ProjektnaDokumentacija.out)
+(./PROGI_ProjektnaDokumentacija.out)
+Runaway argument?
+{\376\377\000P\000o 
+! File ended while scanning use of \@@BOOKMARK.
+<inserted text> 
+                \par 
+l.85 \begin{document}
+                     
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+(./PROGI_ProjektnaDokumentacija.out)
+Runaway argument?
+{\376\377\000P\000o 
+! File ended while scanning use of \@@BOOKMARK.
+<inserted text> 
+                \par 
+l.85 \begin{document}
+                     
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
 \@outlinefile=\write3
 \openout3 = `PROGI_ProjektnaDokumentacija.out'.
 
 LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 
 97.
-
 (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ujkpsya.fd
 File: ujkpsya.fd 2006/08/15 v1.0
 )
@@ -1105,24 +1127,7 @@ File: ujkpsyc.fd 2006/08/15 v1.0
 ) [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/
-texmf-dist/fonts/enc/dvips/base/8r.enc}] (./PROGI_ProjektnaDokumentacija.toc
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.29 ...{Indeks slika i dijagrama}{25}{chapter*.5}
-                                                  % [1
-
-])
+texmf-dist/fonts/enc/dvips/base/8r.enc}] (./PROGI_ProjektnaDokumentacija.toc)
 \tf@toc=\write4
 \openout4 = `PROGI_ProjektnaDokumentacija.toc'.
 
@@ -1135,10 +1140,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2]
+
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 122.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.122 	\include{Dnevnik_promjena_dokumentacije}
+                                                [1
+
+]
 \openout2 = `Dnevnik_promjena_dokumentacije.aux'.
 
- (./Dnevnik_promjena_dokumentacije.tex
+
+(./Dnevnik_promjena_dokumentacije.tex
 Poglavlje 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1326,7 +1343,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 33.
+
+[2
 
 
 ]
@@ -1363,7 +1383,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 122.
+
+[3]
 \openout2 = `Opis_projektnog_zadatka.aux'.
 
  (./Opis_projektnog_zadatka.tex
@@ -1386,7 +1409,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 16.
+
+[4
 
 
 
@@ -1421,7 +1447,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 74.
+
+[5]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -1430,7 +1459,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
-<slike/aktivnost.PNG, id=191, 670.75594pt x 689.57625pt>
+<slike/aktivnost.PNG, id=139, 670.75594pt x 689.57625pt>
 File: slike/aktivnost.PNG Graphic file (type png)
 <use slike/aktivnost.PNG>
 Package pdftex.def Info: slike/aktivnost.PNG  used on input line 99.
@@ -1448,13 +1477,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 110.
+
+[6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.110 		
          <./slike/aktivnost.PNG>]
+
+LaTeX Warning: Reference `fig:promjene2' on page 7 undefined on input line 111.
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1463,7 +1499,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[8
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 113.
+
+[7
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1497,7 +1536,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 52.
+
+[8
 
 
 
@@ -1515,7 +1557,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10]
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 103.
+
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
@@ -1528,7 +1573,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11]
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 110.
+
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
@@ -1542,7 +1590,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12]
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 124.
+
+[11]
 \openout2 = `Arhitektura.aux'.
 
  (./Arhitektura.tex
@@ -1595,7 +1646,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 44.
+
+[12
 
 
 
@@ -1613,7 +1667,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14]
+
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 51.
+
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
@@ -1641,7 +1698,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15]
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 68.
+
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
@@ -1654,7 +1714,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[16]
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 78.
+
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
@@ -1667,7 +1730,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17]
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 86.
+
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
@@ -1681,7 +1747,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18]
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 125.
+
+[17]
 \openout2 = `Implementacija.aux'.
 
  (./Implementacija.tex
@@ -1699,7 +1768,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19
+
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 11.
+
+[18
 
 
 
@@ -1722,7 +1794,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
+
+LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 37.
+
+[19]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1731,7 +1806,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[21]
+
+LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 46.
+
+[20]
 Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
@@ -1744,7 +1822,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22])
+
+LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 58.
+
+[21])
 \openout2 = `Zakljucak.aux'.
 
  (./Zakljucak.tex
@@ -1762,7 +1843,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[23
+
+LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 9.
+
+[22
 
 
 
@@ -1791,7 +1875,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24
+
+LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 128.
+
+[23
 
 
 
@@ -1809,7 +1896,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25
+
+LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 143.
+
+[24
 
 
 
@@ -1829,7 +1919,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26
+
+LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 38.
+
+[25
 
 
 ]
@@ -1853,7 +1946,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27]
+
+LaTeX Warning: Reference `LastPage' on page 26 undefined on input line 86.
+
+[26]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1862,7 +1958,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28]
+
+LaTeX Warning: Reference `LastPage' on page 27 undefined on input line 89.
+
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
@@ -1876,7 +1975,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29] 
+
+LaTeX Warning: Reference `LastPage' on page 28 undefined on input line 145.
+
+[28] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
 (./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
@@ -1886,15 +1988,31 @@ enddocument/afterlastpage: lastpage setting LastPage.
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-10-23>
  ***********
-Package rerunfilecheck Info: File `PROGI_ProjektnaDokumentacija.out' has not ch
-anged.
-(rerunfilecheck)             Checksum: 73DC96050B1C6E228BBC05CE1994BB16;4565.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `PROGI_ProjektnaDokumentacija.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `PROGI_ProjektnaDokumentacija.out':
+(rerunfilecheck)             Before: 66D9EE49E6E97ED3653C5DA2606D654A;4096
+(rerunfilecheck)             After:  73DC96050B1C6E228BBC05CE1994BB16;4565.
+
+Package lastpage Warning: Rerun to get the references right on input line 148.
+
  ) 
 Here is how much of TeX's memory you used:
- 17641 strings out of 474398
- 310322 string characters out of 5754205
+ 17613 strings out of 474398
+ 309767 string characters out of 5754205
  2071036 words of memory out of 5000000
- 39282 multiletter control sequences out of 15000+600000
+ 39271 multiletter control sequences out of 15000+600000
  624176 words of font info for 177 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,14n,115p,906b,1150s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1908,10 +2026,10 @@ dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/typ
 e1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/k
 pfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (30 pages, 151500 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (29 pages, 148215 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 341 PDF objects out of 1000 (max. 8388607)
+ 291 compressed objects within 3 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 
