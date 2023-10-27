@@ -13,3 +13,28 @@ Prilikom pokretanja nove značajke, trebate novu granu stvoriti ili od razvojne 
 Prilikom stvaranja nove grane, dodijelite joj isti naziv kao i ID Exellice za zadatak, na primjer "TAG-1234". TAG koristimo kao placeholder.
 
 Naslov commit poruke treba odgovarati nazivu ID zadatka iz exellice, na primjer "TAG-1 Inicijalizacija repozitorija".
+
+# Korištenje GIT-a
+
+Osnovne naredbe koje morate koristiti:
+
+	- git clone - ako nemate lokalnu kopiju repozitorija sa ovom naredbom klonirate repozitorij
+	- git status 
+		- informacija o grani na kojoj se trenutno nalazite, promjene na datotekama
+		- koristite uvijek, provjerite na kojoj se grani nalazite...NE RADITI na main ili develop grani
+	- git checkout - prelazak na drugu granu
+		- npr. prelazak na postojecu granu - git checkout grana
+		- stvaranje nove grane i prelazak na nju - git checkout -b grana
+	- git add ime-datoteke
+		- dodati izmjene za commit
+	- git commit -m "commit message"
+		- commitati promjene sa odgovarajucom porukom prema uputama (koristiti ID taska)
+	- git pull
+		- povuci najnovije promjene s udaljenog repozitorija
+	- git push
+		- poslati nove izmjene na udaljeni repozitorij
+		- sa ovim saljete sve izmjene, mozete koristiti git push origin ime-grane-za-poslati
+
+
+Zaključak uputa za korištenje:
+	- ne koristiti grane main i develop, koristite nove grane za feature koje radite. Nakon što ste završili pushajte nove izmjene i napravite PR
