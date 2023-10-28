@@ -6,6 +6,7 @@
 ### Instalacija alata
 - **PostgreSQL** - https://www.postgresql.org/download/
 - **GUI** (pgAdmin ili neki drugi) - https://www.pgadmin.org/download/
+- master password postaviti na `postgres` jer ce se ta lozinka koristiti za spajanje
 ### Izrada baze
 - kroz **pgAdmin**, **DBeaver** ili **psql**
 - napraviti novu bazu s imenom `eventio-db` i ownerom `postgres`
