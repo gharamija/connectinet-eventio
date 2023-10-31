@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  31 OCT 2023 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  31 OCT 2023 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1816,10 +1816,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \openout2 = `Dodatak.aux'.
 
  (./Dodatak.tex
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1832,7 +1828,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
 
@@ -1862,7 +1858,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
@@ -1890,8 +1886,8 @@ anged.
 (rerunfilecheck)             Checksum: 73DC96050B1C6E228BBC05CE1994BB16;4565.
  ) 
 Here is how much of TeX's memory you used:
- 17680 strings out of 474397
- 310601 string characters out of 5754184
+ 17681 strings out of 474397
+ 310608 string characters out of 5754184
  2071036 words of memory out of 5000000
  39284 multiletter control sequences out of 15000+600000
  624176 words of font info for 177 fonts, out of 8000000 for 9000
@@ -1907,10 +1903,10 @@ dist/fonts/type1/public/kpfonts/jkpmi.pfb><d:/texlive/2023/texmf-dist/fonts/typ
 e1/public/kpfonts/jkpmit8a.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/k
 pfonts/jkpmn8a.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy
 .pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (31 pages, 154891 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (31 pages, 155246 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 411 compressed objects within 5 object streams
- 131 named destinations out of 1000 (max. 500000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 412 compressed objects within 5 object streams
+ 132 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 
