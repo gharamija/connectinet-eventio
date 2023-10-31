@@ -1,21 +1,19 @@
 \chapter{Specifikacija programske potpore}
 		
 	\section{Funkcionalni zahtjevi}
-			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
+
 			
 			\noindent \textbf{Dionici:}
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Administrator
+				\item Organizator				
+				\item Baza podataka
+				\item PayPal
+				\item Banka
+				\item Korisnik
+				\item Posjetitelj
 				
 			\end{packed_enum}
 			
@@ -23,30 +21,112 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Administrator (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item prijaviti se i odjaviti sa stranice
+					\item pregledavati događaje
+					\begin{packed_enum}
+	
+							\item  filtrirati događaje po vremenskom razdoblju
+	
+					\end{packed_enum}
+					\item  upravljanti korisnicima
 					\begin{packed_enum}
 						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
+							\item  urediti ili izbrisati korisničke profile
+							\item  urediti ili izbrisati objave korisnika
+																			
+				    \end{packed_enum}
+					\item  postavljati cijene članstva
 					
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+			    \item  \underbar{Organizator (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item postaviti događaj
+					\begin{packed_enum}
+						
+						\item  urediti ili izbrisati događaj
+						\item  postaviti događaj sa plaćanjem ulaznice i platiti članraninu (Paypalom ili bankovnom karticom)
+						
+					\end{packed_enum}
+					\item prijaviti se i odjaviti sa stranice
+					\item napravi profil
+					\item prikazati profil i urediti ga
+					\item pregledavati događaje
+					\begin{packed_enum}
+	
+						\item filtriraj događaje po vremenskom razdoblju
+	
+					\end{packed_enum}
 					
 				\end{packed_enum}
+				
+				\item  \underbar{Baza podataka (sudionik):}	
+							
+				\begin{packed_enum}				
+				
+					\item pohranjuje zapise o korisnicima i događajima
+					\item pohranjuje iskazane interese za događaje
+					\item pohranjuje recenzije događaja			
+					\item pohranjuje informacije o cijenama članstva
+					\item omogućuje prijavu i odjavu sa stranice (token)
+				\end{packed_enum}
+
+				\item  \underbar{PayPal (sudionik):}
+
+				\begin{packed_enum}
+
+				\item Odobrava transakcije potrebne za platiti članarinu
+
+				\end{packed_enum}				
+				
+				\item  \underbar{Banka (sudionik):}				
+				
+				\begin{packed_enum}
+						
+				\item Odobrava transakcije potrebne za platiti članarinu 					
+					
+				\end{packed_enum}
+			    
+			    \item  \underbar{Korisnik  (inicijator) može:}
+				
+				\begin{packed_enum}
+					
+					\item prijaviti se i odjaviti sa stranice
+					\item napravi profil
+					\item prikazati profil i urediti ga
+					\item pregledavati događaje
+					\begin{packed_enum}
+	
+					\item  filtrirati događaje po vremenskom razdoblju
+	
+					\end{packed_enum}
+					
+				\end{packed_enum}
+					
+				\item  \underbar{Posjetitelj   (inicijator) može:}
+					
+					\begin{packed_enum}
+					\item iskazati interese za događaj („sigurno dolazim“, „možda dolazim“, „ne dolazim“)
+					\item recenzirati događaj	
+					\item prijaviti se i odjaviti sa stranice
+					\item napraviti profil
+					\item prikazati profil i urediti ga
+					\item uključiti obavijesti o najnovijim događajima po kriterijima: vrsta događanja i područje
+					\item pregledavati događaje
+					\begin{packed_enum}
+	
+						\item  filtrirati događaje po vremenskom razdoblju
+	
+					\end{packed_enum}
+															
+					\end{packed_enum}
+												
 			\end{packed_enum}
 			
 			\eject 
