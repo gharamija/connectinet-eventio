@@ -206,17 +206,17 @@
 					\noindent \underbar{\textbf{UC4 - Prijava na stranicu}}
 					\begin{packed_item}
 				
-				\item \textbf{Glavni sudionik: } Korisnik
+				\item \textbf{Glavni sudionik: } Korisnik, Administrator
 				\item  \textbf{Cilj:} Dobiti pristup stranici
 				\item  \textbf{Sudionici:} Baza podataka
-				\item  \textbf{Preduvjet:} Korisnik ima registrirani račun
+				\item  \textbf{Preduvjet:} Korisnik ima registrirani račun ili ima račun s pravima administratora
 				\item  \textbf{Opis osnovnog tijeka:}
 				
 				\item[] \begin{packed_enum}
 					
-					\item Korisnik otvara stranicu
-					\item Korisnik unosi korisničke podatke za prijavu na stranicu
-					\item Korisnik dobiva obavijest o uspješnoj prijavi
+					\item Korisnik/Administrator otvara stranicu
+					\item Korisnik/Administrator unosi korisničke podatke za prijavu na stranicu
+					\item Sustav prepoznaje je li prijavljeni račun korisnički ili administratorski, daje obavijest o uspješnoj prijavi te otvara odgovarajuću početnu stranicu
 				\end{packed_enum}
 				
 				\item  \textbf{Opis mogućih odstupanja:}
@@ -327,16 +327,16 @@
 
 					\noindent \underbar{\textbf{UC9 - Odjava sa stranice}}
 					\begin{packed_item}
-	\item \textbf{Glavni sudionik:} Korisnik
+	\item \textbf{Glavni sudionik:} Korisnik, Administrator
 	\item  \textbf{Cilj:} Odjaviti se sa stranice
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik je prijavljen na stranici
+	\item  \textbf{Preduvjet:} Korisnik/Administrator je prijavljen na stranici
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Korisnik odabire opciju "Odjava"
-		\item Sustav odjavljuje korisnika sa stranice
+		\item Korisnik/Administrator odabire opciju "Odjava"
+		\item Sustav odjavljuje korisnika/administratora sa stranice
 	\end{packed_enum}
 
 \end{packed_item}
@@ -662,36 +662,8 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC22 - Prijava administratora}}
-\begin{packed_item}
-	\item \textbf{Glavni sudionik:} Administrator
-	\item  \textbf{Cilj:} Prijaviti se na račun administratora
-	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik je registriran i ima prava administratora
-	\item  \textbf{Opis osnovnog tijeka:}
-	
-	\item[] \begin{packed_enum}
-		
-		\item Korisnik unosi podatke za prijavu
-		\item Sustav prepozanje da je korisnik administrator te otvara početnu stranicu za administratore
-	\end{packed_enum}
-	
-	\item  \textbf{Opis mogućih odstupanja:}
-	
-	\item[] \begin{packed_item}
-		
-		\item[1.a] Administrator unosi pogrešne podatke za prijavu
-		\item[] \begin{packed_enum}
-			
-			\item Sustav javlja korisniku da je prijava neuspješna, nudi ponovnu prijavu ili stvaranje
-			novog korisničkog računa
-			
-		\end{packed_enum}
-	\end{packed_item}
-\end{packed_item}
 
-
-\noindent \underbar{\textbf{UC23 - Administrativni pregled događaja}}
+\noindent \underbar{\textbf{UC22 - Administrativni pregled događaja}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Pregledati događaje kao administrator
@@ -708,7 +680,7 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC24 - Postavljanje cijene članstva}}
+\noindent \underbar{\textbf{UC23 - Postavljanje cijene članstva}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Postaviti ili promijeniti cijenu članstva 
@@ -746,7 +718,7 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC25 - Upravljanje korisnicima}}
+\noindent \underbar{\textbf{UC24 - Upravljanje korisnicima}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Pregledati korisničke račune i/ili njihove objave
@@ -764,7 +736,7 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC26 - Uređivanje/brisanje korisnika}}
+\noindent \underbar{\textbf{UC25 - Uređivanje/brisanje korisnika}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Urediti ili obrisati korisnika
@@ -781,7 +753,7 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC27 - Uređivanje/brisanje objava korisnika}}
+\noindent \underbar{\textbf{UC26 - Uređivanje/brisanje objava korisnika}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Urediti/obrisati objave korisnika
@@ -799,22 +771,6 @@
 	
 \end{packed_item}
 
-
-\noindent \underbar{\textbf{UC28 - Odjava administratora}}
-\begin{packed_item}
-	\item \textbf{Glavni sudionik:} Administrator
-	\item  \textbf{Cilj:} Odjava iz aplikacije
-	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik je registriran i ima prava administratora
-	\item  \textbf{Opis osnovnog tijeka:}
-	
-	\item[] \begin{packed_enum}
-		
-		\item Administrator je na početnoj stranici i odabire opciju "Odjava"
-		\item Sustav odjavljuje administratora sa stranice
-	\end{packed_enum}
-
-\end{packed_item}
 
 
 					
