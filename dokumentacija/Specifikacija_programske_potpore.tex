@@ -777,35 +777,35 @@
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
 					\begin{figure}[H]
-						\includegraphics[scale=0.3]{slike/Opći_UC_dijagram_v2.0.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+						\includegraphics[scale=0.3]{dijagrami/Opći_UC_dijagram_v2.0.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 						\centering
 						\caption{Dijagram obrasca uporabe, opća funkcionalnost aktora}
 						\label{fig:promjene}
 					\end{figure}
 					
 					\begin{figure}[H]
-						\includegraphics[scale=0.5]{slike/Administrator_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+						\includegraphics[scale=0.5]{dijagrami/Administrator_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 						\centering
 						\caption{Dijagram obrasca uporabe, funkcionalnost administratora}
 						\label{fig:promjene}
 					\end{figure}
 					
 					\begin{figure}[H]
-						\includegraphics[scale=0.5]{slike/Korisnik_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+						\includegraphics[scale=0.5]{dijagrami/Korisnik_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 						\centering
 						\caption{Dijagram obrasca uporabe, funkcionalnost korisnika}
 						\label{fig:promjene}
 					\end{figure}
 					
 					\begin{figure}[H]
-						\includegraphics[scale=0.35]{slike/Organizator_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+						\includegraphics[scale=0.35]{dijagrami/Organizator_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 						\centering
 						\caption{Dijagram obrasca uporabe, funkcionalnost organizatora}
 						\label{fig:promjene}
 					\end{figure}
 					
 					\begin{figure}[H]
-						\includegraphics[scale=0.4]{slike/Posjetitelj_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+						\includegraphics[scale=0.4]{dijagrami/Posjetitelj_UC_dijagram.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 						\centering
 						\caption{Dijagram obrasca uporabe, funkcionalnost posjetitelja}
 						\label{fig:promjene}
@@ -822,12 +822,72 @@
 				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
 				\eject
 	
+				\LARGE {Obrazac uporabe UC1 - Registracija}
+				\newline
+				\normalsize
+				Korisnik prilikom procesa registracije odabire opciju registracije: Posjetitelj ili Organizator. Na temelju odabira, korisnik dohvaća obrazac za registraciju. Nakon ispunjavanja obrasca, korisnik šalje zahtjev za registraciju. Nakon provjere ispravnosti unesenih podataka moguće su dvije opcije:
+				
+				\begin{packed_item}
+					\item {Podaci ispravni:} u slučaju ispravnih podataka vrši se spremanje korisničkih podataka te korisnik prima poruku "Registracija uspješna" te slijedi prikaz za prijavu
+					\item {Podaci neispravni:} Korisnik prima poruku da su podaci neispravni te može unijeti podatke ispočetka
+				\end{packed_item}
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.5]{dijagrami/sd-UC1-Registracija.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+					\centering
+					\caption{Sekvencijski dijagram za UC1}
+					\label{fig:promjene}
+				\end{figure}
+				\eject		
+				
+				\LARGE {Obrazac uporabe UC16 - Postavljanje događaja}
+				\newline
+				\normalsize
+				Tijekom procesa postavljanja događaja Organizator ima mogućnost izabrati objavu bez plaćanje ulaznice za događaj ili uz plaćanje. U slučaju postavljanja događaja bez plaćanja ulaznice odmah dohvaća obrazac za novi događaj. 
+				Nakon slanja popunjenog obrasca sa svim potrebnim informacija, Organizator zaprima potvrdu za postavljanje događaja te ima mogućnost potvrditi ili odustati od objave. Ukoliko dođe do potvrde, informacije o događaju se spremaju te se isti objavljuje, u suprotnom Organizator dobiva potvrdu odustajanja.
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.5]{dijagrami/sd-UC16-Postavljanje-događaja.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+					\centering
+					\caption{Sekvencijski dijagram za UC16}
+					\label{fig:promjene}
+				\end{figure}
+				\eject		
+				
+				\LARGE {Obrazac uporabe UC19 - Plaćanje članarine}
+				\newline
+				\normalsize
+				Tijekom procesa objave događaja moguće je izabrati opciju za plaćanje ulaznice te u tom slučaju prije slanja obrasca za postavljanje novog događaja dolazi do plaćanje članarine ukoliko je potrebno. 
+				Organizator odabire način plaćanje te mu se prikazuje sučelje za unos podataka od izabranog izvora sa trenutnom cijenom članarine. U ovom trenutku Organizator može nastaviti sa procesom plaćanja ili odustati. U slučaju odustajanja dobiva potvrdu, a u suprotnom šalje ispunjen obrazac za plaćanje. Na temeju poslanog obrasca se izvršava plaćanje koje može biti uspješno ili neuspješno. Nakon uspješnog plaćanja se navedene promjene spremaju te Organizator dobiva potvrdu transakcije i novi prikaz. U slučaju neuspješne transakcije Organizator dobiva poruku i razlog neuspješne transakcije.
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.5]{dijagrami/sd-UC19-Placanje-clanarine.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+					\centering
+					\caption{Sekvencijski dijagram za UC19}
+					\label{fig:promjene}
+				\end{figure}
+				\eject		
+				
 		\section{Ostali zahtjevi}
 		
 			\textbf{\textit{dio 1. revizije}}\\
 		 
 			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
 			 
+			 \begin{packed_item}
+			 	\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
+			 	\item Korisničko sučelje i sustav moraju podržavati hrvatsku abecedu (dijakritičke
+			 	znakove) pri unosu i prikazu tekstualnog sadržaja
+			 	\item Izvršavanje dijela programa u kojem se pristupa bazi podataka ne smije tra-
+			 	jati duže od nekoliko sekundi
+			 	\item Sustav treba biti implementiran kao web-aplikacija koristeći objektno-orijentirane jezike
+			 	\item Neispravno korištenje korisničkog sučelja ne smije narušiti funkcionalnost i rad sustava
+			 	\item Sustav treba biti jednostavan za korištenje, korisnici se moraju znati koristiti
+			 	sučeljem bez opširnih uputa
+			 	\item Sustav kao valutu koristi HRK
+			 	\item Veza s bazom podataka mora biti kvalitetno zaštićena, brza i otporna na vanjske greške
+			 	\item Pristup sustavu mora biti omogućen iz javne mreže pomoću HTTPS.
+			 \end{packed_item}
 			 
 			 
 	
