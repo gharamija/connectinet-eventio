@@ -1,1 +1,1 @@
-INSERT INTO users (id, name) VALUES (1, 'Admin');
+INSERT INTO users (id, username, email, password, type) VALUES (1, 'admin', 'admin-eventio@gmail.com', '$2a$12$OSfuZDgo1ozeak9bzdO0wOeq1k0IuBP32/kPk5FlHHSz8YGsVYleq', 0);
