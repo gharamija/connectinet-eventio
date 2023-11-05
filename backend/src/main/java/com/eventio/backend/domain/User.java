@@ -1,11 +1,14 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.UserDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -13,7 +16,7 @@ public class User implements UserDetails {
     @Serial
     private static final long serialVersionUID = 923686612483130334L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(unique = true, nullable = false)
@@ -27,6 +30,16 @@ public class User implements UserDetails {
 
     @Enumerated
     private UserType type;
+
+    public User() {
+    }
+
+    public User(UserDTO dto) {
+        this.username = dto.getUsername();
+        this.email = dto.getEmail();
+        this.password = dto.getPassword();
+        this.type = dto.getType();
+    }
 
     public Integer getId() {
         return id;
@@ -72,6 +85,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority("ROLE_" + getType()));
     }
 }

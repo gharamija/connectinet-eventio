@@ -1,6 +1,7 @@
 package com.eventio.backend.service;
 
 import com.eventio.backend.domain.User;
+import com.eventio.backend.dto.UserDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface UserService extends UserDetailsService {
     Optional<User> findById(Integer id);
     Optional<User> findByUsername(String username);
     Optional<User> findByEmail(String email);
+
+    public boolean registerUser(UserDTO dto);
 }

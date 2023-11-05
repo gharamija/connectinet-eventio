@@ -19,13 +19,15 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = false)
 public class WebSecurityBasic {
     @Bean
-    public SecurityFilterChain spaFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/user/register")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/user/all")).hasRole("ADMIN")
                 .anyRequest().authenticated());
         http.formLogin(configurer -> {
                     configurer.successHandler((request, response, authentication) ->
-                                    response.setStatus(HttpStatus.NO_CONTENT.value())
+                                    response.setStatus(HttpStatus.OK.value())
                             )
                             .failureHandler(new SimpleUrlAuthenticationFailureHandler());
                 }
@@ -41,7 +43,7 @@ public class WebSecurityBasic {
         http.logout(configurer -> configurer
                 .logoutUrl("/logout")
                 .logoutSuccessHandler((request, response, authentication) ->
-                        response.setStatus(HttpStatus.NO_CONTENT.value())));
+                        response.setStatus(HttpStatus.OK.value())));
         http.csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
