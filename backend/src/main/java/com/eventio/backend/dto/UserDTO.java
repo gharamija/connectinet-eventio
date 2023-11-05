@@ -15,8 +15,15 @@ public class UserDTO {
     public UserDTO(User user) {
         this.username = user.getUsername();
         this.email = user.getEmail();
-        this.password = "Should not be visible";
+        this.password = user.getPassword();
         this.type = user.getType();
+    }
+
+    public UserDTO(OrganizatorDTO dto) {
+        this.username = dto.getUsername();
+        this.email = dto.getEmail();
+        this.password = dto.getPassword();
+        this.type = dto.getType();
     }
 
     public String getUsername() {

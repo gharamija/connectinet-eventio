@@ -23,20 +23,17 @@ public class WebSecurityBasic {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/user/register")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/user/all")).hasRole("ADMIN")
+                .requestMatchers(new AntPathRequestMatcher("/organizator/register")).permitAll()
                 .anyRequest().authenticated());
         http.formLogin(configurer -> {
                     configurer.successHandler((request, response, authentication) ->
-                                    response.setStatus(HttpStatus.OK.value())
-                            )
+                                    response.setStatus(HttpStatus.OK.value()))
                             .failureHandler(new SimpleUrlAuthenticationFailureHandler());
-                }
-        );
+                });
         http.exceptionHandling(configurer -> {
             final RequestMatcher matcher = new NegatedRequestMatcher(
                     new MediaTypeRequestMatcher(MediaType.TEXT_HTML));
-            configurer
-                    .defaultAuthenticationEntryPointFor((request, response, authException) -> {
+            configurer.defaultAuthenticationEntryPointFor((request, response, authException) -> {
                         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     }, matcher);
         });

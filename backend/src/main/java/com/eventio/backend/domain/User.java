@@ -1,5 +1,6 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.OrganizatorDTO;
 import com.eventio.backend.dto.UserDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements UserDetails {
     @Serial
     private static final long serialVersionUID = 923686612483130334L;
