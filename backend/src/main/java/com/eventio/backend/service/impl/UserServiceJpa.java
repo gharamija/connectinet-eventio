@@ -2,10 +2,12 @@ package com.eventio.backend.service.impl;
 
 import com.eventio.backend.dao.UserRepository;
 import com.eventio.backend.domain.User;
+import com.eventio.backend.dto.UserDTO;
 import com.eventio.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,9 @@ public class UserServiceJpa implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Override
     public List<User> listAll() {
@@ -44,5 +49,15 @@ public class UserServiceJpa implements UserService {
             throw new UsernameNotFoundException(username);
         }
         return user.get();
+    }
+
+    public boolean registerUser(UserDTO dto) {
+        dto.setPassword(encoder.encode(dto.getPassword()));
+        User user = new User(dto);
+        user = userRepository.saveAndFlush(user);
+        if (user.getId() == null) {
+            return false;
+        }
+        return true;
     }
 }
