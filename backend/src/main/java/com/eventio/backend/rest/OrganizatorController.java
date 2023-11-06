@@ -28,7 +28,7 @@ public class OrganizatorController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody OrganizatorDTO dto) {
+    public ResponseEntity<String> register(@ModelAttribute OrganizatorDTO dto) {
         if (dto.getType() != UserType.ORGANIZATOR) {
             return ResponseEntity.badRequest().body("Ovdje možete kreirati admina ili posjetitelja");
         } else if (userService.findByEmail(dto.getEmail()).isPresent()) {
