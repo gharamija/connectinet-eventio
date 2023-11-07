@@ -1,7 +1,6 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.OrganizatorDTO;
-import com.eventio.backend.dto.UserDTO;
+import com.eventio.backend.dto.KorisnikDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,9 +11,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User implements UserDetails {
+public class Korisnik implements UserDetails {
     @Serial
     private static final long serialVersionUID = 923686612483130334L;
     @Id
@@ -31,16 +29,16 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated
-    private UserType type;
+    private UserType uloga;
 
-    public User() {
+    public Korisnik() {
     }
 
-    public User(UserDTO dto) {
+    public Korisnik(KorisnikDTO dto) {
         this.username = dto.getUsername();
         this.email = dto.getEmail();
         this.password = dto.getPassword();
-        this.type = dto.getType();
+        this.uloga = dto.getUloga();
     }
 
     public Integer getId() {
@@ -61,8 +59,8 @@ public class User implements UserDetails {
         return password;
     }
 
-    public UserType getType() {
-        return type;
+    public UserType getUloga() {
+        return uloga;
     }
 
     @Override
@@ -87,6 +85,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + getType()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + getUloga()));
     }
 }

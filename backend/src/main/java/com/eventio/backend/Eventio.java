@@ -1,6 +1,6 @@
 package com.eventio.backend;
 
-import com.eventio.backend.domain.User;
+import com.eventio.backend.domain.Korisnik;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ public class Eventio {
 	}
 
 	@GetMapping("/")
-	public String hello(@AuthenticationPrincipal User user) {
+	public String hello(@AuthenticationPrincipal Korisnik user) {
 		return String.format("Hello %s!", user.getUsername());
 	}
 

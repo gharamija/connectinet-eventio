@@ -1,10 +1,10 @@
 package com.eventio.backend.rest;
 
-import com.eventio.backend.domain.User;
+import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.UserType;
 import com.eventio.backend.dto.OrganizatorDTO;
 import com.eventio.backend.service.OrganizatorService;
-import com.eventio.backend.service.UserService;
+import com.eventio.backend.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -19,17 +19,17 @@ public class OrganizatorController {
     private OrganizatorService service;
 
     @Autowired
-    private UserService userService;
+    private KorisnikService userService;
 
     @Secured("ROLE_ORGANIZATOR")
     @GetMapping
-    public OrganizatorDTO getDetails(@AuthenticationPrincipal User user) {
-        return new OrganizatorDTO(service.findById(user.getId()).get());
+    public OrganizatorDTO getDetails(@AuthenticationPrincipal Korisnik korisnik) {
+        return new OrganizatorDTO(service.findById(korisnik.getId()).get());
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@ModelAttribute OrganizatorDTO dto) {
-        if (dto.getType() != UserType.ORGANIZATOR) {
+        if (dto.getUloga() != UserType.ORGANIZATOR) {
             return ResponseEntity.badRequest().body("Ovdje možete kreirati admina ili posjetitelja");
         } else if (userService.findByEmail(dto.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email već postoji u bazi");
