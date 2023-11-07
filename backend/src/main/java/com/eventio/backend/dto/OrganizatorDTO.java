@@ -1,16 +1,25 @@
 package com.eventio.backend.dto;
 
 import com.eventio.backend.domain.Organizator;
-import com.eventio.backend.domain.UserType;
+import com.eventio.backend.domain.Uloga;
+import jakarta.validation.constraints.NotNull;
 
 public class OrganizatorDTO {
+    @NotNull
     private String username;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
-    private UserType uloga;
+    @NotNull
+    private Uloga uloga;
+    @NotNull
     private String nazivOrganizacije;
+    @NotNull
     private String adresa;
+    @NotNull
     private String poveznica;
+    @NotNull
     private boolean clanarina;
 
     public OrganizatorDTO() {
@@ -51,11 +60,11 @@ public class OrganizatorDTO {
         this.password = password;
     }
 
-    public UserType getUloga() {
+    public Uloga getUloga() {
         return uloga;
     }
 
-    public void setUloga(UserType uloga) {
+    public void setUloga(Uloga uloga) {
         this.uloga = uloga;
     }
 

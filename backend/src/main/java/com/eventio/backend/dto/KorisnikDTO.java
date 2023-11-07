@@ -1,13 +1,18 @@
 package com.eventio.backend.dto;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.domain.UserType;
+import com.eventio.backend.domain.Uloga;
+import jakarta.validation.constraints.NotNull;
 
 public class KorisnikDTO {
+    @NotNull
     private String username;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
-    private UserType uloga;
+    @NotNull
+    private Uloga uloga;
 
     public KorisnikDTO() {
     }
@@ -50,11 +55,11 @@ public class KorisnikDTO {
         this.password = password;
     }
 
-    public UserType getUloga() {
+    public Uloga getUloga() {
         return uloga;
     }
 
-    public void setUloga(UserType uloga) {
+    public void setUloga(Uloga uloga) {
         this.uloga = uloga;
     }
 }

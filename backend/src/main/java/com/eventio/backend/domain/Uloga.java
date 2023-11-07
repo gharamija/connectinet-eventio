@@ -1,6 +1,6 @@
 package com.eventio.backend.domain;
 
-public enum UserType {
+public enum Uloga {
     ADMIN,
     POSJETITELJ,
     ORGANIZATOR

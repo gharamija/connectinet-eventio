@@ -1,9 +1,10 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.domain.UserType;
+import com.eventio.backend.domain.Uloga;
 import com.eventio.backend.dto.KorisnikDTO;
 import com.eventio.backend.service.KorisnikService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -30,8 +31,8 @@ public class KorisnikController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@ModelAttribute KorisnikDTO dto) {
-        if (dto.getUloga() != UserType.POSJETITELJ) {
+    public ResponseEntity<String> register(@Valid @ModelAttribute KorisnikDTO dto) {
+        if (dto.getUloga() != Uloga.POSJETITELJ) {
             return ResponseEntity.badRequest().body("Ovdje ne možete kreirati admina ili organizatora");
         } else if (service.findByEmail(dto.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email već postoji u bazi");

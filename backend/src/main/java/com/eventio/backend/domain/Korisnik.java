@@ -17,19 +17,29 @@ public class Korisnik implements UserDetails {
     private static final long serialVersionUID = 923686612483130334L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "korisnik_id")
     private Integer id;
 
     @Column(unique = true, nullable = false)
     private String username;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
     @Enumerated
-    private UserType uloga;
+    @Column(nullable = false)
+    private Uloga uloga;
+
+    @OneToMany(mappedBy = "posjetitelj")
+    private List<Recenzija> recenzije;
+    @OneToMany(mappedBy = "posjetitelj")
+    private List<Zainteresiranost> zainteresiranosti;
+
+    @OneToMany(mappedBy = "posjetitelj")
+    private List<Notifikacija> notifikacije;
 
     public Korisnik() {
     }
@@ -50,8 +60,16 @@ public class Korisnik implements UserDetails {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -59,8 +77,28 @@ public class Korisnik implements UserDetails {
         return password;
     }
 
-    public UserType getUloga() {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Uloga getUloga() {
         return uloga;
+    }
+
+    public void setUloga(Uloga uloga) {
+        this.uloga = uloga;
+    }
+
+    public List<Recenzija> getRecenzije() {
+        return recenzije;
+    }
+
+    public List<Zainteresiranost> getZainteresiranosti() {
+        return zainteresiranosti;
+    }
+
+    public List<Notifikacija> getNotifikacije() {
+        return notifikacije;
     }
 
     @Override

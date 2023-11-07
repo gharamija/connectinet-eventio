@@ -1,10 +1,11 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.domain.UserType;
+import com.eventio.backend.domain.Uloga;
 import com.eventio.backend.dto.OrganizatorDTO;
 import com.eventio.backend.service.OrganizatorService;
 import com.eventio.backend.service.KorisnikService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -28,8 +29,8 @@ public class OrganizatorController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@ModelAttribute OrganizatorDTO dto) {
-        if (dto.getUloga() != UserType.ORGANIZATOR) {
+    public ResponseEntity<String> register(@Valid @ModelAttribute OrganizatorDTO dto) {
+        if (dto.getUloga() != Uloga.ORGANIZATOR) {
             return ResponseEntity.badRequest().body("Ovdje možete kreirati admina ili posjetitelja");
         } else if (userService.findByEmail(dto.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email već postoji u bazi");
