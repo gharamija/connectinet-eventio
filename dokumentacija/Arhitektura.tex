@@ -99,7 +99,7 @@
 				galerija & VARCHAR & Link do web stranice gdje se nalaze video snimke ili fotografije \\ \hline  
 			\end{longtblr}
 			
-							\textit{\textbf{Recenzija} -  ovaj entitet sadržava informacije o recenziji događaja. Sadrži atribute: recenzija\_id, posjetitelj\_id, događaj\_id, tekst, ocijena. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.}
+							\textit{\textbf{Recenzija} -  ovaj entitet sadržava informacije o recenziji događaja. Sadrži atribute: recenzija\_id, posjetitelj\_id, događaj\_id, tekst, ocjena. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.}
 			
 			
 			\begin{longtblr}[
@@ -115,7 +115,7 @@
 				\SetCell{LightBlue}posjetitelj\_id	& INT & Strani ključ iz tablice korisnik koji se odnosi na njegov ID	\\ \hline 
 				\SetCell{LightBlue}dogadaj\_id & INT & Strani ključ iz tablice dogadaj koji se odnosi na njegov ID \\ \hline 
 				tekst & VARCHAR	&  Kratki tekst recenzije	\\ \hline 
-				ocijena & SMALL INT/INT & Ocjena od 1-10, opcionalna	\\ \hline 
+				ocjena & SMALL INT/INT & Ocjena od 1-10, opcionalna	\\ \hline 
 			\end{longtblr}
 			
 							\textit{\textbf{Zainteresiranost} -  ovaj entitet sadržava informacije o zainteresiranosti posjetitelja za određeni događaj. Sadrži atribute: zainteresiranost\_id, posjetitelj\_id, dogadaj\_id, kategorija, obavijesti. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.}
@@ -159,7 +159,12 @@
 			
 			\subsection{Dijagram baze podataka}
 				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
-			
+				
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.7]{slike/baza.PNG}
+					\caption{Dijagram baze podataka}
+				\end{figure}
 			\eject
 			
 			
