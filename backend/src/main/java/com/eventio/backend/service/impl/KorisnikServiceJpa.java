@@ -1,9 +1,9 @@
 package com.eventio.backend.service.impl;
 
-import com.eventio.backend.dao.UserRepository;
-import com.eventio.backend.domain.User;
-import com.eventio.backend.dto.UserDTO;
-import com.eventio.backend.service.UserService;
+import com.eventio.backend.dao.KorisnikRepository;
+import com.eventio.backend.domain.Korisnik;
+import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,47 +14,47 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceJpa implements UserService {
+public class KorisnikServiceJpa implements KorisnikService {
 
     @Autowired
-    private UserRepository userRepository;
+    private KorisnikRepository repository;
 
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
-    public List<User> listAll() {
-        return userRepository.findAll();
+    public List<Korisnik> listAll() {
+        return repository.findAll();
     }
 
     @Override
-    public Optional<User> findById(Integer id) {
-        return userRepository.findById(id);
+    public Optional<Korisnik> findById(Integer id) {
+        return repository.findById(id);
     }
 
     @Override
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<Korisnik> findByUsername(String username) {
+        return repository.findByUsername(username);
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public Optional<Korisnik> findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsername(username);
+        Optional<Korisnik> user = repository.findByUsername(username);
         if (user.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
         return user.get();
     }
 
-    public boolean registerUser(UserDTO dto) {
+    public boolean registerUser(KorisnikDTO dto) {
         dto.setPassword(encoder.encode(dto.getPassword()));
-        User user = new User(dto);
-        user = userRepository.saveAndFlush(user);
+        Korisnik user = new Korisnik(dto);
+        user = repository.saveAndFlush(user);
         if (user.getId() == null) {
             return false;
         }

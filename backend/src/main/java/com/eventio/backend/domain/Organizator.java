@@ -1,11 +1,10 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.OrganizatorDTO;
-import com.eventio.backend.dto.UserDTO;
+import com.eventio.backend.dto.KorisnikDTO;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Organizator extends User {
+public class Organizator extends Korisnik {
     private String nazivOrganizacije;
     private String adresa;
     private String poveznica;
@@ -14,7 +13,7 @@ public class Organizator extends User {
     public Organizator() {
     }
 
-    public Organizator(UserDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
+    public Organizator(KorisnikDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
         super(dto);
         this.nazivOrganizacije = nazivOrganizacije;
         this.adresa = adresa;

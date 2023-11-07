@@ -1,29 +1,29 @@
 package com.eventio.backend.dto;
 
-import com.eventio.backend.domain.User;
+import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.UserType;
 
-public class UserDTO {
+public class KorisnikDTO {
     private String username;
     private String email;
     private String password;
-    private UserType type;
+    private UserType uloga;
 
-    public UserDTO() {
+    public KorisnikDTO() {
     }
 
-    public UserDTO(User user) {
-        this.username = user.getUsername();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.type = user.getType();
+    public KorisnikDTO(Korisnik korisnik) {
+        this.username = korisnik.getUsername();
+        this.email = korisnik.getEmail();
+        this.password = korisnik.getPassword();
+        this.uloga = korisnik.getUloga();
     }
 
-    public UserDTO(OrganizatorDTO dto) {
+    public KorisnikDTO(OrganizatorDTO dto) {
         this.username = dto.getUsername();
         this.email = dto.getEmail();
         this.password = dto.getPassword();
-        this.type = dto.getType();
+        this.uloga = dto.getUloga();
     }
 
     public String getUsername() {
@@ -50,11 +50,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public UserType getType() {
-        return type;
+    public UserType getUloga() {
+        return uloga;
     }
 
-    public void setType(UserType type) {
-        this.type = type;
+    public void setUloga(UserType uloga) {
+        this.uloga = uloga;
     }
 }

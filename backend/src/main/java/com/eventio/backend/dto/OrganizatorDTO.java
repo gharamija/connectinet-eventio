@@ -7,7 +7,7 @@ public class OrganizatorDTO {
     private String username;
     private String email;
     private String password;
-    private UserType type;
+    private UserType uloga;
     private String nazivOrganizacije;
     private String adresa;
     private String poveznica;
@@ -20,7 +20,7 @@ public class OrganizatorDTO {
         this.username = organizator.getUsername();
         this.email = organizator.getEmail();
         this.password = organizator.getPassword();
-        this.type = organizator.getType();
+        this.uloga = organizator.getUloga();
         this.nazivOrganizacije = organizator.getNazivOrganizacije();
         this.adresa = organizator.getAdresa();
         this.poveznica = organizator.getPoveznica();
@@ -51,12 +51,12 @@ public class OrganizatorDTO {
         this.password = password;
     }
 
-    public UserType getType() {
-        return type;
+    public UserType getUloga() {
+        return uloga;
     }
 
-    public void setType(UserType type) {
-        this.type = type;
+    public void setUloga(UserType uloga) {
+        this.uloga = uloga;
     }
 
     public String getNazivOrganizacije() {

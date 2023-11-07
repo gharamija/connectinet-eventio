@@ -1,11 +1,10 @@
 package com.eventio.backend.rest;
 
-import com.eventio.backend.domain.User;
+import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.UserType;
-import com.eventio.backend.dto.UserDTO;
-import com.eventio.backend.service.UserService;
+import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,24 +14,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class KorisnikController {
     @Autowired
-    private UserService service;
+    private KorisnikService service;
 
     @GetMapping
-    public UserDTO getCurrentUser(@AuthenticationPrincipal User user) {
-        return new UserDTO(user);
+    public KorisnikDTO getCurrentUser(@AuthenticationPrincipal Korisnik korisnik) {
+        return new KorisnikDTO(korisnik);
     }
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
-    public List<User> getAll() {
+    public List<Korisnik> getAll() {
         return service.listAll();
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@ModelAttribute UserDTO dto) {
-        if (dto.getType() != UserType.POSJETITELJ) {
+    public ResponseEntity<String> register(@ModelAttribute KorisnikDTO dto) {
+        if (dto.getUloga() != UserType.POSJETITELJ) {
             return ResponseEntity.badRequest().body("Ovdje ne možete kreirati admina ili organizatora");
         } else if (service.findByEmail(dto.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email već postoji u bazi");
