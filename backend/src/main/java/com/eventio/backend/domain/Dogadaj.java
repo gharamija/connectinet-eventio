@@ -17,8 +17,9 @@ public class Dogadaj {
     private String nazivDogadaja;
     @Column(nullable = false)
     private String vrsta;
+    @Enumerated
     @Column(nullable = false)
-    private String lokacija;
+    private Kvartovi lokacija;
     @Column(nullable = false)
     private String opisLokacije;
     @Column(nullable = false)
@@ -60,11 +61,11 @@ public class Dogadaj {
         this.vrsta = vrsta;
     }
 
-    public String getLokacija() {
+    public Kvartovi getLokacija() {
         return lokacija;
     }
 
-    public void setLokacija(String lokacija) {
+    public void setLokacija(Kvartovi lokacija) {
         this.lokacija = lokacija;
     }
 
