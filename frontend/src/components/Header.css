@@ -1,0 +1,36 @@
+.Header {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px #cccccc;
+    background-color: white;
+}
+
+.Header a {
+    color: black;
+    padding: 5px 10px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.Header a:hover {
+    background: #dddddd;
+}
+
+.Header button {
+    background: none;
+    border: 2px solid #aaa;
+    padding: 5px 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Header button:hover {
+    background-color: #aaa;
+}
+
+.Header button:disabled {
+    color: #ddd;
+}

@@ -1,0 +1,62 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.Naslov {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.FormRow {
+    margin: 16px 0;
+}
+
+.Register .FormRow:first-child {
+    margin-top: 0;
+}
+
+.FormRow label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.FormRow input {
+    font-size: 16px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.Register button {
+    background: #aaa;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.Register button:hover {
+    background-color: #808080;
+}
+
+.Register button:disabled {
+    background: #ccc;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.Register .error {
+    color: red;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.CheckBoxZaReg {
+    transform: scale(1.3);
+}
