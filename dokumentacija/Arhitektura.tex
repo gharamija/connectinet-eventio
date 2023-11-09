@@ -8,9 +8,32 @@
 		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
 		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
 	\end{itemize}
-
 	
+	Arhitektura našeg sustava temeljit će se na kombinaciji modernih tehnologija kako bismo ostvarili funkcionalan i skalabilan sustav. Sustav će se podijeliti na tri ključna podsustava: 
+	\begin{itemize}
+		\item 	\textit{\textbf{Web poslužitelj}}		
+		\item 	\textit{\textbf{Web preglednik}}	
+		\item 	\textit{\textbf{Baza podataka}}
+	\end{itemize}
+	Organizacija će biti usklađena s MVC (Model-View-Controller) konceptom, omogućavajući neovisnost između različitih dijelova sustava te olakšavajući razvoj, ispitivanje i dodavanje novih funkcionalnosti.
+	
+	\textit{Web preglednik}, kao program koji omogućuje korisnicima pregled web-stranica i multimedijalnih sadržaja, igra ključnu ulogu. Klijenti, putem web preglednika, šalju zahtjeve web poslužitelju kako bi pristupili željenim resursima.
+	
+	\textit{Web poslužitelj} je osnova rada web aplikacije i odgovoran je za komunikaciju između klijenta i aplikacije. Komunikacija se odvija putem HTTP protokola, koji omogućuje prijenos informacija na webu. Poslužitelj pokreće web aplikaciju i prosljeđuje joj zahtjeve koje prima od klijenata.	
+
+	\textit{\textbf{Web aplikacija}}, smještena na poslužitelju, obrađuje zahtjeve korisnika. Ovisno o tim zahtjevima, pristupa poslužitelju baze podataka i na temelju dobivenih podataka, putem web poslužitelja, šalje odgovor korisnicima. Aplikacija se sastoji od backend i frontend dijela, koji se razvijaju koristeći različite tehnologije u skladu s opisanom arhitekturom sustava. Konkretno, za backend dio koristit ćemo Spring, dok će za frontend biti korišten React, što je u skladu s MVC načelima.
 		
+	Ključna karakteristika MVC koncepta je nezavisan razvoj pojedinih dijelova aplikacije. Ova karakteristika rezultira jednostavnijim ispitivanjem, kao i olakšanim razvojem i dodavanjem novih svojstava u sustav.
+	
+	MVC koncept sastoji se od tri osnovna dijela:
+	
+	\begin{itemize}
+		\item 	\textit{\textbf{Model:}}	središnja komponenta sustava koja predstavlja dinamičke strukture podataka neovisne o korisničkom sučelju. Model upravlja podacima, logikom i pravilima aplikacije, primajući ulazne podatke od Controllera
+		\item 	\textit{\textbf{View:}}	odgovara za prikaz podataka, poput grafičkih elemenata. Moguć je različiti prikaz istih informacija, kao što su grafički ili tablični prikazi podataka
+		\item 	\textit{\textbf{Controller:}} primarno prima ulazne podatke od korisnika i prilagođava ih za daljnju interakciju s Modelom ili Viewom. Kontrolira korisničke zahtjeve i izvodi daljnju interakciju s ostalim elementima sustava
+	\end{itemize}
+	
+	Ovaj pristup omogućuje jasnu organizaciju sustava i olakšava daljnji razvoj i održavanje.
 
 		
 
@@ -18,26 +41,26 @@
 		\section{Baza podataka}
 			
 			
-		\textit{Kao sustav za upravljanje bazama podataka za našu aplikaciju odabrali smo PostgreSQL. To je otvoren sustav za upravljanje bazama koji omogućuje pohranu, upravljanje i analizu podataka. }
+		Kao sustav za upravljanje bazama podataka za našu aplikaciju odabrali smo PostgreSQL. To je otvoren sustav za upravljanje bazama koji omogućuje pohranu, upravljanje i analizu podataka.
 			
-		\textit{Sama baza podataka sadržavat će šest tablica. One će služiti za pohranu podataka o korisnicima te njihovom korištenju aplikacije. Korištenje će se spremati u obliku događaja koje stvaraju ili posjećuju te recenzija koje pišu za određene događaje. Isto tako spremat će se sama zainteresiranost za događaje te notifikacije koje posjetitelji žele primati za događaje s određenim karakteristikama.}
+		Sama baza podataka sadržavat će šest tablica. One će služiti za pohranu podataka o korisnicima te njihovom korištenju aplikacije. Korištenje će se spremati u obliku događaja koje stvaraju ili posjećuju te recenzija koje pišu za određene događaje. Isto tako spremat će se sama zainteresiranost za događaje te notifikacije koje posjetitelji žele primati za događaje s određenim karakteristikama.
 			
-		\textit{Sami odabir PostgreSQL-a je u njegovoj pouzdanosti, skalabilnosti i podrške za napredne SQL funkcionalnosti, što će nam omogućiti lakše te učinkovitije upravljanje podacima.
-			Baza podataka ove aplikacije sastoji se od sljedećih entiteta: }
+		Sami odabir PostgreSQL-a je u njegovoj pouzdanosti, skalabilnosti i podrške za napredne SQL funkcionalnosti, što će nam omogućiti lakše te učinkovitije upravljanje podacima.
+			Baza podataka ove aplikacije sastoji se od sljedećih entiteta: 
 			\begin{itemize}
-			\item 	\textit{Korisnik}		
-			\item 	\textit{Organizator}	
-			\item 	\textit{Događaj}
-			\item 	\textit{Recenzija}
-			\item 	\textit{Zainteresiranost}
-			\item 	\textit{Notifikacija}
+			\item 	Korisnik
+			\item 	Organizator	
+			\item 	Događaj
+			\item 	Recenzija
+			\item 	Zainteresiranost
+			\item 	Notifikacija
 		\end{itemize}
 		
 		
 			\subsection{Opis tablica}
 			
 
-				\textit{\textbf{Korisnik} -  ovaj entitet sadržava sve važne informacije o korisniku aplikacije. Sadrži atribute: korisnik\_id koji je automatski dodijeljen, username, lozinka, email i uloga u aplikaciji. Ovaj entitet u vezi je Many-to-One s entitetom organizator preko atributa organizator\_id.}
+				\textbf{Korisnik} -  ovaj entitet sadržava sve važne informacije o korisniku aplikacije. Sadrži atribute: korisnik\_id koji je automatski dodijeljen, username, lozinka, email i uloga u aplikaciji. Ovaj entitet u vezi je Many-to-One s entitetom organizator preko atributa organizator\_id.
 				
 				
 				\begin{longtblr}[
@@ -56,7 +79,7 @@
 					uloga & SMALL INT/INT &  Uloga koju korisnik ima unutar aplikacije(admin, posjetitelj, organizator)		\\ \hline 
 				\end{longtblr}
 				
-							\textit{\textbf{Organizator } -  Ovaj entitet sadržava informacije o organizatoru događaja. Sadrži atribute: organizator\_id, naziv\_organizacije, adresa, poveznica, clanarina. Ovaj entitet u vezi je One-to-Many s entitetom dogadaj preko atributa organizator\_id.}
+							\textbf{Organizator } -  Ovaj entitet sadržava informacije o organizatoru događaja. Sadrži atribute: organizator\_id, naziv\_organizacije, adresa, poveznica, clanarina. Ovaj entitet u vezi je One-to-Many s entitetom dogadaj preko atributa organizator\_id.
 			
 			
 			\begin{longtblr}[
@@ -75,7 +98,7 @@
 				clanarina & BOOLEAN &  Plaćena članarina		\\ \hline 
 			\end{longtblr}
 			
-							\textit{\textbf{Dogadaj } -  ovaj entitet sadržava informacije o događaju. Sadrži atribute: dogadaj\_id, organizator\_id, naziv\_dogadaja, vrsta, lokacija, trajanje, vrijeme\_pocetka, cijena\_ulaznice, opis, galerija. Ovaj entitet u vezi je Many-to-One s entitetom Organizator preko atributa organizator\_id te u vezi One-to-Many s entitetom recenzija preko atributa dogadaj\_id.}
+							\textbf{Dogadaj } -  ovaj entitet sadržava informacije o događaju. Sadrži atribute: dogadaj\_id, organizator\_id, naziv\_dogadaja, vrsta, lokacija, trajanje, vrijeme\_pocetka, cijena\_ulaznice, opis, galerija. Ovaj entitet u vezi je Many-to-One s entitetom Organizator preko atributa organizator\_id te u vezi One-to-Many s entitetom recenzija preko atributa dogadaj\_id.
 			
 			
 			\begin{longtblr}[
@@ -99,7 +122,7 @@
 				galerija & VARCHAR & Link do web stranice gdje se nalaze video snimke ili fotografije \\ \hline  
 			\end{longtblr}
 			
-							\textit{\textbf{Recenzija} -  ovaj entitet sadržava informacije o recenziji događaja. Sadrži atribute: recenzija\_id, posjetitelj\_id, događaj\_id, tekst, ocjena. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.}
+							\textbf{Recenzija} -  ovaj entitet sadržava informacije o recenziji događaja. Sadrži atribute: recenzija\_id, posjetitelj\_id, događaj\_id, tekst, ocjena. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.
 			
 			
 			\begin{longtblr}[
@@ -118,7 +141,7 @@
 				ocjena & SMALL INT/INT & Ocjena od 1-10, opcionalna	\\ \hline 
 			\end{longtblr}
 			
-							\textit{\textbf{Zainteresiranost} -  ovaj entitet sadržava informacije o zainteresiranosti posjetitelja za određeni događaj. Sadrži atribute: zainteresiranost\_id, posjetitelj\_id, dogadaj\_id, kategorija, obavijesti. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.}
+							\textbf{Zainteresiranost} -  ovaj entitet sadržava informacije o zainteresiranosti posjetitelja za određeni događaj. Sadrži atribute: zainteresiranost\_id, posjetitelj\_id, dogadaj\_id, kategorija, obavijesti. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa dogadaj\_id.
 			
 			
 			\begin{longtblr}[
@@ -137,7 +160,7 @@
 				obavijesti & BOOLEAN & Želi li posjetitelj biti obaviješten o promjeni na događaju	\\ \hline 
 			\end{longtblr}
 			
-							\textit{\textbf{Notifikacija } -  ovaj entitet sadržava informacije o notifikacijama koje će posjetitelji primati vezano uz tražene događaje filtirane po vrsti ili lokaciji. Sadrži atribute: notifikacija\_id, posjetitelj\_id, vrsta, lokacija. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa vrsta i lokacija.}
+							\textbf{Notifikacija } -  ovaj entitet sadržava informacije o notifikacijama koje će posjetitelji primati vezano uz tražene događaje filtirane po vrsti ili lokaciji. Sadrži atribute: notifikacija\_id, posjetitelj\_id, vrsta, lokacija. Ovaj entitet u vezi je Many-to-One s entitetom korisnik preko atributa posjetitelj\_id te u vezi Many-to-One s entitetom dogadaj preko atributa vrsta i lokacija.
 			
 			
 			\begin{longtblr}[
@@ -158,7 +181,7 @@
 							
 			
 			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+				U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".
 				
 				\begin{figure}
 					\centering
@@ -175,6 +198,35 @@
 			\textbf{\textit{dio 1. revizije}}\\
 			
 			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - Kontroleri}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Servisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - Servisi}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - DTO.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - Data Transfer Objects}
+				\label{fig:promjene}
+			\end{figure}
+			
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - Models v4.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - Models}
+				\label{fig:promjene}
+			\end{figure}
 			
 			\textbf{\textit{dio 2. revizije}}\\			
 			
