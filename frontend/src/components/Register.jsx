@@ -26,7 +26,7 @@ function Register(props) {
         e.preventDefault();
         setError("");
         if (isChecked) {
-            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&type=${"ORGANIZATOR"}&naziv=${registerForm.naziv}&adresa=${registerForm.adresa}&poveznica=${registerForm.poveznica}&članarina=${registerForm.clanarina}`;
+            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"ORGANIZATOR"}&naziv=${registerForm.naziv}&adresa=${registerForm.adresa}&poveznica=${registerForm.poveznica}&članarina=${registerForm.clanarina}`;
             const options = {
                 method: 'POST',
                 headers: {
@@ -43,7 +43,7 @@ function Register(props) {
                     }
                 });
         } else {
-            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&type=${"POSJETITELJ"}`;
+            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"POSJETITELJ"}`;
             const options = {
                 method: 'POST',
                 headers: {
@@ -64,6 +64,9 @@ function Register(props) {
 
     return (
         <div className="Register">
+            <div className='Title'>
+                <h1 className='Naslov'>Register</h1>
+            </div>
             <form onSubmit={onSubmit}>
                 <div className="FormRow">
                     <label>Username</label>
@@ -83,6 +86,7 @@ function Register(props) {
                         <input
                             type="checkbox"
                             name='admin'
+                            className='CheckBoxZaReg'
                             checked={isChecked}
                             onChange={onChange}
                         />
@@ -104,7 +108,7 @@ function Register(props) {
                         </div>
                         <div className="FormRow">
                             <label>Subscription</label>
-                            <input type='checkbox' name='clanarina' onChange={onChange} checked={isPaid} />
+                            <input type='checkbox' name='clanarina' className="CheckBoxZaReg" onChange={onChange} checked={isPaid} />
                         </div>
                     </div>
                 )}

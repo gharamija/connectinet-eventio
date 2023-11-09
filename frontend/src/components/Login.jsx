@@ -1,9 +1,11 @@
 import React from 'react';
 import './Login.css';
 
+
 function Login(props) {
     const [loginForm, setLoginForm] = React.useState({ username: '', password: '' });
     const [error, setError] = React.useState('');
+
 
     function onChange(event) {
         const { name, value } = event.target;
@@ -33,6 +35,7 @@ function Login(props) {
 
     return (
         <div className="Login">
+            <h1 className='Naslov'>Login</h1>
             <form onSubmit={onSubmit}>
                 <div className="FormRow">
                     <label>Username</label>

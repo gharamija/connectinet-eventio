@@ -3,6 +3,11 @@ body {
     font-weight: 600;
 }
 
+.Naslov {
+    font-size: 30px;
+    font-weight: 500;
+}
+
 .FormRow {
     margin: 16px 0;
 }
@@ -50,4 +55,8 @@ body {
     color: red;
     margin-top: 8px;
     font-weight: bold;
+}
+
+.CheckBoxZaReg {
+    transform: scale(1.3);
 }

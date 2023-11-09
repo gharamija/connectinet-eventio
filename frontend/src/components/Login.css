@@ -3,6 +3,11 @@ body {
     font-weight: 600;
 }
 
+.Naslov {
+    font-size: 30px;
+    font-weight: 500;
+}
+
 .FormRow {
     margin: 16px 0;
 }
