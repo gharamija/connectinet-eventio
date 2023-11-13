@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  9 NOV 2023 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.24)  13 NOV 2023 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1157,7 +1157,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...{Indeks slika i dijagrama}{57}{chapter*.4}
+l.28 ...{Indeks slika i dijagrama}{59}{chapter*.4}
                                                   % [1
 
 ])
@@ -2295,88 +2295,77 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.191 			\eject
                 <./slike/baza.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 196--201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 196--201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
 
  []
 
-<dijagramiKlasa/Dijagram razreda - Kontroleri.png, id=571, 897.3525pt x 695.598
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--225
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--225
+
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[44]
+Overfull \hbox (8.60352pt too wide) in paragraph at lines 232--233
+[]\OT1/jkp/m/n/12 registerUser - kao ar-gu-ment prima Kor-s-nik-DTO, a bo-olean
+ ovisno o us-pje[]snosti 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
+
+ []
+
+<dijagramiKlasa/Dijagram razreda - Kontroleri.png, id=576, 897.3525pt x 695.598
 75pt>
 File: dijagramiKlasa/Dijagram razreda - Kontroleri.png Graphic file (type png)
 <use dijagramiKlasa/Dijagram razreda - Kontroleri.png>
 Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Kontroleri.png  used
- on input line 203.
+ on input line 245.
 (pdftex.def)             Requested size: 448.67514pt x 347.79852pt.
 
-Overfull \hbox (13.06435pt too wide) in paragraph at lines 203--205
+Overfull \hbox (13.06435pt too wide) in paragraph at lines 245--247
  [][] 
  []
 
-<dijagramiKlasa/Dijagram razreda - Servisi.png, id=572, 850.67813pt x 605.26125
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[45]
+<dijagramiKlasa/Dijagram razreda - Servisi.png, id=582, 850.67813pt x 605.26125
 pt>
 File: dijagramiKlasa/Dijagram razreda - Servisi.png Graphic file (type png)
 <use dijagramiKlasa/Dijagram razreda - Servisi.png>
 Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Servisi.png  used on
- input line 210.
+ input line 252.
 (pdftex.def)             Requested size: 425.33803pt x 302.62987pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[44
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.215 			
-          <./dijagramiKlasa/Dijagram razreda - Kontroleri.png>]
-<dijagramiKlasa/Dijagram razreda - DTO.png, id=580, 1072.75781pt x 852.93657pt>
-
-File: dijagramiKlasa/Dijagram razreda - DTO.png Graphic file (type png)
-<use dijagramiKlasa/Dijagram razreda - DTO.png>
-Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - DTO.png  used on inp
-ut line 217.
-(pdftex.def)             Requested size: 429.09552pt x 341.16858pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[45
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.222 			
-          <./dijagramiKlasa/Dijagram razreda - Servisi.png>]
-<dijagramiKlasa/Dijagram razreda - Models v4.png, id=588, 1183.42125pt x 861.21
-75pt>
-File: dijagramiKlasa/Dijagram razreda - Models v4.png Graphic file (type png)
-<use dijagramiKlasa/Dijagram razreda - Models v4.png>
-Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Models v4.png  used 
-on input line 225.
-(pdftex.def)             Requested size: 473.36012pt x 344.4809pt.
-
-Overfull \hbox (37.74933pt too wide) in paragraph at lines 225--227
- [][] 
- []
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2387,15 +2376,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [46
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.230 			
-          <./dijagramiKlasa/Dijagram razreda - DTO.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+l.257 			
+          <./dijagramiKlasa/Dijagram razreda - Kontroleri.png>]
+<dijagramiKlasa/Dijagram razreda - DTO.png, id=590, 1072.75781pt x 852.93657pt>
 
- []
+File: dijagramiKlasa/Dijagram razreda - DTO.png Graphic file (type png)
+<use dijagramiKlasa/Dijagram razreda - DTO.png>
+Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - DTO.png  used on inp
+ut line 259.
+(pdftex.def)             Requested size: 429.09552pt x 341.16858pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2406,13 +2399,59 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [47
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.264 			
+          <./dijagramiKlasa/Dijagram razreda - Servisi.png>]
+<dijagramiKlasa/Dijagram razreda - Models v4.png, id=598, 1183.42125pt x 861.21
+75pt>
+File: dijagramiKlasa/Dijagram razreda - Models v4.png Graphic file (type png)
+<use dijagramiKlasa/Dijagram razreda - Models v4.png>
+Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Models v4.png  used 
+on input line 267.
+(pdftex.def)             Requested size: 473.36012pt x 344.4809pt.
+
+Overfull \hbox (37.74933pt too wide) in paragraph at lines 267--269
+ [][] 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[48
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.272 			
+          <./dijagramiKlasa/Dijagram razreda - DTO.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[49
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.237 			\eject
+l.279 			\eject
                 <./dijagramiKlasa/Dijagram razreda - Models v4.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
@@ -2424,8 +2463,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48]
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
@@ -2437,8 +2476,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[49]
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
@@ -2451,7 +2490,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[50]
+[52]
 \openout2 = `Implementacija.aux'.
 
  (./Implementacija.tex
@@ -2469,7 +2508,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[51
+[53
 
 
 
@@ -2492,7 +2531,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[52]
+[54]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2501,7 +2540,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53]
+[55]
 Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
@@ -2514,7 +2553,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[54])
+[56])
 \openout2 = `Zakljucak.aux'.
 
  (./Zakljucak.tex
@@ -2532,7 +2571,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55
+[57
 
 
 
@@ -2561,7 +2600,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[56
+[58
 
 
 
@@ -2579,7 +2618,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57
+[59
 
 
 
@@ -2595,7 +2634,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[58
+[60
 
 
 ]
@@ -2619,7 +2658,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[59]
+[61]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2628,7 +2667,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[60]
+[62]
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
@@ -2642,7 +2681,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[61] 
+[63] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
 (./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
@@ -2656,8 +2695,8 @@ anged.
 (rerunfilecheck)             Checksum: 9A91B2F970D8B1C79EDF0EDE14DC49B6;4565.
  ) 
 Here is how much of TeX's memory you used:
- 18059 strings out of 476025
- 324294 string characters out of 5790016
+ 18061 strings out of 476025
+ 324308 string characters out of 5790016
  1997388 words of memory out of 5000000
  37872 multiletter control sequences out of 15000+600000
  584779 words of font info for 188 fonts, out of 8000000 for 9000
@@ -2674,10 +2713,10 @@ exlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texl
 ive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/
 2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2023/t
 exmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (62 pages, 1343299 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (64 pages, 1346687 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
- 692 compressed objects within 7 object streams
- 270 named destinations out of 1000 (max. 500000)
+ 817 PDF objects out of 1000 (max. 8388607)
+ 701 compressed objects within 8 object streams
+ 272 named destinations out of 1000 (max. 500000)
  287 words of extra memory for PDF output out of 10000 (max. 10000000)
 

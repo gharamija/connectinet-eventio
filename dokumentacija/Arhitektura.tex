@@ -193,11 +193,53 @@
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+			Na slikama \textbf{4.2, 4.3, 4.4 i 4.5} su prikazani razredi koji pripadaju \textit{backend} dijelu projekta. 
+			\newline
+			\newline
+			Razredi prikazani na slici \textbf{4.2} su razredi kontroleri. Ti razredi su ključni dijelovi koji upravljaju pristiglim zahtjevima, određuju rute te obrađuju logiku aplikacije. Obično se koriste za implementaciju HTTP metoda poput \textbf{GET, POST, PUT i DELETE} za obrađivanje zahtjeva koji dolaze od klijenata. Razredi koji imaju svoje kontrolere su \textbf{Korisnik, Organizator, Admin, Posjetitelj, Događaj, Notifikacija, Recenzija i Zainteresiranost}.
+			\newline
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			\textbf{KorisnikController} ima metode: 
+			\begin{itemize}
+				\item getAll - vraća listu Korisnika
+				\item getKorisnikById - ako postoji Korisnik sa tim id, njega vraća
+				\item getCurrentUser - kao argument prima Korisnika, a vraća KorisnikDTO
+				\item register - kao argument prima KorsnikDTO, a vraća ResponseEntity koji je string
+			\end{itemize}
 			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+			Isto ima i člansku varijablu tipa KorisnikService preko koje se obavlja poslovna logika (operacije nad podacima, pristupanje bazi podataka ili komunikacija s vanjskim servisima).
+			\newline
+			
+				\textbf{OrganizatorController} ima metode: 
+			\begin{itemize}
+				\item getDetails - kao argument prima Korisnika, a vraća OrganizatorDTO
+				\item register - kao argument prima OrganizatorDTO, a vraća ResponseEntity koji je string
+			\end{itemize}
+			
+			Isto ima i članske varijable tipa KorisnikService i OrganizatorService preko koje se obavlja poslovna logika (operacije nad podacima, pristupanje bazi podataka ili komunikacija s vanjskim servisima).
+			\newline
+			\newline
+			Razredi prikazani na slici \textbf{4.3} su razredi servisi. Razredi servisi u Spring Bootu predstavljaju komponente koje sadrže poslovnu logiku aplikacije, pristupaju podacima i obavljaju operacije koje nisu specifične za obradu HTTP zahtjeva. Oni često služe kao posrednici između kontrolera i sloja pristupa podacima (Repository sloj) te obavljaju ključne funkcije za obradu podataka, poslovnu logiku i vanjske integracije.
+			Razredi koji imaju svoje servise su \textbf{Korisnik, Organizator, Admin, Posjetitelj, Događaj, Notifikacija, Recenzija i Zainteresiranost}.
+			\newline
+			
+			\textbf{KorisnikService} ima metode: 
+			\begin{itemize}
+				\item  -listAll - vraća listu Korisnika
+				\item findById - prima id kao argument, a ako postoji Korisnik s tim id, njega vraća
+				\item findByUsername - prima username kao argument, a ako postoji korisnik s tim usernamom njega vraća
+				\item findByEmail - prima email kao argument, a ako postoji korisnik s tim emailom njega vraća
+				\item registerUser - kao argument prima KorsnikDTO, a boolean ovisno o uspješnosti
+			\end{itemize}
+			
+			Isto ima i člansku varijablu tipa KorisnikRepository. Razred repozitorija u Spring Bootu predstavlja sloj pristupa podacima (data access layer) i obično se koristi za komunikaciju s bazom podataka. Ovi repozitoriji pružaju apstrakciju za operacije nad podacima, kao što su dohvaćanje, spremanje, ažuriranje ili brisanje podataka.
+			\newline
+			
+			\textbf{OrganizatorService} ima metode: 
+			\begin{itemize}
+				\item findById - prima id kao argument, a ako postoji Organizator sa tim id, njega vraća
+				\item registerOrganizator - kao argument prima OrganizatorDTO, a vraća boolean ovisno o uspješnosti
+			\end{itemize}
 			
 			\begin{figure}[H]
 				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
