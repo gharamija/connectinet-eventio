@@ -34,20 +34,24 @@ function Login(props) {
     }
 
     return (
-        <div className="Login">
+        <div className="App">   <div className="Login">
             <h1 className='Naslov'>Login</h1>
             <form onSubmit={onSubmit}>
                 <div className="FormRow">
                     <label>Username</label>
-                    <input name='username' onChange={onChange} value={loginForm.username} />
+                    <input name='username' onChange={onChange} value={loginForm.username} required />
                 </div>
                 <div className="FormRow">
                     <label>Password</label>
-                    <input name='password' type="password" onChange={onChange} value={loginForm.password} />
+                    <input name='password' type="password" onChange={onChange} value={loginForm.password} required />
                 </div>
                 <div className='error'>{error}</div>
-                <button type="submit">Login</button>
+                <div className="button-container">
+                    <button type="submit">Login</button>
+                    <button onClick={() => window.location.href = '/register'}>Register</button>
+                </div>
             </form>
+        </div>
         </div>
     )
 }

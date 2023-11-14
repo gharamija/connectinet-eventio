@@ -1,29 +1,16 @@
-import * as React from "react";
-import './App.css'
-import { createBrowserRouter, Outlet, RouterProvider, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
-
+import Nopage from "./components/Nopage.jsx"
+import './App.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [loadingUser, setLoadingUser] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loadingUser, setLoadingUser] = useState(true);
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <AppContainer onLogout={onLogout} />,
-      children: [
-        {
-          path: "register",
-          element: <Register />
-        }
-      ]
-    }
-  ]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api/user")
       .then(response => {
         if (response.status !== 401) {
@@ -46,31 +33,26 @@ function App() {
   function onLogout() {
     setIsLoggedIn(false);
   }
-
-  if (!isLoggedIn) {
+  if (isLoggedIn) {
     return (
-      <div className="App">
-        <Login onLogin={onLogin} />
-      </div>
-    )
+      <Router>
+        <Routes>
+          <Route path="/" element={<Header onLogout={onLogout} />} />
+          <Route path="login" />
+        </Routes>
+      </Router>
+    );
+  } else {
+    return (
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login onLogin={onLogin} />} />
+          <Route path="register" element={<Register />} />
+          <Route path="*" element={<Nopage />} />
+        </Routes>
+      </Router>
+    );
   }
-
-  return (
-    <RouterProvider router={router} />
-  )
 }
 
-export default App
-
-function AppContainer(props) {
-  console.log(props)
-  return (
-    <div>
-      <Header onLogout={props.onLogout} />
-      <div className="App">
-        <Outlet />
-      </div>
-    </div>
-  )
-}
-
+export default App;
