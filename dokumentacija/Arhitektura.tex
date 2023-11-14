@@ -225,7 +225,7 @@
 			
 			\textbf{KorisnikService} ima metode: 
 			\begin{itemize}
-				\item  -listAll - vraća listu Korisnika
+				\item listAll - vraća listu Korisnika
 				\item findById - prima id kao argument, a ako postoji Korisnik s tim id, njega vraća
 				\item findByUsername - prima username kao argument, a ako postoji korisnik s tim usernamom njega vraća
 				\item findByEmail - prima email kao argument, a ako postoji korisnik s tim emailom njega vraća
@@ -240,6 +240,16 @@
 				\item findById - prima id kao argument, a ako postoji Organizator sa tim id, njega vraća
 				\item registerOrganizator - kao argument prima OrganizatorDTO, a vraća boolean ovisno o uspješnosti
 			\end{itemize}
+			
+			Razredi prikazani na slici 4.5. su razredi modeli. Struktura baze podataka u aplikaciji odražava se upravo model razredima; osim što imaju svoje pripadne atributa, razredi također implementiraju metode koje ostvaruju interakciju s bazom podataka. \\ 
+			\\ Razred Korisnik reprezentira općeg korisnika aplikacije. Specificira ga atribut "uloga" koja određuje je li korisnik administrator, posjetitelj ili organizator.
+			\\ Razred Organizator reprezentira korisnika s organizatorskim računom. Organizatori mogu pregledavati svoje postojeće događaje i postavljati nove događaje.
+			\\ Razred Recenzija reprezentira korisnikov osvrt na događaj u obliku ocjene i komentara.
+			\\ Razred Notifikacija reprezentira obavijest koja se šalje korisniku. Korisnik ima mogućnost uključiti notifikacije za određenu vrstu događaja te za lokaciju na kojoj se događaji organiziraju.
+			\\ Razred Zainteresiranost reprezentira korisnikovu interakciju s postavljenim događajima. Korisnikova zainteresiranost ima tri razine: "sigurno dolazim", "možda dolazim", "ne dolazim".
+			\\ Razred Dogadaj reprezentira događaj koji je postavio organizator. Lokacija događaja predstavljena je gradskom četvrti - kvartom.
+			
+			\pagebreak
 			
 			\begin{figure}[H]
 				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
@@ -264,7 +274,7 @@
 			
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - Models v4.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - Models v5.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Models}
 				\label{fig:promjene}
