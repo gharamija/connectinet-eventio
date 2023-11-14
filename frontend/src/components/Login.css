@@ -30,6 +30,12 @@ body {
     border-radius: 4px;
 }
 
+.Login .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .Login button {
     background: #aaa;
     border: none;
@@ -39,6 +45,9 @@ body {
     color: #ffffff;
     border-radius: 4px;
     transition: background-color 0.3s;
+    margin: 10px;
+    margin-left: 0;
+
 }
 
 .Login button:hover {

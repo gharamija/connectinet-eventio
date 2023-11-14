@@ -63,58 +63,63 @@ function Register(props) {
     }
 
     return (
-        <div className="Register">
-            <div className='Title'>
-                <h1 className='Naslov'>Register</h1>
-            </div>
-            <form onSubmit={onSubmit}>
-                <div className="FormRow">
-                    <label>Username</label>
-                    <input name='username' onChange={onChange} value={registerForm.username} />
+        <div className="App">
+            <div className="Register">
+                <div className='Title'>
+                    <h1 className='Naslov'>Register</h1>
                 </div>
-                <div className="FormRow">
-                    <label>Email</label>
-                    <input name='email' onChange={onChange} value={registerForm.email} />
-                </div>
-                <div className="FormRow">
-                    <label>Password</label>
-                    <input name='password' type="password" onChange={onChange} value={registerForm.password} />
-                </div>
-                <div className='FormRow'>
-                    <label>
-                        Organiser role
-                        <input
-                            type="checkbox"
-                            name='admin'
-                            className='CheckBoxZaReg'
-                            checked={isChecked}
-                            onChange={onChange}
-                        />
-                    </label>
-                </div>
-                {isChecked && (
-                    <div className="AddInfo">
-                        <div className="FormRow">
-                            <label>Name</label>
-                            <input name='naziv' onChange={onChange} value={registerForm.naziv} />
-                        </div>
-                        <div className="FormRow">
-                            <label>Address</label>
-                            <input name='adresa' onChange={onChange} value={registerForm.adresa} />
-                        </div>
-                        <div className="FormRow">
-                            <label>Link</label>
-                            <input name='poveznica' onChange={onChange} value={registerForm.poveznica} />
-                        </div>
-                        <div className="FormRow">
-                            <label>Subscription</label>
-                            <input type='checkbox' name='clanarina' className="CheckBoxZaReg" onChange={onChange} checked={isPaid} />
-                        </div>
+                <form onSubmit={onSubmit}>
+                    <div className="FormRow">
+                        <label>Username</label>
+                        <input name='username' onChange={onChange} value={registerForm.username} required />
                     </div>
-                )}
-                <div className='error'>{error}</div>
-                <button type="submit">Register</button>
-            </form>
+                    <div className="FormRow">
+                        <label>Email</label>
+                        <input name='email' onChange={onChange} value={registerForm.email} type="email" required />
+                    </div>
+                    <div className="FormRow">
+                        <label>Password</label>
+                        <input name='password' type="password" onChange={onChange} value={registerForm.password} required />
+                    </div>
+                    <div className='FormRow'>
+                        <label>
+                            Organiser role
+                            <input
+                                type="checkbox"
+                                name='admin'
+                                className='CheckBoxZaReg'
+                                checked={isChecked}
+                                onChange={onChange}
+                            />
+                        </label>
+                    </div>
+                    {isChecked && (
+                        <div className="AddInfo">
+                            <div className="FormRow">
+                                <label>Name</label>
+                                <input name='naziv' onChange={onChange} value={registerForm.naziv} required />
+                            </div>
+                            <div className="FormRow">
+                                <label>Address</label>
+                                <input name='adresa' onChange={onChange} value={registerForm.adresa} required />
+                            </div>
+                            <div className="FormRow">
+                                <label>Link</label>
+                                <input name='poveznica' onChange={onChange} value={registerForm.poveznica} />
+                            </div>
+                            <div className="FormRow">
+                                <label>Subscription</label>
+                                <input type='checkbox' name='clanarina' className="CheckBoxZaReg" onChange={onChange} checked={isPaid} />
+                            </div>
+                        </div>
+                    )}
+                    <div className='error'>{error}</div>
+                    <div className="button-container">
+                        <button type="submit">Register</button>
+                        <button onClick={() => window.location.href = '/'}>Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
