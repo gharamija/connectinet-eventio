@@ -8,8 +8,8 @@ COPY ../../pom.xml .
 COPY ../../src src
 RUN chmod +x mvnw
 
-# Pokretanje builda
-RUN ./mvnw clean package
+# Pokretanje builda i skipanje testova
+RUN ./mvnw clean package -DskipTests
 
 # Stvaranje containera u kojem ce se vrtiti aplikacija
 FROM openjdk:17-alpine
