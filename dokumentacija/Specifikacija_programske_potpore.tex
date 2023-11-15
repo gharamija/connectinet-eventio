@@ -455,7 +455,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Posjetitelju se otvara obrazac za recenziranje; odabir odgovarajućeg broja zvjezdica te prostor za pisanje recenzije
+		\item Posjetitelju se otvara obrazac za recenziranje; opcionalan odabir ocjene te prostor za pisanje recenzije
 		\item Posjetitelj završava recenziju i odabire opciju "Spremi recenziju"
 		\item Sustav pohranjuje recenziju te javlja posjetitelju da je recenzija uspješna
 	\end{packed_enum}
@@ -464,17 +464,11 @@
 	
 	\item[] \begin{packed_item}
 		
-		\item[2.a] Posjetitelj napisao recenziju, no nije odabrao ocjenu (zvjezdice)
+		\item[2.a] Posjetitelj ostavio ocjenu, no nije ostavio opis recenzije
 		\item[] \begin{packed_enum}
 			
-			\item Sustav javlja posjetitelju da mora ostaviti ocjenu
-			\item Posjetitelj postavlja ocjenu i sprema recenziju, ili odustaje odabirom opcije "Odustani"
-			
-		\end{packed_enum}
-		\item[2.b] Posjetitelj odabrao ocjenu, no nije napisao recenziju
-			\item[] \begin{packed_enum}
-			
-			\item Nije obavezno napisati recenziju, dovoljno je odabrati ocjenu
+			\item Sustav javlja posjetitelju da mora napisati opis
+			\item Posjetitelj piše opis i sprema recenziju, ili odustaje odabirom opcije "Odustani"
 			
 		\end{packed_enum}
 		
@@ -531,7 +525,7 @@
 
 
 
-					\noindent \underbar{\textbf{UC17 - Obrazac za postavljanje}}
+					\noindent \underbar{\textbf{UC17 - Obrazac za postavljanje događaja}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Organizator
 	\item  \textbf{Cilj:} Ispuniti obrazac za postavljanje događaja
