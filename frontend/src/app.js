@@ -26,6 +26,6 @@ app.listen(PORT, HOST, () => {
 });
 
 app.get("*", async (req, res) => {
-        res.sendFile(path.join(__dirname, 'build', 'App.jsx'))
+        res.sendFile(path.join(__dirname, 'build', 'index.html'))
     }
 );
