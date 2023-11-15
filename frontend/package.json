@@ -8,7 +8,7 @@
     "build": "yarn install && react-scripts build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start-prod": "node app.js"
+    "start-prod": "npm run dev"
   },
   "engines": {
     "node": ">=18.18.0 <19.0.0"
