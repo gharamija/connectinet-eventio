@@ -28,42 +28,52 @@
 		
 		Sada ćemo detaljnije razmotriti korisničke zahtjeve i funkcionalnosti aplikacije "Eventio".
 		
-		Prilikom pokretanja aplikacije, korisnicima se pojavljuje izbor uloge koje žele imati unutar aplikacije. Uloge su organizator ili posjetitelj. Kada odaberu željenu ulogu, tada se mogu prijaviti u sustav s već ranije kreiranim računom ili ako ne posjeduju još račun, tada kreiraju novi račun. Kako bi korisnik mogao uspješno kreirati račun potrebni su sljedeći podaci:
+		Prilikom pokretanja aplikacije, korisniku će se prikazati jedna od dvije mogućnosti. 
+		
+		\begin{packed_item}
+			\item \textit{Prozor sa pozdravom: Korisnik je već stvorio profil i ranije se prijavio u sustav}
+			\item \textit{Prozor sa formom za prijavu te gumbom koji vodi na kreiranje novog računa: Ovisno o tome posjeduje li korisnik račun će ili ispuniti prijavu u sustav ili pak kliknuti na gumb za stvaranje računa. }
+		\end{packed_item}
+		 Kako bi korisnik mogao uspješno kreirati račun potrebni su sljedeći podaci:
 		\begin{packed_item}
 			\item \textit{Korisničko ime}
 			\item \textit{Lozinka}
 			\item \textit{E-mail adresa}
 		\end{packed_item}
-		
+		Korisnik tijekom registracije isto tako može birati koju ulogu želi imati unutar aplikacije. Uloge su posjetitelj i organizator.
 		Ako je korisnik odabrao ulogu organizatora, tada još dodatno uz navedene podatke treba upisati i sljedeće:
 		\begin{packed_item}
+			\item \textit{Naziv organizacije}
 			\item \textit{Adresa}
 			\item \textit{Link/Url svoje stranice}
 		\end{packed_item}
 		
-		Nakon kreiranja samog računa kao jedna uloga, neće biti omogućeno mjenjanje  te uloge. 
-		Za prijavu će isto tako biti potrebno izabrati za koju ulogu se želimo prijaviti, te nakon toga unosimo korisničko ime i lozinku našeg postojećeg računa. Za odjavu će korisnici imati gumb odjavi koji je potrebno pritisnuti kako bi se korisnik odjavio sa računa te se nakon toga vraća na početni zaslon
+		Nakon kreiranja samog računa kao jedna uloga, neće biti omogućeno mijenjanje  te uloge. 
+		Za prijavu će biti potrebno unijeti korisničko ime i lozinku postojećeg računa. Za odjavu će korisnici imati gumb odjavi koji je potrebno pritisnuti kako bi se korisnik odjavio sa računa te se nakon toga vraća na početni zaslon sa formom za prijavu.
+		
 		Nakon uspješne prijave/registracije kao organizator događaja, korisnik može krenuti sa oglašavanjem. Prilikom unosa novog događaja, organizator mora unijeti podatke kao što su: 
 		\begin{packed_item}
 			\item \textit{Naziv događaja}
 			\item \textit{Vrsta događaja}
-			\item \textit{Lokacija/Adresa događaja}
+			\item \textit{Lokacija događaja}
+			\item \textit{Opis lokacije}
 			\item \textit{Vrijeme početka}
 			\item \textit{Trajanje}
 			\item \textit{Cijena ulaznice}
+			\item \textit{Opis događaja}
 		\end{packed_item}
 		
-		Gore navedeni podaci su obavezni, te uz te obavezne podatke organizator može dodati još slike ili video snimke u galeriju samog događaja. Kada završi sa kreiranjem događaja, njega je moguće vidjeti na profilu organizatora zajedno sa svim njegovim podacima te događajima koji su se zbili unatrag dvije godine ili drugim događajima koji tek dolaze.
+		Gore navedeni podaci su obavezni, te uz obavezne podatke organizator može dodati još slike ili video snimke u galeriju samog događaja. Kada završi sa kreiranjem događaja, njega je moguće vidjeti na profilu organizatora zajedno sa svim njegovim podacima te događajima koji su se zbili unatrag dvije godine ili drugim događajima koji su stvoreni i tek dolaze.
 		
 		Neki organizatori će organizirati događaje s besplatnim ulazom, no neki će vjerojatno htjeti naplatiti ulaz na događaj. Za mogućnost objavljivanja budućih događaja za koje se plaća ulaz organizator mora biti pretplatnik mjesečne članarine na web aplikaciji. Prilikom objave prvog takvog događaja organizator je obvezan platiti članarinu. 
 		
 		Članarina se može platiti na dva načina:
 		\begin{packed_item}
-			\item \textit{Paypal}
+			\item \textit{PayPal}
 			\item \textit{Bankovna kartica}
 		\end{packed_item}
 		
-		Članarina će se obnavljati na mjesečnoj bazi sve dokle organizator sadrži neki događaj za koji je potrebno plaćanje ulaza. Također, prilikom objave novog događaja od strane organizatora za koji je se naplaćuje ulaz, a organizator je u tom trenutku pretplatnik, slobodan je objaviti događaj normalnim procesom bez dodatnih obaveza.
+		Članarina će se obnavljati na mjesečnoj bazi sve dokle organizator sadrži neki događaj za koji je potrebno plaćanje ulaza. Također, prilikom objave novog događaja od strane organizatora za koji se naplaćuje ulaz, a organizator je u tom trenutku pretplatnik, slobodan je objaviti događaj normalnim procesom bez dodatnih obaveza.
 		
 		Nakon uspješne prijave/registracije kao posjetitelj, korisnik može krenuti tražiti događaje koji mu odgovaraju te iskazivati svoju zainteresiranost za sami dolazak na te događaje. Zainteresiranost se dijeli u tri skupine: 
 		\begin{packed_item}
@@ -72,15 +82,13 @@
 			\item \textit{Ne dolazim}
 		\end{packed_item}
 		
-		Kada korisnik stisne na bilo koju grupu, na samom događaju će biti vidljiva zainteresiranost. Ako se odabrana grupa „Sigurno dolazim“ ili „Možda dolazim“, tada se na profilu posjetitelja pojavi taj događaj. Posjetitelj isto tako može ostaviti recenziju na događaju koja će biti dodana u listu svih recenzija pod tim događajem. Kako bi ju uspješno dodao u listu recenzija, svaka recenzija mora sadržavati: 
-		\begin{packed_item}
-			\item \textit{Ocjena 1-10}
-			\item \textit{Kratki opis}
-		\end{packed_item}
+		Kada korisnik stisne na bilo koju grupu, na samom događaju će biti vidljiva zainteresiranost. Ako je odabrana grupa „Sigurno dolazim“ ili „Možda dolazim“, tada se na profilu posjetitelja pojavi taj događaj. 
 		
-		Posjetitelji unutar aplikacije mogu filtrirati sve događaje. Mogu ih filtrirati po nazivu ili vrsti događaja, njihovom vremenu početka, po lokaciji na kojoj se događaj odvija te po samom trajanju događaja. Na taj način posjetitelj može naći one događaje koji mu najviše odgovaraju i koji su mu najpogodniji. Kako bi se najvećim fanovima olakšala potražnja događaja njihovih najdražih organizatora, svaki posjetitelj moći će pretraživati isto tako i po korisničkom imenu organizatora. Kao što je navedeno, na profilu organizatora navedeni su svi prethodni događaju te svi događaji u budućnosti koji se također mogu filtrirati.
+		Posjetitelj isto tako može ostaviti recenziju na događaju koja će biti dodana u listu svih recenzija pod tim događajem. Kako bi ju uspješno dodao u listu recenzija, svaka recenzija mora sadržavati kratki opis recenzije te opcionalno može sadržavati ocjenu od 1 do 10. 
 		
-		Svaki korisnik će isto tako imati mogućnosti osvježavanja i uređivanja vlastitog profila. Posjetitelji će moći izmijeniti svoje podatke te uvijek mogu promijeniti zainteresiranost za neki event. Osim toga, posjetitelji mogu odabrati postavke da im aplikacija automatski salje obavijesti o najnovijim događanjima prema zadanim kriterijima: vrsta događanja i podrucje. Organizatori uz promjene vlastitih podataka mogu isto tako promijeniti podatke događaja koji će se tek dogoditi, a svi oni već prošli događaji neće se moći mijenjati od strane organizatora. 
+		Posjetitelji unutar aplikacije mogu filtrirati sve događaje. Mogu ih filtrirati po nazivu ili vrsti događaja, njihovom vremenu početka, po lokaciji na kojoj se događaj odvija te po samom trajanju događaja. Na taj način posjetitelj može naći one događaje koji mu najviše odgovaraju i koji su mu najpogodniji. Kako bi se najvećim fanovima olakšala potražnja događaja njihovih najdražih organizatora, svaki posjetitelj moći će pretraživati isto tako i po korisničkom imenu organizatora. Kao što je navedeno, na profilu organizatora navedeni su svi prethodni događaji te svi događaji u budućnosti koji se također mogu filtrirati.
+		
+		Svaki korisnik će isto tako imati mogućnosti osvježavanja i uređivanja vlastitog profila. Posjetitelji će moći izmijeniti svoje podatke te uvijek mogu promijeniti zainteresiranost za neki event. Osim toga, posjetitelji mogu odabrati postavke da im aplikacija automatski šalje obavijesti o najnovijim događanjima prema zadanim kriterijima: vrsta događanja i područje. Organizatori uz promjene vlastitih podataka mogu isto tako promijeniti podatke događaja koji će se tek dogoditi, a svi oni već prošli događaji neće se moći mijenjati od strane organizatora. 
 		
 		Kako bi posjetiteljima dodatno olakšali korištenje aplikacije, događaji na kojima će zainteresiranost biti „Sigurno dolazim“ ili „Možda dolazim“ poslati će e-mail poruku na posjetiteljev račun 24 sata prije početka događaja. Isto tako, kada dođe do neke promjene na događaju, a koje nisu došle sa strane posjetitelja, ponovno stiže notifikacija u obliku e-mail poruke o samoj promjeni.
 		

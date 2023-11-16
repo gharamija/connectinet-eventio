@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  14 NOV 2023 22:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  15 NOV 2023 14:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -25,7 +25,7 @@ File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \bibindent=\dimen140
 )
 (c:/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2023/10/25 v3.96 The Babel package
+Package: babel 2023/09/29 v3.95 The Babel package
 \babel@savecnt=\count195
 \U@D=\dimen141
 \l@unhyphenated=\language89
@@ -1521,17 +1521,9 @@ inu za objavu pla[]cenih doga[]daja
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6]
-Overfull \hbox (4.88324pt too wide) in paragraph at lines 66--67
-\OT1/jkp/m/n/12 doga[]daj za koji je po-trebno pla[]canje ulaza. Tako[]der, pri
--li-kom objave no-vog doga[]daja
+Overfull \hbox (18.63608pt too wide) in paragraph at lines 31--32
+[]\OT1/jkp/m/n/12 Prilikom po-kre-ta-nja apli-ka-cije, ko-ris-niku []ce se pri-
+ka-zati jedna od dvije mogu[]cnosti. 
  []
 
 
@@ -1542,8 +1534,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[6]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [7]
-Overfull \hbox (1.224pt too wide) in paragraph at lines 68--69
+Overfull \hbox (4.88324pt too wide) in paragraph at lines 76--77
+\OT1/jkp/m/n/12 doga[]daj za koji je po-trebno pla[]canje ulaza. Tako[]der, pri
+-li-kom objave no-vog doga[]daja
+ []
+
+
+Overfull \hbox (1.224pt too wide) in paragraph at lines 78--79
 []\OT1/jkp/m/n/12 Nakon us-pje[]sne pri-jave/registracije kao po-sje-ti-telj, k
 o-ris-nik mo[]ze kre-nuti tra[]ziti
  []
@@ -1557,7 +1564,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
-Overfull \hbox (4.2817pt too wide) in paragraph at lines 91--92
+Overfull \hbox (4.2817pt too wide) in paragraph at lines 99--100
 []\OT1/jkp/m/n/12 Za ova-kav tip pro-izvoda mo[]ze se stal-nim na-do-grad-njama
  i po-bolj[]sanjima privu[]ci
  []
@@ -1571,16 +1578,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+jkptt on input line
- 102.
+ 110.
 (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ot1jkptt.fd
 File: ot1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for OT1/jkptt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
@@ -1612,11 +1619,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <slike/aktivnost.PNG, id=211, 670.75594pt x 689.57625pt>
 File: slike/aktivnost.PNG Graphic file (type png)
 <use slike/aktivnost.PNG>
-Package pdftex.def Info: slike/aktivnost.PNG  used on input line 177.
+Package pdftex.def Info: slike/aktivnost.PNG  used on input line 185.
 (pdftex.def)             Requested size: 268.2976pt x 275.8256pt.
 File: slike/aktivnost.PNG Graphic file (type png)
 <use slike/aktivnost.PNG>
-Package pdftex.def Info: slike/aktivnost.PNG  used on input line 184.
+Package pdftex.def Info: slike/aktivnost.PNG  used on input line 192.
 (pdftex.def)             Requested size: 435.6108pt x 447.82993pt.
 
 
@@ -1632,7 +1639,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.188 		
+l.196 		
          <./slike/aktivnost.PNG>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1647,7 +1654,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.191 		\eject
+l.199 		\eject
               ])
 \openout2 = `Specifikacija_programske_potpore.aux'.
 
@@ -2724,10 +2731,10 @@ anged.
 (rerunfilecheck)             Checksum: 9A91B2F970D8B1C79EDF0EDE14DC49B6;4565.
  ) 
 Here is how much of TeX's memory you used:
- 17928 strings out of 474398
- 316142 string characters out of 5754205
+ 17927 strings out of 474398
+ 316129 string characters out of 5754205
  2071036 words of memory out of 5000000
- 39389 multiletter control sequences out of 15000+600000
+ 39388 multiletter control sequences out of 15000+600000
  630561 words of font info for 192 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,14n,115p,913b,1219s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2741,7 +2748,7 @@ dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/typ
 e1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/k
 pfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (65 pages, 1358943 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (65 pages, 1359167 bytes).
 PDF statistics:
  822 PDF objects out of 1000 (max. 8388607)
  705 compressed objects within 8 object streams
