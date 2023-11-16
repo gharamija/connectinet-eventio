@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  15 NOV 2023 14:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  15 NOV 2023 14:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1770,12 +1770,6 @@ e-cen-zi-raj" kod doga[]daja koji je zavr[]sio,
  []
 
 
-Overfull \hbox (0.20918pt too wide) in paragraph at lines 458--459
-[]\OT1/jkp/m/n/12 Posjetitelju se otvara obra-zac za re-cen-zi-ra-nje; oda-bir 
-od-go-va-raju[]ceg broja
- []
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -1784,7 +1778,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [20]
-Overfull \hbox (0.63962pt too wide) in paragraph at lines 565--566
+Overfull \hbox (0.63962pt too wide) in paragraph at lines 559--560
 []\OT1/jkp/m/n/12 Sustav jav-lja or-ga-ni-za-toru da je pla[]canje []clanarine 
 us-pje[]sno, te mu otvara
  []
@@ -1798,16 +1792,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[22]
-Overfull \hbox (17.10121pt too wide) in paragraph at lines 624--625
+Overfull \hbox (17.10121pt too wide) in paragraph at lines 618--619
 []\OT1/jkp/m/n/12 Organizator na po[]cetnoj stra-nici oda-bire op-ciju "Pre-gle
 d vlas-ti-tih doga[]daja" 
  []
@@ -1820,26 +1805,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[22]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [23]
-Overfull \hbox (9.96118pt too wide) in paragraph at lines 700--701
+Overfull \hbox (9.96118pt too wide) in paragraph at lines 694--695
 []\OT1/jkp/m/n/12 Administrator na po[]cetnoj stra-nici oda-bire op-ciju "Pos-t
 avi ci-jenu []clanstva" 
  []
 
 
-Overfull \hbox (10.03317pt too wide) in paragraph at lines 701--702
+Overfull \hbox (10.03317pt too wide) in paragraph at lines 695--696
 []\OT1/jkp/m/n/12 Sustav ad-mi-nis-tra-tora pre-ba-cuje na stra-nicu za pos-tav
 -lja-nje ci-jene []clanstva 
  []
 
 
-Overfull \hbox (6.02542pt too wide) in paragraph at lines 714--715
+Overfull \hbox (6.02542pt too wide) in paragraph at lines 708--709
 []\OT1/jkp/m/n/12 Administrator is-prav-lja po-gre[]sku ili odus-taje oda-bi-ro
 m op-cije "Odus-
  []
 
 
-Overfull \hbox (14.86943pt too wide) in paragraph at lines 721--722
+Overfull \hbox (14.86943pt too wide) in paragraph at lines 715--716
 []\OT1/jkp/m/n/12 Administrator potvr[]duje pro-mjenu ili odus-taje oda-bi-rom 
 op-cije "Odus-
  []
@@ -1857,7 +1851,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: dijagrami/Opći_UC_dijagram_v2.0.png Graphic file (type png)
 <use dijagrami/Opći_UC_dijagram_v2.0.png>
 Package pdftex.def Info: dijagrami/Opći_UC_dijagram_v2.0.png  used on input li
-ne 787.
+ne 781.
 (pdftex.def)             Requested size: 407.65112pt x 320.70059pt.
 
 
@@ -1869,14 +1863,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
-<dijagrami/Administrator_UC_dijagram.png, id=450, 951.555pt x 794.97pt>
+<dijagrami/Administrator_UC_dijagram.png, id=449, 951.555pt x 794.97pt>
 File: dijagrami/Administrator_UC_dijagram.png Graphic file (type png)
 <use dijagrami/Administrator_UC_dijagram.png>
 Package pdftex.def Info: dijagrami/Administrator_UC_dijagram.png  used on input
- line 794.
+ line 788.
 (pdftex.def)             Requested size: 475.77634pt x 397.48402pt.
 
-Overfull \hbox (40.16554pt too wide) in paragraph at lines 794--796
+Overfull \hbox (40.16554pt too wide) in paragraph at lines 788--790
  [][] 
  []
 
@@ -1893,16 +1887,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.799 					
+l.793 					
             <./dijagrami/Opći_UC_dijagram_v2.0.png>]
-<dijagrami/Korisnik_UC_dijagram.png, id=459, 1035.87pt x 782.925pt>
+<dijagrami/Korisnik_UC_dijagram.png, id=458, 1035.87pt x 782.925pt>
 File: dijagrami/Korisnik_UC_dijagram.png Graphic file (type png)
 <use dijagrami/Korisnik_UC_dijagram.png>
 Package pdftex.def Info: dijagrami/Korisnik_UC_dijagram.png  used on input line
- 801.
+ 795.
 (pdftex.def)             Requested size: 517.93373pt x 391.46155pt.
 
-Overfull \hbox (82.32294pt too wide) in paragraph at lines 801--803
+Overfull \hbox (82.32294pt too wide) in paragraph at lines 795--797
  [][] 
  []
 
@@ -1919,16 +1913,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.806 					
+l.800 					
             <./dijagrami/Administrator_UC_dijagram.png>]
-<dijagrami/Organizator_UC_dijagram.png, id=467, 1310.64656pt x 787.44188pt>
+<dijagrami/Organizator_UC_dijagram.png, id=466, 1310.64656pt x 787.44188pt>
 File: dijagrami/Organizator_UC_dijagram.png Graphic file (type png)
 <use dijagrami/Organizator_UC_dijagram.png>
 Package pdftex.def Info: dijagrami/Organizator_UC_dijagram.png  used on input l
-ine 808.
+ine 802.
 (pdftex.def)             Requested size: 458.73317pt x 275.60878pt.
 
-Overfull \hbox (23.12238pt too wide) in paragraph at lines 808--810
+Overfull \hbox (23.12238pt too wide) in paragraph at lines 802--804
  [][] 
  []
 
@@ -1945,16 +1939,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.813 					
+l.807 					
             <./dijagrami/Korisnik_UC_dijagram.png>]
-<dijagrami/Posjetitelj_UC_dijagram.png, id=475, 1112.65688pt x 786.68906pt>
+<dijagrami/Posjetitelj_UC_dijagram.png, id=474, 1112.65688pt x 786.68906pt>
 File: dijagrami/Posjetitelj_UC_dijagram.png Graphic file (type png)
 <use dijagrami/Posjetitelj_UC_dijagram.png>
 Package pdftex.def Info: dijagrami/Posjetitelj_UC_dijagram.png  used on input l
-ine 815.
+ine 809.
 (pdftex.def)             Requested size: 445.05487pt x 314.67004pt.
 
-Overfull \hbox (9.44408pt too wide) in paragraph at lines 815--817
+Overfull \hbox (9.44408pt too wide) in paragraph at lines 809--811
  [][] 
  []
 
@@ -1971,7 +1965,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.820 					
+l.814 					
             <./dijagrami/Organizator_UC_dijagram.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1986,9 +1980,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.5})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.823 				\eject
+l.817 				\eject
                 		 <./dijagrami/Posjetitelj_UC_dijagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 827--828
+Underfull \hbox (badness 10000) in paragraph at lines 821--822
 
  []
 
@@ -2001,11 +1995,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [31]
-<dijagrami/sd-UC1-Registracija.png, id=496, 822.07124pt x 702.37407pt>
+<dijagrami/sd-UC1-Registracija.png, id=495, 822.07124pt x 702.37407pt>
 File: dijagrami/sd-UC1-Registracija.png Graphic file (type png)
 <use dijagrami/sd-UC1-Registracija.png>
 Package pdftex.def Info: dijagrami/sd-UC1-Registracija.png  used on input line 
-843.
+837.
 (pdftex.def)             Requested size: 411.0346pt x 351.18617pt.
 
 
@@ -2021,18 +2015,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.6})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.848 				\eject
+l.842 				\eject
                 		 <./dijagrami/sd-UC1-Registracija.png>]
-Overfull \hbox (6.10536pt too wide) in paragraph at lines 850--855
+Overfull \hbox (6.10536pt too wide) in paragraph at lines 844--849
 []\OT1/jkp/m/n/20.74 Obrazac upo-rabe UC16 - Pos-tav-lja-nje doga[]daja 
  []
 
-<dijagrami/sd-UC16-Postavljanje-događaja.png, id=504, 813.0375pt x 725.71124pt
+<dijagrami/sd-UC16-Postavljanje-događaja.png, id=503, 813.0375pt x 725.71124pt
 >
 File: dijagrami/sd-UC16-Postavljanje-događaja.png Graphic file (type png)
 <use dijagrami/sd-UC16-Postavljanje-događaja.png>
 Package pdftex.def Info: dijagrami/sd-UC16-Postavljanje-događaja.png  used on 
-input line 857.
+input line 851.
 (pdftex.def)             Requested size: 406.51776pt x 362.85474pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2047,16 +2041,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.7})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.862 				\eject
+l.856 				\eject
                 		 <./dijagrami/sd-UC16-Postavljanje-događaja.png>]
-<dijagrami/sd-UC19-Placanje-clanarine.png, id=512, 904.1278pt x 925.95938pt>
+<dijagrami/sd-UC19-Placanje-clanarine.png, id=511, 904.1278pt x 925.95938pt>
 File: dijagrami/sd-UC19-Placanje-clanarine.png Graphic file (type png)
 <use dijagrami/sd-UC19-Placanje-clanarine.png>
 Package pdftex.def Info: dijagrami/sd-UC19-Placanje-clanarine.png  used on inpu
-t line 871.
+t line 865.
 (pdftex.def)             Requested size: 452.06279pt x 462.97856pt.
 
-Overfull \hbox (16.452pt too wide) in paragraph at lines 871--873
+Overfull \hbox (16.452pt too wide) in paragraph at lines 865--867
  [][] 
  []
 
@@ -2082,14 +2076,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.8})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.876 				\eject
+l.870 				\eject
                 		 <./dijagrami/sd-UC19-Placanje-clanarine.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 880--881
+Underfull \hbox (badness 10000) in paragraph at lines 874--875
 
  []
 
 
-Overfull \hbox (24.74348pt too wide) in paragraph at lines 890--891
+Overfull \hbox (24.74348pt too wide) in paragraph at lines 884--885
 []\OT1/jkp/m/n/12 Sustav treba biti im-ple-men-ti-ran kao web-aplikacija ko-ris
 te[]ci objektno-orijentirane
  []
@@ -2267,7 +2261,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
-<slike/baza.PNG, id=557, 662.475pt x 433.62pt>
+<slike/baza.PNG, id=556, 662.475pt x 433.62pt>
 File: slike/baza.PNG Graphic file (type png)
 <use slike/baza.PNG>
 Package pdftex.def Info: slike/baza.PNG  used on input line 188.
@@ -2301,7 +2295,7 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.191 			\eject
                 <./slike/baza.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--201
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
@@ -2315,71 +2309,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--212
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 219--225
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 219--225
-
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[44]
-Overfull \hbox (8.60352pt too wide) in paragraph at lines 232--233
-[]\OT1/jkp/m/n/12 registerUser - kao ar-gu-ment prima Kor-s-nik-DTO, a bo-olean
- ovisno o us-pje[]snosti 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--237
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--251
-
- []
-
-
-Overfull \hbox (30.81671pt too wide) in paragraph at lines 244--251
-\OT1/jkp/m/n/12 Razred Za-in-te-re-si-ra-nost re-pre-zen-tira ko-ris-ni-kovu in
--te-rak-ciju s pos-tav-lje-nim doga[]dajima.
- []
-
-
-Overfull \hbox (5.13283pt too wide) in paragraph at lines 244--251
-\OT1/jkp/m/n/12 Razred Do-ga-daj re-pre-zen-tira doga[]daj koji je pos-ta-vio o
-r-ga-ni-za-tor. Lo-ka-cija doga[]daja
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[45]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[46]
-<dijagramiKlasa/Dijagram razreda - Kontroleri.png, id=586, 897.3525pt x 695.598
+<dijagramiKlasa/Dijagram razreda - Kontroleri.png, id=570, 897.3525pt x 695.598
 75pt>
 File: dijagramiKlasa/Dijagram razreda - Kontroleri.png Graphic file (type png)
 <use dijagramiKlasa/Dijagram razreda - Kontroleri.png>
@@ -2391,7 +2321,7 @@ Overfull \hbox (13.06435pt too wide) in paragraph at lines 255--257
  [][] 
  []
 
-<dijagramiKlasa/Dijagram razreda - Servisi.png, id=587, 850.67813pt x 605.26125
+<dijagramiKlasa/Dijagram razreda - Servisi.png, id=571, 850.67813pt x 605.26125
 pt>
 File: dijagramiKlasa/Dijagram razreda - Servisi.png Graphic file (type png)
 <use dijagramiKlasa/Dijagram razreda - Servisi.png>
@@ -2413,7 +2343,7 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.267 			
           <./dijagramiKlasa/Dijagram razreda - Kontroleri.png>]
-<dijagramiKlasa/Dijagram razreda - DTO.png, id=595, 1072.75781pt x 852.93657pt>
+<dijagramiKlasa/Dijagram razreda - DTO.png, id=579, 1072.75781pt x 852.93657pt>
 
 File: dijagramiKlasa/Dijagram razreda - DTO.png Graphic file (type png)
 <use dijagramiKlasa/Dijagram razreda - DTO.png>
@@ -2436,13 +2366,13 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.274 			
           <./dijagramiKlasa/Dijagram razreda - Servisi.png>]
-<dijagramiKlasa/Dijagram razreda - Models v5.png, id=604, 1208.26407pt x 794.97
-pt>
-File: dijagramiKlasa/Dijagram razreda - Models v5.png Graphic file (type png)
-<use dijagramiKlasa/Dijagram razreda - Models v5.png>
-Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Models v5.png  used 
-on input line 277.
-(pdftex.def)             Requested size: 483.29707pt x 317.98236pt.
+<dijagramiKlasa/Dijagram razreda - Models v4.png, id=587, 1183.42125pt x 861.21
+75pt>
+File: dijagramiKlasa/Dijagram razreda - Models v4.png Graphic file (type png)
+<use dijagramiKlasa/Dijagram razreda - Models v4.png>
+Package pdftex.def Info: dijagramiKlasa/Dijagram razreda - Models v4.png  used 
+on input line 225.
+(pdftex.def)             Requested size: 473.36012pt x 344.4809pt.
 
 Overfull \hbox (47.68628pt too wide) in paragraph at lines 277--279
  [][] 
@@ -2731,8 +2661,8 @@ anged.
 (rerunfilecheck)             Checksum: 9A91B2F970D8B1C79EDF0EDE14DC49B6;4565.
  ) 
 Here is how much of TeX's memory you used:
- 17927 strings out of 474398
- 316129 string characters out of 5754205
+ 17923 strings out of 474398
+ 316100 string characters out of 5754205
  2071036 words of memory out of 5000000
  39388 multiletter control sequences out of 15000+600000
  630561 words of font info for 192 fonts, out of 8000000 for 9000
@@ -2748,10 +2678,10 @@ dist/fonts/type1/public/kpfonts/jkpmi.pfb><c:/texlive/2023/texmf-dist/fonts/typ
 e1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/k
 pfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpsy
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (65 pages, 1359167 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (62 pages, 1343336 bytes).
 PDF statistics:
- 822 PDF objects out of 1000 (max. 8388607)
- 705 compressed objects within 8 object streams
- 273 named destinations out of 1000 (max. 500000)
+ 804 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
+ 269 named destinations out of 1000 (max. 500000)
  287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
