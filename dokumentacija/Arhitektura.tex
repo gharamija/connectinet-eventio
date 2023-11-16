@@ -1,13 +1,6 @@
 \chapter{Arhitektura i dizajn sustava}
 		
 		\textbf{\textit{dio 1. revizije}}\\
-
-		\textit{ Potrebno je opisati stil arhitekture te identificirati: podsustave, preslikavanje na radnu platformu, spremišta podataka, mrežne protokole, globalni upravljački tok i sklopovsko-programske zahtjeve. Po točkama razraditi i popratiti odgovarajućim skicama:}
-	\begin{itemize}
-		\item 	\textit{izbor arhitekture temeljem principa oblikovanja pokazanih na predavanjima (objasniti zašto ste baš odabrali takvu arhitekturu)}
-		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
-		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
-	\end{itemize}
 	
 	Arhitektura našeg sustava temeljit će se na kombinaciji modernih tehnologija kako bismo ostvarili funkcionalan i skalabilan sustav. Sustav će se podijeliti na tri ključna podsustava: 
 	\begin{itemize}
@@ -181,14 +174,16 @@
 							
 			
 			\subsection{Dijagram baze podataka}
-				U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".
+
 				
-				\begin{figure}
+					\begin{figure}[H]
+					\includegraphics[scale=0.7]{slike/baza.PNG} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 					\centering
-					\includegraphics[scale=0.7]{slike/baza.PNG}
 					\caption{Dijagram baze podataka}
+					\label{fig:promjene}
 				\end{figure}
-			\eject
+				\eject	
+				
 			
 			
 		\section{Dijagram razreda}
@@ -240,7 +235,7 @@
 				\item findById - prima id kao argument, a ako postoji Organizator sa tim id, njega vraća
 				\item registerOrganizator - kao argument prima OrganizatorDTO, a vraća boolean ovisno o uspješnosti
 			\end{itemize}
-			
+			\eject
 			Razredi prikazani na slici 4.5. su razredi modeli. Struktura baze podataka u aplikaciji odražava se upravo model razredima; osim što imaju svoje pripadne atributa, razredi također implementiraju metode koje ostvaruju interakciju s bazom podataka. \\ 
 			\\ Razred Korisnik reprezentira općeg korisnika aplikacije. Specificira ga atribut "uloga" koja određuje je li korisnik administrator, posjetitelj ili organizator.
 			\\ Razred Organizator reprezentira korisnika s organizatorskim računom. Organizatori mogu pregledavati svoje postojeće događaje i postavljati nove događaje.
@@ -252,21 +247,21 @@
 			\pagebreak
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.55]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Kontroleri}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.5]{dijagramiKlasa/Dijagram razreda - Servisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.55]{dijagramiKlasa/Dijagram razreda - Servisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Servisi}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - DTO.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.43]{dijagramiKlasa/Dijagram razreda - DTO.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Data Transfer Objects}
 				\label{fig:promjene}
@@ -274,7 +269,7 @@
 			
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.4]{dijagramiKlasa/Dijagram razreda - Models v5.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.42]{dijagramiKlasa/Dijagram razreda - Models v5.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Models}
 				\label{fig:promjene}
