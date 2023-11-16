@@ -3,7 +3,7 @@ import "./Header.css";
 function Header(props) {
 
     function logout() {
-        fetch("/api/logout").then(() => {
+        fetch("/logout").then(() => {
             props.onLogout();
         });
     }

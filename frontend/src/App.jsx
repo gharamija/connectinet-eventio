@@ -11,11 +11,11 @@ function App() {
   const [loadingUser, setLoadingUser] = useState(true);
 
   useEffect(() => {
-    fetch("/api/user")
+    fetch("/")
       .then(response => {
         if (response.status !== 401) {
           setLoadingUser(false);
-          setIsLoggedIn(true);
+          setIsLoggedIn(false);
         } else {
           setLoadingUser(false);
         }
@@ -47,7 +47,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login onLogin={onLogin} />} />
-          <Route path="register" element={<Register />} />
+          <Route path="register" element={<Register onLogin={onLogin} />} />
           <Route path="*" element={<Nopage />} />
         </Routes>
       </Router>
@@ -56,3 +56,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import {useNavigate}   from 'react-router-dom';
 
 function Register(props) {
     const [registerForm, setRegisterForm] = React.useState({ username: '', email: '', password: '', type: '', naziv: '', adresa: '', poveznica: '', clanarina: '' });
@@ -7,7 +8,7 @@ function Register(props) {
     const [isChecked, setIsChecked] = useState(false);
     const [isPaid, setIsPaid] = useState(false);
 
-
+    const navigate = useNavigate();
 
     function onChange(event) {
         const { name, value, type, checked } = event.target;
@@ -26,7 +27,7 @@ function Register(props) {
         e.preventDefault();
         setError("");
         if (isChecked) {
-            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"ORGANIZATOR"}&naziv=${registerForm.naziv}&adresa=${registerForm.adresa}&poveznica=${registerForm.poveznica}&članarina=${registerForm.clanarina}`;
+            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"ORGANIZATOR"}&nazivOrganizacije=${registerForm.naziv}&adresa=${registerForm.adresa}&poveznica=${registerForm.poveznica}&članarina=${registerForm.clanarina}`;
             const options = {
                 method: 'POST',
                 headers: {
@@ -39,7 +40,7 @@ function Register(props) {
                     if (response.status === 400) {
                         setError(response.statusText);
                     } else {
-                        props.onRegister();
+                        goToLogin();
                     }
                 });
         } else {
@@ -56,12 +57,16 @@ function Register(props) {
                     if (response.status === 400) {
                         setError(response.statusText);
                     } else {
-                        props.onRegister();
+                        goToLogin();
                     }
                 });
         }
     }
 
+    const goToLogin = () => {
+        navigate('/');
+    };
+    
     return (
         <div className="App">
             <div className="Register">
@@ -116,7 +121,8 @@ function Register(props) {
                     <div className='error'>{error}</div>
                     <div className="button-container">
                         <button type="submit">Register</button>
-                        <button onClick={() => window.location.href = '/'}>Login</button>
+                        {/* <button onClick={() => window.location.href = '/'}>Login</button> */}
+                        <button onClick={goToLogin}>Login</button> 
                     </div>
                 </form>
             </div>

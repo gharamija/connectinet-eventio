@@ -1,11 +1,13 @@
 import React from 'react';
 import './Login.css';
+import {useNavigate}   from 'react-router-dom';
 
 
 function Login(props) {
     const [loginForm, setLoginForm] = React.useState({ username: '', password: '' });
     const [error, setError] = React.useState('');
 
+    const navigate = useNavigate();
 
     function onChange(event) {
         const { name, value } = event.target;
@@ -23,7 +25,7 @@ function Login(props) {
             },
             body: body
         };
-        fetch('/api/login', options)
+        fetch('/login', options)
             .then(response => {
                 if (response.status === 401) {
                     setError("Login failed");
@@ -32,6 +34,10 @@ function Login(props) {
                 }
             });
     }
+
+    const goToRegister = () => {
+        navigate('/register');
+      };
 
     return (
         <div className="App">   <div className="Login">
@@ -48,7 +54,8 @@ function Login(props) {
                 <div className='error'>{error}</div>
                 <div className="button-container">
                     <button type="submit">Login</button>
-                    <button onClick={() => window.location.href = '/register'}>Register</button>
+                    {/* <button onClick={() => window.location.href = '/register'}>Register</button> */}
+                    <button onClick={goToRegister}>Register</button> 
                 </div>
             </form>
         </div>
