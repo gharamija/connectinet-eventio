@@ -1521,17 +1521,9 @@ inu za objavu pla[]cenih doga[]daja
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6]
-Overfull \hbox (4.88324pt too wide) in paragraph at lines 66--67
-\OT1/jkp/m/n/12 doga[]daj za koji je po-trebno pla[]canje ulaza. Tako[]der, pri
--li-kom objave no-vog doga[]daja
+Overfull \hbox (18.63608pt too wide) in paragraph at lines 31--32
+[]\OT1/jkp/m/n/12 Prilikom po-kre-ta-nja apli-ka-cije, ko-ris-niku []ce se pri-
+ka-zati jedna od dvije mogu[]cnosti. 
  []
 
 
@@ -1542,8 +1534,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[6]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [7]
-Overfull \hbox (1.224pt too wide) in paragraph at lines 68--69
+Overfull \hbox (4.88324pt too wide) in paragraph at lines 76--77
+\OT1/jkp/m/n/12 doga[]daj za koji je po-trebno pla[]canje ulaza. Tako[]der, pri
+-li-kom objave no-vog doga[]daja
+ []
+
+
+Overfull \hbox (1.224pt too wide) in paragraph at lines 78--79
 []\OT1/jkp/m/n/12 Nakon us-pje[]sne pri-jave/registracije kao po-sje-ti-telj, k
 o-ris-nik mo[]ze kre-nuti tra[]ziti
  []
@@ -1557,7 +1564,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
-Overfull \hbox (4.2817pt too wide) in paragraph at lines 91--92
+Overfull \hbox (4.2817pt too wide) in paragraph at lines 99--100
 []\OT1/jkp/m/n/12 Za ova-kav tip pro-izvoda mo[]ze se stal-nim na-do-grad-njama
  i po-bolj[]sanjima privu[]ci
  []
@@ -1571,7 +1578,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
@@ -1580,7 +1587,7 @@ LaTeX Font Info:    Trying to load font information for OT1+jkptt on input line
 (d:/texlive/2023/texmf-dist/tex/latex/kpfonts/ot1jkptt.fd
 File: ot1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for OT1/jkptt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
@@ -1612,11 +1619,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <slike/aktivnost.PNG, id=211, 670.75594pt x 689.57625pt>
 File: slike/aktivnost.PNG Graphic file (type png)
 <use slike/aktivnost.PNG>
-Package pdftex.def Info: slike/aktivnost.PNG  used on input line 177.
+Package pdftex.def Info: slike/aktivnost.PNG  used on input line 185.
 (pdftex.def)             Requested size: 268.2976pt x 275.8256pt.
 File: slike/aktivnost.PNG Graphic file (type png)
 <use slike/aktivnost.PNG>
-Package pdftex.def Info: slike/aktivnost.PNG  used on input line 184.
+Package pdftex.def Info: slike/aktivnost.PNG  used on input line 192.
 (pdftex.def)             Requested size: 435.6108pt x 447.82993pt.
 
 
@@ -1632,7 +1639,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.188 		
+l.196 		
          <./slike/aktivnost.PNG>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1647,7 +1654,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.191 		\eject
+l.199 		\eject
               ])
 \openout2 = `Specifikacija_programske_potpore.aux'.
 
