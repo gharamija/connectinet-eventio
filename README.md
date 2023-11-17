@@ -1,6 +1,16 @@
 # connectinet-eventio
 
-# Razvoj i stvaranje promjena
+Cilj ovog projekta je razviti programsku podršku za stvaranje web aplikacije ”Eventio”, koja će korisnicima omogućiti stvaranje, oglašavanje i sudjelovanje na različitim dogadanjima. Ova inovativna web aplikacija će korisnicima omogućiti lakši pristup društevnim dogadanjima koja odgovaraju njihovim interesima te olakšati organizaciju i promociju istih.
+
+## Prva revizija - deploy aplikacije kojoj su osnovne funkcionalnosti register i login korisnika
+
+  - Link na deploy: https://connectinet-eventio.onrender.com
+
+  - Username i password postojećeg korisnika:
+	- username: admin
+	- password: admin
+
+## Razvoj i stvaranje promjena
 
 Repozitorij će imati "master" (glavna) granu i "development" (razvojnu) granu.
 
@@ -14,7 +24,7 @@ Prilikom stvaranja nove grane, dodijelite joj isti naziv kao i ID Exellice za za
 
 Naslov commit poruke treba odgovarati nazivu ID zadatka iz exellice, na primjer "TAG-1 Inicijalizacija repozitorija".
 
-# Korištenje GIT-a
+## Korištenje GIT-a
 
 Osnovne naredbe koje morate koristiti:
 
