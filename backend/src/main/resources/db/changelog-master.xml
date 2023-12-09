@@ -1,0 +1,162 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="nkusen" id="1702134144739-1">
+        <createTable tableName="dogadaj">
+            <column autoIncrement="true" name="dogadaj_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="dogadaj_pkey"/>
+            </column>
+            <column name="lokacija" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organizator_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cijena_ulaznice" type="VARCHAR(255)"/>
+            <column name="galerija" type="VARCHAR(255)"/>
+            <column name="naziv_dogadaja" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="opis" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="opis_lokacije" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vrijeme_pocetka" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vrsta" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-2">
+        <createTable tableName="korisnik">
+            <column autoIncrement="true" name="korisnik_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="korisnik_pkey"/>
+            </column>
+            <column name="uloga" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-3">
+        <createTable tableName="notifikacija">
+            <column autoIncrement="true" name="notifikacija_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="notifikacija_pkey"/>
+            </column>
+            <column name="posjetitelj_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lokacija" type="VARCHAR(255)"/>
+            <column name="vrsta" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-4">
+        <createTable tableName="recenzija">
+            <column name="dogadaj_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ocjena" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="posjetitelj_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="recenzija_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="recenzija_pkey"/>
+            </column>
+            <column name="tekst" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-5">
+        <createTable tableName="zainteresiranost">
+            <column name="dogadaj_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kategorija" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="obavijesti" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="posjetitelj_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="zainteresiranost_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="zainteresiranost_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-6">
+        <addUniqueConstraint columnNames="email" constraintName="korisnik_email_key" tableName="korisnik"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-7">
+        <addUniqueConstraint columnNames="username" constraintName="korisnik_username_key" tableName="korisnik"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-8">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="my_users_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-9">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="users_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-10">
+        <createTable tableName="organizator">
+            <column name="clanarina" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organizator_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="organizator_pkey"/>
+            </column>
+            <column name="adresa" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="naziv_organizacije" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="poveznica" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-11">
+        <addForeignKeyConstraint baseColumnNames="organizator_id" baseTableName="organizator" constraintName="fk9y5s8r3nw6xfukqf1w4td7tox" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="korisnik_id" referencedTableName="korisnik" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-12">
+        <addForeignKeyConstraint baseColumnNames="dogadaj_id" baseTableName="zainteresiranost" constraintName="fkeom1t8ys98gfuh40gl87wlxtu" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="dogadaj_id" referencedTableName="dogadaj" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-13">
+        <addForeignKeyConstraint baseColumnNames="posjetitelj_id" baseTableName="notifikacija" constraintName="fkgow2uybanipc9ktpslv0fxh9e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="korisnik_id" referencedTableName="korisnik" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-14">
+        <addForeignKeyConstraint baseColumnNames="organizator_id" baseTableName="dogadaj" constraintName="fkjcxk9j5r18tp6462933jw5byp" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="organizator_id" referencedTableName="organizator" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-15">
+        <addForeignKeyConstraint baseColumnNames="posjetitelj_id" baseTableName="recenzija" constraintName="fko1ex501jslxusiet1mf7fcpa5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="korisnik_id" referencedTableName="korisnik" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-16">
+        <addForeignKeyConstraint baseColumnNames="posjetitelj_id" baseTableName="zainteresiranost" constraintName="fkr4dnwtk01kajbu6q7hho3bbs0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="korisnik_id" referencedTableName="korisnik" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-17">
+        <addForeignKeyConstraint baseColumnNames="dogadaj_id" baseTableName="recenzija" constraintName="fkree9a5kvwydma1gncbi0c60g8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="dogadaj_id" referencedTableName="dogadaj" validate="true"/>
+    </changeSet>
+    <changeSet author="nkusen" id="1702134144739-18">
+        <insert tableName="korisnik">
+            <column name="username" value="admin"/>
+            <column name="email" value="admin-eventio@gmail.com"/>
+            <column name="password" value="$2a$12$OSfuZDgo1ozeak9bzdO0wOeq1k0IuBP32/kPk5FlHHSz8YGsVYleq"/>
+            <column name="uloga" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
