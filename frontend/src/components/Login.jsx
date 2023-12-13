@@ -24,18 +24,19 @@ function Login(props) {
   function onSubmit(e) {
     e.preventDefault();
     setError("");
-    const body = `username=${loginForm.username}&password=${loginForm.password}`;
+    const formData = `username=${loginForm.username}&password=${loginForm.password}`;
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: body,
+      body: formData.toString(),
     };
     fetch("/api/login", options).then((response) => {
-      if (response.status === 401) {
+      if (response.status === 401) {  // ja bi ovo drugacije, kad je 200 onda je okej i onda napravi sve, ostalo faild
         setError("Login failed");
       } else {
+        localStorage.setItem('token', response.headers.get('Authorization'));
         props.onLogin();
       }
     });
