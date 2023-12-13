@@ -10,7 +10,7 @@ public class DogadajDTO {
     @NotNull
     private String nazivDogadaja;
     @NotNull
-    private String vrsta;
+    private Vrste vrsta;
     @NotNull
     private Kvartovi lokacija;
     @NotNull
@@ -59,11 +59,11 @@ public class DogadajDTO {
         this.nazivDogadaja = nazivDogadaja;
     }
 
-    public String getVrsta() {
+    public Vrste getVrsta() {
         return vrsta;
     }
 
-    public void setVrsta(String vrsta) {
+    public void setVrsta(Vrste vrsta) {
         this.vrsta = vrsta;
     }
 

@@ -16,7 +16,7 @@ public class Dogadaj {
     @Column(nullable = false)
     private String nazivDogadaja;
     @Column(nullable = false)
-    private String vrsta;
+    private Vrste vrsta;
     @Enumerated
     @Column(nullable = false)
     private Kvartovi lokacija;
@@ -53,11 +53,11 @@ public class Dogadaj {
         this.nazivDogadaja = nazivDogadaja;
     }
 
-    public String getVrsta() {
+    public Vrste getVrsta() {
         return vrsta;
     }
 
-    public void setVrsta(String vrsta) {
+    public void setVrsta(Vrste vrsta) {
         this.vrsta = vrsta;
     }
 
