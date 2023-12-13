@@ -1,6 +1,13 @@
 import React from "react";
-import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import {
+  Typography,
+  Container,
+  CssBaseline,
+  Box,
+  TextField,
+  Button,
+  Grid,
+} from "@mui/material";
 
 function Login(props) {
   const [loginForm, setLoginForm] = React.useState({
@@ -8,8 +15,6 @@ function Login(props) {
     password: "",
   });
   const [error, setError] = React.useState("");
-
-  const navigate = useNavigate();
 
   function onChange(event) {
     const { name, value } = event.target;
@@ -36,43 +41,58 @@ function Login(props) {
     });
   }
 
-  const goToRegister = () => {
-    navigate("/register");
-  };
-
   return (
-    <div className="App">
-      {" "}
-      <div className="Login">
-        <h1 className="Naslov">Login</h1>
-        <form onSubmit={onSubmit}>
-          <div className="FormRow">
-            <label>Username</label>
-            <input
-              name="username"
-              onChange={onChange}
-              value={loginForm.username}
-              required
-            />
-          </div>
-          <div className="FormRow">
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              onChange={onChange}
-              value={loginForm.password}
-              required
-            />
-          </div>
-          <div className="error">{error}</div>
-          <div className="button-container">
-            <button type="submit">Login</button>
-            <button onClick={goToRegister}>Register</button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <Container component="main" maxWidth="sm">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" color="text.primary">
+          Login
+        </Typography>
+        <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
+          <TextField
+            label="username"
+            name="username"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="password"
+            name="password"
+            type="password"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <Grid container spacing={1} sx={{ mt: 1 }}>
+            <Grid item xs={6}>
+              <Button type="submit" variant="contained" fullWidth>
+                Login
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                href="/register"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+              >
+                Register
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
   );
 }
 
