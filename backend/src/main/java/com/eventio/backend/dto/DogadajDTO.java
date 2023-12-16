@@ -1,40 +1,46 @@
-package com.eventio.backend.domain;
-
-import jakarta.persistence.*;
+package com.eventio.backend.dto;
+import com.eventio.backend.domain.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-@Entity
-public class Dogadaj {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dogadaj_id")
-    private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "organizator_id", nullable = false)
+public class DogadajDTO {
+    @NotNull
     private Organizator organizator;
-    @Column(nullable = false)
+    @NotNull
     private String nazivDogadaja;
-    @Column(nullable = false)
+    @NotNull
     private Vrste vrsta;
-    @Enumerated
-    @Column(nullable = false)
+    @NotNull
     private Kvartovi lokacija;
-    @Column(nullable = false)
+    @NotNull
     private String opisLokacije;
-    @Column(nullable = false)
+    @NotNull
     private String vrijemePocetka;
+    @NotNull
     private String cijenaUlaznice;
-    @Column(nullable = false)
+    @NotNull
     private String opis;
+    @NotNull
     private String galerija;
-    @OneToMany(mappedBy = "dogadaj")
+    @NotNull
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "dogadaj")
+    @NotNull
     private List<Zainteresiranost> zainteresiranosti;
-
-    public Integer getId() {
-        return id;
+    public DogadajDTO() {
+    }
+    public DogadajDTO(Dogadaj dogadaj) {
+        this.organizator = dogadaj.getOrganizator();
+        this.nazivDogadaja = dogadaj.getNazivDogadaja();
+        this.vrsta = dogadaj.getVrsta();
+        this.lokacija = dogadaj.getLokacija();
+        this.opisLokacije = dogadaj.getOpisLokacije();
+        this.vrijemePocetka = dogadaj.getVrijemePocetka();
+        this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
+        this.opis = dogadaj.getOpis();
+        this.galerija = dogadaj.getGalerija();
+        this.recenzije = dogadaj.getRecenzije();
+        this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
 
     public Organizator getOrganizator() {
@@ -113,7 +119,15 @@ public class Dogadaj {
         return recenzije;
     }
 
+    public void setRecenzije(List<Recenzija> recenzije) {
+        this.recenzije = recenzije;
+    }
+
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
+    }
+
+    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
+        this.zainteresiranosti = zainteresiranosti;
     }
 }

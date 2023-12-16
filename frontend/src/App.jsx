@@ -11,12 +11,26 @@ function App() {
   const [loadingUser, setLoadingUser] = useState(true);
 
   useEffect(() => {
-    fetch("/").then((response) => {
-      if (response.status !== 401) {
-        setIsLoggedIn(false);
-      }
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("/api/validate-token", {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            setIsLoggedIn(true);
+          } else {
+            onLogout();
+          }
+        })
+        .finally(() => {
+          setLoadingUser(false);
+        });
+    } else {
       setLoadingUser(false);
-    });
+    }
   }, []);
 
   if (loadingUser) {
@@ -28,6 +42,7 @@ function App() {
   }
 
   function onLogout() {
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
   }
   if (isLoggedIn) {

@@ -1,29 +1,26 @@
-package com.eventio.backend.domain;
+package com.eventio.backend.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+import com.eventio.backend.domain.Dogadaj;
+import com.eventio.backend.domain.Korisnik;
+import com.eventio.backend.domain.Recenzija;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-public class Recenzija {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recenzija_id")
-    private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "posjetitelj_id", nullable = false)
+public class RecenzijaDTO {
+    @NotNull
     private Korisnik posjetitelj;
-    @ManyToOne
-    @JoinColumn(name = "dogadaj_id", nullable = false)
+    @NotNull
     private Dogadaj dogadaj;
-    @Column(nullable = false)
+    @NotNull
     private String tekst;
-    @Min(1)
-    @Max(5)
     private int ocjena;
+    public RecenzijaDTO() {
+    }
 
-    public Integer getId() {
-        return id;
+    public RecenzijaDTO(Recenzija recenzija) {
+        this.posjetitelj = recenzija.getPosjetitelj();
+        this.dogadaj = recenzija.getDogadaj();
+        this.tekst = recenzija.getTekst();
+        this.ocjena = recenzija.getOcjena();
     }
 
     public Korisnik getPosjetitelj() {

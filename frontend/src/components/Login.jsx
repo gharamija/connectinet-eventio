@@ -26,13 +26,13 @@ function Login(props) {
   function onSubmit(e) {
     e.preventDefault();
     setError(false);
-    const body = `username=${loginForm.username}&password=${loginForm.password}`;
+    const formData = `username=${loginForm.username}&password=${loginForm.password}`;
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: body,
+      body: formData.toString(),
     };
     fetch("/api/login", options).then((response) => {
       if (response.status === 200) {

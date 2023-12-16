@@ -1,4 +1,6 @@
 # React + Vite
+Pokretanje frontend servera npm run dev
+Prvi put potrebno instalirati sve node_modulse lokalno npm install
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
