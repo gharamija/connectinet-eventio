@@ -36,7 +36,8 @@ function Login(props) {
     };
     fetch("/api/login", options).then((response) => {
       if (response.status === 200) {
-        props.onLogin();
+        let encodedToken = response.headers.get("Authorization").substring(7); //substring brise 'Bearer ' prefix
+        props.onLogin(encodedToken);
       } else {
         setError(true);
       }

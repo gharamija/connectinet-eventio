@@ -1,5 +1,6 @@
+import { decodeToken } from "react-jwt";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, json } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
@@ -7,20 +8,27 @@ import Nopage from "./components/Nopage.jsx";
 import UserList from "./components/UserList.jsx";
 
 function App() {
+  const [userId, setUserId] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  function validateToken(token) {
     if (token) {
       fetch("/api/validate-token", {
         headers: {
-          Authorization: `${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((response) => {
           if (response.status === 200) {
-            setIsLoggedIn(true);
+            const decodedToken = decodeToken(token);
+            if (decodedToken) {
+              setUserId(decodedToken.userId);
+              setIsLoggedIn(true);
+            } else {
+              onLogout();
+            }
           } else {
             onLogout();
           }
@@ -31,14 +39,20 @@ function App() {
     } else {
       setLoadingUser(false);
     }
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    validateToken(token);
   }, []);
 
   if (loadingUser) {
     return <div>Loading...</div>;
   }
 
-  function onLogin() {
-    setIsLoggedIn(true);
+  function onLogin(token) {
+    localStorage.setItem("token", token);
+    validateToken(token);
   }
 
   function onLogout() {
