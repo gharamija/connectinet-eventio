@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
 import Nopage from "./components/Nopage.jsx";
 import UserList from "./components/UserList.jsx";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -51,6 +52,7 @@ function App() {
       <>
         <Header onLogout={onLogout} role={role}/>
         <UserList />
+        <Footer/>
       </>
     );
   } else {
@@ -63,6 +65,7 @@ function App() {
               <Route path="*" element={<Nopage />} />
             </Routes>
           </Router>
+          <Footer/>
         </>
     );
   }
