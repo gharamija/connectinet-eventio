@@ -9,6 +9,7 @@ import UserList from "./components/UserList.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [role, setRole] = useState("Posjetitelj"); // pri loginu treba napraviti setRole ili tako nesto
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -48,19 +49,21 @@ function App() {
   if (isLoggedIn) {
     return (
       <>
-        <Header onLogout={onLogout} />
+        <Header onLogout={onLogout} role={role}/>
         <UserList />
       </>
     );
   } else {
     return (
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Login onLogin={onLogin} />} />
-          <Route path="/register" element={<Register onLogin={onLogin} />} />
-          <Route path="*" element={<Nopage />} />
-        </Routes>
-      </Router>
+        <>
+          <Router>
+            <Routes>
+              <Route exact path="/" element={<Login onLogin={onLogin} />} />
+              <Route path="/register" element={<Register onLogin={onLogin} />} />
+              <Route path="*" element={<Nopage />} />
+            </Routes>
+          </Router>
+        </>
     );
   }
 }
