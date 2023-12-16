@@ -13,11 +13,9 @@ function App() {
   useEffect(() => {
     fetch("/").then((response) => {
       if (response.status !== 401) {
-        setLoadingUser(false);
         setIsLoggedIn(false);
-      } else {
-        setLoadingUser(false);
       }
+      setLoadingUser(false);
     });
   }, []);
 

@@ -7,6 +7,8 @@ import {
   TextField,
   Button,
   Grid,
+  Collapse,
+  Alert,
 } from "@mui/material";
 
 function Login(props) {
@@ -14,7 +16,7 @@ function Login(props) {
     username: "",
     password: "",
   });
-  const [error, setError] = React.useState("");
+  const [error, setError] = React.useState(false);
 
   function onChange(event) {
     const { name, value } = event.target;
@@ -23,7 +25,7 @@ function Login(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    setError("");
+    setError(false);
     const body = `username=${loginForm.username}&password=${loginForm.password}`;
     const options = {
       method: "POST",
@@ -33,16 +35,16 @@ function Login(props) {
       body: body,
     };
     fetch("/api/login", options).then((response) => {
-      if (response.status === 401) {
-        setError("Login failed");
-      } else {
+      if (response.status === 200) {
         props.onLogin();
+      } else {
+        setError(true);
       }
     });
   }
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{
@@ -73,9 +75,12 @@ function Login(props) {
             fullWidth
             margin="normal"
           />
+          <Collapse in={error}>
+            <Alert severity="error">Login failed</Alert>
+          </Collapse>
           <Grid container spacing={1} sx={{ mt: 1 }}>
             <Grid item xs={6}>
-              <Button type="submit" variant="contained" fullWidth>
+              <Button type="submit" variant="contained" fullWidth size="large">
                 Login
               </Button>
             </Grid>
@@ -85,6 +90,7 @@ function Login(props) {
                 variant="outlined"
                 color="secondary"
                 fullWidth
+                size="large"
               >
                 Register
               </Button>
