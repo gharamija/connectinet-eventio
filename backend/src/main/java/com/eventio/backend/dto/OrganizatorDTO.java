@@ -10,6 +10,8 @@ public class OrganizatorDTO {
     @NotNull
     private String email;
     @NotNull
+    private String password;
+    @NotNull
     private Uloga uloga;
     @NotNull
     private String nazivOrganizacije;
@@ -47,6 +49,14 @@ public class OrganizatorDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Uloga getUloga() {
