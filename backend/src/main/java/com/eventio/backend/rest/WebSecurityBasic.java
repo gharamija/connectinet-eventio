@@ -1,6 +1,7 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -72,8 +73,5 @@ public class WebSecurityBasic {
 
         return http.build();
     }
-
-
-
 }
 
