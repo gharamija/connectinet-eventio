@@ -49,12 +49,10 @@ public class KorisnikController {
     @GetMapping
     public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
         if (korisnik != null) {
-            long userId = korisnik.getId();
-            String username = korisnik.getUsername();
 
-            String responseBody = "User ID: " + userId + ", Username: " + username;
+            KorisnikDTO korisnikDTO = new KorisnikDTO(korisnik);
 
-            return ResponseEntity.ok(responseBody);
+            return ResponseEntity.ok(korisnikDTO.toString());
         }  else {
             return ResponseEntity.status(401).body("Unauthorized");
         }
