@@ -46,7 +46,7 @@ public class KorisnikController {
         }
     }
 
-    @GetMapping("/validate")
+    @GetMapping
     public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
         if (korisnik != null) {
             long userId = korisnik.getId();
