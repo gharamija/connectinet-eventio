@@ -10,8 +10,6 @@ public class KorisnikDTO {
     @NotNull
     private String email;
     @NotNull
-    private String password;
-    @NotNull
     private Uloga uloga;
 
     public KorisnikDTO() {
@@ -20,14 +18,12 @@ public class KorisnikDTO {
     public KorisnikDTO(Korisnik korisnik) {
         this.username = korisnik.getUsername();
         this.email = korisnik.getEmail();
-        this.password = korisnik.getPassword();
         this.uloga = korisnik.getUloga();
     }
 
     public KorisnikDTO(OrganizatorDTO dto) {
         this.username = dto.getUsername();
         this.email = dto.getEmail();
-        this.password = dto.getPassword();
         this.uloga = dto.getUloga();
     }
 
@@ -45,14 +41,6 @@ public class KorisnikDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Uloga getUloga() {

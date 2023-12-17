@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +43,20 @@ public class KorisnikController {
             return ResponseEntity.ok().body("Posjetitelj kreiran");
         } else {
             return ResponseEntity.badRequest().body("Nepoznata greška");
+        }
+    }
+
+    @GetMapping("/validate")
+    public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
+        if (korisnik != null) {
+            long userId = korisnik.getId();
+            String username = korisnik.getUsername();
+
+            String responseBody = "User ID: " + userId + ", Username: " + username;
+
+            return ResponseEntity.ok(responseBody);
+        }  else {
+            return ResponseEntity.status(401).body("Unauthorized");
         }
     }
 }
