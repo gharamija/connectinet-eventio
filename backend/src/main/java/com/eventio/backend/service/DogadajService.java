@@ -14,4 +14,5 @@ public interface DogadajService {
   Optional<List<Dogadaj>> findByLokacija(Kvartovi lokacija);
   Optional<List<Dogadaj>> findByVrijemePocetkaBetween(LocalDateTime start, LocalDateTime end);
   public Optional<List<Dogadaj>> findByOrganizatorAndVrijemePocetkaBetween(Organizator organizator, LocalDateTime start, LocalDateTime end);
+  public Dogadaj spremiDogadaj(Dogadaj dogadaj);
 }
