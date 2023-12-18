@@ -19,12 +19,7 @@ import java.util.List;
 public class KorisnikController {
     @Autowired
     private KorisnikService service;
-
-    @GetMapping
-    public KorisnikDTO getCurrentUser(@AuthenticationPrincipal Korisnik korisnik) {
-        return new KorisnikDTO(korisnik);
-    }
-
+    
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
     public List<Korisnik> getAll() {
@@ -47,14 +42,12 @@ public class KorisnikController {
     }
 
     @GetMapping("/validate")
-    public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
+    public ResponseEntity<KorisnikDTO> validate(@AuthenticationPrincipal Korisnik korisnik) {
         if (korisnik != null) {
-
             KorisnikDTO korisnikDTO = new KorisnikDTO(korisnik);
-
-            return ResponseEntity.ok(korisnikDTO.toString());
+            return ResponseEntity.ok(korisnikDTO);
         }  else {
-            return ResponseEntity.status(401).body("Unauthorized");
+            return ResponseEntity.status(401).body(null);
         }
     }
 }
