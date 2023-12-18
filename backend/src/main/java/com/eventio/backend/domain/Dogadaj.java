@@ -2,6 +2,7 @@ package com.eventio.backend.domain;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,14 +24,14 @@ public class Dogadaj {
     @Column(nullable = false)
     private String opisLokacije;
     @Column(nullable = false)
-    private String vrijemePocetka;
+    private LocalDateTime vrijemePocetka;
     private String cijenaUlaznice;
     @Column(nullable = false)
     private String opis;
     private String galerija;
-    @OneToMany(mappedBy = "dogadaj")
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "dogadaj")
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
     private List<Zainteresiranost> zainteresiranosti;
 
     public Integer getId() {
@@ -77,11 +78,11 @@ public class Dogadaj {
         this.opisLokacije = opisLokacije;
     }
 
-    public String getVrijemePocetka() {
+    public LocalDateTime getVrijemePocetka() {
         return vrijemePocetka;
     }
 
-    public void setVrijemePocetka(String vrijemePocetka) {
+    public void setVrijemePocetka(LocalDateTime vrijemePocetka) {
         this.vrijemePocetka = vrijemePocetka;
     }
 

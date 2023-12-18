@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,4 +46,15 @@ public class KorisnikController {
         }
     }
 
+    @GetMapping("/validate")
+    public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
+        if (korisnik != null) {
+
+            KorisnikDTO korisnikDTO = new KorisnikDTO(korisnik);
+
+            return ResponseEntity.ok(korisnikDTO.toString());
+        }  else {
+            return ResponseEntity.status(401).body("Unauthorized");
+        }
+    }
 }

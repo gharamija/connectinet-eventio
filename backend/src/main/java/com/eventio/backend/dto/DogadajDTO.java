@@ -2,6 +2,7 @@ package com.eventio.backend.dto;
 import com.eventio.backend.domain.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DogadajDTO {
@@ -16,7 +17,7 @@ public class DogadajDTO {
     @NotNull
     private String opisLokacije;
     @NotNull
-    private String vrijemePocetka;
+    private LocalDateTime vrijemePocetka;
     @NotNull
     private String cijenaUlaznice;
     @NotNull
@@ -83,11 +84,11 @@ public class DogadajDTO {
         this.opisLokacije = opisLokacije;
     }
 
-    public String getVrijemePocetka() {
+    public LocalDateTime getVrijemePocetka() {
         return vrijemePocetka;
     }
 
-    public void setVrijemePocetka(String vrijemePocetka) {
+    public void setVrijemePocetka(LocalDateTime vrijemePocetka) {
         this.vrijemePocetka = vrijemePocetka;
     }
 

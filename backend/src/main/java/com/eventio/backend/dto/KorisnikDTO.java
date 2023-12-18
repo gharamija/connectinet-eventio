@@ -20,14 +20,12 @@ public class KorisnikDTO {
     public KorisnikDTO(Korisnik korisnik) {
         this.username = korisnik.getUsername();
         this.email = korisnik.getEmail();
-        this.password = korisnik.getPassword();
         this.uloga = korisnik.getUloga();
     }
 
     public KorisnikDTO(OrganizatorDTO dto) {
         this.username = dto.getUsername();
         this.email = dto.getEmail();
-        this.password = dto.getPassword();
         this.uloga = dto.getUloga();
     }
 

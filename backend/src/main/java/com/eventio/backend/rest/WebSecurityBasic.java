@@ -73,8 +73,5 @@ public class WebSecurityBasic {
 
         return http.build();
     }
-
-
-
 }
 
