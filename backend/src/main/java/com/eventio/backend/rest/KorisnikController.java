@@ -19,12 +19,7 @@ import java.util.List;
 public class KorisnikController {
     @Autowired
     private KorisnikService service;
-
-    @GetMapping
-    public KorisnikDTO getCurrentUser(@AuthenticationPrincipal Korisnik korisnik) {
-        return new KorisnikDTO(korisnik);
-    }
-
+    
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
     public List<Korisnik> getAll() {
