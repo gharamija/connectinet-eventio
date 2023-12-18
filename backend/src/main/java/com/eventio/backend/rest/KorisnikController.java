@@ -46,7 +46,7 @@ public class KorisnikController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/validate")
     public ResponseEntity<String> validate(@AuthenticationPrincipal Korisnik korisnik) {
         if (korisnik != null) {
 
