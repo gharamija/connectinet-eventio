@@ -4,10 +4,11 @@ import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
 import Nopage from "./components/Nopage.jsx";
-import UserList from "./components/UserList.jsx";
+import Filter from "./components/Filter.jsx";
+import { Box, Card, CardContent, Drawer, Typography } from "@mui/material";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [loadingUser, setLoadingUser] = useState(true);
 
   function validateSession() {
@@ -41,8 +42,30 @@ function App() {
   if (isLoggedIn) {
     return (
       <>
-        <Header onLogout={onLogout} />
-        <UserList />
+        <Header onLogout={onLogout} zIndex={1400} />
+        <Box style={{ display: "flex" }}>
+          <Filter handleFilter={console.log(Filter.getQuery())} />
+          <Box>
+            <Card>
+              <CardContent>
+                <Typography variant="h4">Ovo je kartica</Typography>
+                <Typography>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
+                  qui? Error quas voluptatibus adipisci nam!
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent>
+                <Typography variant="h4">Ovo je kartica</Typography>
+                <Typography>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
+                  qui? Error quas voluptatibus adipisci nam!
+                </Typography>
+              </CardContent>
+            </Card>
+          </Box>
+        </Box>
       </>
     );
   } else {
