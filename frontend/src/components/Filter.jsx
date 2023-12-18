@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Select, MenuItem, Box, InputLabel, Button } from "@mui/material";
 import lokacije from "./Lokacije";
+import ResponsiveDrawer from "./ResponsiveDrawer";
+import ResponsiveDrawerButton from "./ResponsiveDrawerButton";
 
 function Filter(props) {
   const [filter, setFilter] = useState({
@@ -29,9 +31,9 @@ function Filter(props) {
     }
   }
 
-  return (
+  let stuff = (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", margin: 2 }}>
         <InputLabel id="sort-label">Sortiraj</InputLabel>
         <Select
           name="sort"
@@ -60,7 +62,9 @@ function Filter(props) {
           sx={{ marginBottom: 1 }}
         >
           {lokacije.map((lok) => (
-            <MenuItem value={lok}>{lok}</MenuItem>
+            <MenuItem key={lok} value={lok}>
+              {lok}
+            </MenuItem>
           ))}
         </Select>
         <InputLabel id="cijena-label">Cijena</InputLabel>
@@ -85,6 +89,8 @@ function Filter(props) {
       </Box>
     </>
   );
+
+  return <ResponsiveDrawerButton stuff={stuff} />;
 }
 
 export default Filter;

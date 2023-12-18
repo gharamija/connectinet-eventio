@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Drawer, SwipeableDrawer } from "@mui/material";
-import { ArrowForwardIosRounded } from "@mui/icons-material";
 import { Global } from "@emotion/react";
+import { FilterList, SwipeRightOutlined } from "@mui/icons-material";
 
 function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -11,7 +11,7 @@ function ResponsiveDrawer(props) {
   };
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box>
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
@@ -39,31 +39,24 @@ function ResponsiveDrawer(props) {
         <Box
           sx={{
             position: "absolute",
-            right: -20,
+            right: -25,
             top: 0,
             bottom: 0,
             visibility: "visible",
             display: "flex",
-            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          <ArrowForwardIosRounded />
+          <FilterList sx={{ marginBottom: 1 }} />
+          <SwipeRightOutlined />
         </Box>
-        {props.stuff}
+        <Box sx={{ marginTop: 3 }}>{props.stuff}</Box>
       </SwipeableDrawer>
-      <Drawer
-        variant="persistent"
-        sx={{
-          display: { xs: "none", sm: "block" },
-          width: 250,
-          "& .MuiDrawer-root": { position: "absolute" },
-          "& .MuiPaper-root": { position: "absolute" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: "auto" },
-        }}
-        open
-      >
+
+      <Box sx={{ display: { xs: "none", sm: "block" } }} open>
         {props.stuff}
-      </Drawer>
+      </Box>
     </Box>
   );
 }

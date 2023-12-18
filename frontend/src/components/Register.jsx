@@ -183,19 +183,19 @@ function Register(props) {
           </Collapse>
           <Grid container spacing={1} sx={{ mt: 1 }}>
             <Grid item xs={6}>
-              <Button type="submit" variant="contained" fullWidth size="large">
-                Register
+              <Button href="/" variant="outlined" fullWidth size="large">
+                Login
               </Button>
             </Grid>
             <Grid item xs={6}>
               <Button
-                href="/"
-                variant="outlined"
+                type="submit"
+                variant="contained"
                 color="secondary"
                 fullWidth
                 size="large"
               >
-                Login
+                Register
               </Button>
             </Grid>
           </Grid>

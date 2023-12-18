@@ -68,11 +68,11 @@ function Header(props) {
       sx={{
         marginBottom: "20px",
         backgroundColor:
-          props.role === "Posjetitelj"
+          props.role === "POSJETITELJ"
             ? "#2196F3" // Blue for Posjetitelj
-            : props.role === "Organizator"
+            : props.role === "ORGANIZATOR"
             ? "#4CAF50" // Green for Organizator
-            : props.role === "Admin"
+            : props.role === "ADMIN"
             ? "#FF0000" // Red for Admin
             : "#000000",
       }}

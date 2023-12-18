@@ -5,34 +5,29 @@ import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
 import Nopage from "./components/Nopage.jsx";
 import Footer from "./components/Footer";
+import UserList from "./components/UserList.jsx";
+import Filter from "./components/Filter.jsx";
+import { Box, Container } from "@mui/material";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
-  const [role, setRole] = useState("Posjetitelj"); // pri loginu treba napraviti setRole ili tako nesto
+  const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      fetch("/api/validate-token", {
-        headers: {
-          Authorization: `${token}`,
-        },
+  function validateSession() {
+    fetch("/api/user/validate")
+      .then((response) => {
+        if (response.status === 200) {
+          setIsLoggedIn(true);
+          response.json().then((user) => setRole(user.uloga));
+        } else {
+          onLogout();
+        }
       })
-        .then((response) => {
-          if (response.status === 200) {
-            setIsLoggedIn(true);
-          } else {
-            onLogout();
-          }
-        })
-        .finally(() => {
-          setLoadingUser(false);
-        });
-    } else {
-      setLoadingUser(false);
-    }
-  }, []);
+      .finally(setLoadingUser(false));
+  }
+
+  useEffect(validateSession, []);
 
   if (loadingUser) {
     return <div>Loading...</div>;
@@ -43,13 +38,18 @@ function App() {
   }
 
   function onLogout() {
-    setIsLoggedIn(false);
+    fetch("/api/logout").finally(setIsLoggedIn(false));
   }
   if (isLoggedIn) {
     return (
       <>
         <Header onLogout={onLogout} role={role} />
-        <UserList />
+        <Container
+          sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
+        >
+          <Filter />
+          <UserList />
+        </Container>
         <Footer />
       </>
     );
