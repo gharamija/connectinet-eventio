@@ -28,7 +28,6 @@ public class OrganizatorDTO {
     public OrganizatorDTO(Organizator organizator) {
         this.username = organizator.getUsername();
         this.email = organizator.getEmail();
-        this.password = organizator.getPassword();
         this.uloga = organizator.getUloga();
         this.nazivOrganizacije = organizator.getNazivOrganizacije();
         this.adresa = organizator.getAdresa();
