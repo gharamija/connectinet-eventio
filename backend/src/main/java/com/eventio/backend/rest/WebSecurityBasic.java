@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
@@ -52,7 +53,7 @@ public class WebSecurityBasic {
                         String token = generateToken(authentication);
                         response.addHeader("Authorization", "Bearer " + token);
                         response.setStatus(HttpStatus.OK.value());
-                    });
+                    }).failureHandler(new SimpleUrlAuthenticationFailureHandler());
                 });
 
         http.exceptionHandling(configurer -> {
@@ -66,9 +67,9 @@ public class WebSecurityBasic {
         http.logout(configurer -> configurer
                         .logoutUrl("/logout")
                         .logoutSuccessHandler((request, response, authentication) ->
-                                response.setStatus(HttpStatus.OK.value())))
+                                response.setStatus(HttpStatus.OK.value())));
 
-                .csrf(AbstractHttpConfigurer::disable);
+        http.csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }

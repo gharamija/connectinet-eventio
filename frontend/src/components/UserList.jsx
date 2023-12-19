@@ -1,5 +1,6 @@
 import * as React from "react";
 import User from "./User.jsx";
+import { Box } from "@mui/material";
 
 function UserList(props) {
   const [isAllowed, setIsAllowed] = React.useState(false);
@@ -16,16 +17,16 @@ function UserList(props) {
 
   if (isAllowed) {
     return (
-      <div>
+      <Box>
         <ul>
           {users.map((user) => (
             <li key={user.id}>{<User user={user} />}</li>
           ))}
         </ul>
-      </div>
+      </Box>
     );
   } else {
-    return <div>Ne smijete vidjeti sve korisnike</div>;
+    return <Box>Ne smijete vidjeti sve korisnike</Box>;
   }
 }
 

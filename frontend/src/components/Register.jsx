@@ -1,6 +1,18 @@
 import React, { useState } from "react";
-import "./Register.css";
 import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Checkbox,
+  Container,
+  CssBaseline,
+  FormControlLabel,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  Collapse,
+  Alert,
+} from "@mui/material";
 
 function Register(props) {
   const [registerForm, setRegisterForm] = React.useState({
@@ -53,10 +65,10 @@ function Register(props) {
         body: body,
       };
       fetch("/api/organizator/register", options).then((response) => {
-        if (response.status === 400) {
-          setError(response.statusText);
-        } else {
+        if (response.status === 200) {
           goToLogin();
+        } else {
+          setError(response.statusText);
         }
       });
     } else {
@@ -71,10 +83,10 @@ function Register(props) {
         body: body,
       };
       fetch("/api/user/register", options).then((response) => {
-        if (response.status === 400) {
-          setError(response.statusText);
-        } else {
+        if (response.status === 200) {
           goToLogin();
+        } else {
+          setError(response.statusText);
         }
       });
     }
@@ -85,102 +97,111 @@ function Register(props) {
   };
 
   return (
-    <div className="App">
-      <div className="Register">
-        <div className="Title">
-          <h1 className="Naslov">Register</h1>
-        </div>
-        <form onSubmit={onSubmit}>
-          <div className="FormRow">
-            <label>Username</label>
-            <input
-              name="username"
-              onChange={onChange}
-              value={registerForm.username}
-              required
-            />
-          </div>
-          <div className="FormRow">
-            <label>Email</label>
-            <input
-              name="email"
-              onChange={onChange}
-              value={registerForm.email}
-              type="email"
-              required
-            />
-          </div>
-          <div className="FormRow">
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              onChange={onChange}
-              value={registerForm.password}
-              required
-            />
-          </div>
-          <div className="FormRow">
-            <label>
-              Organiser role
-              <input
-                type="checkbox"
-                name="admin"
-                className="CheckBoxZaReg"
-                checked={isChecked}
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" color="text.primary">
+          Register
+        </Typography>
+        <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
+          <TextField
+            label="username"
+            name="username"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="email"
+            name="email"
+            type="email"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="password"
+            name="password"
+            type="password"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            label="Organizator"
+            name="admin"
+            checked={isChecked}
+            onChange={onChange}
+          />
+          {isChecked && (
+            <>
+              <TextField
+                label="naziv"
+                name="naziv"
+                onChange={onChange}
+                required
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                label="adresa"
+                name="adresa"
+                onChange={onChange}
+                required
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                label="link"
+                name="poveznica"
+                onChange={onChange}
+                fullWidth
+                margin="normal"
+              />
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Clanarina"
+                name="clanarina"
+                checked={isPaid}
                 onChange={onChange}
               />
-            </label>
-          </div>
-          {isChecked && (
-            <div className="AddInfo">
-              <div className="FormRow">
-                <label>Name</label>
-                <input
-                  name="naziv"
-                  onChange={onChange}
-                  value={registerForm.naziv}
-                  required
-                />
-              </div>
-              <div className="FormRow">
-                <label>Address</label>
-                <input
-                  name="adresa"
-                  onChange={onChange}
-                  value={registerForm.adresa}
-                  required
-                />
-              </div>
-              <div className="FormRow">
-                <label>Link</label>
-                <input
-                  name="poveznica"
-                  onChange={onChange}
-                  value={registerForm.poveznica}
-                />
-              </div>
-              <div className="FormRow">
-                <label>Subscription</label>
-                <input
-                  type="checkbox"
-                  name="clanarina"
-                  className="CheckBoxZaReg"
-                  onChange={onChange}
-                  checked={isPaid}
-                />
-              </div>
-            </div>
+            </>
           )}
-          <div className="error">{error}</div>
-          <div className="button-container">
-            <button type="submit">Register</button>
-            {/* <button onClick={() => window.location.href = '/'}>Login</button> */}
-            <button onClick={goToLogin}>Login</button>
-          </div>
-        </form>
-      </div>
-    </div>
+          <Collapse in={error !== ""}>
+            <Alert severity="error">{error}</Alert>
+          </Collapse>
+          <Grid container spacing={1} sx={{ mt: 1 }}>
+            <Grid item xs={6}>
+              <Button href="/" variant="outlined" fullWidth size="large">
+                Login
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                fullWidth
+                size="large"
+              >
+                Register
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
   );
 }
 
