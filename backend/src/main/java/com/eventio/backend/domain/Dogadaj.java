@@ -1,7 +1,8 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.DogadajDTO;
 import jakarta.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,10 +31,23 @@ public class Dogadaj {
     private String opis;
     private String galerija;
     @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Recenzija> recenzije;
     @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Zainteresiranost> zainteresiranosti;
 
+    public Dogadaj(DogadajDTO dto){
+        this.nazivDogadaja = dto.getNazivDogadaja();
+        this.vrsta = dto.getVrsta();
+        this.lokacija = dto.getLokacija();
+        this.opisLokacije = dto.getOpisLokacije();
+        this.vrijemePocetka = dto.getVrijemePocetka();
+        this.cijenaUlaznice = dto.getCijenaUlaznice();
+        this.opis = dto.getOpis();
+        this.galerija = dto.getGalerija();
+    }
+    public Dogadaj(){}
     public Integer getId() {
         return id;
     }

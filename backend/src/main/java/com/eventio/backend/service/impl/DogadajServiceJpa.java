@@ -57,4 +57,8 @@ public class DogadajServiceJpa implements DogadajService {
   public Optional<List<Dogadaj>> findByOrganizatorAndVrijemePocetkaBetween(Organizator organizator, LocalDateTime start, LocalDateTime end) {
     return dogadajRepository.findByOrganizatorAndVrijemePocetkaBetween(organizator, start, end);
   }
+  @Override
+  public Dogadaj spremiDogadaj(Dogadaj dogadaj){
+    return dogadajRepository.save(dogadaj);
+  }
 }

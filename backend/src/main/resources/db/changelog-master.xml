@@ -159,4 +159,10 @@
             <column name="uloga" value="0"/>
         </insert>
     </changeSet>
+    <changeSet author="grdic4" id="1702134144740-20">
+        <modifyDataType
+                columnName="vrijeme_pocetka"
+                newDataType="TIMESTAMP"
+                tableName="dogadaj"/>
+    </changeSet>
 </databaseChangeLog>

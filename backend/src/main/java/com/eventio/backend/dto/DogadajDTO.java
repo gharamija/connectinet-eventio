@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 public class DogadajDTO {
     @NotNull
     private Organizator organizator;
@@ -24,10 +23,7 @@ public class DogadajDTO {
     private String opis;
     @NotNull
     private String galerija;
-    @NotNull
-    private List<Recenzija> recenzije;
-    @NotNull
-    private List<Zainteresiranost> zainteresiranosti;
+
     public DogadajDTO() {
     }
     public DogadajDTO(Dogadaj dogadaj) {
@@ -40,8 +36,6 @@ public class DogadajDTO {
         this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
         this.opis = dogadaj.getOpis();
         this.galerija = dogadaj.getGalerija();
-        this.recenzije = dogadaj.getRecenzije();
-        this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
 
     public Organizator getOrganizator() {
@@ -116,19 +110,4 @@ public class DogadajDTO {
         this.galerija = galerija;
     }
 
-    public List<Recenzija> getRecenzije() {
-        return recenzije;
-    }
-
-    public void setRecenzije(List<Recenzija> recenzije) {
-        this.recenzije = recenzije;
-    }
-
-    public List<Zainteresiranost> getZainteresiranosti() {
-        return zainteresiranosti;
-    }
-
-    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
-        this.zainteresiranosti = zainteresiranosti;
-    }
 }
