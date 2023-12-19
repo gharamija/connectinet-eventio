@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  18 DEC 2023 22:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  19 DEC 2023 19:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -988,6 +988,9 @@ LaTeX Warning: Label `fig:promjene' multiply defined.
 LaTeX Warning: Label `fig:promjene' multiply defined.
 
 ) (./Arhitektura.aux
+
+LaTeX Warning: Label `fig:promjene' multiply defined.
+
 
 LaTeX Warning: Label `fig:promjene' multiply defined.
 
@@ -2423,8 +2426,15 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.283 			\eject
                 <./dijagramiKlasa/Dijagram razreda - Models v5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+<dijagrami/DijagramStanja-Korisnik.png, id=562, 1319.68031pt x 635.37375pt>
+File: dijagrami/DijagramStanja-Korisnik.png Graphic file (type png)
+<use dijagrami/DijagramStanja-Korisnik.png>
+Package pdftex.def Info: dijagrami/DijagramStanja-Korisnik.png  used on input l
+ine 291.
+(pdftex.def)             Requested size: 514.67326pt x 247.79475pt.
 
+Overfull \hbox (79.06247pt too wide) in paragraph at lines 291--293
+ [][] 
  []
 
 
@@ -2435,8 +2445,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45]
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+[45
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.297 			\eject
+                <./dijagrami/DijagramStanja-Korisnik.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
@@ -2449,7 +2465,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
@@ -2676,13 +2692,13 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 17838 strings out of 474398
- 313842 string characters out of 5754205
+ 17846 strings out of 474398
+ 314159 string characters out of 5754205
  2071036 words of memory out of 5000000
- 39315 multiletter control sequences out of 15000+600000
+ 39322 multiletter control sequences out of 15000+600000
  621561 words of font info for 168 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,12n,115p,913b,1204s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,12n,115p,1166b,1204s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
@@ -2692,10 +2708,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 dist/fonts/type1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/
 type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public
 /kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (59 pages, 1301402 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (59 pages, 1410201 bytes).
 PDF statistics:
- 753 PDF objects out of 1000 (max. 8388607)
- 649 compressed objects within 7 object streams
- 257 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 757 PDF objects out of 1000 (max. 8388607)
+ 651 compressed objects within 7 object streams
+ 258 named destinations out of 1000 (max. 500000)
+ 279 words of extra memory for PDF output out of 10000 (max. 10000000)
 
