@@ -25,6 +25,7 @@ public class KorisnikDTO {
 
     public KorisnikDTO(OrganizatorDTO dto) {
         this.username = dto.getUsername();
+        this.password = dto.getPassword();
         this.email = dto.getEmail();
         this.uloga = dto.getUloga();
     }
