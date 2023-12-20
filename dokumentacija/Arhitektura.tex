@@ -288,7 +288,7 @@
 			Dijagram stanja opisuje dinamičko ponašanje dijela sustava u vremenu; prikazuje stanja objekta i prijelaze iz jednog stanja u drugo temeljene na događajima. Na slici 4.6 prikazan je dijagram stanja za korisnika - posjetitelja. Kada se korisnik prijavi prikazuje mu se početna stranica na kojoj su vidljivi događaji, filter pomoću kojeg može odlučiti koje događaje želi pregledati, te navigacijska traka preko kojeg pristupa svim događajima, događajima za koje je označio "Sigurno dolazim" ili "Možda dolazim" te profilu. Klikom na događaj korisniku se prikazuje stranica događaja s dodatnim informacijama gdje također ima mogućnost reagirati na događaj. Klikom na "Moji događaji" prikazuju mu se događaji na koje je prethodno reagirao sa "Sigurno dolazim" ili "Možda dolazim". Ako među ovim događajima postoje događaji koji su završili i nije prošlo 48 sati od njihovog završetka, korisnik za njih može izraditi recenziju. Klikom na korisničko ime prikazuju mu se stranica profila na kojoj može promijeniti osobne podatke te urediti postavke notifikacija.
 			
 			\begin{figure}[H]
-			\includegraphics[scale=0.39]{dijagrami/DijagramStanja-Korisnik.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+			\includegraphics[scale=0.5]{dijagrami/DijagramStanja-Korisnik.png}
 			\centering
 			\caption{Dijagram stanja - Korisnik(Posjetitelj)}
 			\label{fig:promjene}
@@ -298,9 +298,14 @@
 		
 		\section{Dijagram aktivnosti}
 			
-			\textbf{\textit{dio 2. revizije}}\\
+			Dijagram aktivnosti primjenjuje se za modeliranje poslovnih procesa, upravljačkog i podatkovnog toka. Na slici 4.7 prikazan je dijagram aktivnosti za proces stvaranje novog događaja. Nakon prijave organizator na početnoj stranici odabire opciju postavljanja događaja. Otvara mu se stranica za postavljanje događaja na kojoj unosi sve potrebne podatke o događaju. Ukoliko organizator želi događaj bez plaćanja ulaza, podaci o događaju se odmah procesiraju, spremaju u bazu te se organizatoru prikazuje potvrda o uspješno postavljenom događaju. Ako organizator želi događaj koji će imati plaćanje ulaza, provodi se provjera članarine. Ako je članarina plaćena, proces se nastavlja jednako kao i u slučaju besplatnog događaja. Ako nije, pokreće se plaćanje članarine - transakcija koja se može izvršiti karticom ili PayPal-om. Nakon uspješne transakcije podaci se prihvaćaju, spremaju u bazu te organizator dobiva potvrdu.
 			
-			 \textit{Potrebno je priložiti dijagram aktivnosti s pripadajućim opisom. Dijagram aktivnosti treba prikazivati značajan dio sustava.}
+			\begin{figure}[H]
+				\includegraphics[scale=0.47]{dijagrami/DijagramAktivnosti-Postavljanje_događaja.png}
+				\centering
+				\caption{Dijagram aktivnosti - Postavljanje događaja (Organizator)}
+				\label{fig:promjene}
+			\end{figure}
 			
 			\eject
 		\section{Dijagram komponenti}

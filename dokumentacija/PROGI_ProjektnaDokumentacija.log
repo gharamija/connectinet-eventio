@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  19 DEC 2023 19:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  20 DEC 2023 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1006,6 +1006,9 @@ LaTeX Warning: Label `fig:promjene' multiply defined.
 
 LaTeX Warning: Label `fig:promjene' multiply defined.
 
+
+LaTeX Warning: Label `fig:promjene' multiply defined.
+
 ) (./Implementacija.aux) (./Zakljucak.aux) (./Literatura.aux) (./Dodatak.aux))
 \openout1 = `PROGI_ProjektnaDokumentacija.aux'.
 
@@ -1161,7 +1164,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...: Prikaz aktivnosti grupe}{55}{chapter*.5}
+l.28 ...: Prikaz aktivnosti grupe}{56}{chapter*.5}
                                                   % [1
 
 ])
@@ -2426,14 +2429,14 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.283 			\eject
                 <./dijagramiKlasa/Dijagram razreda - Models v5.png>]
-<dijagrami/DijagramStanja-Korisnik.png, id=562, 1319.68031pt x 635.37375pt>
+<dijagrami/DijagramStanja-Korisnik.png, id=562, 1032.85875pt x 624.08156pt>
 File: dijagrami/DijagramStanja-Korisnik.png Graphic file (type png)
 <use dijagrami/DijagramStanja-Korisnik.png>
 Package pdftex.def Info: dijagrami/DijagramStanja-Korisnik.png  used on input l
 ine 291.
-(pdftex.def)             Requested size: 514.67326pt x 247.79475pt.
+(pdftex.def)             Requested size: 516.42812pt x 312.04001pt.
 
-Overfull \hbox (79.06247pt too wide) in paragraph at lines 291--293
+Overfull \hbox (80.81732pt too wide) in paragraph at lines 291--293
  [][] 
  []
 
@@ -2452,8 +2455,17 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.297 			\eject
                 <./dijagrami/DijagramStanja-Korisnik.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 301--302
+<dijagrami/DijagramAktivnosti-Postavljanje_događaja.png, id=570, 1087.81406pt 
+x 1209.01688pt>
+File: dijagrami/DijagramAktivnosti-Postavljanje_događaja.png Graphic file (typ
+e png)
+<use dijagrami/DijagramAktivnosti-Postavljanje_događaja.png>
+Package pdftex.def Info: dijagrami/DijagramAktivnosti-Postavljanje_događaja.pn
+g  used on input line 304.
+(pdftex.def)             Requested size: 511.27267pt x 568.23802pt.
 
+Overfull \hbox (75.66188pt too wide) in paragraph at lines 304--306
+ [][] 
  []
 
 
@@ -2465,7 +2477,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[47
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.7}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.310 			\eject
+                <./dijagrami/DijagramAktivnosti-Postavljanje_događaja.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
@@ -2478,7 +2505,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47]
+[48]
 \openout2 = `Implementacija.aux'.
 
  (./Implementacija.tex
@@ -2496,7 +2523,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48
+[49
 
 
 
@@ -2523,7 +2550,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[49]
+[50]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2532,7 +2559,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[50]
+[51]
 Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
@@ -2545,7 +2572,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[51])
+[52])
 \openout2 = `Zakljucak.aux'.
 
  (./Zakljucak.tex
@@ -2563,7 +2590,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[52
+[53
 
 
 
@@ -2592,7 +2619,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53
+[54
 
 
 
@@ -2610,7 +2637,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[54
+[55
 
 
 
@@ -2626,7 +2653,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55
+[56
 
 
 ]
@@ -2650,7 +2677,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[56]
+[57]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2659,7 +2686,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57]
+[58]
 Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
@@ -2673,7 +2700,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[58] 
+[59] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
 (./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
@@ -2692,10 +2719,10 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 17846 strings out of 474398
- 314159 string characters out of 5754205
+ 17855 strings out of 474398
+ 314609 string characters out of 5754205
  2071036 words of memory out of 5000000
- 39322 multiletter control sequences out of 15000+600000
+ 39329 multiletter control sequences out of 15000+600000
  621561 words of font info for 168 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,12n,115p,1166b,1204s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2708,10 +2735,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 dist/fonts/type1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/
 type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public
 /kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (59 pages, 1410201 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (60 pages, 1532142 bytes).
 PDF statistics:
- 757 PDF objects out of 1000 (max. 8388607)
- 651 compressed objects within 7 object streams
- 258 named destinations out of 1000 (max. 500000)
- 279 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 767 PDF objects out of 1000 (max. 8388607)
+ 658 compressed objects within 7 object streams
+ 260 named destinations out of 1000 (max. 500000)
+ 284 words of extra memory for PDF output out of 10000 (max. 10000000)
 
