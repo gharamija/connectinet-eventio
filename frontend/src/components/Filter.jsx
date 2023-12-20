@@ -52,7 +52,14 @@ function Filter(props) {
   return (
     <>
       <ResponsiveDrawerButton>
-        <Box sx={{ display: "flex", flexDirection: "column", margin: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            margin: 2,
+            minWidth: 250,
+          }}
+        >
           <FormControl sx={{ mb: 1 }} size="small">
             <InputLabel id="sort-label">Sortiraj</InputLabel>
             <Select
