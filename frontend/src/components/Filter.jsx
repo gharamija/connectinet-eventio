@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Select, MenuItem, Box, InputLabel, Button } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  Box,
+  InputLabel,
+  Button,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+} from "@mui/material";
 import lokacije from "./Lokacije";
 import vrste from "./Vrste";
 import ResponsiveDrawer from "./ResponsiveDrawer";
@@ -18,7 +27,10 @@ function Filter(props) {
   function handleChange(event) {
     event.stopPropagation();
     const { name, value } = event.target;
-    setFilter((oldFilter) => ({ ...oldFilter, [name]: value }));
+    setFilter((oldFilter) => ({
+      ...oldFilter,
+      [name]: value === "clear" ? "" : value,
+    }));
   }
 
   function getQuery() {
@@ -41,96 +53,117 @@ function Filter(props) {
     <>
       <ResponsiveDrawerButton>
         <Box sx={{ display: "flex", flexDirection: "column", margin: 2 }}>
-          <InputLabel id="sort-label">Sortiraj</InputLabel>
-          <Select
-            name="sort"
-            value={filter.sort}
-            onChange={handleChange}
-            labelId="sort-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            <MenuItem value="uzlazno">Vrijeme uzlazno</MenuItem>
-            <MenuItem value="silazno">Vrijeme silazno</MenuItem>
-            <MenuItem value="zainteresirani-uzlazno">
-              Broj zainteresiranih uzlazno
-            </MenuItem>
-            <MenuItem value="zainteresirani-silazno">
-              Broj zainteresiranih silazno
-            </MenuItem>
-          </Select>
-
-          <InputLabel id="lokacija-label">Lokacija</InputLabel>
-          <Select
-            name="lokacija"
-            value={filter.lokacija}
-            onChange={handleChange}
-            labelId="lokacija-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            {lokacije.map((lok) => (
-              <MenuItem key={lok} value={lok}>
-                {lok}
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="sort-label">Sortiraj</InputLabel>
+            <Select
+              labelId="sort-label"
+              label="sortiraj"
+              name="sort"
+              value={filter.sort}
+              onChange={handleChange}
+            >
+              <MenuItem value="uzlazno">Vrijeme uzlazno</MenuItem>
+              <MenuItem value="silazno">Vrijeme silazno</MenuItem>
+              <MenuItem value="zainteresirani-uzlazno">
+                Broj zainteresiranih uzlazno
               </MenuItem>
-            ))}
-          </Select>
-
-          <InputLabel id="vrijeme-label">Vrijeme</InputLabel>
-          <Select
-            name="vrijeme"
-            value={filter.vrijeme}
-            onChange={handleChange}
-            labelId="vrijeme-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            <MenuItem value="1">24 sata</MenuItem>
-            <MenuItem value="7">7 dana</MenuItem>
-            <MenuItem value="30">30 dana</MenuItem>
-          </Select>
-
-          <InputLabel id="vrsta-label">Vrsta</InputLabel>
-          <Select
-            name="vrsta"
-            value={filter.vrsta}
-            onChange={handleChange}
-            labelId="vrsta-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            {vrste.map((vrsta) => (
-              <MenuItem key={vrsta} value={vrsta}>
-                {vrsta}
+              <MenuItem value="zainteresirani-silazno">
+                Broj zainteresiranih silazno
               </MenuItem>
-            ))}
-          </Select>
+            </Select>
+          </FormControl>
 
-          <InputLabel id="zavrseno-label">Zavrseno</InputLabel>
-          <Select
-            name="zavrseno"
-            value={filter.zavrseno}
-            onChange={handleChange}
-            labelId="zavrseno-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            <MenuItem value="1">Da</MenuItem>
-            <MenuItem value="0">Ne</MenuItem>
-          </Select>
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="lokacija-label">Lokacija</InputLabel>
+            <Select
+              labelId="lokacija-label"
+              label="lokacija"
+              name="lokacija"
+              value={filter.lokacija}
+              onChange={handleChange}
+            >
+              <MenuItem key={"clear"} value={"clear"}>
+                --
+              </MenuItem>
+              {lokacije.map((lok) => (
+                <MenuItem key={lok} value={lok}>
+                  {lok}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
 
-          <InputLabel id="placanje-label">Cijena</InputLabel>
-          <Select
-            name="placanje"
-            value={filter.placanje}
-            onChange={handleChange}
-            labelId="placanje-label"
-            size="small"
-            sx={{ marginBottom: 1 }}
-          >
-            <MenuItem value="1">Placa se</MenuItem>
-            <MenuItem value="0">Besplatno</MenuItem>
-          </Select>
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="vrijeme-label">Vrijeme</InputLabel>
+            <Select
+              labelId="vrijeme-label"
+              label="vrijeme"
+              name="vrijeme"
+              value={filter.vrijeme}
+              onChange={handleChange}
+            >
+              <MenuItem key={"clear"} value={"clear"}>
+                --
+              </MenuItem>
+              <MenuItem value="1">24 sata</MenuItem>
+              <MenuItem value="7">7 dana</MenuItem>
+              <MenuItem value="30">30 dana</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="vrsta-label">Vrsta</InputLabel>
+            <Select
+              labelId="vrsta-label"
+              label="vrsta"
+              name="vrsta"
+              value={filter.vrsta}
+              onChange={handleChange}
+            >
+              <MenuItem key={"clear"} value={"clear"}>
+                --
+              </MenuItem>
+              {vrste.map((vrsta) => (
+                <MenuItem key={vrsta} value={vrsta}>
+                  {vrsta}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="zavrseno-label">Zavrseno</InputLabel>
+            <Select
+              labelId="zavrseno-label"
+              label="zavrseno"
+              name="zavrseno"
+              value={filter.zavrseno}
+              onChange={handleChange}
+            >
+              <MenuItem key={"clear"} value={"clear"}>
+                --
+              </MenuItem>
+              <MenuItem value="1">Da</MenuItem>
+              <MenuItem value="0">Ne</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ mb: 1 }} size="small">
+            <InputLabel id="placanje-label">Cijena</InputLabel>
+            <Select
+              labelId="placanje-label"
+              label="placanje"
+              name="placanje"
+              value={filter.placanje}
+              onChange={handleChange}
+            >
+              <MenuItem key={"clear"} value={"clear"}>
+                --
+              </MenuItem>
+              <MenuItem value="1">Placa se</MenuItem>
+              <MenuItem value="0">Besplatno</MenuItem>
+            </Select>
+          </FormControl>
 
           <Button
             variant="contained"

@@ -2,18 +2,15 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
-import Header from "./components/Header.jsx";
 import Nopage from "./components/Nopage.jsx";
 import Footer from "./components/Footer";
-import UserList from "./components/UserList.jsx";
-import Filter from "./components/Filter.jsx";
 import { Box, Container } from "@mui/material";
+import Homepage from "./components/Homepage.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
-  const [query, setQuery] = useState("");
 
   function validateSession() {
     fetch("/api/user")
@@ -41,19 +38,9 @@ function App() {
   function onLogout() {
     fetch("/api/logout").finally(setIsLoggedIn(false));
   }
+
   if (isLoggedIn) {
-    return (
-      <Box sx={{ marginBottom: 15 }}>
-        <Header onLogout={onLogout} role={role} />
-        <Container
-          sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-        >
-          <Filter setQuery={setQuery} />
-          <UserList />
-        </Container>
-        <Footer />
-      </Box>
-    );
+    return <Homepage onLogout={onLogout} role={role} />;
   } else {
     return (
       <Box sx={{ marginBottom: 15 }}>
