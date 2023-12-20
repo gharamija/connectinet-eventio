@@ -41,7 +41,7 @@ public class KorisnikController {
         }
     }
 
-    @GetMapping("/validate")
+    @GetMapping
     public ResponseEntity<KorisnikDTO> validate(@AuthenticationPrincipal Korisnik korisnik) {
         if (korisnik != null) {
             KorisnikDTO korisnikDTO = new KorisnikDTO(korisnik);

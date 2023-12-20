@@ -1,25 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
-import Header from "./components/Header.jsx";
 import Nopage from "./components/Nopage.jsx";
 import Footer from "./components/Footer";
-import UserList from "./components/UserList.jsx";
-import Filter from "./components/Filter.jsx";
 import { Box, Container } from "@mui/material";
+import Homepage from "./components/Homepage.jsx";
+
+const RoleContext = createContext();
+const IdContext = createContext();
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
+
   const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
+  const [id, setId] = useState("");
 
   function validateSession() {
-    fetch("/api/user/validate")
+    fetch("/api/user")
       .then((response) => {
         if (response.status === 200) {
           setIsLoggedIn(true);
-          response.json().then((user) => setRole(user.uloga));
+          response.json().then((user) => {
+            setRole(user.uloga);
+            setId(user.id);
+          });
         } else {
           onLogout();
         }
@@ -40,22 +46,18 @@ function App() {
   function onLogout() {
     fetch("/api/logout").finally(setIsLoggedIn(false));
   }
+
   if (isLoggedIn) {
     return (
-      <>
-        <Header onLogout={onLogout} role={role} />
-        <Container
-          sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-        >
-          <Filter />
-          <UserList />
-        </Container>
-        <Footer />
-      </>
+      <RoleContext.Provider value={role}>
+        <IdContext.Provider value={id}>
+          <Homepage onLogout={onLogout} />
+        </IdContext.Provider>
+      </RoleContext.Provider>
     );
   } else {
     return (
-      <>
+      <Box sx={{ marginBottom: 15 }}>
         <Router>
           <Routes>
             <Route exact path="/" element={<Login onLogin={onLogin} />} />
@@ -64,9 +66,10 @@ function App() {
           </Routes>
         </Router>
         <Footer />
-      </>
+      </Box>
     );
   }
 }
 
 export default App;
+export { RoleContext, IdContext };
