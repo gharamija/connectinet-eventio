@@ -30,12 +30,12 @@ function ResponsiveDrawerButton(props) {
           >
             Zatvori
           </Button>
-          {props.stuff}
+          {props.children}
         </Drawer>
       </Box>
 
       <Box sx={{ display: { xs: "none", sm: "block" } }} open>
-        {props.stuff}
+        {props.children}
       </Box>
     </Box>
   );

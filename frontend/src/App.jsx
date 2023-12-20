@@ -13,9 +13,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
+  const [query, setQuery] = useState("");
 
   function validateSession() {
-    fetch("/api/user/validate")
+    fetch("/api/user")
       .then((response) => {
         if (response.status === 200) {
           setIsLoggedIn(true);
@@ -42,20 +43,20 @@ function App() {
   }
   if (isLoggedIn) {
     return (
-      <>
+      <Box sx={{ marginBottom: 15 }}>
         <Header onLogout={onLogout} role={role} />
         <Container
           sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
         >
-          <Filter />
+          <Filter setQuery={setQuery} />
           <UserList />
         </Container>
         <Footer />
-      </>
+      </Box>
     );
   } else {
     return (
-      <>
+      <Box sx={{ marginBottom: 15 }}>
         <Router>
           <Routes>
             <Route exact path="/" element={<Login onLogin={onLogin} />} />
@@ -64,7 +65,7 @@ function App() {
           </Routes>
         </Router>
         <Footer />
-      </>
+      </Box>
     );
   }
 }
