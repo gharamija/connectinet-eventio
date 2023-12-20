@@ -9,9 +9,12 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { RoleContext } from "../App";
 
 function Header(props) {
+  const role = useContext(RoleContext);
+
   function logout() {
     fetch("/logout").then(() => {
       props.onLogout();
@@ -50,7 +53,7 @@ function Header(props) {
     { label: "Odjava", onClick: logout },
   ];
 
-  const pages = props.role === "Admin" ? pagesAdmin : pagesPiO;
+  const pages = role === "Admin" ? pagesAdmin : pagesPiO;
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -68,11 +71,11 @@ function Header(props) {
       sx={{
         marginBottom: "20px",
         backgroundColor:
-          props.role === "POSJETITELJ"
+          role === "POSJETITELJ"
             ? "#2196F3" // Blue for Posjetitelj
-            : props.role === "ORGANIZATOR"
+            : role === "ORGANIZATOR"
             ? "#4CAF50" // Green for Organizator
-            : props.role === "ADMIN"
+            : role === "ADMIN"
             ? "#FF0000" // Red for Admin
             : "#000000",
       }}
@@ -121,7 +124,7 @@ function Header(props) {
                   },
                 }}
               >
-                {props.role}
+                {role}
               </Button>
             </Tooltip>
             <Menu

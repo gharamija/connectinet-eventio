@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -15,8 +15,11 @@ import {
 } from "@mui/material";
 import vrste from "./Vrste";
 import lokacije from "./Lokacije";
+import { IdContext } from "../App";
 
 function AddDogadajDialog({ handleClose, open }) {
+  const id = useContext(IdContext);
+
   const [error, setError] = useState("");
   const [form, setForm] = useState({
     nazivDogadaja: "",
@@ -47,7 +50,7 @@ function AddDogadajDialog({ handleClose, open }) {
       },
       body: JSON.stringify(form),
     };
-    fetch("/api/dogadaj/izrada", options).then((response) => {
+    fetch("/api/dogadaj/izrada" + id, options).then((response) => {
       if (response.status === 200) {
         handleClose();
       } else {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
@@ -7,17 +7,25 @@ import Footer from "./components/Footer";
 import { Box, Container } from "@mui/material";
 import Homepage from "./components/Homepage.jsx";
 
+const RoleContext = createContext();
+const IdContext = createContext();
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
+
   const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
+  const [id, setId] = useState("");
 
   function validateSession() {
     fetch("/api/user")
       .then((response) => {
         if (response.status === 200) {
           setIsLoggedIn(true);
-          response.json().then((user) => setRole(user.uloga));
+          response.json().then((user) => {
+            setRole(user.uloga);
+            setId(user.id);
+          });
         } else {
           onLogout();
         }
@@ -40,7 +48,13 @@ function App() {
   }
 
   if (isLoggedIn) {
-    return <Homepage onLogout={onLogout} role={role} />;
+    return (
+      <RoleContext.Provider value={role}>
+        <IdContext.Provider value={id}>
+          <Homepage onLogout={onLogout} />
+        </IdContext.Provider>
+      </RoleContext.Provider>
+    );
   } else {
     return (
       <Box sx={{ marginBottom: 15 }}>
@@ -58,3 +72,4 @@ function App() {
 }
 
 export default App;
+export { RoleContext, IdContext };
