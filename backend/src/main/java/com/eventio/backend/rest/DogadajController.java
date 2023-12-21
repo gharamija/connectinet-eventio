@@ -56,8 +56,8 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
-    @GetMapping("/organizator")
-    public List<responseDogadajDTO>  PrikazDogOrg(@RequestParam(name = "id") Integer id){
+    @GetMapping("/organizator/{id}")
+    public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer id){
         Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
         if (optionalOrganizator.isPresent()) {
             Organizator organizator = optionalOrganizator.get();
@@ -65,21 +65,29 @@ public class DogadajController {
         if (Optionaldogadaji.isPresent())
             return serviceDogadaj.pretvori_DTO(Optionaldogadaji.get());
         }
-        return null;
+            return null;
+
     }
-    @GetMapping("/user/{parametar}")
-    public ResponseEntity<String> prikazDogUsera(){
+    @GetMapping("/user/{id}")
+    public ResponseEntity<String> prikazDogUsera(@PathVariable(name = "id") Integer id){
         // sve dogadaje posjetitelja
         return null;
     }
-    @GetMapping("/{parametar}")
-    public ResponseEntity<String> prikaziDogadaj(){
-        //dohvacanje dogadaja
+    @GetMapping("/{id}")
+    public responseDogadajDTO prikaziDogadaj(@PathVariable(name = "id") Integer id){
+        Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(id);
+        if (Optionaldogadaji.isPresent()) {
+            Dogadaj dogadaj = Optionaldogadaji.get();
+            responseDogadajDTO odg = new responseDogadajDTO(dogadaj);
+            return odg;
+        }
         return null;
     }
+
+
     @Secured("ROLE_ORGANIZATOR")
-    @PostMapping("/{parametar}")
-    public ResponseEntity<String> promjeniDogadaj(){
+    @PostMapping("/{id}")
+    public ResponseEntity<String> promjeniDogadaj(@PathVariable(name = "id") Integer id){
         //promjena dogadaja
         return null;
     }
