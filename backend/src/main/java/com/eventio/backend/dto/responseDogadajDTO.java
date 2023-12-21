@@ -9,7 +9,6 @@ import java.util.List;
 public class responseDogadajDTO {
     @NotNull
     private Integer organizator_id;
-
     @NotNull
     private String username;
     @NotNull

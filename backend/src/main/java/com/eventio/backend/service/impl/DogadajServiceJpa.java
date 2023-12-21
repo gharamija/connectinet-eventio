@@ -31,10 +31,8 @@ public class DogadajServiceJpa implements DogadajService {
   }
 
   @Override
-  public List<responseDogadajDTO> vratiDogadaje() {
-    List<Dogadaj> sviDogadaji = dogadajRepository.findAll();
-
-    List<responseDogadajDTO> dogadajDTOList = sviDogadaji.stream()
+  public List<responseDogadajDTO> pretvori_DTO(List<Dogadaj> Dogadaji) {
+    List<responseDogadajDTO> dogadajDTOList = Dogadaji.stream()
             .map(this::mapirajUDogadajDTO)
             .collect(Collectors.toList());
 
@@ -44,7 +42,6 @@ public class DogadajServiceJpa implements DogadajService {
   private responseDogadajDTO mapirajUDogadajDTO(Dogadaj dogadaj) {
     return new responseDogadajDTO(dogadaj);
   }
-
   @Override
   public Optional<Dogadaj> findById(Integer id) {
     return dogadajRepository.findById(id);

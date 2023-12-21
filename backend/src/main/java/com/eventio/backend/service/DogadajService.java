@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface DogadajService {
   List<Dogadaj> listAll();
-  List<responseDogadajDTO> vratiDogadaje();
+  List<responseDogadajDTO> pretvori_DTO(List<Dogadaj> Dogadaji);
   Optional<Dogadaj> findById(Integer id);
   Optional<List<Dogadaj>> findByOrganizator(Organizator organizator);
   Optional<List<Dogadaj>> findByVrsta(Vrste vrsta);

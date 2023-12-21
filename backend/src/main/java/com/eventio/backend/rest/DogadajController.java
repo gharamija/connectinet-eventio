@@ -34,7 +34,7 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") Integer zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") Integer placanje){
 
-        return serviceDogadaj.vratiDogadaje();
+        return serviceDogadaj.pretvori_DTO(serviceDogadaj.listAll());
     }
 
 
@@ -42,10 +42,8 @@ public class DogadajController {
     @PostMapping("/izrada")
     public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id, @Valid @RequestBody requestDogadajDTO dto) {
         try {
-            System.out.println(id);
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
             if (optionalOrganizator.isPresent()) {
-                System.out.println(optionalOrganizator);
                 Organizator organizator = optionalOrganizator.get();
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
@@ -58,6 +56,32 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
-
+    @GetMapping("/organizator")
+    public List<responseDogadajDTO>  PrikazDogOrg(@RequestParam(name = "id") Integer id){
+        Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
+        if (optionalOrganizator.isPresent()) {
+            Organizator organizator = optionalOrganizator.get();
+            Optional<List<Dogadaj>> Optionaldogadaji = serviceDogadaj.findByOrganizator(organizator);
+        if (Optionaldogadaji.isPresent())
+            return serviceDogadaj.pretvori_DTO(Optionaldogadaji.get());
+        }
+        return null;
+    }
+    @GetMapping("/user/{parametar}")
+    public ResponseEntity<String> prikazDogUsera(){
+        // sve dogadaje posjetitelja
+        return null;
+    }
+    @GetMapping("/{parametar}")
+    public ResponseEntity<String> prikaziDogadaj(){
+        //dohvacanje dogadaja
+        return null;
+    }
+    @Secured("ROLE_ORGANIZATOR")
+    @PostMapping("/{parametar}")
+    public ResponseEntity<String> promjeniDogadaj(){
+        //promjena dogadaja
+        return null;
+    }
 
 }
