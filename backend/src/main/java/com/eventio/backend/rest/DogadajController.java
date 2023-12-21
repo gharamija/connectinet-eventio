@@ -3,7 +3,7 @@ import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Vrste;
-import com.eventio.backend.dto.DogadajDTO;
+import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import com.eventio.backend.service.OrganizatorService;
 import jakarta.validation.Valid;
@@ -45,7 +45,7 @@ public class DogadajController {
 
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@Valid @RequestBody DogadajDTO dto) {
+    public ResponseEntity<String> izrada(@Valid @RequestBody requestDogadajDTO dto) {
         try {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById((dto.getOrganizator()).getId());
             if (optionalOrganizator.isPresent()) {

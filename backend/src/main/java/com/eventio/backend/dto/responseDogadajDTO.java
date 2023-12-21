@@ -1,12 +1,16 @@
 package com.eventio.backend.dto;
+
 import com.eventio.backend.domain.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
-public class DogadajDTO {
+
+public class responseDogadajDTO {
     @NotNull
-    private Organizator organizator;
+    private Integer organizator_id;
+    @NotNull
+    private String username;
     @NotNull
     private String nazivDogadaja;
     @NotNull
@@ -23,11 +27,11 @@ public class DogadajDTO {
     private String opis;
     @NotNull
     private String galerija;
-
-    public DogadajDTO() {
-    }
-    public DogadajDTO(Dogadaj dogadaj) {
-        this.organizator = dogadaj.getOrganizator();
+    private List<Recenzija> recenzije;
+    private List<Zainteresiranost> zainteresiranosti;
+    public responseDogadajDTO(Dogadaj dogadaj) {
+        this.organizator_id = dogadaj.getOrganizator().getId();
+        this.username = dogadaj.getOrganizator().getUsername();
         this.nazivDogadaja = dogadaj.getNazivDogadaja();
         this.vrsta = dogadaj.getVrsta();
         this.lokacija = dogadaj.getLokacija();
@@ -36,14 +40,24 @@ public class DogadajDTO {
         this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
         this.opis = dogadaj.getOpis();
         this.galerija = dogadaj.getGalerija();
+        this.recenzije = dogadaj.getRecenzije();
+        this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
 
-    public Organizator getOrganizator() {
-        return organizator;
+    public Integer getOrganizator_id() {
+        return organizator_id;
     }
 
-    public void setOrganizator(Organizator organizator) {
-        this.organizator = organizator;
+    public void setOrganizator_id(Integer organizator_id) {
+        this.organizator_id = organizator_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNazivDogadaja() {
@@ -109,5 +123,22 @@ public class DogadajDTO {
     public void setGalerija(String galerija) {
         this.galerija = galerija;
     }
+
+    public List<Recenzija> getRecenzije() {
+        return recenzije;
+    }
+
+    public void setRecenzije(List<Recenzija> recenzije) {
+        this.recenzije = recenzije;
+    }
+
+    public List<Zainteresiranost> getZainteresiranosti() {
+        return zainteresiranosti;
+    }
+
+    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
+        this.zainteresiranosti = zainteresiranosti;
+    }
+
 
 }
