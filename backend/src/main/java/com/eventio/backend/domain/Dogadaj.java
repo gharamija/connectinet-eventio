@@ -4,6 +4,7 @@ import com.eventio.backend.dto.DogadajDTO;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,6 +39,8 @@ public class Dogadaj {
     private List<Zainteresiranost> zainteresiranosti;
 
     public Dogadaj(DogadajDTO dto){
+        this.recenzije = new ArrayList<>();
+        this.zainteresiranosti = new ArrayList<>();
         this.nazivDogadaja = dto.getNazivDogadaja();
         this.vrsta = dto.getVrsta();
         this.lokacija = dto.getLokacija();

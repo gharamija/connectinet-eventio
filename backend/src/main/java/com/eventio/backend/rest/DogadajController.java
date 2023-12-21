@@ -39,7 +39,7 @@ public class DogadajController {
         List<Dogadaj> dogadaji = serviceDogadaj.listAll();
         System.out.println(dogadaji);
         // dobro ispisuje ali stvara beskonacnu petlju
-        return null;
+        return dogadaji;
     }
 
 
