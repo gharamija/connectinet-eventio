@@ -19,9 +19,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/dogadaj")
 public class DogadajController {
-    // može ic ako se odlucimo i na posebno korisnika posebno orgaizatora,
-    // ali mislim da pocetak bolje ovako da front može prije pocet
-    // takoder ovo mozda razbit na neke manje funckije
 
     @Autowired
     private DogadajService serviceDogadaj;
@@ -43,10 +40,12 @@ public class DogadajController {
 
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@Valid @RequestBody requestDogadajDTO dto) {
+    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id, @Valid @RequestBody requestDogadajDTO dto) {
         try {
-            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById((dto.getOrganizator()).getId());
+            System.out.println(id);
+            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
             if (optionalOrganizator.isPresent()) {
+                System.out.println(optionalOrganizator);
                 Organizator organizator = optionalOrganizator.get();
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);

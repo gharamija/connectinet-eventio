@@ -9,8 +9,11 @@ import java.util.List;
 public class responseDogadajDTO {
     @NotNull
     private Integer organizator_id;
+
     @NotNull
     private String username;
+    @NotNull
+    private Integer dogadaj_id;
     @NotNull
     private String nazivDogadaja;
     @NotNull
@@ -32,6 +35,7 @@ public class responseDogadajDTO {
     public responseDogadajDTO(Dogadaj dogadaj) {
         this.organizator_id = dogadaj.getOrganizator().getId();
         this.username = dogadaj.getOrganizator().getUsername();
+        this.dogadaj_id = dogadaj.getId();
         this.nazivDogadaja = dogadaj.getNazivDogadaja();
         this.vrsta = dogadaj.getVrsta();
         this.lokacija = dogadaj.getLokacija();
@@ -43,7 +47,13 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije();
         this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
+    public Integer getDogadaj_id() {
+        return dogadaj_id;
+    }
 
+    public void setDogadaj_id(Integer dogadaj_id) {
+        this.dogadaj_id = dogadaj_id;
+    }
     public Integer getOrganizator_id() {
         return organizator_id;
     }
