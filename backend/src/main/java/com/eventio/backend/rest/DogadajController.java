@@ -4,6 +4,7 @@ import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Vrste;
 import com.eventio.backend.dto.requestDogadajDTO;
+import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import com.eventio.backend.service.OrganizatorService;
 import jakarta.validation.Valid;
@@ -28,7 +29,7 @@ public class DogadajController {
     private OrganizatorService serviceOrganizator;
 
     @GetMapping("/filter")
-    public List<Dogadaj>  filter(
+    public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "uzlazno") String sort,
             @RequestParam(name = "lokacija", defaultValue = "") Kvartovi lokacija,
             @RequestParam(name = "vrijeme", defaultValue = "") String vrijeme,
@@ -36,10 +37,7 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") Integer zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") Integer placanje){
 
-        List<Dogadaj> dogadaji = serviceDogadaj.listAll();
-        System.out.println(dogadaji);
-        // dobro ispisuje ali stvara beskonacnu petlju
-        return dogadaji;
+        return serviceDogadaj.vratiDogadaje();
     }
 
 
