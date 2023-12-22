@@ -1,12 +1,14 @@
 package com.eventio.backend.domain;
 
 import com.eventio.backend.dto.KorisnikDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,11 +35,13 @@ public class Korisnik implements UserDetails {
     @Column(nullable = false)
     private Uloga uloga;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "posjetitelj")
     private List<Recenzija> recenzije;
+    @JsonIgnore
     @OneToMany(mappedBy = "posjetitelj")
     private List<Zainteresiranost> zainteresiranosti;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "posjetitelj")
     private List<Notifikacija> notifikacije;
 
@@ -45,6 +49,9 @@ public class Korisnik implements UserDetails {
     }
 
     public Korisnik(KorisnikDTO dto) {
+        this.recenzije = new ArrayList<>();
+        this.zainteresiranosti = new ArrayList<>();
+        this.notifikacije = new ArrayList<>();
         this.username = dto.getUsername();
         this.email = dto.getEmail();
         this.password = dto.getPassword();

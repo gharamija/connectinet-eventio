@@ -24,20 +24,15 @@
 ### Mapping
 ## /dogadaj
 /filter - putem urla šalje:
- sort ("uzlazno" ili "silazno" - po vremenu)
+ sort ("uzlazno" ili "silazno" - po vremenu, po interesu)
  lokacija (enum poštujte CAPSLOCK)
  vrijeme (1 dan, 7 dana, 8 dana)
  vrsta(enum poštujte CAPSLOCK)
  zavrseno (0 - prikazuje samo aktivne, 1 - prikazuje samo završene, kad ne pošaljete ništa oboje)
  placeno  (0 - prikaz bez placanja, 1 - prikaz s placanje, kad ne pošaljete ništa oboje)
 
-/izrada
+/izrada/?id=INT       POST METODA  (id organizatora) SAMO ORGANIZATOR
 {
-  "organizator": {
-    "username": "organizator_username",
-    "id": "organizator_id",
-    "uloga": "2"
-  },
   "nazivDogadaja": "Naziv događaja",
   "vrsta": "ENUM",
   "lokacija": "ENUM",
@@ -46,6 +41,34 @@
   "cijenaUlaznice": "100.00",
   "opis": "Opis događaja",
   "galerija": "http://putanja-do-galerije.com"
+}
+
+/organizator/{id}
+Vraća listu pojedinacni responseDogadajDTO od pojedinog organizatora
+
+/user/{id}
+Vraća listu pojedinacni responseDogadajDTO na koje je reagiro pojedini user
+
+/{id}
+vraća responseDogadajDTO s idom ou putanje. 
+
+Izgled responseDogadajDTO
+
+npr.
+{
+    "organizator_id": 4,
+    "username": "org",
+    "dogadaj_id": 4,
+    "nazivDogadaja": "Naziv događaja 4",
+    "vrsta": "UMJETNOST",
+    "lokacija": "SESVETE",
+    "opisLokacije": "Opis lokacije",
+    "vrijemePocetka": "2023-12-31T18:00:00",
+    "cijenaUlaznice": "100.00",
+    "opis": "Opis događaja",
+    "galerija": "http://putanja-do-galerije.com",
+    "recenzije": [],
+    "zainteresiranosti": []
 }
 
 ## /user

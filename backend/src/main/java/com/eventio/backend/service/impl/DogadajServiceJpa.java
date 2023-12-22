@@ -3,12 +3,14 @@ package com.eventio.backend.service.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.eventio.backend.dao.DogadajRepository;
 import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Vrste;
+import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,18 @@ public class DogadajServiceJpa implements DogadajService {
     return dogadajRepository.findAll();
   }
 
+  @Override
+  public List<responseDogadajDTO> pretvori_DTO(List<Dogadaj> Dogadaji) {
+    List<responseDogadajDTO> dogadajDTOList = Dogadaji.stream()
+            .map(this::mapirajUDogadajDTO)
+            .collect(Collectors.toList());
+
+    return dogadajDTOList;
+  }
+
+  private responseDogadajDTO mapirajUDogadajDTO(Dogadaj dogadaj) {
+    return new responseDogadajDTO(dogadaj);
+  }
   @Override
   public Optional<Dogadaj> findById(Integer id) {
     return dogadajRepository.findById(id);

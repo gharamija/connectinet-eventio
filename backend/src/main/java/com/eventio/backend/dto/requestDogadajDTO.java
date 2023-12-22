@@ -3,9 +3,8 @@ import com.eventio.backend.domain.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
-import java.util.List;
-public class DogadajDTO {
-    @NotNull
+
+public class requestDogadajDTO {
     private Organizator organizator;
     @NotNull
     private String nazivDogadaja;
@@ -24,10 +23,9 @@ public class DogadajDTO {
     @NotNull
     private String galerija;
 
-    public DogadajDTO() {
+    public requestDogadajDTO() {
     }
-    public DogadajDTO(Dogadaj dogadaj) {
-        this.organizator = dogadaj.getOrganizator();
+    public requestDogadajDTO(Dogadaj dogadaj) {
         this.nazivDogadaja = dogadaj.getNazivDogadaja();
         this.vrsta = dogadaj.getVrsta();
         this.lokacija = dogadaj.getLokacija();

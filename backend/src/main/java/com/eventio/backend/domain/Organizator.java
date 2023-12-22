@@ -1,6 +1,7 @@
 package com.eventio.backend.domain;
 
 import com.eventio.backend.dto.KorisnikDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Organizator extends Korisnik {
     private String poveznica;
     @Column(nullable = false)
     private boolean clanarina;
+    @JsonIgnore
     @OneToMany(mappedBy = "organizator")
     private List<Dogadaj> dogadaji;
 
