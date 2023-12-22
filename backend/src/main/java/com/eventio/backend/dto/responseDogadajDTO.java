@@ -1,66 +1,72 @@
-package com.eventio.backend.domain;
+package com.eventio.backend.dto;
 
-import com.eventio.backend.dto.requestDogadajDTO;
-import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.eventio.backend.domain.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class Dogadaj {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dogadaj_id")
-    private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "organizator_id", nullable = false)
-    private Organizator organizator;
-    @Column(nullable = false)
+public class responseDogadajDTO {
+    @NotNull
+    private Integer organizator_id;
+    @NotNull
+    private String username;
+    @NotNull
+    private Integer dogadaj_id;
+    @NotNull
     private String nazivDogadaja;
-    @Column(nullable = false)
+    @NotNull
     private Vrste vrsta;
-    @Enumerated
-    @Column(nullable = false)
+    @NotNull
     private Kvartovi lokacija;
-    @Column(nullable = false)
+    @NotNull
     private String opisLokacije;
-    @Column(nullable = false)
+    @NotNull
     private LocalDateTime vrijemePocetka;
+    @NotNull
     private String cijenaUlaznice;
-    @Column(nullable = false)
+    @NotNull
     private String opis;
+    @NotNull
     private String galerija;
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Zainteresiranost> zainteresiranosti;
-
-    public Dogadaj(requestDogadajDTO dto){
-        this.recenzije = new ArrayList<>();
-        this.zainteresiranosti = new ArrayList<>();
-        this.nazivDogadaja = dto.getNazivDogadaja();
-        this.vrsta = dto.getVrsta();
-        this.lokacija = dto.getLokacija();
-        this.opisLokacije = dto.getOpisLokacije();
-        this.vrijemePocetka = dto.getVrijemePocetka();
-        this.cijenaUlaznice = dto.getCijenaUlaznice();
-        this.opis = dto.getOpis();
-        this.galerija = dto.getGalerija();
+    public responseDogadajDTO(Dogadaj dogadaj) {
+        this.organizator_id = dogadaj.getOrganizator().getId();
+        this.username = dogadaj.getOrganizator().getUsername();
+        this.dogadaj_id = dogadaj.getId();
+        this.nazivDogadaja = dogadaj.getNazivDogadaja();
+        this.vrsta = dogadaj.getVrsta();
+        this.lokacija = dogadaj.getLokacija();
+        this.opisLokacije = dogadaj.getOpisLokacije();
+        this.vrijemePocetka = dogadaj.getVrijemePocetka();
+        this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
+        this.opis = dogadaj.getOpis();
+        this.galerija = dogadaj.getGalerija();
+        this.recenzije = dogadaj.getRecenzije();
+        this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
-    public Dogadaj(){}
-    public Integer getId() {
-        return id;
-    }
-
-    public Organizator getOrganizator() {
-        return organizator;
+    public Integer getDogadaj_id() {
+        return dogadaj_id;
     }
 
-    public void setOrganizator(Organizator organizator) {
-        this.organizator = organizator;
+    public void setDogadaj_id(Integer dogadaj_id) {
+        this.dogadaj_id = dogadaj_id;
+    }
+    public Integer getOrganizator_id() {
+        return organizator_id;
+    }
+
+    public void setOrganizator_id(Integer organizator_id) {
+        this.organizator_id = organizator_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNazivDogadaja() {
@@ -131,7 +137,17 @@ public class Dogadaj {
         return recenzije;
     }
 
+    public void setRecenzije(List<Recenzija> recenzije) {
+        this.recenzije = recenzije;
+    }
+
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
     }
+
+    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
+        this.zainteresiranosti = zainteresiranosti;
+    }
+
+
 }

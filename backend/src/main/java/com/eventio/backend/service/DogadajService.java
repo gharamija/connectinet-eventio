@@ -1,6 +1,7 @@
 package com.eventio.backend.service;
 
 import com.eventio.backend.domain.*;
+import com.eventio.backend.dto.responseDogadajDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 public interface DogadajService {
   List<Dogadaj> listAll();
+  List<responseDogadajDTO> pretvori_DTO(List<Dogadaj> Dogadaji);
   Optional<Dogadaj> findById(Integer id);
   Optional<List<Dogadaj>> findByOrganizator(Organizator organizator);
   Optional<List<Dogadaj>> findByVrsta(Vrste vrsta);

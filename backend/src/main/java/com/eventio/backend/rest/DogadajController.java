@@ -3,7 +3,8 @@ import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Vrste;
-import com.eventio.backend.dto.DogadajDTO;
+import com.eventio.backend.dto.requestDogadajDTO;
+import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import com.eventio.backend.service.OrganizatorService;
 import jakarta.validation.Valid;
@@ -18,9 +19,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/dogadaj")
 public class DogadajController {
-    // može ic ako se odlucimo i na posebno korisnika posebno orgaizatora,
-    // ali mislim da pocetak bolje ovako da front može prije pocet
-    // takoder ovo mozda razbit na neke manje funckije
 
     @Autowired
     private DogadajService serviceDogadaj;
@@ -28,7 +26,7 @@ public class DogadajController {
     private OrganizatorService serviceOrganizator;
 
     @GetMapping("/filter")
-    public List<Dogadaj>  filter(
+    public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "uzlazno") String sort,
             @RequestParam(name = "lokacija", defaultValue = "") Kvartovi lokacija,
             @RequestParam(name = "vrijeme", defaultValue = "") String vrijeme,
@@ -36,18 +34,15 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") Integer zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") Integer placanje){
 
-        List<Dogadaj> dogadaji = serviceDogadaj.listAll();
-        System.out.println(dogadaji);
-        // dobro ispisuje ali stvara beskonacnu petlju
-        return null;
+        return serviceDogadaj.pretvori_DTO(serviceDogadaj.listAll());
     }
 
 
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@Valid @RequestBody DogadajDTO dto) {
+    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id, @Valid @RequestBody requestDogadajDTO dto) {
         try {
-            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById((dto.getOrganizator()).getId());
+            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
                 Dogadaj dogadaj = new Dogadaj(dto);
@@ -61,6 +56,40 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
+    @GetMapping("/organizator/{id}")
+    public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer id){
+        Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
+        if (optionalOrganizator.isPresent()) {
+            Organizator organizator = optionalOrganizator.get();
+            Optional<List<Dogadaj>> Optionaldogadaji = serviceDogadaj.findByOrganizator(organizator);
+        if (Optionaldogadaji.isPresent())
+            return serviceDogadaj.pretvori_DTO(Optionaldogadaji.get());
+        }
+            return null;
 
+    }
+    @GetMapping("/user/{id}")
+    public ResponseEntity<String> prikazDogUsera(@PathVariable(name = "id") Integer id){
+        // sve dogadaje posjetitelja
+        return null;
+    }
+    @GetMapping("/{id}")
+    public responseDogadajDTO prikaziDogadaj(@PathVariable(name = "id") Integer id){
+        Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(id);
+        if (Optionaldogadaji.isPresent()) {
+            Dogadaj dogadaj = Optionaldogadaji.get();
+            responseDogadajDTO odg = new responseDogadajDTO(dogadaj);
+            return odg;
+        }
+        return null;
+    }
+
+
+    @Secured("ROLE_ORGANIZATOR")
+    @PostMapping("/{id}")
+    public ResponseEntity<String> promjeniDogadaj(@PathVariable(name = "id") Integer id){
+        //promjena dogadaja
+        return null;
+    }
 
 }
