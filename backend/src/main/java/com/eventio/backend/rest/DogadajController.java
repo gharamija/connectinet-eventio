@@ -85,8 +85,6 @@ public class DogadajController {
         }
         return null;
     }
-
-
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/{id}")
     public ResponseEntity<String> promjeniDogadaj(@PathVariable(name = "id") Integer id){
@@ -115,6 +113,18 @@ public class DogadajController {
         }
 
     }
-
-
+    @PostMapping("/obavijest")
+    public ResponseEntity<String> stvoriObavijest(
+            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
+            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik) {
+        return null;
+    }
+    @PostMapping("/recenzija")
+    public ResponseEntity<String> stvoriRecenziju(){
+        return null;
+    }
+    @PostMapping("/edit")
+    public ResponseEntity<String> EditDogadaja(){
+        return null;
+    }
 }

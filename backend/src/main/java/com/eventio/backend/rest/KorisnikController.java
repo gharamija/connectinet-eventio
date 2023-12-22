@@ -50,4 +50,9 @@ public class KorisnikController {
             return ResponseEntity.status(401).body(null);
         }
     }
+    @PostMapping("/edit")
+    public ResponseEntity<String> editKorisnika(){
+        //može editat email i password
+        return null;
+    }
 }
