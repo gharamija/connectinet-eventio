@@ -50,4 +50,21 @@ public class KorisnikController {
             return ResponseEntity.status(401).body(null);
         }
     }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,@RequestBody requestKorisnikDTO dto) {
+        Korisnik korisnik = service.findById(id).get();
+        if (dto.getUloga() != Uloga.POSJETITELJ) {
+            return ResponseEntity.badRequest().body("Ovdje ne možete promjeniti admina ili organizatora");
+        } else if (!dto.getEmail().equals(korisnik.getEmail()) && service.findByEmail(dto.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest().body("Email već postoji u bazi");
+        } else if (!dto.getUsername().equals(korisnik.getUsername()) && service.findByUsername(dto.getUsername()).isPresent()) {
+            return ResponseEntity.badRequest().body("Username već postoji u bazi");
+        } else if (service.updateUser(dto,id)) {
+            return ResponseEntity.ok().body("Posjetitelj promjenjen");
+        } else {
+            return ResponseEntity.badRequest().body("Nepoznata greška");
+        }
+    }
+
 }
