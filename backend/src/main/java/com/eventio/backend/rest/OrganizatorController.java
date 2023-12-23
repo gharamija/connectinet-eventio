@@ -45,7 +45,11 @@ public class OrganizatorController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,@Valid @RequestBody OrganizatorDTO dto) {
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
+                                         @Valid @RequestBody OrganizatorDTO dto,
+                                         @AuthenticationPrincipal Korisnik trenutni) {
+        if (trenutni.getId() != id)
+            return ResponseEntity.badRequest().body("Ne možete promjeniti tudi racun");
         Organizator organizator = service.findById(id).get();
         if (dto.getUloga() != Uloga.ORGANIZATOR) {
             return ResponseEntity.badRequest().body("Ovdje ne možete promjeniti admina ili posjetitelja");

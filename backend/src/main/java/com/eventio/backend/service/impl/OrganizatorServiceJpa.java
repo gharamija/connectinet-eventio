@@ -39,6 +39,7 @@ public class OrganizatorServiceJpa implements OrganizatorService {
         return true;
     }
 
+    @Override
     public boolean updateOrganizator(OrganizatorDTO dto, Integer id){
         Organizator user = repository.findById(id).get();
         if (!"".equals(dto.getPassword()))

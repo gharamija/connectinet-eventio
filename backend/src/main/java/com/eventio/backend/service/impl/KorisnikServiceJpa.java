@@ -52,7 +52,7 @@ public class KorisnikServiceJpa implements KorisnikService {
         }
         return user.get();
     }
-
+    @Override
     public boolean registerUser(requestKorisnikDTO dto) {
         dto.setPassword(encoder.encode(dto.getPassword()));
         Korisnik user = new Korisnik(dto);
@@ -63,6 +63,7 @@ public class KorisnikServiceJpa implements KorisnikService {
         return true;
     }
 
+    @Override
     public boolean updateUser(requestKorisnikDTO dto, Integer id){
         Korisnik user = repository.findById(id).get();
         if (!"".equals(dto.getPassword()))

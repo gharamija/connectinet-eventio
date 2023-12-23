@@ -1,8 +1,5 @@
 package com.eventio.backend.rest;
-import com.eventio.backend.domain.Dogadaj;
-import com.eventio.backend.domain.Kvartovi;
-import com.eventio.backend.domain.Organizator;
-import com.eventio.backend.domain.Vrste;
+import com.eventio.backend.domain.*;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
@@ -11,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
@@ -66,6 +64,20 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
+    @PostMapping("/update/{id}")
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
+                                         @Valid @RequestBody requestDogadajDTO dto,
+                                         @AuthenticationPrincipal Korisnik korisnik) {
+        if (dto.getOrganizator().getId() != korisnik.getId()) {
+            return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
+        }
+        if (serviceDogadaj.updateDogadaj(dto,id)) {
+            return ResponseEntity.ok().body("Dogdaj promjenjen");
+        } else {
+            return ResponseEntity.badRequest().body("Nepoznata greška");
+        }
+
+    }
     @GetMapping("/organizator/{id}")
     public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer id){
         Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
@@ -80,7 +92,7 @@ public class DogadajController {
     }
     @GetMapping("/user/{id}")
     public ResponseEntity<String> prikazDogUsera(@PathVariable(name = "id") Integer id){
-        // sve dogadaje posjetitelja
+        // sve dogadaje posjetitelja na koji je iskazao zeinteresiranost
         return null;
     }
     @GetMapping("/{id}")
