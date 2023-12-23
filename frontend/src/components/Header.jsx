@@ -56,7 +56,7 @@ function Header(props) {
     { label: "Odjava", onClick: logout },
   ];
 
-  const pages = role === "Admin" ? pagesAdmin : pagesPiO;
+  const pages = role === "ADMIN" ? pagesAdmin : pagesPiO;
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
