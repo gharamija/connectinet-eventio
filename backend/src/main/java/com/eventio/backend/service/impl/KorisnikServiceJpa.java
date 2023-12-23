@@ -2,7 +2,7 @@ package com.eventio.backend.service.impl;
 
 import com.eventio.backend.dao.KorisnikRepository;
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
 import com.eventio.backend.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -51,7 +51,7 @@ public class KorisnikServiceJpa implements KorisnikService {
         return user.get();
     }
 
-    public boolean registerUser(KorisnikDTO dto) {
+    public boolean registerUser(requestKorisnikDTO dto) {
         dto.setPassword(encoder.encode(dto.getPassword()));
         Korisnik user = new Korisnik(dto);
         user = repository.saveAndFlush(user);

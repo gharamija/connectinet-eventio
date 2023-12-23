@@ -4,7 +4,7 @@ import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Uloga;
 import jakarta.validation.constraints.NotNull;
 
-public class KorisnikDTO {
+public class requestKorisnikDTO {
     @NotNull
     private String username;
     @NotNull
@@ -14,16 +14,16 @@ public class KorisnikDTO {
     @NotNull
     private Uloga uloga;
 
-    public KorisnikDTO() {
+    public requestKorisnikDTO() {
     }
 
-    public KorisnikDTO(Korisnik korisnik) {
+    public requestKorisnikDTO(Korisnik korisnik) {
         this.username = korisnik.getUsername();
         this.email = korisnik.getEmail();
         this.uloga = korisnik.getUloga();
     }
 
-    public KorisnikDTO(OrganizatorDTO dto) {
+    public requestKorisnikDTO(OrganizatorDTO dto) {
         this.username = dto.getUsername();
         this.password = dto.getPassword();
         this.email = dto.getEmail();
