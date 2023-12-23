@@ -1,63 +1,23 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 import { IdContext } from "../App";
 import {
   Container,
   Box,
   Typography,
   TextField,
-  IconButton,
   Button,
   Collapse,
   Alert,
+  Grid,
 } from "@mui/material";
-import { Check, Close, Edit } from "@mui/icons-material";
 import Header from "./Header";
 import Footer from "./Footer";
-
-function Editable({ edit, editSetter, value, valueSetter, children }) {
-  const [oldValue, setOldValue] = useState("");
-
-  return (
-    <Box
-      component="form"
-      sx={{ display: "flex" }}
-      onSubmit={(e) => {
-        e.preventDefault();
-        editSetter(false);
-      }}
-    >
-      {children}
-      {!edit && (
-        <IconButton
-          onClick={() => {
-            editSetter(true);
-            setOldValue(value);
-          }}
-        >
-          <Edit />
-        </IconButton>
-      )}
-      {edit && (
-        <IconButton type="submit">
-          <Check />
-        </IconButton>
-      )}
-      {edit && (
-        <IconButton
-          onClick={() => {
-            valueSetter(oldValue);
-            editSetter(false);
-          }}
-        >
-          <Close />
-        </IconButton>
-      )}
-    </Box>
-  );
-}
+import Editable from "./Editable";
+import Notifications from "./Notifications";
 
 function UserProfile({ onLogout }) {
   const id = useContext(IdContext);
+
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [editPass, setEditPass] = useState(false);
@@ -103,72 +63,78 @@ function UserProfile({ onLogout }) {
     <>
       <Box sx={{ marginBottom: 15 }}>
         <Header onLogout={onLogout} />
-        <Container
-          maxWidth="xs"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-          }}
-        >
-          <Typography variant="h4">Podaci</Typography>
-          <TextField
-            label="username"
-            name="username"
-            value={profile.username}
-            onChange={onChange}
-            disabled
-            sx={{ mt: 1 }}
-          />
-          <Editable
-            edit={editPass}
-            editSetter={setEditPass}
-            value={profile.password}
-            valueSetter={(val) => setProfile({ ...profile, password: val })}
-          >
-            <TextField
-              label="password"
-              name="password"
-              type="password"
+        <Container maxWidth="sm" sx={{ mb: 2 }}>
+          <Typography variant="h4" mb={1}>
+            Podaci
+          </Typography>
+          <Grid container spacing={1} alignItems="center">
+            <Grid item xs={10}>
+              <TextField
+                label="username"
+                name="username"
+                value={profile.username}
+                onChange={onChange}
+                disabled
+                fullWidth
+              />
+            </Grid>
+            <Editable
+              edit={editPass}
+              editSetter={setEditPass}
               value={profile.password}
-              onChange={onChange}
-              disabled={!editPass}
-              required
-              sx={{ mt: 1 }}
-            />
-          </Editable>
-          <Editable
-            edit={editEmail}
-            editSetter={setEditEmail}
-            value={profile.email}
-            valueSetter={(val) => setProfile({ ...profile, email: val })}
-          >
-            <TextField
-              label="email"
-              name="email"
-              type="email"
+              valueSetter={(val) => setProfile({ ...profile, password: val })}
+            >
+              <TextField
+                label="password"
+                name="password"
+                type="password"
+                value={profile.password}
+                onChange={onChange}
+                disabled={!editPass}
+                required
+                fullWidth
+              />
+            </Editable>
+            <Editable
+              edit={editEmail}
+              editSetter={setEditEmail}
               value={profile.email}
-              onChange={onChange}
-              disabled={!editEmail}
-              required
-              sx={{ mt: 1 }}
-            />
-          </Editable>
-          <Collapse in={error}>
-            <Alert severity="error">Došlo je do pogreške</Alert>
-          </Collapse>
-          <Collapse in={success}>
-            <Alert severity="success">Promjena uspješna!</Alert>
-          </Collapse>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={submit}
-            sx={{ mt: 1, ml: 2 }}
-          >
-            Spremi promjene
-          </Button>
+              valueSetter={(val) => setProfile({ ...profile, email: val })}
+            >
+              <TextField
+                label="email"
+                name="email"
+                type="email"
+                value={profile.email}
+                onChange={onChange}
+                disabled={!editEmail}
+                required
+                fullWidth
+              />
+            </Editable>
+            <Collapse in={error}>
+              <Alert severity="error" sx={{ m: 1 }}>
+                Došlo je do pogreške
+              </Alert>
+            </Collapse>
+            <Collapse in={success}>
+              <Alert severity="success" sx={{ m: 1 }}>
+                Promjena uspješna!
+              </Alert>
+            </Collapse>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={submit}
+                fullWidth
+              >
+                Spremi
+              </Button>
+            </Grid>
+          </Grid>
         </Container>
+        <Notifications />
         <Footer />
       </Box>
     </>

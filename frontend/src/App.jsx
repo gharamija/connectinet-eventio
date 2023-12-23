@@ -4,7 +4,7 @@ import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import Nopage from "./components/Nopage.jsx";
 import Footer from "./components/Footer";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import Homepage from "./components/Homepage.jsx";
 import UserProfile from "./components/UserProfile.jsx";
 
