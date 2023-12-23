@@ -1,6 +1,6 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -48,7 +48,7 @@ public class Korisnik implements UserDetails {
     public Korisnik() {
     }
 
-    public Korisnik(KorisnikDTO dto) {
+    public Korisnik(requestKorisnikDTO dto) {
         this.recenzije = new ArrayList<>();
         this.zainteresiranosti = new ArrayList<>();
         this.notifikacije = new ArrayList<>();

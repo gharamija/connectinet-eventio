@@ -134,4 +134,10 @@ public class Dogadaj {
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
     }
+
+    public long zainteresiranost() {
+        return zainteresiranosti.stream()
+            .filter(zainteresiranost -> zainteresiranost.getKategorija() == Kategorija.SIGURNO)
+            .count();
+    }
 }

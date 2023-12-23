@@ -73,13 +73,13 @@ npr.
 
 ## /user
 /all    - samo admin
-vaća sve korisnike
+vraća sve korisnike
 
 /register
 preko foruma kreira novog korisnika
 
 /validate
-endpoint koji vraća korisnika.
+endpoint koji vraća resposeKorisnikDTO. (id, username, email i ulogu)
 
 ## /organizator
 ... nastavit
