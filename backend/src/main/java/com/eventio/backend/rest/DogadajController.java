@@ -147,12 +147,12 @@ public class DogadajController {
 
         if (zavrseno != null) {
             switch (zavrseno) {
-                case "da":
+                case "Da":
                     sviDogađaji = sviDogađaji.stream()
                         .filter(dogadaj -> dogadaj.getVrijemePocetka().isBefore(LocalDateTime.now()))
                         .collect(Collectors.toList());
                     break;
-                case "ne":
+                case "Ne":
                     sviDogađaji = sviDogađaji.stream()
                         .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(LocalDateTime.now()))
                         .collect(Collectors.toList());
@@ -163,12 +163,12 @@ public class DogadajController {
         }
         if (placanje != null) {
             switch (placanje) {
-                case "da":
+                case "placa se":
                     sviDogađaji = sviDogađaji.stream()
                         .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
                         .collect(Collectors.toList());
                     break;
-                case "ne":
+                case "besplatno":
                     sviDogađaji = sviDogađaji.stream()
                         .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
                         .collect(Collectors.toList());
