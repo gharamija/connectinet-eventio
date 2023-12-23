@@ -16,7 +16,7 @@ import ResponsiveDrawerButton from "./ResponsiveDrawerButton";
 
 function Filter(props) {
   const [filter, setFilter] = useState({
-    sort: "uzlazno",
+    sort: "vrijeme-uzlazno",
     lokacija: "",
     vrijeme: "",
     vrsta: "",

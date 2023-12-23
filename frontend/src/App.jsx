@@ -48,7 +48,7 @@ function App() {
     fetch("/api/logout").finally(setIsLoggedIn(false));
   }
 
-  if (isLoggedIn) {
+  if (true) {
     return (
       <RoleContext.Provider value={role}>
         <IdContext.Provider value={id}>

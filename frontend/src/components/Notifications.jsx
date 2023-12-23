@@ -15,19 +15,23 @@ import vrste from "./Vrste";
 import lokacije from "./Lokacije";
 
 function Notifications({ id }) {
-  const [notif, setNotif] = useState({ id: "", vrsta: "", lokacija: "" });
+  const [notif, setNotif] = useState({ vrsta: "", lokacija: "" });
   const [pretplate, setPretplate] = useState([]);
 
-  useEffect(() => {
-    /*fetch("/api/notifikacije" + id).then((response) => {
+  function dohvati() {
+    fetch("/api/notification/" + id).then((response) => {
       response.json().then((pretpl) => {
         setPretplate(pretpl);
       });
-    });*/
-    setPretplate([
+    });
+  }
+
+  useEffect(() => {
+    dohvati();
+    /*setPretplate([
       { id: "1", vrsta: "UMJETNOST", lokacija: "NOVI_ZAGREB_ISTOK" },
       { id: "2", vrsta: "SPORT", lokacija: "MAKSIMIR" },
-    ]);
+    ]);*/
   }, []);
 
   function onChange(event) {
@@ -37,11 +41,18 @@ function Notifications({ id }) {
 
   function onSubmit(e) {
     e.preventDefault();
-    //tu sad ide slanje za kreiranje nove pretplate
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(notif),
+    };
+    fetch("/api/notificaiton/" + id, options).then(dohvati);
   }
 
-  function obrisiPretplatu(id) {
-    //slanje da se obrise pretplata
+  function obrisiPretplatu(notifId) {
+    fetch("/api/notificaiton/" + notifId, { method: "DELETE" }).then(dohvati);
   }
 
   return (
@@ -49,7 +60,13 @@ function Notifications({ id }) {
       <Typography variant="h4" mb={1}>
         Pretplate na obavijesti
       </Typography>
-      <Grid container component="form" spacing={1} alignItems="center">
+      <Grid
+        container
+        component="form"
+        onSubmit={onSubmit}
+        spacing={1}
+        alignItems="center"
+      >
         {pretplate.map((pretpl) => (
           <Fragment key={pretpl.id}>
             <Grid item xs={5}>

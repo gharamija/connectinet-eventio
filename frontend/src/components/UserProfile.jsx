@@ -20,12 +20,16 @@ function UserProfile({ onLogout }) {
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [changed, setChanged] = useState(false);
+  const [editUsername, setEditUsername] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [profile, setProfile] = useState({
+    id: "",
     username: "",
-    email: "",
     password: "",
+    email: "",
+    uloga: "",
   });
 
   useEffect(() => {
@@ -38,16 +42,18 @@ function UserProfile({ onLogout }) {
 
   function onChange(event) {
     const { name, value } = event.target;
-    setProfile((oldProfile) => ({ ...oldProfile, [name]: value }));
+    setProfile({ ...profile, [name]: value });
   }
 
   function submit() {
     const options = {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify(profile),
+      body: `username=${profile.username}&password=${
+        profile.password ? profile.password : ""
+      }&email=${profile.email}&uloga=${profile.uloga}`,
     };
     fetch("/api/user/" + id, options).then((response) => {
       if (response.status === 200) {
@@ -68,21 +74,29 @@ function UserProfile({ onLogout }) {
             Podaci
           </Typography>
           <Grid container spacing={1} alignItems="center">
-            <Grid item xs={10}>
+            <Editable
+              edit={editUsername}
+              editSetter={setEditUsername}
+              value={profile.username}
+              valueSetter={(val) => setProfile({ ...profile, username: val })}
+              change={setChanged}
+            >
               <TextField
                 label="username"
                 name="username"
                 value={profile.username}
                 onChange={onChange}
-                disabled
+                disabled={!editUsername}
+                required
                 fullWidth
               />
-            </Grid>
+            </Editable>
             <Editable
               edit={editPass}
               editSetter={setEditPass}
               value={profile.password}
               valueSetter={(val) => setProfile({ ...profile, password: val })}
+              change={setChanged}
             >
               <TextField
                 label="password"
@@ -100,6 +114,7 @@ function UserProfile({ onLogout }) {
               editSetter={setEditEmail}
               value={profile.email}
               valueSetter={(val) => setProfile({ ...profile, email: val })}
+              change={setChanged}
             >
               <TextField
                 label="email"
@@ -128,13 +143,14 @@ function UserProfile({ onLogout }) {
                 size="large"
                 onClick={submit}
                 fullWidth
+                disabled={!changed || editUsername || editPass || editEmail}
               >
                 Spremi
               </Button>
             </Grid>
           </Grid>
         </Container>
-        <Notifications />
+        <Notifications id={id} />
         <Footer />
       </Box>
     </>

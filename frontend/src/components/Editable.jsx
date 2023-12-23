@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IconButton, Grid } from "@mui/material";
 import { Check, Close, Edit } from "@mui/icons-material";
 
-function Editable({ edit, editSetter, value, valueSetter, children }) {
+function Editable({ edit, editSetter, value, valueSetter, change, children }) {
   const [oldValue, setOldValue] = useState("");
 
   return (
@@ -15,6 +15,7 @@ function Editable({ edit, editSetter, value, valueSetter, children }) {
       onSubmit={(e) => {
         e.preventDefault();
         editSetter(false);
+        change(true);
       }}
     >
       <Grid item xs={10}>
