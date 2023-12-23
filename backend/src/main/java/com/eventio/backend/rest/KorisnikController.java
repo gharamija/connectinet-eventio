@@ -52,7 +52,7 @@ public class KorisnikController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,@RequestBody requestKorisnikDTO dto) {
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id, @Valid @RequestBody requestKorisnikDTO dto) {
         Korisnik korisnik = service.findById(id).get();
         if (dto.getUloga() != Uloga.POSJETITELJ) {
             return ResponseEntity.badRequest().body("Ovdje ne možete promjeniti admina ili organizatora");
