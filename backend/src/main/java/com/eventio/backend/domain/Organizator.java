@@ -1,6 +1,6 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -24,7 +24,7 @@ public class Organizator extends Korisnik {
     public Organizator() {
     }
 
-    public Organizator(KorisnikDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
+    public Organizator(requestKorisnikDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
         super(dto);
         this.nazivOrganizacije = nazivOrganizacije;
         this.adresa = adresa;

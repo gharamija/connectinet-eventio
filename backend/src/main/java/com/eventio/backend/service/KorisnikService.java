@@ -1,7 +1,7 @@
 package com.eventio.backend.service;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface KorisnikService extends UserDetailsService {
     Optional<Korisnik> findByUsername(String username);
     Optional<Korisnik> findByEmail(String email);
 
-    boolean registerUser(KorisnikDTO dto);
+    boolean registerUser(requestKorisnikDTO dto);
 }

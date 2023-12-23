@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,15 +30,22 @@ public class DogadajController {
 
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
-            @RequestParam(name = "sort", defaultValue = "uzlazno") String sort,
+            @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
             @RequestParam(name = "lokacija", defaultValue = "") Kvartovi lokacija,
             @RequestParam(name = "vrijeme", defaultValue = "") String vrijeme,
             @RequestParam(name = "vrsta", defaultValue = "") Vrste vrsta,
-            @RequestParam(name = "zavrseno", defaultValue = "") Integer zavrseno,
-            @RequestParam(name = "placanje", defaultValue = "") Integer placanje){
+            @RequestParam(name = "zavrseno", defaultValue = "") String zavrseno,
+            @RequestParam(name = "placanje", defaultValue = "") String placanje){
 
-        return serviceDogadaj.pretvori_DTO(serviceDogadaj.listAll());
+        List<Dogadaj> sviDogađaji = serviceDogadaj.listAll();
+
+        List<Dogadaj> filtriraniDogađaji = filtrirajDogađaje(sviDogađaji, lokacija, vrijeme, vrsta, zavrseno, placanje);
+
+        List<Dogadaj> sortiraniDogadaji = sortirajDogađaje(filtriraniDogađaji, sort);
+
+        return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
     }
+
 
 
     @Secured("ROLE_ORGANIZATOR")
@@ -92,4 +102,95 @@ public class DogadajController {
         return null;
     }
 
+
+    private List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
+        if (lokacija != null) {
+            sviDogađaji = sviDogađaji.stream()
+                .filter(dogadaj -> dogadaj.getLokacija().equals(lokacija))
+                .collect(Collectors.toList());
+        }
+
+        if (vrijeme != null) {
+            LocalDateTime trenutnoVrijeme = LocalDateTime.now();
+
+            switch (vrijeme) {
+                case "24 sata":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(1))
+                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(1)))
+                        .collect(Collectors.toList());
+                    break;
+
+                case "7 dana":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(7))
+                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(7)))
+                        .collect(Collectors.toList());
+                    break;
+
+                case "30 dana":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(30))
+                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(30)))
+                        .collect(Collectors.toList());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (vrsta != null) {
+            sviDogađaji = sviDogađaji.stream()
+                .filter(dogadaj -> dogadaj.getVrsta().equals(vrsta))
+                .collect(Collectors.toList());
+        }
+
+        if (zavrseno != null) {
+            switch (zavrseno) {
+                case "Da":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isBefore(LocalDateTime.now()))
+                        .collect(Collectors.toList());
+                    break;
+                case "Ne":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(LocalDateTime.now()))
+                        .collect(Collectors.toList());
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (placanje != null) {
+            switch (placanje) {
+                case "placa se":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
+                        .collect(Collectors.toList());
+                    break;
+                case "besplatno":
+                    sviDogađaji = sviDogađaji.stream()
+                        .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
+                        .collect(Collectors.toList());
+                    break;
+                default:
+                    break;
+            }
+        }
+        return sviDogađaji;
+    }
+
+    private List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort) {
+        Comparator<Dogadaj> comparator = switch (sort) {
+          case "vrijeme-silazno" -> Comparator.comparing(Dogadaj::getVrijemePocetka).reversed();
+          case "zainteresiranost-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
+          case "zainteresiranost-silazno" -> Comparator.comparing(Dogadaj::zainteresiranost).reversed();
+          default -> Comparator.comparing(Dogadaj::getVrijemePocetka);
+        };
+
+        filtriraniDogađaji.sort(comparator);
+
+        return filtriraniDogađaji;
+    }
 }
+
