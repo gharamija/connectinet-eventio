@@ -10,10 +10,13 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { RoleContext } from "../App";
 
 function Header(props) {
   const role = useContext(RoleContext);
+
+  const navigate = useNavigate();
 
   function logout() {
     fetch("/logout").then(() => {
@@ -49,7 +52,7 @@ function Header(props) {
     { label: "Svi događaji", onclick: getDogadaji },
   ];
   const settings = [
-    { label: "Profil", onClick: getProfil },
+    { label: "Profil", onClick: () => navigate("/profil") },
     { label: "Odjava", onClick: logout },
   ];
 
