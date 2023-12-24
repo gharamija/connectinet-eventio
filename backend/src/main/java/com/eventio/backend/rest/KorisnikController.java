@@ -51,7 +51,7 @@ public class KorisnikController {
         }
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestKorisnikDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {

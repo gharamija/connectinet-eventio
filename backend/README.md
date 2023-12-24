@@ -24,12 +24,13 @@
 ### Mapping
 ## /dogadaj
 /filter - putem urla šalje:
- sort ("uzlazno" ili "silazno" - po vremenu, po interesu)
+ sort ("uzlazno" ili "silazno" - po vremenu, po interesu) 
+        -> primjer: "vrijeme-uzlazno" ili "zainteresiranost-silazno" 
  lokacija (enum poštujte CAPSLOCK)
- vrijeme (1 dan, 7 dana, 8 dana)
+ vrijeme (24 sata, 7 dana, 30 dana)
  vrsta(enum poštujte CAPSLOCK)
- zavrseno (0 - prikazuje samo aktivne, 1 - prikazuje samo završene, kad ne pošaljete ništa oboje)
- placeno  (0 - prikaz bez placanja, 1 - prikaz s placanje, kad ne pošaljete ništa oboje)
+ zavrseno (ne - prikazuje samo aktivne, da - prikazuje samo završene, kad ne pošaljete ništa oboje)
+ placeno  (besplatno - prikaz bez placanja, placa se - prikaz s placanje, kad ne pošaljete ništa oboje)
 
 /izrada/?id=INT       POST METODA  (id organizatora) SAMO ORGANIZATOR
 {
@@ -42,6 +43,11 @@
   "opis": "Opis događaja",
   "galerija": "http://putanja-do-galerije.com"
 }
+
+/update/{id}
+Body ko na /izradi
+Ako je id na dogadaju i na trenutnom korisniku isti ili ako je korisnik admin
+--> dogadaj updatean 
 
 /organizator/{id}
 Vraća listu pojedinacni responseDogadajDTO od pojedinog organizatora
@@ -81,5 +87,29 @@ preko foruma kreira novog korisnika
 /validate
 endpoint koji vraća resposeKorisnikDTO. (id, username, email i ulogu)
 
+/update/{id}
+#### Mozes napisati ovdje body kak izgleda samo
+{
+    "id": 1,
+    "username": "Franjo", 
+    "email": "franjoRazarac@gmail.com", 
+    "uloga": "POSJETITELJ"
+}
+
 ## /organizator
-... nastavit
+
+/register
+preko foruma kreira novog organizatora
+
+/update/{id}
+#### Mozes napisati ovdje body kak izgleda samo
+
+{
+    "username": "Franjo", 
+    "email": "franjoRazarac@gmail.com", 
+    "uloga": "ORGANIZATOR",
+    "nazivOrganizacije": "Eventio",
+    "adresa": "Eventovska 24",
+    "poveznica": "http://putanja-do-eventovaca.com",
+    "clanarina": true
+}

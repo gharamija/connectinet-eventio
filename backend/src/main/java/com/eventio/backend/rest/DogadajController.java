@@ -3,7 +3,9 @@ import com.eventio.backend.domain.*;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
+import com.eventio.backend.service.KorisnikService;
 import com.eventio.backend.service.OrganizatorService;
+import com.eventio.backend.service.ZainteresiranostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -25,6 +28,11 @@ public class DogadajController {
     private DogadajService serviceDogadaj;
     @Autowired
     private OrganizatorService serviceOrganizator;
+    @Autowired
+    private KorisnikService serviceKorisnik;
+    @Autowired
+    private ZainteresiranostService serviceZainteresiranost;
+
 
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
@@ -70,11 +78,11 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (dto.getOrganizator().getId() != korisnik.getId())
+        if (dto.getOrganizator().getId() != korisnik.getId() && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
         if (serviceDogadaj.updateDogadaj(dto,id)) {
@@ -97,8 +105,23 @@ public class DogadajController {
 
     }
     @GetMapping("/user/{id}")
-    public ResponseEntity<String> prikazDogUsera(@PathVariable(name = "id") Integer id){
-        // sve dogadaje posjetitelja na koji je iskazao zeinteresiranost
+    public List<responseDogadajDTO> prikazDogUsera(@PathVariable(name = "id") Integer id){
+        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id);
+        if (optionalKorisnik.isPresent()) {
+            Korisnik korisnik = optionalKorisnik.get();
+            Optional<List<Zainteresiranost>> zainteresiranosti = Optional.ofNullable(serviceZainteresiranost.findByPosjetiteljAndKategorijaIn(
+                korisnik,
+                Arrays.asList(Kategorija.MOZDA, Kategorija.SIGURNO)
+            ));
+
+            if (zainteresiranosti.isPresent()) {
+                Optional<List<Dogadaj>> reagiraniDogadaji = Optional.of(zainteresiranosti.stream()
+                    .flatMap(List::stream)
+                    .map(Zainteresiranost::getDogadaj)
+                    .collect(Collectors.toList()));
+              return serviceDogadaj.pretvori_DTO(reagiraniDogadaji.get());
+            }
+        }
         return null;
     }
     @GetMapping("/{id}")
@@ -106,21 +129,10 @@ public class DogadajController {
         Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(id);
         if (Optionaldogadaji.isPresent()) {
             Dogadaj dogadaj = Optionaldogadaji.get();
-            responseDogadajDTO odg = new responseDogadajDTO(dogadaj);
-            return odg;
+          return new responseDogadajDTO(dogadaj);
         }
         return null;
     }
-
-
-    @Secured("ROLE_ORGANIZATOR")
-    @PostMapping("/{id}")
-    public ResponseEntity<String> promjeniDogadaj(@PathVariable(name = "id") Integer id){
-        //promjena dogadaja
-        return null;
-    }
-
-
     private List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
         if (lokacija != null) {
             sviDogađaji = sviDogađaji.stream()
