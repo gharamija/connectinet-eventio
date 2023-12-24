@@ -50,7 +50,7 @@ function AddDogadajDialog({ handleClose, open }) {
       },
       body: JSON.stringify(form),
     };
-    fetch("/api/dogadaj/izrada" + id, options).then((response) => {
+    fetch(`/api/dogadaj/izrada/${id}`, options).then((response) => {
       if (response.status === 200) {
         handleClose();
       } else {

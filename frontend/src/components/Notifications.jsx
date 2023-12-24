@@ -19,7 +19,7 @@ function Notifications({ id }) {
   const [pretplate, setPretplate] = useState([]);
 
   function dohvati() {
-    fetch("/api/notification/" + id).then((response) => {
+    fetch(`/api/notification/${id}`).then((response) => {
       response.json().then((pretpl) => {
         setPretplate(pretpl);
       });
@@ -48,11 +48,11 @@ function Notifications({ id }) {
       },
       body: JSON.stringify(notif),
     };
-    fetch("/api/notificaiton/" + id, options).then(dohvati);
+    fetch(`/api/notificaiton/add/${id}`, options).then(dohvati);
   }
 
   function obrisiPretplatu(notifId) {
-    fetch("/api/notificaiton/" + notifId, { method: "DELETE" }).then(dohvati);
+    fetch(`/api/notificaiton/${notifId}`, { method: "DELETE" }).then(dohvati);
   }
 
   return (

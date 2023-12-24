@@ -46,16 +46,18 @@ function UserProfile({ onLogout }) {
   }
 
   function submit() {
+    const replacer = (key, value) => {
+      if (key === "id") return undefined;
+      return value;
+    };
     const options = {
       method: "PUT",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
-      body: `username=${profile.username}&password=${
-        profile.password ? profile.password : ""
-      }&email=${profile.email}&uloga=${profile.uloga}`,
+      body: JSON.stringify(profile, replacer),
     };
-    fetch("/api/user/" + id, options).then((response) => {
+    fetch(`/api/user/${id}`, options).then((response) => {
       if (response.status === 200) {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 2000);
