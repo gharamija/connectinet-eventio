@@ -18,25 +18,17 @@ function Header(props) {
         console.log("Dohvacanje mojih dogadaja"); // trenutno samo ispis sto se treba desiti
     }
 
-    function getDogadaji() {
-        console.log("Dohvacanje svih dogadaja"); // trenutno samo ispis sto se treba desiti
-    }
-
-    function getProfil() {
-        console.log("Dohvacanje profila"); // trenutno samo ispis sto se treba desiti
-    }
-
     function getKorisnici() {
         console.log("Dohvacanje korisnika"); // trenutno samo ispis sto se treba desiti
     }
 
     const pagesPiO = [ // PiO = Posjetitelj i Organizator
-        {label: "Moji događaji", onclick: getMojiDogadaji},
-        {label: "Svi događaji", onclick: getDogadaji},
+        {label: "Moji događaji", onClick: getMojiDogadaji},
+        {label: "Svi događaji", onClick: () => navigate("/")},
     ];
     const pagesAdmin = [
-        {label: "Svi korisnici", onclick: getKorisnici},
-        {label: "Svi događaji", onclick: getDogadaji},
+        {label: "Svi korisnici", onClick: getKorisnici},
+        {label: "Svi događaji", onClick: () => navigate("/")},
     ];
     const settings = [
         {label: "Profil", onClick: () => navigate("/profil")},
@@ -94,7 +86,7 @@ function Header(props) {
                             <Button
                                 key={page.label}
                                 sx={{my: 2, color: "white", display: "block"}}
-                                onClick={page.onclick}
+                                onClick={page.onClick}
                             >
                                 {page.label}
                             </Button>

@@ -143,7 +143,7 @@ function UserProfile({onLogout}) {
                         </Grid>
                     </Grid>
                 </Container>
-                <Notifications id={id}/>
+                {/*<Notifications id={id}/>*/}
                 <Footer/>
             </Box>
         </>
