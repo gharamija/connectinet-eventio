@@ -48,7 +48,12 @@ public class DogadajController {
 
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id, @Valid @RequestBody requestDogadajDTO dto) {
+    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id,
+                                         @Valid @RequestBody requestDogadajDTO dto,
+                                         @AuthenticationPrincipal Korisnik korisnik) {
+        if (id != korisnik.getId())
+            return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
+
         try {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
             if (optionalOrganizator.isPresent()) {
@@ -56,6 +61,7 @@ public class DogadajController {
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
                 serviceDogadaj.spremiDogadaj(dogadaj);
+                // dodat u construktor dogadaju da radi provjeru ko je sve preplacen na notifikacije i salje obavjesti
                 return ResponseEntity.ok("Uspješno spremljen događaj.");
             } else
                 return ResponseEntity.badRequest().body("Organizator s navedenim ID-om ne postoji.");
@@ -68,11 +74,11 @@ public class DogadajController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (dto.getOrganizator().getId() != korisnik.getId()) {
+        if (dto.getOrganizator().getId() != korisnik.getId())
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
-        }
+
         if (serviceDogadaj.updateDogadaj(dto,id)) {
-            return ResponseEntity.ok().body("Dogdaj promjenjen");
+            return ResponseEntity.ok().body("Dogadaj promjenjen");
         } else {
             return ResponseEntity.badRequest().body("Nepoznata greška");
         }
