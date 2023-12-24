@@ -44,7 +44,7 @@ public class OrganizatorController {
         }
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody OrganizatorDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {
