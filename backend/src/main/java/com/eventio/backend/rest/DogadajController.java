@@ -55,8 +55,8 @@ public class DogadajController {
 
 
     @Secured("ROLE_ORGANIZATOR")
-    @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id,
+    @PostMapping("/izrada/{id}")
+    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
         if (id != korisnik.getId())
