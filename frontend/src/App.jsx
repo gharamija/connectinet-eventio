@@ -10,13 +10,15 @@ import UserProfile from "./components/UserProfile.jsx";
 
 const RoleContext = createContext();
 const IdContext = createContext();
+const UsernameContext = createContext();
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
 
-  const [role, setRole] = useState(""); // pri loginu treba napraviti setRole ili tako nesto
+  const [role, setRole] = useState("");
   const [id, setId] = useState("");
+  const [username, setUsername] = useState("");
 
   function validateSession() {
     fetch("/api/user")
@@ -26,6 +28,7 @@ function App() {
           response.json().then((user) => {
             setRole(user.uloga);
             setId(user.id);
+            setUsername(user.username);
           });
         } else {
           onLogout();
@@ -52,19 +55,21 @@ function App() {
     return (
       <RoleContext.Provider value={role}>
         <IdContext.Provider value={id}>
-          <Router>
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={<Homepage onLogout={onLogout} />}
-              />
-              <Route
-                path="/profil"
-                element={<UserProfile onLogout={onLogout} />}
-              />
-            </Routes>
-          </Router>
+          <UsernameContext.Provider value={username}>
+            <Router>
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={<Homepage onLogout={onLogout} />}
+                />
+                <Route
+                  path="/profil"
+                  element={<UserProfile onLogout={onLogout} />}
+                />
+              </Routes>
+            </Router>
+           </UsernameContext.Provider>
         </IdContext.Provider>
       </RoleContext.Provider>
     );
@@ -85,4 +90,4 @@ function App() {
 }
 
 export default App;
-export { RoleContext, IdContext };
+export { RoleContext, IdContext, UsernameContext };
