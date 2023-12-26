@@ -156,8 +156,7 @@ public class DogadajController {
             if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
                 Korisnik korisnik = optionalKorisnik.get();
                 Dogadaj dogadaj = optionalDogadaji.get();
-                //dodat provjeru ako Zainteresiranost vec postoji da se editat samo, ovo stvara novu
-                serviceZainteresiranost.spremiZainteresiranost(new Zainteresiranost(korisnik,dogadaj,kategorija));
+                serviceZainteresiranost.spremiZainteresiranost(korisnik,dogadaj,kategorija);
                 return ResponseEntity.ok("Uspješno spremljena zainteresiranost.");
             } else
                 return ResponseEntity.badRequest().body("Korisnik ili dogadaj s navedenim id ne postoji.");
@@ -165,8 +164,6 @@ public class DogadajController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("Greška prilikom spremanja zainteresiranosti.");
         }
-
-
     }
     @PostMapping("/obavijest")
     public ResponseEntity<String> stvoriObavijest(

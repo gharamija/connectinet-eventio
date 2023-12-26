@@ -1,5 +1,6 @@
 package com.eventio.backend.dao;
 
+import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kategorija;
 import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Zainteresiranost;
@@ -11,4 +12,6 @@ public interface ZainteresiranostRepository extends JpaRepository<Zainteresirano
   List<Zainteresiranost> findByPosjetiteljAndKategorijaIn(Korisnik posjetitelj, List<Kategorija> kategorije);
 
   List<Zainteresiranost> findByPosjetitelj(Korisnik posjetitelj);
+
+  Zainteresiranost findByPosjetiteljAndDogadaj(Korisnik posjetitelj, Dogadaj dogadaj);
 }
