@@ -1,44 +1,41 @@
 package com.eventio.backend.dto;
 
-import com.eventio.backend.domain.Dogadaj;
-import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Recenzija;
 import jakarta.validation.constraints.NotNull;
 
 public class RecenzijaDTO {
     @NotNull
-    private Korisnik posjetitelj;
+    private Integer korisnik_id;
     @NotNull
-    private Dogadaj dogadaj;
+    private Integer dogadaj_id;
     @NotNull
     private String tekst;
     private int ocjena;
     public RecenzijaDTO() {
     }
 
-    public RecenzijaDTO(Recenzija recenzija) {
-        this.posjetitelj = recenzija.getPosjetitelj();
-        this.dogadaj = recenzija.getDogadaj();
+    public RecenzijaDTO(Recenzija recenzija) { 
+        this.korisnik_id = recenzija.getPosjetitelj().getId();
+        this.dogadaj_id = recenzija.getDogadaj().getId();
         this.tekst = recenzija.getTekst();
         this.ocjena = recenzija.getOcjena();
     }
 
-    public Korisnik getPosjetitelj() {
-        return posjetitelj;
+    public Integer getKorisnik_id() {
+        return korisnik_id;
     }
 
-    public void setPosjetitelj(Korisnik posjetitelj) {
-        this.posjetitelj = posjetitelj;
+    public void setKorisnik_id(Integer korisnik_id) {
+        this.korisnik_id = korisnik_id;
     }
 
-    public Dogadaj getDogadaj() {
-        return dogadaj;
+    public Integer getDogadaj_id() {
+        return dogadaj_id;
     }
 
-    public void setDogadaj(Dogadaj dogadaj) {
-        this.dogadaj = dogadaj;
+    public void setDogadaj_id(Integer dogadaj_id) {
+        this.dogadaj_id = dogadaj_id;
     }
-
     public String getTekst() {
         return tekst;
     }

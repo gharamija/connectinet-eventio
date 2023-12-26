@@ -1,5 +1,6 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.RecenzijaDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -21,6 +22,15 @@ public class Recenzija {
     @Min(1)
     @Max(5)
     private int ocjena;
+    public Recenzija(){}
+    public Recenzija(RecenzijaDTO dto, Korisnik posjetitelj, Dogadaj dogadaj) {
+        this.posjetitelj = posjetitelj;
+        this.dogadaj = dogadaj;
+        this.tekst = dto.getTekst();
+        this.ocjena = dto.getOcjena();
+        posjetitelj.getRecenzije().add(this);
+        dogadaj.getRecenzije().add(this);
+    }
 
     public Integer getId() {
         return id;

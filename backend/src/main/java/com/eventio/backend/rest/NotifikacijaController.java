@@ -8,12 +8,14 @@ import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.service.KorisnikService;
 import com.eventio.backend.service.NotifikacijaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -26,9 +28,13 @@ public class NotifikacijaController {
     private KorisnikService korisnikService;
     @GetMapping("/{id}")
     public List<Notifikacija> notifikacijeKorisnika(@PathVariable(name = "id") Integer id, @AuthenticationPrincipal Korisnik korisnik){
-        if (korisnik.getId() != id)
+        if (!Objects.equals(korisnik.getId(), id))
             return null;
-    return korisnik.getNotifikacije();
+        Optional<Korisnik> OptKorisnik = korisnikService.findById(id);
+        if (OptKorisnik.isPresent())
+        return OptKorisnik.get().getNotifikacije();
+
+    return null;
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> brisanje(@PathVariable(name = "id") Integer id,
@@ -39,8 +45,7 @@ public class NotifikacijaController {
             return ResponseEntity.badRequest().body("Ne postoji notifikacija s ovim id");
 
             Notifikacija notifikacija = OptNotifikacija.get();
-
-        if (notifikacija.getPosjetitelj().getId() != korisnik.getId())
+        if (!Objects.equals(korisnik.getId(), notifikacija.getPosjetitelj().getId()))
             return ResponseEntity.badRequest().body("Nemate ovlasti za brisanje ove notifikacije");
 
         if (notifikacijaService.deleteNotifiakcija(notifikacija))
@@ -52,8 +57,9 @@ public class NotifikacijaController {
     public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
                                          @RequestBody NotifikacijaDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik){
-        if (id != korisnik.getId())
-            return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
+        // dodat u konstruktoru dogadaja pregledavanje svih obavjesti te lokacije ili vrste i slanje mailova
+       if (Objects.equals(id, korisnik.getId()))
+        return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
         try {
             Optional<Korisnik> optionalKorisnik = korisnikService.findById(id);
             if (optionalKorisnik.isPresent()) {
@@ -69,4 +75,5 @@ public class NotifikacijaController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
+
 }

@@ -30,6 +30,9 @@ public class Zainteresiranost {
         dogadaj.getZainteresiranosti().add(this);
     }
 
+    public Zainteresiranost() {
+    }
+
     public Integer getId() {
         return id;
     }

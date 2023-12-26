@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class responseDogadajDTO {
     @NotNull
@@ -29,7 +30,7 @@ public class responseDogadajDTO {
     private String opis;
     @NotNull
     private String galerija;
-    private List<Recenzija> recenzije;
+    private List<RecenzijaDTO> recenzije;
     private List<Zainteresiranost> zainteresiranosti;
     public responseDogadajDTO(Dogadaj dogadaj) {
         this.organizator_id = dogadaj.getOrganizator().getId();
@@ -43,7 +44,9 @@ public class responseDogadajDTO {
         this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
         this.opis = dogadaj.getOpis();
         this.galerija = dogadaj.getGalerija();
-        this.recenzije = dogadaj.getRecenzije();
+        this.recenzije = dogadaj.getRecenzije().stream()
+                .map(RecenzijaDTO::new)
+                .collect(Collectors.toList());
         this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
     public Integer getDogadaj_id() {
@@ -133,11 +136,11 @@ public class responseDogadajDTO {
         this.galerija = galerija;
     }
 
-    public List<Recenzija> getRecenzije() {
+    public List<RecenzijaDTO> getRecenzije() {
         return recenzije;
     }
 
-    public void setRecenzije(List<Recenzija> recenzije) {
+    public void setRecenzije(List<RecenzijaDTO> recenzije) {
         this.recenzije = recenzije;
     }
 

@@ -30,6 +30,7 @@ public class Notifikacija {
     }
 
     public void setPosjetitelj(Korisnik posjetitelj) {
+        posjetitelj.getNotifikacije().add(this);
         this.posjetitelj = posjetitelj;
     }
 
