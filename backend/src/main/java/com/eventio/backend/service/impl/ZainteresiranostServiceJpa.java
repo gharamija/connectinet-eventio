@@ -1,14 +1,13 @@
 package com.eventio.backend.service.impl;
 
+import com.eventio.backend.dao.ZainteresiranostRepository;
+import com.eventio.backend.domain.Zainteresiranost;
+import com.eventio.backend.service.ZainteresiranostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.eventio.backend.domain.Kategorija;
 import com.eventio.backend.domain.Zainteresiranost;
 import com.eventio.backend.domain.Korisnik;
-
-import com.eventio.backend.dao.ZainteresiranostRepository;
-import com.eventio.backend.service.ZainteresiranostService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -27,6 +26,9 @@ public class ZainteresiranostServiceJpa implements ZainteresiranostService {
   public List<Zainteresiranost> findByPosjetiteljAndKategorijaIn(Korisnik posjetitelj, List<Kategorija> kategorije) {
     return zainteresiranostRepository.findByPosjetiteljAndKategorijaIn(posjetitelj, kategorije);
   }
-
+   @Override
+   public Zainteresiranost spremiZainteresiranost(Zainteresiranost zainteresiranost) {
+        return repository.save(zainteresiranost);
   // Implementirajte ostale metode prema potrebama
+
 }

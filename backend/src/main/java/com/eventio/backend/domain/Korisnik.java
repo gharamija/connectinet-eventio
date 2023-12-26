@@ -57,7 +57,6 @@ public class Korisnik implements UserDetails {
         this.password = dto.getPassword();
         this.uloga = dto.getUloga();
     }
-
     public Integer getId() {
         return id;
     }

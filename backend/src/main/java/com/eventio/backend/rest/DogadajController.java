@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/dogadaj")
 public class DogadajController {
-
+// ne znam dal negdje treba dodat provjere dal je logiran korisik ili ce to front odradit
     @Autowired
     private DogadajService serviceDogadaj;
     @Autowired
@@ -133,6 +133,7 @@ public class DogadajController {
         }
         return null;
     }
+
     private List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
         if (lokacija != null) {
             sviDogađaji = sviDogađaji.stream()
@@ -208,7 +209,44 @@ public class DogadajController {
             }
         }
         return sviDogađaji;
+
     }
+    @PostMapping("/zaiteresiranost")
+    public ResponseEntity<String> stvoriZainteresitarnost(
+            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
+            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik,
+            @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija){
+      try {
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(id_dogadaj);
+            if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
+                Korisnik korisnik = optionalKorisnik.get();
+                Dogadaj dogadaj = optionalDogadaji.get();
+                //dodat provjeru ako Zainteresiranost vec postoji da se editat samo, ovo stvara novu
+                serviceZainteresiranost.spremiZainteresiranost(new Zainteresiranost(korisnik,dogadaj,kategorija));
+                return ResponseEntity.ok("Uspješno spremljena zainteresiranost.");
+            } else
+                return ResponseEntity.badRequest().body("Korisnik ili dogadaj s navedenim id ne postoji.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Greška prilikom spremanja zainteresiranosti.");
+        }
+
+
+    }
+    @PostMapping("/obavijest")
+    public ResponseEntity<String> stvoriObavijest(
+            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
+            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik) {
+        return null;
+    }
+    @PostMapping("/recenzija")
+    public ResponseEntity<String> stvoriRecenziju(){
+        return null;
+    }
+    @PostMapping("/edit")
+    public ResponseEntity<String> EditDogadaja(){
+        return null;
 
     private List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort) {
         Comparator<Dogadaj> comparator = switch (sort) {

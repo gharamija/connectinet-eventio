@@ -20,6 +20,16 @@ public class Zainteresiranost {
     @Column(nullable = false)
     private boolean obavijesti;
 
+    public Zainteresiranost(Korisnik posjetitelj, Dogadaj dogadaj, Kategorija kategorija) {
+        this.posjetitelj = posjetitelj;
+        this.dogadaj = dogadaj;
+        this.kategorija = kategorija;
+        // Dodaj zainteresiranost korisniku
+        posjetitelj.getZainteresiranosti().add(this);
+        // Dodaj zainteresiranost događaju
+        dogadaj.getZainteresiranosti().add(this);
+    }
+
     public Integer getId() {
         return id;
     }
