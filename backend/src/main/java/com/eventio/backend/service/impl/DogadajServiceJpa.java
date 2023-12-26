@@ -10,6 +10,7 @@ import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Vrste;
+import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +75,26 @@ public class DogadajServiceJpa implements DogadajService {
   @Override
   public Dogadaj spremiDogadaj(Dogadaj dogadaj){
     return dogadajRepository.save(dogadaj);
+  }
+  public boolean updateDogadaj(requestDogadajDTO dto, Integer id){
+    Optional<Dogadaj> optionalDogadaj = dogadajRepository.findById(id);
+
+    if (optionalDogadaj.isPresent()) {
+      Dogadaj dogadaj = optionalDogadaj.get();
+
+      dogadaj.setOpis(dto.getOpis());
+      dogadaj.setGalerija(dto.getGalerija());
+      dogadaj.setCijenaUlaznice(dto.getCijenaUlaznice());
+      dogadaj.setVrsta(dto.getVrsta());
+      dogadaj.setNazivDogadaja(dto.getNazivDogadaja());
+      dogadaj.setLokacija(dto.getLokacija());
+      dogadaj.setOpisLokacije(dto.getOpisLokacije());
+      dogadaj.setVrijemePocetka(dto.getVrijemePocetka());
+
+      dogadajRepository.saveAndFlush(dogadaj);
+      return true;
+    } else {
+      return false;
+    }
   }
 }

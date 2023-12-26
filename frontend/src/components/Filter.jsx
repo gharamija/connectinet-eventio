@@ -16,7 +16,7 @@ import ResponsiveDrawerButton from "./ResponsiveDrawerButton";
 
 function Filter(props) {
   const [filter, setFilter] = useState({
-    sort: "uzlazno",
+    sort: "vrijeme-uzlazno",
     lokacija: "",
     vrijeme: "",
     vrsta: "",
@@ -69,8 +69,8 @@ function Filter(props) {
               value={filter.sort}
               onChange={handleChange}
             >
-              <MenuItem value="uzlazno">Vrijeme uzlazno</MenuItem>
-              <MenuItem value="silazno">Vrijeme silazno</MenuItem>
+              <MenuItem value="vrijeme-uzlazno">Vrijeme uzlazno</MenuItem>
+              <MenuItem value="vrijeme-silazno">Vrijeme silazno</MenuItem>
               <MenuItem value="zainteresirani-uzlazno">
                 Broj zainteresiranih uzlazno
               </MenuItem>
