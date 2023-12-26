@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +47,7 @@ public class DogadajController {
     public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (id != korisnik.getId())
+        if (!Objects.equals(id,korisnik.getId()))
             return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
 
         try {
@@ -71,7 +72,7 @@ public class DogadajController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (dto.getOrganizator().getId() != korisnik.getId() && korisnik.getUloga() != Uloga.ADMIN )
+        if (!Objects.equals(dto.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
         if (serviceDogadaj.updateDogadaj(dto,id)) {
@@ -137,7 +138,7 @@ public class DogadajController {
             @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik,
             @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija,
             @AuthenticationPrincipal Korisnik korisnikAut) {
-        if (id_korisnik != korisnikAut.getId())
+        if (!Objects.equals(id_korisnik, korisnikAut.getId()))
             return ResponseEntity.badRequest().body("Hocete stvoriti zainteresiranost za osobu koja niste vi.");
       try {
             Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);

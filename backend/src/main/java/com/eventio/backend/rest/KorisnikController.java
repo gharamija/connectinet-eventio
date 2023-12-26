@@ -17,6 +17,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -62,7 +63,7 @@ public class KorisnikController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestKorisnikDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {
-        if (trenutni.getId() != id)
+        if (!Objects.equals(trenutni.getId(), id))
             return ResponseEntity.badRequest().body("Ne možete promjeniti tudi racun");
         Korisnik korisnik = serviceKorisnik.findById(id).get();
         if (dto.getUloga() != Uloga.POSJETITELJ) {
