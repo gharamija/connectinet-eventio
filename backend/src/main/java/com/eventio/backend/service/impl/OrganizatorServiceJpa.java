@@ -40,6 +40,10 @@ public class OrganizatorServiceJpa implements OrganizatorService {
     }
 
     @Override
+    public Organizator Spremi(Organizator organizator){
+        return repository.saveAndFlush(organizator);
+    }
+    @Override
     public boolean updateOrganizator(OrganizatorDTO dto, Integer id){
         Organizator user = repository.findById(id).get();
         if (!"".equals(dto.getPassword()))

@@ -10,4 +10,5 @@ public interface OrganizatorService {
 
     boolean registerOrganizator(OrganizatorDTO dto);
     boolean updateOrganizator(OrganizatorDTO dto, Integer id);
+    Organizator Spremi(Organizator organizator);
 }
