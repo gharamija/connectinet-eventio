@@ -12,6 +12,6 @@ public interface KorisnikService extends UserDetailsService {
     Optional<Korisnik> findById(Integer id);
     Optional<Korisnik> findByUsername(String username);
     Optional<Korisnik> findByEmail(String email);
-
     boolean registerUser(requestKorisnikDTO dto);
+    boolean updateUser(requestKorisnikDTO dto, Integer id);
 }

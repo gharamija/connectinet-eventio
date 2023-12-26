@@ -1,6 +1,7 @@
 package com.eventio.backend.service;
 
 import com.eventio.backend.domain.*;
+import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 
 import java.time.LocalDateTime;
@@ -17,4 +18,5 @@ public interface DogadajService {
   Optional<List<Dogadaj>> findByVrijemePocetkaBetween(LocalDateTime start, LocalDateTime end);
   public Optional<List<Dogadaj>> findByOrganizatorAndVrijemePocetkaBetween(Organizator organizator, LocalDateTime start, LocalDateTime end);
   public Dogadaj spremiDogadaj(Dogadaj dogadaj);
+  public boolean updateDogadaj(requestDogadajDTO dto, Integer id);
 }
