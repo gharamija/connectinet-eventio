@@ -1,5 +1,6 @@
 package com.eventio.backend.rest;
 import com.eventio.backend.domain.*;
+import com.eventio.backend.dto.RecenzijaDTO;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.*;
@@ -27,6 +28,8 @@ public class DogadajController {
     private KorisnikService serviceKorisnik;
     @Autowired
     private ZainteresiranostService serviceZainteresiranost;
+    @Autowired
+    private RecenzijaService serviceRecnzija;
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
@@ -156,8 +159,21 @@ public class DogadajController {
         }
     }
     @PostMapping("/recenzija")
-    public ResponseEntity<String> stvoriRecenziju(){
-        return null;
+    public ResponseEntity<String> stvoriRecenziju(@Valid @RequestBody RecenzijaDTO dto){
+        try {
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnik_id());
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadaj_id());
+            if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
+                Korisnik korisnik = optionalKorisnik.get();
+                Dogadaj dogadaj = optionalDogadaji.get();
+                serviceRecnzija.spremiRecenziju(korisnik,dogadaj,dto);
+                return ResponseEntity.ok("Uspješno spremljena recenzija.");
+            } else
+                return ResponseEntity.badRequest().body("Korisnik ili dogadaj s navedenim id ne postoji.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Greška prilikom spremanja recenzije.");
+        }
     }
 
 

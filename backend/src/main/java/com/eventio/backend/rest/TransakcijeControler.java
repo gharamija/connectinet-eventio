@@ -20,7 +20,7 @@ private OrganizatorService organizatorService;
         return Plati(95,id);
     }
 
-    @PostMapping("/banka")
+    @PostMapping("/banka/{id}")
     public ResponseEntity<String> PlacanjeBanka(@PathVariable(name = "id") Integer id){
         return Plati(90,id);
     }

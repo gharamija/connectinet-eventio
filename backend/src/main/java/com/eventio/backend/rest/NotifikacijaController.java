@@ -58,8 +58,8 @@ public class NotifikacijaController {
                                          @RequestBody NotifikacijaDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik){
         // dodat u konstruktoru dogadaja pregledavanje svih obavjesti te lokacije ili vrste i slanje mailova
-       // if (id != korisnik.getId())
-        //    return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
+       if (Objects.equals(id, korisnik.getId()))
+        return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
         try {
             Optional<Korisnik> optionalKorisnik = korisnikService.findById(id);
             if (optionalKorisnik.isPresent()) {

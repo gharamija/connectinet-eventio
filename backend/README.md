@@ -77,9 +77,19 @@ npr.
     "zainteresiranosti": [LISTA zainteresiranostResponseDTO]
 }
 
-Izgled recenzijaResponseDTO
+Izgled recenzijaResponseDTO u izradi
 
-Izgled zainteresiranostResponseDTO
+Izgled zainteresiranostResponseDTO  u izradi 
+
+/recenzija  POST prima recenzijaDTO npr.
+{
+  "dogadaj_id": 5,
+  "kornisnik_id": 2,
+  "tekst": "Ovo je odličan događaj!",
+  "ocjena": 4
+}
+
+
 
 ## /user
 /all    - samo admin  GET
@@ -130,4 +140,21 @@ vraća
 
 ## /notification
 
-/{id} vraća listu notifikacija pojedinog korisnika 
+/{id} GET vraća listu notifikacija pojedinog korisnika 
+
+/izrada/{id} POST  u bodyu prima NotifikacijaDTO
+
+izgled NotifikacijaDTO npr.
+{
+        "vrsta": "MAKSIMIR",
+        "lokacija": "SPORT"
+}
+
+/{id notifikacije} POST radi brisanje željene notifikacije
+
+## /transakcija 
+/paypal/{id}   POST
+s 95% uspješnosti vraća 200 ok, ako je ok tada i postavlja zastavicu organizatora clanarina na true
+
+/banka/{id}   POST 
+s 90% uspješnosti vraća 200 ok, ako je ok tada i postavlja zastavicu organizatora clanarina na true
