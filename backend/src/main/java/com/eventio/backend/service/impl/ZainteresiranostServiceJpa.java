@@ -28,7 +28,7 @@ public class ZainteresiranostServiceJpa implements ZainteresiranostService {
   }
    @Override
    public Zainteresiranost spremiZainteresiranost(Zainteresiranost zainteresiranost) {
-        return repository.save(zainteresiranost);
+        return zainteresiranostRepository.save(zainteresiranost);
+  }
   // Implementirajte ostale metode prema potrebama
-
 }

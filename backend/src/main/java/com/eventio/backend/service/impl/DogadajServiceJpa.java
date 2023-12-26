@@ -1,6 +1,7 @@
 package com.eventio.backend.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -96,5 +97,96 @@ public class DogadajServiceJpa implements DogadajService {
     } else {
       return false;
     }
+  }
+  @Override
+  public List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort) {
+    Comparator<Dogadaj> comparator = switch (sort) {
+      case "vrijeme-silazno" -> Comparator.comparing(Dogadaj::getVrijemePocetka).reversed();
+      case "zainteresiranost-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
+      case "zainteresiranost-silazno" -> Comparator.comparing(Dogadaj::zainteresiranost).reversed();
+      default -> Comparator.comparing(Dogadaj::getVrijemePocetka);
+    };
+
+    filtriraniDogađaji.sort(comparator);
+
+    return filtriraniDogađaji;
+  }
+  @Override
+  public List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
+    if (lokacija != null) {
+      sviDogađaji = sviDogađaji.stream()
+              .filter(dogadaj -> dogadaj.getLokacija().equals(lokacija))
+              .collect(Collectors.toList());
+    }
+
+    if (vrijeme != null) {
+      LocalDateTime trenutnoVrijeme = LocalDateTime.now();
+
+      switch (vrijeme) {
+        case "24 sata":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(1))
+                          && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(1)))
+                  .collect(Collectors.toList());
+          break;
+
+        case "7 dana":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(7))
+                          && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(7)))
+                  .collect(Collectors.toList());
+          break;
+
+        case "30 dana":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(30))
+                          && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(30)))
+                  .collect(Collectors.toList());
+          break;
+        default:
+          break;
+      }
+    }
+
+    if (vrsta != null) {
+      sviDogađaji = sviDogađaji.stream()
+              .filter(dogadaj -> dogadaj.getVrsta().equals(vrsta))
+              .collect(Collectors.toList());
+    }
+
+    if (zavrseno != null) {
+      switch (zavrseno) {
+        case "Da":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> dogadaj.getVrijemePocetka().isBefore(LocalDateTime.now()))
+                  .collect(Collectors.toList());
+          break;
+        case "Ne":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(LocalDateTime.now()))
+                  .collect(Collectors.toList());
+          break;
+        default:
+          break;
+      }
+    }
+    if (placanje != null) {
+      switch (placanje) {
+        case "placa se":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
+                  .collect(Collectors.toList());
+          break;
+        case "besplatno":
+          sviDogađaji = sviDogađaji.stream()
+                  .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
+                  .collect(Collectors.toList());
+          break;
+        default:
+          break;
+      }
+    }
+    return sviDogađaji;
+
   }
 }

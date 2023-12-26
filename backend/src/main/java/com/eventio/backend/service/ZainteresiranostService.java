@@ -11,6 +11,5 @@ public interface ZainteresiranostService {
   public Zainteresiranost spremiZainteresiranost(Zainteresiranost zainteresiranost);
   List<Zainteresiranost> findByPosjetitelj(Korisnik posjetitelj);
   List<Zainteresiranost> findByPosjetiteljAndKategorijaIn(Korisnik posjetitelj, List<Kategorija> kategorije);
-  // Dodajte ostale metode prema potrebama
 }
 
