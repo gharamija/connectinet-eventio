@@ -1,6 +1,5 @@
 package com.eventio.backend.rest;
 import com.eventio.backend.domain.*;
-import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.*;
@@ -13,15 +12,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/dogadaj")
 public class DogadajController {
-// ne znam dal negdje treba dodat provjere dal je logiran korisik ili ce to front odradit
     @Autowired
     private DogadajService serviceDogadaj;
     @Autowired
@@ -30,10 +26,6 @@ public class DogadajController {
     private KorisnikService serviceKorisnik;
     @Autowired
     private ZainteresiranostService serviceZainteresiranost;
-    @Autowired
-    private NotifikacijaService serviseNotifikacije;
-
-
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
@@ -49,9 +41,6 @@ public class DogadajController {
 
         return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
     }
-
-
-
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada/{id}")
     public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
@@ -102,7 +91,6 @@ public class DogadajController {
             return serviceDogadaj.pretvori_DTO(Optionaldogadaji.get());
         }
             return null;
-
     }
     @GetMapping("/user/{id}")
     public List<responseDogadajDTO> prikazDogUsera(@PathVariable(name = "id") Integer id,
@@ -143,8 +131,6 @@ public class DogadajController {
         }
         return null;
     }
-
-
     @PostMapping("/zaiteresiranost")
     public ResponseEntity<String> stvoriZainteresitarnost(
             @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
@@ -166,30 +152,6 @@ public class DogadajController {
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("Greška prilikom spremanja zainteresiranosti.");
-        }
-    }
-    @PostMapping("/obavijest/{id}")
-    public ResponseEntity<String> stvoriObavijest(
-            @PathVariable(name = "id") Integer id_korisnik,
-            @Valid @RequestBody NotifikacijaDTO dto,
-            @AuthenticationPrincipal Korisnik Kor) {
-        if (id_korisnik != Kor.getId())
-            return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
-
-        // dodat pregeldavanje obavjesti pri stvaranju novog dogadaja u konstruktor dogadaja
-        try {
-            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
-            if (optionalKorisnik.isPresent()) {
-                Korisnik korisnik = optionalKorisnik.get();
-                Notifikacija notifikacija = new Notifikacija(dto);
-                notifikacija.setPosjetitelj(korisnik);
-                serviseNotifikacije.spremi(notifikacija);
-                return ResponseEntity.ok("Uspješno spremljena notifikacija.");
-            } else
-                return ResponseEntity.badRequest().body("Korisnik s navedenim id ne postoji.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body("Greška prilikom spremanja obavjesti.");
         }
     }
     @PostMapping("/recenzija")

@@ -8,6 +8,7 @@ import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.service.KorisnikService;
 import com.eventio.backend.service.NotifikacijaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -52,6 +53,7 @@ public class NotifikacijaController {
     public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
                                          @RequestBody NotifikacijaDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik){
+        // dodat u konstruktoru dogadaja pregledavanje svih obavjesti te lokacije ili vrste i slanje mailova
         if (id != korisnik.getId())
             return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
         try {
@@ -69,4 +71,5 @@ public class NotifikacijaController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
+
 }
