@@ -1,11 +1,9 @@
 package com.eventio.backend.rest;
 import com.eventio.backend.domain.*;
+import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
-import com.eventio.backend.service.DogadajService;
-import com.eventio.backend.service.KorisnikService;
-import com.eventio.backend.service.OrganizatorService;
-import com.eventio.backend.service.ZainteresiranostService;
+import com.eventio.backend.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +30,8 @@ public class DogadajController {
     private KorisnikService serviceKorisnik;
     @Autowired
     private ZainteresiranostService serviceZainteresiranost;
+    @Autowired
+    private NotifikacijaService serviseNotifikacije;
 
 
     @GetMapping("/filter")
@@ -149,7 +149,10 @@ public class DogadajController {
     public ResponseEntity<String> stvoriZainteresitarnost(
             @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
             @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik,
-            @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija){
+            @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija,
+            @AuthenticationPrincipal Korisnik korisnikAut) {
+        if (id_korisnik != korisnikAut.getId())
+            return ResponseEntity.badRequest().body("Hocete stvoriti zainteresiranost za osobu koja niste vi.");
       try {
             Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
             Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(id_dogadaj);
@@ -165,11 +168,29 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja zainteresiranosti.");
         }
     }
-    @PostMapping("/obavijest")
+    @PostMapping("/obavijest/{id}")
     public ResponseEntity<String> stvoriObavijest(
-            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
-            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik) {
-        return null;
+            @PathVariable(name = "id") Integer id_korisnik,
+            @Valid @RequestBody NotifikacijaDTO dto,
+            @AuthenticationPrincipal Korisnik Kor) {
+        if (id_korisnik != Kor.getId())
+            return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
+
+        // dodat pregeldavanje obavjesti pri stvaranju novog dogadaja u konstruktor dogadaja
+        try {
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
+            if (optionalKorisnik.isPresent()) {
+                Korisnik korisnik = optionalKorisnik.get();
+                Notifikacija notifikacija = new Notifikacija(dto);
+                notifikacija.setPosjetitelj(korisnik);
+                serviseNotifikacije.spremi(notifikacija);
+                return ResponseEntity.ok("Uspješno spremljena notifikacija.");
+            } else
+                return ResponseEntity.badRequest().body("Korisnik s navedenim id ne postoji.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Greška prilikom spremanja obavjesti.");
+        }
     }
     @PostMapping("/recenzija")
     public ResponseEntity<String> stvoriRecenziju(){
