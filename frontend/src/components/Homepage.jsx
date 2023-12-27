@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Footer from "./Footer";
-import UserList from "./UserList.jsx";
 import Filter from "./Filter.jsx";
 import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";

@@ -3,7 +3,6 @@ import {IdContext} from "../../App";
 import {Alert, Box, Button, Collapse, Container, Grid, TextField, Typography} from "@mui/material";
 import Editable from "../Editable";
 import Notifications from "../Notifications";
-import Footer from "../Footer";
 
 const organizatorProfile = () => {
 

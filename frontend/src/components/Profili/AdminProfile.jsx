@@ -2,7 +2,6 @@ import {useContext, useEffect, useState} from "react";
 import {Alert, Box, Button, Collapse, Container, Divider, Grid, TextField, Typography} from "@mui/material";
 import {IdContext} from "../../App";
 import Editable from "../Editable";
-import Footer from "../Footer";
 
 const AdminProfile = () => {
 
