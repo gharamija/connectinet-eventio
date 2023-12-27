@@ -1,8 +1,8 @@
-import UserProfile from "./UserProfile";
+import UserProfile from "./Profili/UserProfile";
 import {RoleContext} from "../App";
 import {useContext} from "react";
-import OrganizatorProfile from "./OrganizatorProfile";
-import AdminProfile from "./AdminProfile";
+import OrganizatorProfile from "./Profili/OrganizatorProfile";
+import AdminProfile from "./Profili/AdminProfile";
 
 function Profile() {
 
