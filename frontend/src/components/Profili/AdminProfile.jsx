@@ -146,9 +146,13 @@ const AdminProfile = () => {
                         Cijena pretplate
                     </Typography>
                     <div style={{textAlign: 'center', margin: '20px'}}>
-                        <Typography variant="body1" gutterBottom>
-                            Current Price: €{subscriptionPrice}
-                        </Typography>
+                        <TextField
+                            id="Pretplata"
+                            label="Pretplata"
+                            value={"Cijena pretplate: " + subscriptionPrice + "€"}
+                            style={{ marginBottom: '10px' }}
+                        />
+                        <br/>
                         {isEditing ? (
                             <TextField
                                 type="number"
@@ -157,6 +161,7 @@ const AdminProfile = () => {
                                 onChange={(e) => setSubscriptionPrice(parseFloat(e.target.value))}
                                 variant="outlined"
                                 size="small"
+                                style={{ marginBottom: '10px' }}
                             />
                         ) : null}
                         <br/>
@@ -165,16 +170,17 @@ const AdminProfile = () => {
                             color="primary"
                             onClick={handleEditClick}
                             disabled={isEditing}
-                            style={{margin: '10px'}}
+                            size="large"
+                            style={{ marginRight: '20px' }}
                         >
                             Edit
                         </Button>
                         <Button
                             variant="contained"
                             color="primary"
+                            size="large"
                             onClick={handleSaveClick}
                             disabled={!isEditing}
-                            style={{margin: '10px'}}
                         >
                             Save
                         </Button>
