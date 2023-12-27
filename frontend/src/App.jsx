@@ -66,6 +66,7 @@ function App() {
                                 <Route path="/korisnici" element={<UserList />}/>
                                 <Route path="*" element={<Nopage/>}/>
                             </Routes>
+                            <Footer/>
                         </Router>
                     </UsernameContext.Provider>
                 </IdContext.Provider>

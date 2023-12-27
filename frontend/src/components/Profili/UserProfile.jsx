@@ -143,7 +143,6 @@ const UserProfile = () => {
                     </Grid>
                 </Container>
                 <Notifications id={id}/>
-                <Footer/>
             </Box>
         </>
     );

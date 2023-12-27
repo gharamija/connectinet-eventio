@@ -202,7 +202,6 @@ const organizatorProfile = () => {
                     </Grid>
                 </Container>
                 <Notifications id={id}/>
-                <Footer/>
             </Box>
         </>
     );

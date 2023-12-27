@@ -25,7 +25,6 @@ function Homepage() {
           <Add />
         </Fab>
       </Container>
-      <Footer />
       <AddDogadajDialog
         handleClose={() => setDialogOpen(false)}
         open={dialogOpen}
