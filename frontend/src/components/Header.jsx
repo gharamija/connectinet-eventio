@@ -17,16 +17,12 @@ function Header(props) {
         console.log("Dohvacanje mojih dogadaja"); // trenutno samo ispis sto se treba desiti
     }
 
-    function getKorisnici() {
-        console.log("Dohvacanje korisnika"); // trenutno samo ispis sto se treba desiti
-    }
-
     const pagesPiO = [ // PiO = Posjetitelj i Organizator
         {label: "Moji događaji", onClick: getMojiDogadaji},
         {label: "Svi događaji", onClick: () => navigate("/")},
     ];
     const pagesAdmin = [
-        {label: "Svi korisnici", onClick: getKorisnici},
+        {label: "Svi korisnici", onClick: () => navigate("/korisnici")},
         {label: "Svi događaji", onClick: () => navigate("/")},
     ];
     const settings = [

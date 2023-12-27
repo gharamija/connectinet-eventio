@@ -8,6 +8,7 @@ import {Box} from "@mui/material";
 import Homepage from "./components/Homepage.jsx";
 import Profile from "./components/Profile.jsx";
 import Header from "./components/Header";
+import UserList from "./components/UserList";
 
 const RoleContext = createContext();
 const IdContext = createContext();
@@ -62,6 +63,7 @@ function App() {
                             <Routes>
                                 <Route exact path="/" element={<Homepage />}/>
                                 <Route path="/profil" element={<Profile />}/>
+                                <Route path="/korisnici" element={<UserList />}/>
                                 <Route path="*" element={<Nopage/>}/>
                             </Routes>
                         </Router>

@@ -2,7 +2,7 @@ import * as React from "react";
 import User from "./User.jsx";
 import { Box } from "@mui/material";
 
-function UserList(props) {
+function UserList() {
   const [isAllowed, setIsAllowed] = React.useState(false);
   const [users, setUsers] = React.useState([]);
 

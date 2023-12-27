@@ -16,7 +16,6 @@ function Homepage() {
         sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
       >
         <Filter setQuery={setQuery} />
-        <UserList />
         <Fab
           color="primary"
           aria-label="add"
