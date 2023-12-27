@@ -9,9 +9,8 @@ function Header(props) {
     const navigate = useNavigate();
 
     function logout() {
-        fetch("/logout").then(() => {
-            props.onLogout();
-        });
+        props.onLogout();
+        navigate("/");
     }
 
     function getMojiDogadaji() {

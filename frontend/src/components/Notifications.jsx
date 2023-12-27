@@ -27,11 +27,11 @@ function Notifications({ id }) {
   }
 
   useEffect(() => {
-    dohvati();
-    /*setPretplate([
+    //dohvati();
+    setPretplate([
       { id: "1", vrsta: "UMJETNOST", lokacija: "NOVI_ZAGREB_ISTOK" },
       { id: "2", vrsta: "SPORT", lokacija: "MAKSIMIR" },
-    ]);*/
+    ]);
   }, []);
 
   function onChange(event) {

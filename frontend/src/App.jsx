@@ -6,7 +6,8 @@ import Nopage from "./components/Nopage.jsx";
 import Footer from "./components/Footer";
 import {Box} from "@mui/material";
 import Homepage from "./components/Homepage.jsx";
-import UserProfile from "./components/UserProfile.jsx";
+import Profile from "./components/Profile.jsx";
+import Header from "./components/Header";
 
 const RoleContext = createContext();
 const IdContext = createContext();
@@ -57,9 +58,10 @@ function App() {
                 <IdContext.Provider value={id}>
                     <UsernameContext.Provider value={username}>
                         <Router>
+                            <Header onLogout={onLogout}/>
                             <Routes>
-                                <Route exact path="/" element={<Homepage onLogout={onLogout}/>}/>
-                                <Route path="/profil" element={<UserProfile onLogout={onLogout}/>}/>
+                                <Route exact path="/" element={<Homepage />}/>
+                                <Route path="/profil" element={<Profile />}/>
                                 <Route path="*" element={<Nopage/>}/>
                             </Routes>
                         </Router>
