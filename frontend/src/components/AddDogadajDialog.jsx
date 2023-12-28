@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -17,7 +17,8 @@ import vrste from "./Vrste";
 import lokacije from "./Lokacije";
 import { IdContext } from "../App";
 
-function AddDogadajDialog({ handleClose, open }) {
+//ako se u props daje dogadajId, onda znaci edit postojeceg događaja
+function AddDogadajDialog({ handleClose, open, dogadajId }) {
   const id = useContext(IdContext);
 
   const [error, setError] = useState("");
@@ -31,6 +32,14 @@ function AddDogadajDialog({ handleClose, open }) {
     opis: "",
     galerija: "",
   });
+
+  useEffect(() => {
+    if (dogadajId) {
+      fetch(`/api/dogadaj/${dogadajId}`).then((response) =>
+        response.json().then((dogadaj) => setForm(dogadaj))
+      );
+    }
+  }, []);
 
   function onChange(event) {
     const { name, value } = event.target;
@@ -50,7 +59,10 @@ function AddDogadajDialog({ handleClose, open }) {
       },
       body: JSON.stringify(form),
     };
-    fetch(`/api/dogadaj/izrada/${id}`, options).then((response) => {
+    let url = dogadajId
+      ? `/api/dogadaj/update/${dogadajId}`
+      : `/api/dogadaj/izrada/${id}`;
+    fetch(url, options).then((response) => {
       if (response.status === 200) {
         handleClose();
       } else {
@@ -61,7 +73,9 @@ function AddDogadajDialog({ handleClose, open }) {
 
   return (
     <Dialog onClose={handleClose} open={open} onSubmit={onSubmit}>
-      <DialogTitle>Dodavanje Događaja</DialogTitle>
+      <DialogTitle>
+        {dogadajId ? "Izmjena Događaja" : "Dodavanje Događaja"}
+      </DialogTitle>
       <Box component="form" sx={{ m: 2 }}>
         <TextField
           label="naziv"
@@ -159,7 +173,7 @@ function AddDogadajDialog({ handleClose, open }) {
         <Grid container spacing={1} sx={{ mt: 1 }}>
           <Grid item xs={6}>
             <Button type="submit" variant="contained" fullWidth size="large">
-              Dodaj
+              {dogadajId ? "Spremi" : "Dodaj"}
             </Button>
           </Grid>
           <Grid item xs={6}>
