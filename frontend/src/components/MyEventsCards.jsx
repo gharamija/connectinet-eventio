@@ -7,7 +7,7 @@ import CustomCard from "./CustomCard.jsx";
 import EditDelete from "./EditDelete.jsx";
 
 
-export default function Cards(props) {
+export default function MyEventsCards(props) {
     const [events, setEvents] = React.useState([]); // ovdje se spremaju eventi za pojedinog korisnika koji ce se prikazati
     const role = useContext(RoleContext);
     const id = useContext(IdContext);
@@ -19,7 +19,6 @@ export default function Cards(props) {
             fetch(`/api/user/${id}`).then((response) => {
                 if (response.ok) {
                     response.json().then((events) => {
-                        const initialExpandedState = Array(events.length).fill(false);
                         setEvents(events);
                     });
                 }
@@ -28,7 +27,6 @@ export default function Cards(props) {
             fetch(`/api/organizator/${id}`).then((response) => {
                 if (response.ok) {
                     response.json().then((events) => {
-                        const initialExpandedState = Array(events.length).fill(false);
                         setEvents(events);
                     });
                 }
@@ -37,20 +35,12 @@ export default function Cards(props) {
             fetch(`/api/filter`).then((response) => {
                 if (response.ok) {
                     response.json().then((events) => {
-                        const initialExpandedState = Array(events.length).fill(false);
                         setEvents(events);
                     });
                 }
             });
         } else {
-            fetch(`/api/filter${query}`).then((response) => {
-                if (response.ok) {
-                    response.json().then((events) => {
-                        const initialExpandedState = Array(events.length).fill(false);
-                        setEvents(events);
-                    });
-                }
-            });
+            console.log('Za trenutnog Aliena nema dogadjaja na Zemlji');
         }
     }, [role, id, query]);
 
@@ -58,9 +48,12 @@ export default function Cards(props) {
         <Box>
             <ul>
                 {events.map((event) => (
-                    <CustomCard event={event}>
-                        {role === "ADMIN" && <EditDelete />}
-                    </CustomCard>
+                    <InterestCounter interest={99}>
+                        <CustomCard event={event}>
+                            {role === "ADMIN" && <EditDelete />}
+                            {role === "ORGANIZATOR" && event.organizator === id && <EditDelete />}
+                        </CustomCard>
+                    </InterestCounter>
                 ))}
             </ul>
         </Box>

@@ -6,7 +6,7 @@ import Filter from "./Filter.jsx";
 import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import AddDogadajDialog from "./AddDogadajDialog.jsx";
-import Cards from "./Cards.jsx";
+import MyEventsCards from "./MyEventsCards.jsx";
 
 const QueryContext = createContext();
 
@@ -21,7 +21,7 @@ function Homepage({ onLogout }) {
         sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
       >
         <Filter setQuery={setQuery} />
-        <Cards />
+        <MyEventsCards />
         <Fab
           color="primary"
           aria-label="add"
