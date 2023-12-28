@@ -1,24 +1,19 @@
 import { useState } from "react";
-import Header from "./Header.jsx";
-import Footer from "./Footer";
-import UserList from "./UserList.jsx";
 import Filter from "./Filter.jsx";
 import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import AddDogadajDialog from "./AddDogadajDialog.jsx";
 
-function Homepage({ onLogout }) {
+function Homepage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [query, setQuery] = useState("");
 
   return (
     <Box sx={{ marginBottom: 15 }}>
-      <Header onLogout={onLogout} />
       <Container
         sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
       >
         <Filter setQuery={setQuery} />
-        <UserList />
         <Fab
           color="primary"
           aria-label="add"
@@ -28,7 +23,6 @@ function Homepage({ onLogout }) {
           <Add />
         </Fab>
       </Container>
-      <Footer />
       <AddDogadajDialog
         handleClose={() => setDialogOpen(false)}
         open={dialogOpen}

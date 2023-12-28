@@ -1,10 +1,10 @@
 function Nopage() {
 
 
-
     return (
-        <h1>EROORR NESTO NE VALJA</h1>
+        <h1>PAGE NOT FOUND</h1>
     );
 
 }
+
 export default Nopage
