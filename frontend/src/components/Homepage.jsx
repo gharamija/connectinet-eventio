@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer";
 import UserList from "./UserList.jsx";
@@ -6,6 +6,9 @@ import Filter from "./Filter.jsx";
 import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import AddDogadajDialog from "./AddDogadajDialog.jsx";
+import Cards from "./Cards.jsx";
+
+const QueryContext = createContext();
 
 function Homepage({ onLogout }) {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -18,7 +21,7 @@ function Homepage({ onLogout }) {
         sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
       >
         <Filter setQuery={setQuery} />
-        <UserList />
+        <Cards />
         <Fab
           color="primary"
           aria-label="add"
@@ -38,3 +41,4 @@ function Homepage({ onLogout }) {
 }
 
 export default Homepage;
+export { QueryContext };
