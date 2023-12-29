@@ -23,13 +23,14 @@
 
 ### Mapping
 ## /dogadaj
-/filter - putem urla šalje:
- sort ("uzlazno" ili "silazno" - po vremenu, po interesu)
+/filter - putem urla šalje:   GET vraća List<responseDogadajDTO>
+ sort ("uzlazno" ili "silazno" - po vremenu, po interesu) 
+        -> primjer: "vrijeme-uzlazno" ili "zainteresiranost-silazno" 
  lokacija (enum poštujte CAPSLOCK)
- vrijeme (1 dan, 7 dana, 8 dana)
+ vrijeme (24 sata, 7 dana, 30 dana)
  vrsta(enum poštujte CAPSLOCK)
- zavrseno (0 - prikazuje samo aktivne, 1 - prikazuje samo završene, kad ne pošaljete ništa oboje)
- placeno  (0 - prikaz bez placanja, 1 - prikaz s placanje, kad ne pošaljete ništa oboje)
+ zavrseno (Ne - prikazuje samo aktivne, Da - prikazuje samo završene, kad ne pošaljete ništa oboje)
+ placeno  (besplatno - prikaz bez placanja, placa se - prikaz s placanje, kad ne pošaljete ništa oboje)
 
 /izrada/?id=INT       POST METODA  (id organizatora) SAMO ORGANIZATOR
 {
@@ -43,10 +44,15 @@
   "galerija": "http://putanja-do-galerije.com"
 }
 
-/organizator/{id}
+/update/{id}     PUT metoda
+Body ko na /izradi
+Ako je id na dogadaju i na trenutnom korisniku isti ili ako je korisnik admin
+--> dogadaj updatean 
+
+/organizator/{id}  GET
 Vraća listu pojedinacni responseDogadajDTO od pojedinog organizatora
 
-/user/{id}
+/user/{id}  GET
 Vraća listu pojedinacni responseDogadajDTO na koje je reagiro pojedini user
 
 /{id}
@@ -67,19 +73,88 @@ npr.
     "cijenaUlaznice": "100.00",
     "opis": "Opis događaja",
     "galerija": "http://putanja-do-galerije.com",
-    "recenzije": [],
-    "zainteresiranosti": []
+    "recenzije": [LISTA recenzijaResponseDTO],
+    "zainteresiranosti": [LISTA zainteresiranostResponseDTO]
 }
 
+Izgled recenzijaResponseDTO u izradi
+
+Izgled zainteresiranostResponseDTO  u izradi 
+
+/recenzija  POST prima recenzijaDTO npr.
+{
+  "dogadaj_id": 5,
+  "kornisnik_id": 2,
+  "tekst": "Ovo je odličan događaj!",
+  "ocjena": 4
+}
+
+
+
 ## /user
-/all    - samo admin
+/all    - samo admin  GET
 vraća sve korisnike
 
-/register
+/register  POST
 preko foruma kreira novog korisnika
 
-/validate
+/   GEZ
 endpoint koji vraća resposeKorisnikDTO. (id, username, email i ulogu)
 
+/update/{id}  PUT
+Body
+{
+  "username": "ime",
+  "email": "email@email",
+  "password": "",      // ukoliko dolazi prazna ne mijenja se
+  "uloga": "POSJETITELJ"
+}
+
 ## /organizator
-... nastavit
+
+/register
+preko foruma kreira novog organizatora
+
+/update/{id}
+{
+    "username": "Franjo", 
+    "email": "franjoRazarac@gmail.com", 
+    "uloga": "ORGANIZATOR",
+    "nazivOrganizacije": "Eventio",
+    "adresa": "Eventovska 24",
+    "poveznica": "http://putanja-do-eventovaca.com",
+}
+
+/  GET
+vraća 
+{
+    "username": "org",
+    "email": "organizator@org",
+    "password": null,
+    "uloga": "ORGANIZATOR",
+    "nazivOrganizacije": "Eventio Corp",
+    "adresa": "Adresa BB",
+    "poveznica": "http://www.eventio-corp.com",
+    "clanarina": false  
+}
+
+## /notification
+
+/{id} GET vraća listu notifikacija pojedinog korisnika 
+
+/izrada/{id} POST  u bodyu prima NotifikacijaDTO
+
+izgled NotifikacijaDTO npr.
+{
+        "vrsta": "MAKSIMIR",
+        "lokacija": "SPORT"
+}
+
+/{id notifikacije} POST radi brisanje željene notifikacije
+
+## /transakcija 
+/paypal/{id}   POST
+s 95% uspješnosti vraća 200 ok, ako je ok tada i postavlja zastavicu organizatora clanarina na true
+
+/banka/{id}   POST 
+s 90% uspješnosti vraća 200 ok, ako je ok tada i postavlja zastavicu organizatora clanarina na true

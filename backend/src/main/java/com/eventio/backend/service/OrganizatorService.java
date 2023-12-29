@@ -9,4 +9,6 @@ public interface OrganizatorService {
     Optional<Organizator> findById(Integer id);
 
     boolean registerOrganizator(OrganizatorDTO dto);
+    boolean updateOrganizator(OrganizatorDTO dto, Integer id);
+    Organizator Spremi(Organizator organizator);
 }
