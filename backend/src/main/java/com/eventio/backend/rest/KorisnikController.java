@@ -1,14 +1,10 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.domain.Notifikacija;
 import com.eventio.backend.domain.Uloga;
-import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.dto.requestKorisnikDTO;
 import com.eventio.backend.dto.responseKorisnikDTO;
 import com.eventio.backend.service.KorisnikService;
-import com.eventio.backend.service.NotifikacijaService;
-import com.eventio.backend.service.ZainteresiranostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +22,6 @@ public class KorisnikController {
 
     @Autowired
     private KorisnikService serviceKorisnik;
-    @Autowired
-    private NotifikacijaService serviseNotifikacije;
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
     public List<Korisnik> getAll() {
