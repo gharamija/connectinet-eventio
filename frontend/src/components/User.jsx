@@ -1,7 +1,11 @@
 function User(props) {
-  const { id, username } = props.user;
+    const {id, username, email, uloga, nazivOrganizacije, adresa, poveznica, clanarina} = props.user;
     return (
-        <p>{id} {username}</p>
+        <>
+            {(uloga === "POSJETITELJ" || uloga === "ADMIN") && <div>{id} {username} {email}</div>}
+            {uloga === "ORGANIZATOR" &&
+                <div>{id} {username} {email} {nazivOrganizacije} {adresa} {poveznica} {clanarina}</div>}
+        </>
     );
 }
 

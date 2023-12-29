@@ -1,6 +1,7 @@
 import * as React from "react";
 import User from "./User.jsx";
 import { Box } from "@mui/material";
+import EnhancedTable from "./TableComponents/EnhancedTable";
 
 function UserList() {
   const [isAllowed, setIsAllowed] = React.useState(false);
@@ -17,13 +18,16 @@ function UserList() {
 
   if (isAllowed) {
     return (
-      <Box>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>{<User user={user} />}</li>
-          ))}
-        </ul>
-      </Box>
+      // <Box>
+      //   <ul>
+      //     {users.map((user) => (
+      //       <li key={user.id}>{<User user={user} />}</li>
+      //     ))}
+      //   </ul>
+      // </Box>
+        <>
+          <EnhancedTable/>
+        </>
     );
   } else {
     return <Box>Ne smijete vidjeti sve korisnike</Box>;
