@@ -22,6 +22,12 @@
 - mvn spring-boot:run ili zelena strelica u Eventio razredu
 
 ### Mapping
+## Admin
+
+
+
+
+
 ## /dogadaj
 /filter - putem urla šalje:   GET vraća List<responseDogadajDTO>
  sort ("uzlazno" ili "silazno" - po vremenu, po interesu) 

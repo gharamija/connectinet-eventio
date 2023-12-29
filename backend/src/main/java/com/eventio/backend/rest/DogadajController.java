@@ -39,11 +39,30 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") String zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") String placanje){
 
-        List<Dogadaj> filtriraniDogađaji = serviceDogadaj.filtrirajDogađaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
+        List<Dogadaj> filtriraniDogađaji = serviceDogadaj.filtrirajDogadaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
 
-        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogađaje(filtriraniDogađaji, sort);
+        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogadaje(filtriraniDogađaji, sort);
 
         return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer dogadajId, @AuthenticationPrincipal Korisnik korisnik){
+        Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(dogadajId);
+        if (Optionaldogadaji.isPresent()) {
+            Dogadaj dogadaj = Optionaldogadaji.get();
+
+            if (!Objects.equals(dogadaj.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN)
+                return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
+
+            serviceDogadaj.izbrisiDogdaj(dogadaj);
+            return ResponseEntity.ok("Uspješno izbrisan događaj.");
+
+        } else
+            return ResponseEntity.badRequest().body("Ne postoji dogadaj s navedenim id-om.");
+
+
+        return ResponseEntity.badRequest().body("Greška prilikom brisanja događaja.");
     }
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada/{id}")
@@ -116,9 +135,9 @@ public class DogadajController {
                 if (OptreagiraniDogadaji.isPresent()){
                     List<Dogadaj> reagiraniDogadaji = OptreagiraniDogadaji.get();
                     if ("svrseni".equalsIgnoreCase(vrijemeFilter)) {
-                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Da",null);
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogadaje(reagiraniDogadaji, null,null,null,"Da",null);
                     } else if ("nesvrseni".equalsIgnoreCase(vrijemeFilter)) {
-                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Ne",null);
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogadaje(reagiraniDogadaji, null,null,null,"Ne",null);
                     }
                     return serviceDogadaj.pretvori_DTO(reagiraniDogadaji);
                 }

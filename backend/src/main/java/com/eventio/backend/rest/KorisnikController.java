@@ -28,6 +28,19 @@ public class KorisnikController {
         return serviceKorisnik.listAll();
     }
 
+    @Secured("ROLE_ADMIN")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable(name = "id") Integer korisnikId) {
+        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(korisnikId);
+        if (optionalKorisnik.isPresent()) {
+            Korisnik korisnik = optionalKorisnik.get();
+            serviceKorisnik.deleteUser(korisnik);
+            return ResponseEntity.ok("Uspješno izbrisan korisnik.");
+        }else {
+            return ResponseEntity.badRequest().body("Ne postoji korisnik s navedenim id-om.");
+        }
+    }
+
     @PostMapping("/register")
     public ResponseEntity<String> register(@Valid @ModelAttribute requestKorisnikDTO dto) {
         if (dto.getUloga() != Uloga.POSJETITELJ) {
