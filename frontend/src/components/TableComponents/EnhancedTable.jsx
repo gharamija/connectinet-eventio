@@ -13,25 +13,11 @@ import Switch from '@mui/material/Switch';
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableHead from "./EnhancedTableHead";
 
-function createData(id, name, calories, fat, carbs, secer) {
+function createData(id, username, email, uloga, nazivOrganizacije, adresa, poveznica, clanarina) {
     return {
-        id, name, calories, fat, carbs, secer,
+        id, username, email, uloga, nazivOrganizacije, adresa, poveznica, clanarina
     };
 }
-
-const rows = [createData(1, 'Cupcake', 305, 3.7, 67, 4.3),
-    createData(2, 'Donut', 452, 25.0, 51, 4.9),
-    createData(3, 'Eclair', 262, 16.0, 24, 6.0),
-    createData(4, 'Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData(5, 'Gingerbread', 356, 16.0, 49, 3.9),
-    createData(6, 'Honeycomb', 408, 3.2, 87, 6.5),
-    createData(7, 'Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData(8, 'Jelly Bean', 375, 0.0, 94, 0.0),
-    createData(9, 'KitKat', 518, 26.0, 65, 7.0),
-    createData(10, 'Lollipop', 392, 0.2, 98, 0.0),
-    createData(11, 'Marshmallow', 318, 0, 81, 2.0),
-    createData(12, 'Nougat', 360, 19.0, 9, 37.0),
-    createData(13, 'Oreo', 437, 18.0, 63, 4.0),];
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -60,9 +46,16 @@ function stableSort(array, comparator) {
 }
 
 
-function EnhancedTable() {
+function EnhancedTable(props) {
+
+    const users = props.users;
+    const role = props.role;
+    const rows = users.filter((item) => item.uloga === role).map((item) => createData(item.id, item.username, item.email, item.uloga, item.nazivOrganizacije,
+        item.adresa, item.poveznica, item.clanarina));
+
+
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('fat');
+    const [orderBy, setOrderBy] = React.useState('id');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
@@ -166,12 +159,12 @@ function EnhancedTable() {
                                     scope="row"
                                     padding="none"
                                 >
-                                    {row.name}
+                                    {row.id}
                                 </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.secer}</TableCell>
+                                <TableCell align="right">{row.username}</TableCell>
+                                <TableCell align="right">{row.email}</TableCell>
+                                <TableCell align="right">{row.uloga}</TableCell>
+                                <TableCell align="right">{row.nazivOrganizacije}</TableCell>
                             </TableRow>);
                         })}
                         {emptyRows > 0 && (<TableRow

@@ -30,7 +30,7 @@ function EnhancedTableHead(props) {
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
+                        align={headCell.numeric ? 'left' : 'right'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
@@ -55,34 +55,34 @@ function EnhancedTableHead(props) {
 
 const headCells = [
     {
-        id: 'name',
-        numeric: false,
+        id: 'id',
+        numeric: true,
         disablePadding: true,
-        label: 'Dessert (100g serving)',
+        label: 'ID korisnika',
     },
     {
-        id: 'calories',
-        numeric: true,
+        id: 'username',
+        numeric: false,
         disablePadding: false,
-        label: 'Calories',
+        label: 'Username',
     },
     {
-        id: 'fat',
-        numeric: true,
+        id: 'email',
+        numeric: false,
         disablePadding: false,
-        label: 'Fat (g)',
+        label: 'Email',
     },
     {
-        id: 'carbs',
-        numeric: true,
+        id: 'uloga',
+        numeric: false,
         disablePadding: false,
-        label: 'Carbs (g)',
+        label: 'uloga',
     },
     {
-        id: 'secer',
-        numeric: true,
+        id: 'Naziv organizacije',
+        numeric: false,
         disablePadding: false,
-        label: 'secer (g)',
+        label: 'Naziv organizacije',
     },
 ];
 
