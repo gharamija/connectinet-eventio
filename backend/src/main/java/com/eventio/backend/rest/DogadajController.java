@@ -1,33 +1,35 @@
 package com.eventio.backend.rest;
-import com.eventio.backend.domain.Dogadaj;
-import com.eventio.backend.domain.Kvartovi;
-import com.eventio.backend.domain.Organizator;
-import com.eventio.backend.domain.Vrste;
+import com.eventio.backend.domain.*;
+import com.eventio.backend.dto.RecenzijaDTO;
 import com.eventio.backend.dto.requestDogadajDTO;
 import com.eventio.backend.dto.responseDogadajDTO;
-import com.eventio.backend.service.DogadajService;
-import com.eventio.backend.service.OrganizatorService;
+import com.eventio.backend.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/dogadaj")
 public class DogadajController {
-
     @Autowired
     private DogadajService serviceDogadaj;
     @Autowired
     private OrganizatorService serviceOrganizator;
-
+    @Autowired
+    private KorisnikService serviceKorisnik;
+    @Autowired
+    private ZainteresiranostService serviceZainteresiranost;
+    @Autowired
+    private RecenzijaService serviceRecnzija;
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
@@ -37,24 +39,27 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") String zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") String placanje){
 
-        List<Dogadaj> sviDogađaji = serviceDogadaj.listAll();
+        List<Dogadaj> filtriraniDogađaji = serviceDogadaj.filtrirajDogađaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
 
-        List<Dogadaj> filtriraniDogađaji = filtrirajDogađaje(sviDogađaji, lokacija, vrijeme, vrsta, zavrseno, placanje);
-
-        List<Dogadaj> sortiraniDogadaji = sortirajDogađaje(filtriraniDogađaji, sort);
+        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogađaje(filtriraniDogađaji, sort);
 
         return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
     }
-
-
-
     @Secured("ROLE_ORGANIZATOR")
-    @PostMapping("/izrada")
-    public ResponseEntity<String> izrada(@RequestParam(name = "id") Integer id, @Valid @RequestBody requestDogadajDTO dto) {
+    @PostMapping("/izrada/{id}")
+    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
+                                         @Valid @RequestBody requestDogadajDTO dto,
+                                         @AuthenticationPrincipal Korisnik korisnik) {
+        if (!Objects.equals(id,korisnik.getId()))
+            return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
+
         try {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
+                if (!organizator.getClanarina() && dto.getCijenaUlaznice().equals("0"))
+                    return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
+
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
                 serviceDogadaj.spremiDogadaj(dogadaj);
@@ -66,6 +71,20 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Greška prilikom spremanja događaja.");
         }
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
+                                         @Valid @RequestBody requestDogadajDTO dto,
+                                         @AuthenticationPrincipal Korisnik korisnik) {
+        if (!Objects.equals(dto.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
+            return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
+
+        if (serviceDogadaj.updateDogadaj(dto,id)) {
+            return ResponseEntity.ok().body("Dogadaj promjenjen");
+        } else {
+            return ResponseEntity.badRequest().body("Nepoznata greška");
+        }
+
+    }
     @GetMapping("/organizator/{id}")
     public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer id){
         Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
@@ -76,11 +95,35 @@ public class DogadajController {
             return serviceDogadaj.pretvori_DTO(Optionaldogadaji.get());
         }
             return null;
-
     }
     @GetMapping("/user/{id}")
-    public ResponseEntity<String> prikazDogUsera(@PathVariable(name = "id") Integer id){
-        // sve dogadaje posjetitelja
+    public List<responseDogadajDTO> prikazDogUsera(@PathVariable(name = "id") Integer id,
+                                                   @RequestParam(name = "vrijeme", required = false) String vrijemeFilter){
+        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id);
+        if (optionalKorisnik.isPresent()) {
+            Korisnik korisnik = optionalKorisnik.get();
+            Optional<List<Zainteresiranost>> zainteresiranosti = Optional.ofNullable(serviceZainteresiranost.findByPosjetiteljAndKategorijaIn(
+                korisnik,
+                Arrays.asList(Kategorija.MOZDA, Kategorija.SIGURNO)
+            ));
+
+            if (zainteresiranosti.isPresent()) {
+                Optional<List<Dogadaj>> OptreagiraniDogadaji = Optional.of(zainteresiranosti.stream()
+                    .flatMap(List::stream)
+                    .map(Zainteresiranost::getDogadaj)
+                    .collect(Collectors.toList()));
+
+                if (OptreagiraniDogadaji.isPresent()){
+                    List<Dogadaj> reagiraniDogadaji = OptreagiraniDogadaji.get();
+                    if ("svrseni".equalsIgnoreCase(vrijemeFilter)) {
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Da",null);
+                    } else if ("nesvrseni".equalsIgnoreCase(vrijemeFilter)) {
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Ne",null);
+                    }
+                    return serviceDogadaj.pretvori_DTO(reagiraniDogadaji);
+                }
+            }
+        }
         return null;
     }
     @GetMapping("/{id}")
@@ -88,109 +131,51 @@ public class DogadajController {
         Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(id);
         if (Optionaldogadaji.isPresent()) {
             Dogadaj dogadaj = Optionaldogadaji.get();
-            responseDogadajDTO odg = new responseDogadajDTO(dogadaj);
-            return odg;
+          return new responseDogadajDTO(dogadaj);
         }
         return null;
     }
-
-
-    @Secured("ROLE_ORGANIZATOR")
-    @PostMapping("/{id}")
-    public ResponseEntity<String> promjeniDogadaj(@PathVariable(name = "id") Integer id){
-        //promjena dogadaja
-        return null;
+    @PostMapping("/zaiteresiranost")
+    public ResponseEntity<String> stvoriZainteresitarnost(
+            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
+            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik,
+            @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija,
+            @AuthenticationPrincipal Korisnik korisnikAut) {
+        if (!Objects.equals(id_korisnik, korisnikAut.getId()))
+            return ResponseEntity.badRequest().body("Hocete stvoriti zainteresiranost za osobu koja niste vi.");
+      try {
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(id_dogadaj);
+            if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
+                Korisnik korisnik = optionalKorisnik.get();
+                Dogadaj dogadaj = optionalDogadaji.get();
+                serviceZainteresiranost.spremiZainteresiranost(korisnik,dogadaj,kategorija);
+                return ResponseEntity.ok("Uspješno spremljena zainteresiranost.");
+            } else
+                return ResponseEntity.badRequest().body("Korisnik ili dogadaj s navedenim id ne postoji.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Greška prilikom spremanja zainteresiranosti.");
+        }
+    }
+    @PostMapping("/recenzija")
+    public ResponseEntity<String> stvoriRecenziju(@Valid @RequestBody RecenzijaDTO dto){
+        try {
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnik_id());
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadaj_id());
+            if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
+                Korisnik korisnik = optionalKorisnik.get();
+                Dogadaj dogadaj = optionalDogadaji.get();
+                serviceRecnzija.spremiRecenziju(korisnik,dogadaj,dto);
+                return ResponseEntity.ok("Uspješno spremljena recenzija.");
+            } else
+                return ResponseEntity.badRequest().body("Korisnik ili dogadaj s navedenim id ne postoji.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Greška prilikom spremanja recenzije.");
+        }
     }
 
 
-    private List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
-        if (lokacija != null) {
-            sviDogađaji = sviDogađaji.stream()
-                .filter(dogadaj -> dogadaj.getLokacija().equals(lokacija))
-                .collect(Collectors.toList());
-        }
-
-        if (vrijeme != null) {
-            LocalDateTime trenutnoVrijeme = LocalDateTime.now();
-
-            switch (vrijeme) {
-                case "24 sata":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(1))
-                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(1)))
-                        .collect(Collectors.toList());
-                    break;
-
-                case "7 dana":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(7))
-                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(7)))
-                        .collect(Collectors.toList());
-                    break;
-
-                case "30 dana":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(30))
-                                        && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(30)))
-                        .collect(Collectors.toList());
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        if (vrsta != null) {
-            sviDogađaji = sviDogađaji.stream()
-                .filter(dogadaj -> dogadaj.getVrsta().equals(vrsta))
-                .collect(Collectors.toList());
-        }
-
-        if (zavrseno != null) {
-            switch (zavrseno) {
-                case "Da":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isBefore(LocalDateTime.now()))
-                        .collect(Collectors.toList());
-                    break;
-                case "Ne":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(LocalDateTime.now()))
-                        .collect(Collectors.toList());
-                    break;
-                default:
-                    break;
-            }
-        }
-        if (placanje != null) {
-            switch (placanje) {
-                case "placa se":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
-                        .collect(Collectors.toList());
-                    break;
-                case "besplatno":
-                    sviDogađaji = sviDogađaji.stream()
-                        .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
-                        .collect(Collectors.toList());
-                    break;
-                default:
-                    break;
-            }
-        }
-        return sviDogađaji;
-    }
-
-    private List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort) {
-        Comparator<Dogadaj> comparator = switch (sort) {
-          case "vrijeme-silazno" -> Comparator.comparing(Dogadaj::getVrijemePocetka).reversed();
-          case "zainteresiranost-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
-          case "zainteresiranost-silazno" -> Comparator.comparing(Dogadaj::zainteresiranost).reversed();
-          default -> Comparator.comparing(Dogadaj::getVrijemePocetka);
-        };
-
-        filtriraniDogađaji.sort(comparator);
-
-        return filtriraniDogađaji;
-    }
 }
 
