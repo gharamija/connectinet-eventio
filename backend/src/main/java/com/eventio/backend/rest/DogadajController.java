@@ -39,9 +39,9 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") String zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") String placanje){
 
-        List<Dogadaj> filtriraniDogađaji = serviceDogadaj.filtrirajDogadaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
+        List<Dogadaj> filtriraniDogadaji = serviceDogadaj.filtrirajDogadaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
 
-        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogadaje(filtriraniDogađaji, sort);
+        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogadaje(filtriraniDogadaji, sort);
 
         return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
     }
@@ -57,12 +57,8 @@ public class DogadajController {
 
             serviceDogadaj.izbrisiDogdaj(dogadaj);
             return ResponseEntity.ok("Uspješno izbrisan događaj.");
-
         } else
             return ResponseEntity.badRequest().body("Ne postoji dogadaj s navedenim id-om.");
-
-
-        return ResponseEntity.badRequest().body("Greška prilikom brisanja događaja.");
     }
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada/{id}")

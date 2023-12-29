@@ -23,8 +23,8 @@
 
 ### Mapping
 ## Admin
-
-
+- Za brisanje dogadaja koristi DELETE metodu /dogadaj/delete/{id}
+- Za uredivanje dogadaja koristi POST metodu /dogadaj/update/{id}    na isti nacin ko i organizator kad ureduje svoje
 
 
 

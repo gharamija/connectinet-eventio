@@ -23,6 +23,11 @@ public class OrganizatorController {
     @Autowired
     private KorisnikService userService;
 
+    @Secured("ROLE_ADMIN")
+    @PutMapping("/cijena")
+    public ResponseEntity<String> editCijena() {
+        return ResponseEntity.badRequest().body("Nepoznata greška");
+    }
     @Secured("ROLE_ORGANIZATOR")
     @GetMapping
     public OrganizatorDTO getDetails(@AuthenticationPrincipal Korisnik korisnik) {

@@ -28,6 +28,9 @@ public class KorisnikController {
         return serviceKorisnik.listAll();
     }
 
+
+
+
     @Secured("ROLE_ADMIN")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable(name = "id") Integer korisnikId) {
@@ -70,7 +73,7 @@ public class KorisnikController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestKorisnikDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {
-        if (!Objects.equals(trenutni.getId(), id))
+        if (!Objects.equals(trenutni.getId(), id)  && trenutni.getUloga() != Uloga.ADMIN)
             return ResponseEntity.badRequest().body("Ne možete promjeniti tudi racun");
         Korisnik korisnik = serviceKorisnik.findById(id).get();
         if (dto.getUloga() != Uloga.POSJETITELJ) {
