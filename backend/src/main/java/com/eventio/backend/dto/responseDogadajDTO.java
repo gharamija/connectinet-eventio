@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 
 public class responseDogadajDTO {
     @NotNull
-    private Integer organizator_id;
+    private Integer organizatorId;
     @NotNull
     private String username;
     @NotNull
-    private Integer dogadaj_id;
+    private Integer dogadajId;
     @NotNull
     private String nazivDogadaja;
     @NotNull
@@ -33,9 +33,9 @@ public class responseDogadajDTO {
     private List<RecenzijaDTO> recenzije;
     private List<Zainteresiranost> zainteresiranosti;
     public responseDogadajDTO(Dogadaj dogadaj) {
-        this.organizator_id = dogadaj.getOrganizator().getId();
+        this.organizatorId = dogadaj.getOrganizator().getId();
         this.username = dogadaj.getOrganizator().getUsername();
-        this.dogadaj_id = dogadaj.getId();
+        this.dogadajId = dogadaj.getId();
         this.nazivDogadaja = dogadaj.getNazivDogadaja();
         this.vrsta = dogadaj.getVrsta();
         this.lokacija = dogadaj.getLokacija();
@@ -49,19 +49,19 @@ public class responseDogadajDTO {
                 .collect(Collectors.toList());
         this.zainteresiranosti = dogadaj.getZainteresiranosti();
     }
-    public Integer getDogadaj_id() {
-        return dogadaj_id;
+    public Integer getDogadajId() {
+        return dogadajId;
     }
 
-    public void setDogadaj_id(Integer dogadaj_id) {
-        this.dogadaj_id = dogadaj_id;
+    public void setDogadajId(Integer dogadajId) {
+        this.dogadajId = dogadajId;
     }
-    public Integer getOrganizator_id() {
-        return organizator_id;
+    public Integer getOrganizatorId() {
+        return organizatorId;
     }
 
-    public void setOrganizator_id(Integer organizator_id) {
-        this.organizator_id = organizator_id;
+    public void setOrganizatorId(Integer organizatorId) {
+        this.organizatorId = organizatorId;
     }
 
     public String getUsername() {
