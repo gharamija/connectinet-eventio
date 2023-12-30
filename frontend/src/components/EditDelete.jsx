@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
@@ -15,7 +15,7 @@ export default function EditDelete({ dogadajId }) {
   return (
     <>
       <CardActions disableSpacing>
-        <IconButton aria-label="edit" onClick={setDialogOpen(true)}>
+        <IconButton aria-label="edit" onClick={() => setDialogOpen(true)}>
           <EditIcon />
         </IconButton>
         <IconButton aria-label="delete" onClick={deleteDogadaj}>

@@ -81,6 +81,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           label="naziv"
           name="nazivDogadaja"
           onChange={onChange}
+          value={form.nazivDogadaja}
           required
           fullWidth
           margin="normal"
@@ -131,6 +132,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           label="opis lokacije"
           name="opisLokacije"
           onChange={onChange}
+          value={form.opisLokacije}
           required
           fullWidth
           margin="normal"
@@ -139,6 +141,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           name="vrijemePocetka"
           type="datetime-local"
           onChange={onChange}
+          value={form.vrijemePocetka}
           required
           fullWidth
           margin="normal"
@@ -147,6 +150,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           label="cijena ulaznice"
           name="cijenaUlaznice"
           onChange={onChange}
+          value={form.cijenaUlaznice}
           required
           fullWidth
           margin="normal"
@@ -155,6 +159,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           label="opis"
           name="opis"
           onChange={onChange}
+          value={form.opis}
           required
           fullWidth
           margin="normal"
@@ -163,6 +168,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           label="galerija"
           name="galerija"
           onChange={onChange}
+          value={form.galerija}
           required
           fullWidth
           margin="normal"
