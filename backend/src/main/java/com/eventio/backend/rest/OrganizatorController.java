@@ -63,7 +63,7 @@ public class OrganizatorController {
         } else if (!dto.getUsername().equals(organizator.getUsername()) && userService.findByUsername(dto.getUsername()).isPresent()) {
             return ResponseEntity.badRequest().body("Username već postoji u bazi");
         } else if (service.updateOrganizator(dto,id)) {
-            return ResponseEntity.ok().body("Posjetitelj promjenjen");
+            return ResponseEntity.ok().body("Organizator promjenjen");
         } else {
             return ResponseEntity.badRequest().body("Nepoznata greška");
         }

@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 
 public class responseOrganizatorDTO {
   @NotNull
+  private Integer organizator_id;
+  @NotNull
   private String username;
   @NotNull
   private String email;
@@ -24,6 +26,7 @@ public class responseOrganizatorDTO {
   }
 
   public responseOrganizatorDTO(Organizator organizator) {
+    this.organizator_id = organizator.getId();
     this.username = organizator.getUsername();
     this.email = organizator.getEmail();
     this.uloga = organizator.getUloga();
@@ -87,5 +90,13 @@ public class responseOrganizatorDTO {
 
   public void setClanarina(boolean clanarina) {
     this.clanarina = clanarina;
+  }
+
+  public Integer getOrganizator_id() {
+    return organizator_id;
+  }
+
+  public void setOrganizator_id(Integer organizator_id) {
+    this.organizator_id = organizator_id;
   }
 }
