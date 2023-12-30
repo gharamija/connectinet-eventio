@@ -34,7 +34,7 @@ public class responseDogadajDTO {
     @NotNull
     private String galerija;
     private List<RecenzijaDTO> recenzije;
-    private Zainteresiranost trenutna;
+    private Kategorija trenutna;
     private Integer sigurnoZainteresiranost;
     private Integer mozdaZainteresiranost;
     private Integer neDolazeZainteresiranost;
@@ -53,7 +53,7 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj);
+        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj).getKategorija();
         this.mozdaZainteresiranost = countZainteresiranost(dogadaj, Kategorija.MOZDA);
         this.sigurnoZainteresiranost = countZainteresiranost(dogadaj, Kategorija.SIGURNO);
         this.neDolazeZainteresiranost = countZainteresiranost(dogadaj, Kategorija.NE);
@@ -154,11 +154,11 @@ public class responseDogadajDTO {
         this.recenzije = recenzije;
     }
 
-    public Zainteresiranost getTrenutna() {
+    public Kategorija getTrenutna() {
         return trenutna;
     }
 
-    public void setTrenutna(Zainteresiranost trenutna) {
+    public void setTrenutna(Kategorija trenutna) {
         this.trenutna = trenutna;
     }
 
