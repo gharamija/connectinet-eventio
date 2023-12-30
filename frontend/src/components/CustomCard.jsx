@@ -31,7 +31,7 @@ export default function CustomCard({ event, children }) {
     };
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ width: 300 }}>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="event">
