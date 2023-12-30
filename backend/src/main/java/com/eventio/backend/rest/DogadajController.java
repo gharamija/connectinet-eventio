@@ -53,9 +53,10 @@ public class DogadajController {
             Dogadaj dogadaj = Optionaldogadaji.get();
 
             if (!Objects.equals(dogadaj.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN)
-                return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
+                return ResponseEntity.badRequest().body("Hocete izbrisat dogadaj koji nije u vašem vlasništvu.");
 
-            serviceDogadaj.izbrisiDogdaj(dogadaj);
+
+            serviceDogadaj.izbrisiDogadaj(dogadaj);
             return ResponseEntity.ok("Uspješno izbrisan događaj.");
         } else
             return ResponseEntity.badRequest().body("Ne postoji dogadaj s navedenim id-om.");

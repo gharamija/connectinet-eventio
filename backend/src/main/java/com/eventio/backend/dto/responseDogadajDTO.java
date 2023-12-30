@@ -1,7 +1,10 @@
 package com.eventio.backend.dto;
 
 import com.eventio.backend.domain.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,6 +37,7 @@ public class responseDogadajDTO {
     private Zainteresiranost trenutna;
     private Integer sigurnoZainteresiranost;
     private Integer mozdaZainteresiranost;
+    private Integer neDolazeZainteresiranost;
     public responseDogadajDTO(Dogadaj dogadaj) {
         this.organizatorId = dogadaj.getOrganizator().getId();
         this.username = dogadaj.getOrganizator().getUsername();
@@ -49,33 +53,12 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.trenutna = null;  // dodat od trenutnog korisnika da se posalje zainteresiranost, mozda ne treba ovdje mozda kasnije samo set
-        this.mozdaZainteresiranost = dogadaj.getZainteresiranosti().size(); // prebrojat s mozda dolaze ne ovako ovo samo radi errora
-        this.sigurnoZainteresiranost =dogadaj.getZainteresiranosti().size();
-    }
-    public Zainteresiranost getTrenutna() {
-        return trenutna;
+        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj);
+        this.mozdaZainteresiranost = countZainteresiranost(dogadaj, Kategorija.MOZDA);
+        this.sigurnoZainteresiranost = countZainteresiranost(dogadaj, Kategorija.SIGURNO);
+        this.neDolazeZainteresiranost = countZainteresiranost(dogadaj, Kategorija.NE);
     }
 
-    public void setTrenutna(Zainteresiranost trenutna) {
-        this.trenutna = trenutna;
-    }
-
-    public Integer getSigurnoZainteresiranost() {
-        return sigurnoZainteresiranost;
-    }
-
-    public void setSigurnoZainteresiranost(Integer sigurnoZainteresiranost) {
-        this.sigurnoZainteresiranost = sigurnoZainteresiranost;
-    }
-
-    public Integer getMozdaZainteresiranost() {
-        return mozdaZainteresiranost;
-    }
-
-    public void setMozdaZainteresiranost(Integer mozdaZainteresiranost) {
-        this.mozdaZainteresiranost = mozdaZainteresiranost;
-    }
     public Integer getDogadajId() {
         return dogadajId;
     }
@@ -171,6 +154,56 @@ public class responseDogadajDTO {
         this.recenzije = recenzije;
     }
 
+    public Zainteresiranost getTrenutna() {
+        return trenutna;
+    }
 
+    public void setTrenutna(Zainteresiranost trenutna) {
+        this.trenutna = trenutna;
+    }
 
+    public Integer getSigurnoZainteresiranost() {
+        return sigurnoZainteresiranost;
+    }
+
+    public void setSigurnoZainteresiranost(Integer sigurnoZainteresiranost) {
+        this.sigurnoZainteresiranost = sigurnoZainteresiranost;
+    }
+
+    public Integer getMozdaZainteresiranost() {
+        return mozdaZainteresiranost;
+    }
+
+    public void setMozdaZainteresiranost(Integer mozdaZainteresiranost) {
+        this.mozdaZainteresiranost = mozdaZainteresiranost;
+    }
+    public Integer getNeDolazeZainteresiranost() {
+        return neDolazeZainteresiranost;
+    }
+
+    public void setNeDolazeZainteresiranost(Integer neDolazeZainteresiranost) {
+        this.neDolazeZainteresiranost = neDolazeZainteresiranost;
+    }
+
+    private Integer countZainteresiranost(Dogadaj dogadaj, Kategorija kategorija) {
+        return (int) dogadaj.getZainteresiranosti().stream()
+            .filter(z -> z.getKategorija() == kategorija)
+            .count();
+    }
+
+    public Zainteresiranost dohvatiTrenutnuZainteresiranost(Dogadaj dogadaj) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails userDetails) {
+            Korisnik trenutniKorisnik = (Korisnik) userDetails;
+            return dohvatiZainteresiranostTrenutnogKorisnika(trenutniKorisnik, dogadaj);
+        }
+        return null;
+    }
+
+    private Zainteresiranost dohvatiZainteresiranostTrenutnogKorisnika(Korisnik trenutniKorisnik, Dogadaj dogadaj) {
+        return trenutniKorisnik.getZainteresiranosti().stream()
+            .filter(z -> z.getDogadaj().equals(dogadaj))
+            .findFirst()
+            .orElse(null);
+    }
 }

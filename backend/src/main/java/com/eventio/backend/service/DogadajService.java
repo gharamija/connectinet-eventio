@@ -21,5 +21,5 @@ public interface DogadajService {
   public boolean updateDogadaj(requestDogadajDTO dto, Integer id);
   List<Dogadaj> sortirajDogadaje(List<Dogadaj> filtriraniDogađaji, String sort);
   List<Dogadaj> filtrirajDogadaje(List<Dogadaj> sviDogadaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje);
-  void izbrisiDogdaj(Dogadaj dogadaj);
+  void izbrisiDogadaj(Dogadaj dogadaj);
 }

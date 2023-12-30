@@ -127,10 +127,12 @@ public class Dogadaj {
         this.galerija = galerija;
     }
 
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Recenzija> getRecenzije() {
         return recenzije;
     }
 
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
     }
