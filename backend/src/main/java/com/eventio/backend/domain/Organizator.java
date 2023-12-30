@@ -16,7 +16,7 @@ public class Organizator extends Korisnik {
     @Column(nullable = false)
     private String poveznica;
     @Column(nullable = false)
-    private boolean clanarina;
+    private boolean clanarina = false;
     @JsonIgnore
     @OneToMany(mappedBy = "organizator", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Dogadaj> dogadaji;
