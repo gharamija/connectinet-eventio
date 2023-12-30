@@ -31,7 +31,9 @@ public class responseDogadajDTO {
     @NotNull
     private String galerija;
     private List<RecenzijaDTO> recenzije;
-    private List<Zainteresiranost> zainteresiranosti;
+    private Zainteresiranost trenutna;
+    private Integer sigurnoZainteresiranost;
+    private Integer mozdaZainteresiranost;
     public responseDogadajDTO(Dogadaj dogadaj) {
         this.organizatorId = dogadaj.getOrganizator().getId();
         this.username = dogadaj.getOrganizator().getUsername();
@@ -47,7 +49,32 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.zainteresiranosti = dogadaj.getZainteresiranosti();
+        this.trenutna = null;  // dodat od trenutnog korisnika da se posalje zainteresiranost, mozda ne treba ovdje mozda kasnije samo set
+        this.mozdaZainteresiranost = dogadaj.getZainteresiranosti().size(); // prebrojat s mozda dolaze ne ovako ovo samo radi errora
+        this.sigurnoZainteresiranost =dogadaj.getZainteresiranosti().size();
+    }
+    public Zainteresiranost getTrenutna() {
+        return trenutna;
+    }
+
+    public void setTrenutna(Zainteresiranost trenutna) {
+        this.trenutna = trenutna;
+    }
+
+    public Integer getSigurnoZainteresiranost() {
+        return sigurnoZainteresiranost;
+    }
+
+    public void setSigurnoZainteresiranost(Integer sigurnoZainteresiranost) {
+        this.sigurnoZainteresiranost = sigurnoZainteresiranost;
+    }
+
+    public Integer getMozdaZainteresiranost() {
+        return mozdaZainteresiranost;
+    }
+
+    public void setMozdaZainteresiranost(Integer mozdaZainteresiranost) {
+        this.mozdaZainteresiranost = mozdaZainteresiranost;
     }
     public Integer getDogadajId() {
         return dogadajId;
@@ -144,13 +171,6 @@ public class responseDogadajDTO {
         this.recenzije = recenzije;
     }
 
-    public List<Zainteresiranost> getZainteresiranosti() {
-        return zainteresiranosti;
-    }
-
-    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
-        this.zainteresiranosti = zainteresiranosti;
-    }
 
 
 }

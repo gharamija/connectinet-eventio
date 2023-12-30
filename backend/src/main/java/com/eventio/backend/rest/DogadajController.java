@@ -150,7 +150,7 @@ public class DogadajController {
         }
         return null;
     }
-    @PostMapping("/zaiteresiranost")
+    @PostMapping("/zainteresiranost")
     public ResponseEntity<String> stvoriZainteresitarnost(
             @RequestParam(name = "dogadajId", defaultValue = "") Integer dogadajId,
             @RequestParam(name = "korisnikId", defaultValue = "") Integer korisnikId,
