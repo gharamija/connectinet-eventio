@@ -1,6 +1,5 @@
 import * as React from "react";
-import User from "./User.jsx";
-import {Box, Divider} from "@mui/material";
+import {Box} from "@mui/material";
 import EnhancedTable from "./TableComponents/EnhancedTable";
 
 function UserList() {
@@ -20,13 +19,6 @@ function UserList() {
         return (
             <>
                 <EnhancedTable users={users} role={"POSJETITELJ"}/>
-
-                <Box sx={{my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
-                    <Divider/>
-                </Box>
-                <Box sx={{my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
-                    <Divider/>
-                </Box>
 
                 <EnhancedTable users={users} role={"ORGANIZATOR"}/>
             </>

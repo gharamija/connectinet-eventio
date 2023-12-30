@@ -7,6 +7,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 function EnhancedTableToolbar(props) {
     const {numSelected} = props;
+    const {role} = props;
 
     return (
         <Toolbar
@@ -35,7 +36,7 @@ function EnhancedTableToolbar(props) {
                     id="tableTitle"
                     component="div"
                 >
-                    Korisnici
+                    {role === "ORGANIZATOR" ? "Organizatori" : "Posjetitelji"}
                 </Typography>
             )}
 

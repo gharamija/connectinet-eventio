@@ -7,11 +7,13 @@ import Box from "@mui/material/Box";
 import {visuallyHidden} from "@mui/utils";
 
 function EnhancedTableHead(props) {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, role } =
         props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
+    const headCells = role === "ORGANIZATOR" ? headCellsOrg : headCellsPos;
+
 
     return (
         <TableHead>
@@ -53,7 +55,7 @@ function EnhancedTableHead(props) {
     );
 }
 
-const headCells = [
+const headCellsOrg = [
     {
         id: 'id',
         numeric: true,
@@ -73,16 +75,49 @@ const headCells = [
         label: 'Email',
     },
     {
-        id: 'uloga',
-        numeric: false,
-        disablePadding: false,
-        label: 'uloga',
-    },
-    {
-        id: 'Naziv organizacije',
+        id: 'nazivOrganizacije',
         numeric: false,
         disablePadding: false,
         label: 'Naziv organizacije',
+    },
+    {
+        id: 'adresa',
+        numeric: false,
+        disablePadding: false,
+        label: 'Adresa',
+    },
+    {
+        id: 'poveznica',
+        numeric: false,
+        disablePadding: false,
+        label: 'Poveznica',
+    },
+    {
+        id: 'clanarina',
+        numeric: false,
+        disablePadding: false,
+        label: 'Članarina',
+    },
+];
+
+const headCellsPos = [
+    {
+        id: 'id',
+        numeric: true,
+        disablePadding: true,
+        label: 'ID korisnika',
+    },
+    {
+        id: 'username',
+        numeric: false,
+        disablePadding: false,
+        label: 'Username',
+    },
+    {
+        id: 'email',
+        numeric: false,
+        disablePadding: false,
+        label: 'Email',
     },
 ];
 
