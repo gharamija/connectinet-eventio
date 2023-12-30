@@ -1,11 +1,9 @@
 import { useState } from "react";
 import Filter from "./Filter.jsx";
-import { Box, Container, Fab } from "@mui/material";
-import { Add } from "@mui/icons-material";
-import AddDogadajDialog from "./AddDogadajDialog.jsx";
+import { Box, Container } from "@mui/material";
+import AllEventsCards from "./AllEventsCards.jsx";
 
 function Homepage() {
-  const [dialogOpen, setDialogOpen] = useState(false);
   const [query, setQuery] = useState("");
 
   return (
@@ -14,19 +12,8 @@ function Homepage() {
         sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
       >
         <Filter setQuery={setQuery} />
-        <Fab
-          color="primary"
-          aria-label="add"
-          sx={{ position: "fixed", right: 15, bottom: 100 }}
-          onClick={() => setDialogOpen(true)}
-        >
-          <Add />
-        </Fab>
+        <AllEventsCards query={query} />
       </Container>
-      <AddDogadajDialog
-        handleClose={() => setDialogOpen(false)}
-        open={dialogOpen}
-      />
     </Box>
   );
 }
