@@ -53,7 +53,7 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj).getKategorija();
+        this.trenutna = Kategorija.SIGURNO;
         this.mozdaZainteresiranost = countZainteresiranost(dogadaj, Kategorija.MOZDA);
         this.sigurnoZainteresiranost = countZainteresiranost(dogadaj, Kategorija.SIGURNO);
         this.neDolazeZainteresiranost = countZainteresiranost(dogadaj, Kategorija.NE);
