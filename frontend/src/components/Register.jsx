@@ -54,7 +54,7 @@ function Register(props) {
         registerForm.password
       }&uloga=${"ORGANIZATOR"}&nazivOrganizacije=${registerForm.naziv}&adresa=${
         registerForm.adresa
-      }&poveznica=${registerForm.poveznica}&članarina=${
+      }&poveznica=${registerForm.poveznica}&clanarina=${
         registerForm.clanarina
       }`;
       const options = {

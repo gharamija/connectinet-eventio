@@ -2,9 +2,10 @@ import { Check, Close, QuestionMark } from "@mui/icons-material";
 import { CardActions, Button, ButtonGroup } from "@mui/material";
 
 //komponenta treba dobiti koji je id korisnika i događaja o kojem se radi
-function Zainteresiranost({ id, dogadajId }) {
-  function vote(kategorija) {
-    let obj = { idDogadaj: dogadajId, idKorisnik: id, kategorija: kategorija };
+//te za sto je glasao trenutni korisnik (kategorija)
+function Zainteresiranost({ id, dogadajId, kategorija }) {
+  function vote(nova) {
+    let obj = { idDogadaj: dogadajId, idKorisnik: id, kategorija: nova };
     const options = {
       method: "POST",
       headers: {
@@ -17,9 +18,9 @@ function Zainteresiranost({ id, dogadajId }) {
 
   return (
     <CardActions disableSpacing>
-      <ButtonGroup variant="outlined" size="small">
+      <ButtonGroup size="small">
         <Button
-          variant="contained"
+          variant={kategorija === "SIGURNO" ? "contained" : "outlined"}
           color="success"
           startIcon={<Check />}
           onClick={() => vote("SIGURNO")}
@@ -27,13 +28,19 @@ function Zainteresiranost({ id, dogadajId }) {
           Dolazim
         </Button>
         <Button
+          variant={kategorija === "MOZDA" ? "contained" : "outlined"}
           color="info"
           startIcon={<QuestionMark />}
           onClick={() => vote("MOZDA")}
         >
           Mozda
         </Button>
-        <Button color="error" startIcon={<Close />} onClick={() => vote("NE")}>
+        <Button
+          variant={kategorija === "NE" ? "contained" : "outlined"}
+          color="error"
+          startIcon={<Close />}
+          onClick={() => vote("NE")}
+        >
           Ne Dolazim
         </Button>
       </ButtonGroup>
