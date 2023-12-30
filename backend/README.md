@@ -22,6 +22,12 @@
 - mvn spring-boot:run ili zelena strelica u Eventio razredu
 
 ### Mapping
+## Admin
+- Za brisanje dogadaja koristi DELETE metodu /dogadaj/delete/{id}
+- Za uredivanje dogadaja koristi PUT metodu /dogadaj/update/{id}    na isti nacin ko i organizator kad ureduje svoje
+- Za brisanje korisnika koristi DELETE metodu /user/delete/{id}
+- Za uredivanje korisnika koristi PUT metodu /user/update/{id}    na isti nacin ko i korisnik ureduje sebe
+- Za postavljanje nove cijene preplate PUT metodu /organizator/cijena  NIJE JOS GOTOVO
 ## /dogadaj
 /filter - putem urla šalje:   GET vraća List<responseDogadajDTO>
  sort ("uzlazno" ili "silazno" - po vremenu, po interesu) 
@@ -74,7 +80,9 @@ npr.
     "opis": "Opis događaja",
     "galerija": "http://putanja-do-galerije.com",
     "recenzije": [LISTA recenzijaResponseDTO],
-    "zainteresiranosti": [LISTA zainteresiranostResponseDTO]
+    "trenutna": Zainteresiranost,
+    "sigurnoZainteresiranost":Integer,
+    "mozdaZainteresiranost": Integer
 }
 
 Izgled recenzijaResponseDTO u izradi
@@ -89,6 +97,9 @@ Izgled zainteresiranostResponseDTO  u izradi
   "ocjena": 4
 }
 
+/zainteresiranost   POST stvaranje zainteresiranosti, zahtjeva 
+dogadajId INT, korisnikId INT, kategorija Kategorija
+izraduje zainteresiranost, 1 korisnik moze za 1 dogadaj imat samo 1 zainteresiranost
 
 
 ## /user

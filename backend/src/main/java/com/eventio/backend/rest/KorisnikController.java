@@ -1,14 +1,10 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
-import com.eventio.backend.domain.Notifikacija;
 import com.eventio.backend.domain.Uloga;
-import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.dto.requestKorisnikDTO;
 import com.eventio.backend.dto.responseKorisnikDTO;
 import com.eventio.backend.service.KorisnikService;
-import com.eventio.backend.service.NotifikacijaService;
-import com.eventio.backend.service.ZainteresiranostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +22,26 @@ public class KorisnikController {
 
     @Autowired
     private KorisnikService serviceKorisnik;
-    @Autowired
-    private NotifikacijaService serviseNotifikacije;
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
     public List<Korisnik> getAll() {
         return serviceKorisnik.listAll();
+    }
+
+
+
+
+    @Secured("ROLE_ADMIN")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable(name = "id") Integer korisnikId) {
+        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(korisnikId);
+        if (optionalKorisnik.isPresent()) {
+            Korisnik korisnik = optionalKorisnik.get();
+            serviceKorisnik.deleteUser(korisnik);
+            return ResponseEntity.ok("Uspješno izbrisan korisnik.");
+        }else {
+            return ResponseEntity.badRequest().body("Ne postoji korisnik s navedenim id-om.");
+        }
     }
 
     @PostMapping("/register")
@@ -63,7 +73,7 @@ public class KorisnikController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody requestKorisnikDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {
-        if (!Objects.equals(trenutni.getId(), id))
+        if (!Objects.equals(trenutni.getId(), id)  && trenutni.getUloga() != Uloga.ADMIN)
             return ResponseEntity.badRequest().body("Ne možete promjeniti tudi racun");
         Korisnik korisnik = serviceKorisnik.findById(id).get();
         if (dto.getUloga() != Uloga.POSJETITELJ) {

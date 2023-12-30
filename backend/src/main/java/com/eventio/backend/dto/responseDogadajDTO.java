@@ -1,7 +1,10 @@
 package com.eventio.backend.dto;
 
 import com.eventio.backend.domain.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,11 +12,11 @@ import java.util.stream.Collectors;
 
 public class responseDogadajDTO {
     @NotNull
-    private Integer organizator_id;
+    private Integer organizatorId;
     @NotNull
     private String username;
     @NotNull
-    private Integer dogadaj_id;
+    private Integer dogadajId;
     @NotNull
     private String nazivDogadaja;
     @NotNull
@@ -31,11 +34,14 @@ public class responseDogadajDTO {
     @NotNull
     private String galerija;
     private List<RecenzijaDTO> recenzije;
-    private List<Zainteresiranost> zainteresiranosti;
+    private Kategorija trenutna;
+    private Integer sigurnoZainteresiranost;
+    private Integer mozdaZainteresiranost;
+    private Integer neDolazeZainteresiranost;
     public responseDogadajDTO(Dogadaj dogadaj) {
-        this.organizator_id = dogadaj.getOrganizator().getId();
+        this.organizatorId = dogadaj.getOrganizator().getId();
         this.username = dogadaj.getOrganizator().getUsername();
-        this.dogadaj_id = dogadaj.getId();
+        this.dogadajId = dogadaj.getId();
         this.nazivDogadaja = dogadaj.getNazivDogadaja();
         this.vrsta = dogadaj.getVrsta();
         this.lokacija = dogadaj.getLokacija();
@@ -47,21 +53,25 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.zainteresiranosti = dogadaj.getZainteresiranosti();
-    }
-    public Integer getDogadaj_id() {
-        return dogadaj_id;
-    }
-
-    public void setDogadaj_id(Integer dogadaj_id) {
-        this.dogadaj_id = dogadaj_id;
-    }
-    public Integer getOrganizator_id() {
-        return organizator_id;
+        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj).getKategorija();
+        this.mozdaZainteresiranost = countZainteresiranost(dogadaj, Kategorija.MOZDA);
+        this.sigurnoZainteresiranost = countZainteresiranost(dogadaj, Kategorija.SIGURNO);
+        this.neDolazeZainteresiranost = countZainteresiranost(dogadaj, Kategorija.NE);
     }
 
-    public void setOrganizator_id(Integer organizator_id) {
-        this.organizator_id = organizator_id;
+    public Integer getDogadajId() {
+        return dogadajId;
+    }
+
+    public void setDogadajId(Integer dogadajId) {
+        this.dogadajId = dogadajId;
+    }
+    public Integer getOrganizatorId() {
+        return organizatorId;
+    }
+
+    public void setOrganizatorId(Integer organizatorId) {
+        this.organizatorId = organizatorId;
     }
 
     public String getUsername() {
@@ -144,13 +154,56 @@ public class responseDogadajDTO {
         this.recenzije = recenzije;
     }
 
-    public List<Zainteresiranost> getZainteresiranosti() {
-        return zainteresiranosti;
+    public Kategorija getTrenutna() {
+        return trenutna;
     }
 
-    public void setZainteresiranosti(List<Zainteresiranost> zainteresiranosti) {
-        this.zainteresiranosti = zainteresiranosti;
+    public void setTrenutna(Kategorija trenutna) {
+        this.trenutna = trenutna;
     }
 
+    public Integer getSigurnoZainteresiranost() {
+        return sigurnoZainteresiranost;
+    }
 
+    public void setSigurnoZainteresiranost(Integer sigurnoZainteresiranost) {
+        this.sigurnoZainteresiranost = sigurnoZainteresiranost;
+    }
+
+    public Integer getMozdaZainteresiranost() {
+        return mozdaZainteresiranost;
+    }
+
+    public void setMozdaZainteresiranost(Integer mozdaZainteresiranost) {
+        this.mozdaZainteresiranost = mozdaZainteresiranost;
+    }
+    public Integer getNeDolazeZainteresiranost() {
+        return neDolazeZainteresiranost;
+    }
+
+    public void setNeDolazeZainteresiranost(Integer neDolazeZainteresiranost) {
+        this.neDolazeZainteresiranost = neDolazeZainteresiranost;
+    }
+
+    private Integer countZainteresiranost(Dogadaj dogadaj, Kategorija kategorija) {
+        return (int) dogadaj.getZainteresiranosti().stream()
+            .filter(z -> z.getKategorija() == kategorija)
+            .count();
+    }
+
+    public Zainteresiranost dohvatiTrenutnuZainteresiranost(Dogadaj dogadaj) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails userDetails) {
+            Korisnik trenutniKorisnik = (Korisnik) userDetails;
+            return dohvatiZainteresiranostTrenutnogKorisnika(trenutniKorisnik, dogadaj);
+        }
+        return null;
+    }
+
+    private Zainteresiranost dohvatiZainteresiranostTrenutnogKorisnika(Korisnik trenutniKorisnik, Dogadaj dogadaj) {
+        return trenutniKorisnik.getZainteresiranosti().stream()
+            .filter(z -> z.getDogadaj().equals(dogadaj))
+            .findFirst()
+            .orElse(null);
+    }
 }

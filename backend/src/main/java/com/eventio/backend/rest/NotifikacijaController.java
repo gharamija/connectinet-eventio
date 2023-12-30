@@ -1,14 +1,11 @@
 package com.eventio.backend.rest;
 
 
-import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Notifikacija;
-import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.dto.NotifikacijaDTO;
 import com.eventio.backend.service.KorisnikService;
 import com.eventio.backend.service.NotifikacijaService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

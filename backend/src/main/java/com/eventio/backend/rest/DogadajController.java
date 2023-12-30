@@ -39,22 +39,38 @@ public class DogadajController {
             @RequestParam(name = "zavrseno", defaultValue = "") String zavrseno,
             @RequestParam(name = "placanje", defaultValue = "") String placanje){
 
-        List<Dogadaj> filtriraniDogađaji = serviceDogadaj.filtrirajDogađaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
+        List<Dogadaj> filtriraniDogadaji = serviceDogadaj.filtrirajDogadaje(serviceDogadaj.listAll(), lokacija, vrijeme, vrsta, zavrseno, placanje);
 
-        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogađaje(filtriraniDogađaji, sort);
+        List<Dogadaj> sortiraniDogadaji = serviceDogadaj.sortirajDogadaje(filtriraniDogadaji, sort);
 
         return serviceDogadaj.pretvori_DTO(sortiraniDogadaji);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer dogadajId, @AuthenticationPrincipal Korisnik korisnik){
+        Optional<Dogadaj> Optionaldogadaji = serviceDogadaj.findById(dogadajId);
+        if (Optionaldogadaji.isPresent()) {
+            Dogadaj dogadaj = Optionaldogadaji.get();
+
+            if (!Objects.equals(dogadaj.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN)
+                return ResponseEntity.badRequest().body("Hocete izbrisat dogadaj koji nije u vašem vlasništvu.");
+
+
+            serviceDogadaj.izbrisiDogadaj(dogadaj);
+            return ResponseEntity.ok("Uspješno izbrisan događaj.");
+        } else
+            return ResponseEntity.badRequest().body("Ne postoji dogadaj s navedenim id-om.");
+    }
     @Secured("ROLE_ORGANIZATOR")
     @PostMapping("/izrada/{id}")
-    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer id,
+    public ResponseEntity<String> izrada(@PathVariable(name = "id") Integer organizatorId,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (!Objects.equals(id,korisnik.getId()))
+        if (!Objects.equals(organizatorId,korisnik.getId()))
             return ResponseEntity.badRequest().body("Hocete stvoriti dogadaj koji neće biti u vašem vlasništvu.");
 
         try {
-            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
+            Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
                 if (!organizator.getClanarina() && dto.getCijenaUlaznice().equals("0"))
@@ -72,13 +88,13 @@ public class DogadajController {
         }
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
+    public ResponseEntity<String> update(@PathVariable(name = "id") Integer dogadajId,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
         if (!Objects.equals(dto.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
-        if (serviceDogadaj.updateDogadaj(dto,id)) {
+        if (serviceDogadaj.updateDogadaj(dto,dogadajId)) {
             return ResponseEntity.ok().body("Dogadaj promjenjen");
         } else {
             return ResponseEntity.badRequest().body("Nepoznata greška");
@@ -86,8 +102,8 @@ public class DogadajController {
 
     }
     @GetMapping("/organizator/{id}")
-    public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer id){
-        Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(id);
+    public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer organizatorId){
+        Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);
         if (optionalOrganizator.isPresent()) {
             Organizator organizator = optionalOrganizator.get();
             Optional<List<Dogadaj>> Optionaldogadaji = serviceDogadaj.findByOrganizator(organizator);
@@ -97,9 +113,9 @@ public class DogadajController {
             return null;
     }
     @GetMapping("/user/{id}")
-    public List<responseDogadajDTO> prikazDogUsera(@PathVariable(name = "id") Integer id,
+    public List<responseDogadajDTO> prikazDogUsera(@PathVariable(name = "id") Integer korisnikId,
                                                    @RequestParam(name = "vrijeme", required = false) String vrijemeFilter){
-        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id);
+        Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(korisnikId);
         if (optionalKorisnik.isPresent()) {
             Korisnik korisnik = optionalKorisnik.get();
             Optional<List<Zainteresiranost>> zainteresiranosti = Optional.ofNullable(serviceZainteresiranost.findByPosjetiteljAndKategorijaIn(
@@ -116,9 +132,9 @@ public class DogadajController {
                 if (OptreagiraniDogadaji.isPresent()){
                     List<Dogadaj> reagiraniDogadaji = OptreagiraniDogadaji.get();
                     if ("svrseni".equalsIgnoreCase(vrijemeFilter)) {
-                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Da",null);
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogadaje(reagiraniDogadaji, null,null,null,"Da",null);
                     } else if ("nesvrseni".equalsIgnoreCase(vrijemeFilter)) {
-                        reagiraniDogadaji = serviceDogadaj.filtrirajDogađaje(reagiraniDogadaji, null,null,null,"Ne",null);
+                        reagiraniDogadaji = serviceDogadaj.filtrirajDogadaje(reagiraniDogadaji, null,null,null,"Ne",null);
                     }
                     return serviceDogadaj.pretvori_DTO(reagiraniDogadaji);
                 }
@@ -135,17 +151,17 @@ public class DogadajController {
         }
         return null;
     }
-    @PostMapping("/zaiteresiranost")
+    @PostMapping("/zainteresiranost")
     public ResponseEntity<String> stvoriZainteresitarnost(
-            @RequestParam(name = "id_dogadaj", defaultValue = "") Integer id_dogadaj,
-            @RequestParam(name = "id_korisnik", defaultValue = "") Integer id_korisnik,
+            @RequestParam(name = "dogadajId", defaultValue = "") Integer dogadajId,
+            @RequestParam(name = "korisnikId", defaultValue = "") Integer korisnikId,
             @RequestParam(name = "kategorija", defaultValue = "") Kategorija kategorija,
             @AuthenticationPrincipal Korisnik korisnikAut) {
-        if (!Objects.equals(id_korisnik, korisnikAut.getId()))
+        if (!Objects.equals(korisnikId, korisnikAut.getId()))
             return ResponseEntity.badRequest().body("Hocete stvoriti zainteresiranost za osobu koja niste vi.");
       try {
-            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(id_korisnik);
-            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(id_dogadaj);
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(korisnikId);
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dogadajId);
             if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
                 Korisnik korisnik = optionalKorisnik.get();
                 Dogadaj dogadaj = optionalDogadaji.get();
@@ -161,8 +177,8 @@ public class DogadajController {
     @PostMapping("/recenzija")
     public ResponseEntity<String> stvoriRecenziju(@Valid @RequestBody RecenzijaDTO dto){
         try {
-            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnik_id());
-            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadaj_id());
+            Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnikId());
+            Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadajId());
             if (optionalKorisnik.isPresent() && optionalDogadaji.isPresent()) {
                 Korisnik korisnik = optionalKorisnik.get();
                 Dogadaj dogadaj = optionalDogadaji.get();

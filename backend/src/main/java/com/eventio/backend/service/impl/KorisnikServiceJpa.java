@@ -84,5 +84,9 @@ public class KorisnikServiceJpa implements KorisnikService {
             return false;
         }
     }
+    @Override
+    public void deleteUser(Korisnik korisnik){
+        repository.delete(korisnik);
+    }
 
 }

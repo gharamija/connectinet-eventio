@@ -5,9 +5,9 @@ import jakarta.validation.constraints.NotNull;
 
 public class RecenzijaDTO {
     @NotNull
-    private Integer korisnik_id;
+    private Integer korisnikId;
     @NotNull
-    private Integer dogadaj_id;
+    private Integer dogadajId;
     @NotNull
     private String tekst;
     private int ocjena;
@@ -15,26 +15,26 @@ public class RecenzijaDTO {
     }
 
     public RecenzijaDTO(Recenzija recenzija) { 
-        this.korisnik_id = recenzija.getPosjetitelj().getId();
-        this.dogadaj_id = recenzija.getDogadaj().getId();
+        this.korisnikId = recenzija.getPosjetitelj().getId();
+        this.dogadajId = recenzija.getDogadaj().getId();
         this.tekst = recenzija.getTekst();
         this.ocjena = recenzija.getOcjena();
     }
 
-    public Integer getKorisnik_id() {
-        return korisnik_id;
+    public Integer getKorisnikId() {
+        return korisnikId;
     }
 
-    public void setKorisnik_id(Integer korisnik_id) {
-        this.korisnik_id = korisnik_id;
+    public void setKorisnikId(Integer korisnikId) {
+        this.korisnikId = korisnikId;
     }
 
-    public Integer getDogadaj_id() {
-        return dogadaj_id;
+    public Integer getDogadajId() {
+        return dogadajId;
     }
 
-    public void setDogadaj_id(Integer dogadaj_id) {
-        this.dogadaj_id = dogadaj_id;
+    public void setDogadajId(Integer dogadajId) {
+        this.dogadajId = dogadajId;
     }
     public String getTekst() {
         return tekst;

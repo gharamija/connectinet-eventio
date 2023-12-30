@@ -36,13 +36,13 @@ public class Korisnik implements UserDetails {
     private Uloga uloga;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "posjetitelj")
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recenzija> recenzije;
     @JsonIgnore
-    @OneToMany(mappedBy = "posjetitelj")
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Zainteresiranost> zainteresiranosti;
     @JsonIgnore
-    @OneToMany(mappedBy = "posjetitelj")
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notifikacija> notifikacije;
 
     public Korisnik() {

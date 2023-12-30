@@ -99,7 +99,7 @@ public class DogadajServiceJpa implements DogadajService {
     }
   }
   @Override
-  public List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort) {
+  public List<Dogadaj> sortirajDogadaje(List<Dogadaj> filtriraniDogadaji, String sort) {
     Comparator<Dogadaj> comparator = switch (sort) {
       case "vrijeme-silazno" -> Comparator.comparing(Dogadaj::getVrijemePocetka).reversed();
       case "zainteresiranost-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
@@ -107,14 +107,14 @@ public class DogadajServiceJpa implements DogadajService {
       default -> Comparator.comparing(Dogadaj::getVrijemePocetka);
     };
 
-    filtriraniDogađaji.sort(comparator);
+    filtriraniDogadaji.sort(comparator);
 
-    return filtriraniDogađaji;
+    return filtriraniDogadaji;
   }
   @Override
-  public List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
+  public List<Dogadaj> filtrirajDogadaje(List<Dogadaj> sviDogadaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje) {
     if (lokacija != null) {
-      sviDogađaji = sviDogađaji.stream()
+      sviDogadaji = sviDogadaji.stream()
               .filter(dogadaj -> dogadaj.getLokacija().equals(lokacija))
               .collect(Collectors.toList());
     }
@@ -124,21 +124,21 @@ public class DogadajServiceJpa implements DogadajService {
 
       switch (vrijeme) {
         case "24 sata":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(1))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(1)))
                   .collect(Collectors.toList());
           break;
 
         case "7 dana":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(7))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(7)))
                   .collect(Collectors.toList());
           break;
 
         case "30 dana":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(30))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(30)))
                   .collect(Collectors.toList());
@@ -149,7 +149,7 @@ public class DogadajServiceJpa implements DogadajService {
     }
 
     if (vrsta != null) {
-      sviDogađaji = sviDogađaji.stream()
+      sviDogadaji = sviDogadaji.stream()
               .filter(dogadaj -> dogadaj.getVrsta().equals(vrsta))
               .collect(Collectors.toList());
     }
@@ -157,12 +157,12 @@ public class DogadajServiceJpa implements DogadajService {
     if (zavrseno != null) {
       switch (zavrseno) {
         case "Da":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isBefore(LocalDateTime.now()))
                   .collect(Collectors.toList());
           break;
         case "Ne":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(LocalDateTime.now()))
                   .collect(Collectors.toList());
           break;
@@ -173,12 +173,12 @@ public class DogadajServiceJpa implements DogadajService {
     if (placanje != null) {
       switch (placanje) {
         case "placa se":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
                   .collect(Collectors.toList());
           break;
         case "besplatno":
-          sviDogađaji = sviDogađaji.stream()
+          sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
                   .collect(Collectors.toList());
           break;
@@ -186,7 +186,11 @@ public class DogadajServiceJpa implements DogadajService {
           break;
       }
     }
-    return sviDogađaji;
-
+    return sviDogadaji;
   }
+@Override
+public void izbrisiDogadaj(Dogadaj dogadaj){
+    dogadajRepository.delete(dogadaj);
+}
+
 }

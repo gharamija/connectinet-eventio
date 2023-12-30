@@ -19,6 +19,7 @@ public interface DogadajService {
   public Optional<List<Dogadaj>> findByOrganizatorAndVrijemePocetkaBetween(Organizator organizator, LocalDateTime start, LocalDateTime end);
   public Dogadaj spremiDogadaj(Dogadaj dogadaj);
   public boolean updateDogadaj(requestDogadajDTO dto, Integer id);
-  List<Dogadaj> sortirajDogađaje(List<Dogadaj> filtriraniDogađaji, String sort);
-  List<Dogadaj> filtrirajDogađaje(List<Dogadaj> sviDogađaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje);
+  List<Dogadaj> sortirajDogadaje(List<Dogadaj> filtriraniDogađaji, String sort);
+  List<Dogadaj> filtrirajDogadaje(List<Dogadaj> sviDogadaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje);
+  void izbrisiDogadaj(Dogadaj dogadaj);
 }

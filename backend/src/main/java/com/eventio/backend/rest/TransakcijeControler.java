@@ -1,10 +1,7 @@
 package com.eventio.backend.rest;
 
-import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Organizator;
-import com.eventio.backend.service.KorisnikService;
 import com.eventio.backend.service.OrganizatorService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
