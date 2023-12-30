@@ -106,6 +106,13 @@ function EnhancedTable(props) {
         setDense(event.target.checked);
     };
 
+    const handleUserDelte = () => {
+        console.log("Brisanje korisnika");
+        console.log(selected)
+        setSelected([]);
+        // ovdje traba pozvati backend
+    }
+
     const isSelected = (id) => selected.indexOf(id) !== -1;
 
     // Avoid a layout jump when reaching the last page with empty rows.
@@ -115,10 +122,14 @@ function EnhancedTable(props) {
 
     return (
         <>
-            {console.log(users)}
+            <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
             <Box sx={{width: '100%'}}>
                 <Paper sx={{width: '100%', mb: 2}}>
-                    <EnhancedTableToolbar numSelected={selected.length} role={role}/>
+                    <EnhancedTableToolbar
+                        numSelected={selected.length}
+                        role={role}
+                        handleUserDelte={handleUserDelte}
+                    />
                     <TableContainer>
                         <Table
                             sx={{minWidth: 750}}
@@ -204,12 +215,7 @@ function EnhancedTable(props) {
                     label="Dense padding"
                 />
             </Box>
-            <Box sx={{my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
-                <Divider/>
-            </Box>
-            <Box sx={{my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
-                <Divider/>
-            </Box>
+            <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
         </>
         );
 }
