@@ -1,10 +1,13 @@
 package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Korisnik;
+import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Uloga;
+import com.eventio.backend.dto.responseOrganizatorDTO;
 import com.eventio.backend.dto.requestKorisnikDTO;
 import com.eventio.backend.dto.responseKorisnikDTO;
 import com.eventio.backend.service.KorisnikService;
+import com.eventio.backend.service.impl.OrganizatorServiceJpa;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +15,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,10 +26,25 @@ public class KorisnikController {
 
     @Autowired
     private KorisnikService serviceKorisnik;
+    @Autowired
+    private OrganizatorServiceJpa organizatorService;
+
     @Secured("ROLE_ADMIN")
     @GetMapping("/all")
-    public List<Korisnik> getAll() {
-        return serviceKorisnik.listAll();
+    public ResponseEntity<List<Object>> getAll() {
+        List<Object> korisnici = new ArrayList<>();
+
+        List<Korisnik> sviKorisnici = serviceKorisnik.listAll();
+        for (Korisnik korisnik : sviKorisnici) {
+            if (korisnik.getUloga() == Uloga.ORGANIZATOR) {
+                Optional<Organizator> organizatorOptional = organizatorService.findById(korisnik.getId());
+                organizatorOptional.ifPresent(organizator -> korisnici.add(new responseOrganizatorDTO(organizator)));
+            } else {
+                korisnici.add(new responseKorisnikDTO(korisnik));
+            }
+        }
+
+        return ResponseEntity.ok(korisnici);
     }
 
 
