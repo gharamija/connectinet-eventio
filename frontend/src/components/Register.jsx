@@ -23,11 +23,9 @@ function Register(props) {
     naziv: "",
     adresa: "",
     poveznica: "",
-    clanarina: "",
   });
   const [error, setError] = React.useState("");
   const [isChecked, setIsChecked] = useState(false);
-  const [isPaid, setIsPaid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,9 +34,6 @@ function Register(props) {
     if (type === "checkbox" && name === "admin") {
       setRegisterForm((oldForm) => ({ ...oldForm, [name]: checked }));
       setIsChecked(checked);
-    } else if (type === "checkbox" && name === "clanarina") {
-      setRegisterForm((oldForm) => ({ ...oldForm, [name]: checked }));
-      setIsPaid(checked);
     } else {
       setRegisterForm((oldForm) => ({ ...oldForm, [name]: value }));
     }
@@ -54,9 +49,7 @@ function Register(props) {
         registerForm.password
       }&uloga=${"ORGANIZATOR"}&nazivOrganizacije=${registerForm.naziv}&adresa=${
         registerForm.adresa
-      }&poveznica=${registerForm.poveznica}&članarina=${
-        registerForm.clanarina
-      }`;
+      }&poveznica=${registerForm.poveznica}`;
       const options = {
         method: "POST",
         headers: {
@@ -168,13 +161,6 @@ function Register(props) {
                 onChange={onChange}
                 fullWidth
                 margin="normal"
-              />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Clanarina"
-                name="clanarina"
-                checked={isPaid}
-                onChange={onChange}
               />
             </>
           )}

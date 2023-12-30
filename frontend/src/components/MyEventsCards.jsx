@@ -38,15 +38,20 @@ export default function MyEventsCards({ query }) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        ml: 5,
-        gap: 2,
+        gap: 3,
       }}
     >
       {events.map((event) => (
-        <InterestCounter key={event.dogadaj_id} interest={99}>
+        <InterestCounter
+          key={event.dogadajId}
+          interest={
+            parseInt(event.sigurnoZainteresiranost) +
+            parseInt(event.mozdaZainteresiranost)
+          }
+        >
           <CustomCard event={event}>
             {role === "ORGANIZATOR" && event.organizator === id && (
-              <EditDelete />
+              <EditDelete dogadajId={event.dogadajId} />
             )}
           </CustomCard>
         </InterestCounter>

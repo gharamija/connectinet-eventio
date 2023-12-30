@@ -9,7 +9,12 @@ function Homepage() {
   return (
     <Box sx={{ marginBottom: 15 }}>
       <Container
-        sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "center", md: "flex-start" },
+          justifyContent: { xs: "flex-start", md: "center" },
+        }}
       >
         <Filter setQuery={setQuery} />
         <AllEventsCards query={query} />

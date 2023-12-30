@@ -5,6 +5,7 @@ import { RoleContext, IdContext } from "../App.jsx";
 import CustomCard from "./CustomCard.jsx";
 import EditDelete from "./EditDelete.jsx";
 import InterestCounter from "./InterestCounter.jsx";
+import Zainteresiranost from "./Zainteresiranost.jsx";
 
 export default function AllEventsCards({ query }) {
   const [events, setEvents] = React.useState([]); // ovdje se spremaju eventi za pojedinog korisnika koji ce se prikazati
@@ -27,14 +28,26 @@ export default function AllEventsCards({ query }) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        ml: 5,
-        gap: 2,
+        gap: 3,
       }}
     >
       {events.map((event) => (
-        <InterestCounter key={event.dogadaj_id} interest={99}>
+        <InterestCounter
+          key={event.dogadajId}
+          interest={
+            parseInt(event.sigurnoZainteresiranost) +
+            parseInt(event.mozdaZainteresiranost)
+          }
+        >
           <CustomCard event={event}>
-            {role === "ADMIN" && <EditDelete />}
+            {role === "ADMIN" && <EditDelete dogadajId={event.dogadajId} />}
+            {role !== "ADMIN" && (
+              <Zainteresiranost
+                id={id}
+                dogadajId={event.dogadajId}
+                kategorija={event.trenutna}
+              />
+            )}
           </CustomCard>
         </InterestCounter>
       ))}

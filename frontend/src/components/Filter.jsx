@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import lokacije from "./Lokacije";
 import vrste from "./Vrste";
-import ResponsiveDrawer from "./ResponsiveDrawer";
 import ResponsiveDrawerButton from "./ResponsiveDrawerButton";
 
 function Filter(props) {
