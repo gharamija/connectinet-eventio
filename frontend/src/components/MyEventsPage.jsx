@@ -3,6 +3,7 @@ import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import AddDogadajDialog from "./AddDogadajDialog.jsx";
 import MyEventsCards from "./MyEventsCards.jsx";
+import BuduciSvrseniFilter from "./BuduciSvrseniFilter.jsx";
 import { RoleContext } from "../App.jsx";
 
 function MyEventsPage() {
@@ -13,8 +14,14 @@ function MyEventsPage() {
   return (
     <Box sx={{ marginBottom: 15 }}>
       <Container
-        sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "center", md: "flex-start" },
+          justifyContent: { xs: "flex-start", md: "center" },
+        }}
       >
+        {role === "POSJETITELJ" && <BuduciSvrseniFilter setQuery={setQuery} />}
         <MyEventsCards query={query} />
         <Fab
           color="primary"

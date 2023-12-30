@@ -11,8 +11,9 @@ function ResponsiveDrawerButton(props) {
 
   return (
     <Box>
-      <Box sx={{ display: { xs: "block", sm: "none" }, marginBottom: 1 }} open>
+      <Box sx={{ display: { xs: "block", md: "none" }, mb: 2 }} open>
         <Button
+          fullWidth
           variant="outlined"
           startIcon={<FilterList />}
           color="primary"
@@ -34,7 +35,7 @@ function ResponsiveDrawerButton(props) {
         </Drawer>
       </Box>
 
-      <Box sx={{ display: { xs: "none", sm: "block" } }} open>
+      <Box sx={{ display: { xs: "none", md: "block" } }} open>
         {props.children}
       </Box>
     </Box>

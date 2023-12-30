@@ -18,7 +18,7 @@ function Zainteresiranost({ id, dogadajId, kategorija }) {
 
   return (
     <CardActions disableSpacing>
-      <ButtonGroup size="small">
+      <ButtonGroup fullWidth>
         <Button
           variant={kategorija === "SIGURNO" ? "contained" : "outlined"}
           color="success"
