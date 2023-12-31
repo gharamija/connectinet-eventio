@@ -1,8 +1,8 @@
-import { CardActions, Rating, TextField, Typography } from "@mui/material";
+import { Box, Rating, TextField, Typography } from "@mui/material";
 
 function PrikazRecenzije({ rec }) {
   return (
-    <CardActions
+    <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
@@ -15,7 +15,7 @@ function PrikazRecenzije({ rec }) {
       </Typography>
       <Rating value={rec.ocjena} readOnly />
       <TextField value={rec.tekst} multiline maxRows={3} fullWidth />
-    </CardActions>
+    </Box>
   );
 }
 

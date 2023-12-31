@@ -11,6 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PrikazRecenzije from "./PrikazRecenzije.jsx";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -67,6 +68,9 @@ export default function CustomCard({ event, children }) {
         <CardContent>
           <Typography paragraph>{event.opis}</Typography>
           <Typography paragraph>Cijena: {event.cijenaUlaznice}</Typography>
+          {event.recenzije.map((rec) => (
+            <PrikazRecenzije key={rec.recenzijaId} rec={rec} />
+          ))}
         </CardContent>
       </Collapse>
       {children}
