@@ -12,7 +12,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableHead from "./EnhancedTableHead";
-import {Divider} from "@mui/material";
 
 function createData(id, username, email, uloga, nazivOrganizacije, adresa, poveznica, clanarina) {
     return {
@@ -111,6 +110,16 @@ function EnhancedTable(props) {
         console.log(selected)
         setSelected([]);
         // ovdje traba pozvati backend
+        selected.map((id) => {
+            fetch(`/api/user/delete/${id}`, {method: "DELETE"})
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("Korisnik " + id + " obrisan");
+                    }
+                })
+
+        })
+        props.onDelete();
     }
 
     const isSelected = (id) => selected.indexOf(id) !== -1;
@@ -175,7 +184,7 @@ function EnhancedTable(props) {
                                             scope="row"
                                             padding="none"
                                         >
-                                            {row.id}
+                                            {role === "POSJETITELJ" ? row.id : row.organizator_id}
                                         </TableCell>
                                         <TableCell align="right">{row.username}</TableCell>
                                         <TableCell align="right">{row.email}</TableCell>
@@ -217,7 +226,7 @@ function EnhancedTable(props) {
             </Box>
             <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
         </>
-        );
+    );
 }
 
 export default EnhancedTable;

@@ -29,6 +29,16 @@ function UserList() {
         }
     };
 
+    const handleDelete = () => {
+        console.log("Trebalo bi se renderat ispocetka")
+            fetch("api/user/all").then((response) => {
+                if (response.ok) {
+                    setIsAllowed(true);
+                    response.json().then((users) => setUsers(users));
+                }
+            });
+    };
+
     if (isAllowed) {
         return (
             <>
@@ -50,8 +60,8 @@ function UserList() {
                     </Grid>
                 </div>
 
-                {posjetiteljiButton && <EnhancedTable users={users} role={"POSJETITELJ"}/>}
-                {organizatoriButton && <EnhancedTable users={users} role={"ORGANIZATOR"}/>}
+                {posjetiteljiButton && <EnhancedTable users={users} role={"POSJETITELJ"} onDelete={handleDelete} key={users.length}/>}
+                {organizatoriButton && <EnhancedTable users={users} role={"ORGANIZATOR"} onDelete={handleDelete} key={users.length}/>}
             </>
     )
         ;
