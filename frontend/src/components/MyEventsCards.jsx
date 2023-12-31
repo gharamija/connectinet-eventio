@@ -1,10 +1,12 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { RoleContext, IdContext } from "../App";
 import CustomCard from "./CustomCard.jsx";
 import EditDelete from "./EditDelete.jsx";
 import InterestCounter from "./InterestCounter.jsx";
+import Recenzija from "./Recenzija.jsx";
+import PrikazRecenzije from "./PrikazRecenzije.jsx";
 
 export default function MyEventsCards({ query }) {
   const [events, setEvents] = React.useState([]); // ovdje se spremaju eventi za pojedinog korisnika koji ce se prikazati
@@ -50,9 +52,16 @@ export default function MyEventsCards({ query }) {
           }
         >
           <CustomCard event={event}>
-            {role === "ORGANIZATOR" && event.organizator === id && (
-              <EditDelete dogadajId={event.dogadajId} />
-            )}
+            {role === "ORGANIZATOR" && [
+              event.recenzije.map((rec) => (
+                <PrikazRecenzije key={rec.recenzijaId} rec={rec} />
+              )),
+              <EditDelete key="editdelete" dogadajId={event.dogadajId} />,
+            ]}
+            {role === "POSJETITELJ" &&
+              new Date(event.vrijemePocetka) < new Date() && (
+                <Recenzija id={id} dogadajId={event.dogadajId} />
+              )}
           </CustomCard>
         </InterestCounter>
       ))}
