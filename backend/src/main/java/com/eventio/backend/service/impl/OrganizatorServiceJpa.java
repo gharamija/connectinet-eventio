@@ -51,7 +51,7 @@ public class OrganizatorServiceJpa implements OrganizatorService {
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
         user.setNazivOrganizacije(dto.getNazivOrganizacije());
-        user.setPoveznica(dto.getPoveznica());
+        user.setAdresa(dto.getAdresa());
         user.setPoveznica(dto.getPoveznica());
         try {
             repository.saveAndFlush(user);
