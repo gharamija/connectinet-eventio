@@ -39,12 +39,18 @@ export default function CustomCard({ event, children }) {
           </Avatar>
         }
         title={event.nazivDogadaja}
-        subheader={event.organizator}
+        subheader={event.username}
       />
       <CardMedia component="img" height="194" image={event.galerija} />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
+      <CardContent sx={{ pb: 0 }}>
+        <Typography paragraph color="text.secondary">
           {event.opisLokacije}
+        </Typography>
+        <Typography paragraph color="text.secondary">
+          {new Date(event.vrijemePocetka).toLocaleString("en-GB", {
+            dateStyle: "medium",
+            timeStyle: "short",
+          })}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -59,8 +65,8 @@ export default function CustomCard({ event, children }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Opis:</Typography>
           <Typography paragraph>{event.opis}</Typography>
+          <Typography paragraph>Cijena: {event.cijenaUlaznice}</Typography>
         </CardContent>
       </Collapse>
       {children}

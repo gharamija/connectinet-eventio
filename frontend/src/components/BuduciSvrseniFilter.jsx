@@ -25,7 +25,7 @@ function BuduciSvrseniFilter(props) {
 
   function getQuery() {
     let query = "";
-    if (filter.zavrseno) query += `?zavrseno=${filter.zavrseno}`;
+    if (filter.zavrseno) query += `?vrijeme=${filter.zavrseno}`;
     return query;
   }
 
@@ -52,8 +52,8 @@ function BuduciSvrseniFilter(props) {
               <MenuItem key={"clear"} value={"clear"}>
                 --
               </MenuItem>
-              <MenuItem value="1">Da</MenuItem>
-              <MenuItem value="0">Ne</MenuItem>
+              <MenuItem value="svrseni">Da</MenuItem>
+              <MenuItem value="nesvrseni">Ne</MenuItem>
             </Select>
           </FormControl>
 
