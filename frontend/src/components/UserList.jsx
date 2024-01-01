@@ -16,7 +16,7 @@ function UserList() {
         });
     }, []);
 
-    const [posjetiteljiButton, setPosjetiteljiButton] = useState(true);
+    const [posjetiteljiButton, setPosjetiteljiButton] = useState(false);
     const [organizatoriButton, setOrganizatoriButton] = useState(false);
 
     const handleButtonClick = (button) => {
@@ -27,6 +27,15 @@ function UserList() {
             setPosjetiteljiButton(false);
             setOrganizatoriButton(true);
         }
+    };
+
+    const handleDelete = () => {
+        fetch("api/user/all").then((response) => {
+                if (response.ok) {
+                    setIsAllowed(true);
+                    response.json().then((users) => setUsers(users));
+                }
+            });
     };
 
     if (isAllowed) {
@@ -50,8 +59,8 @@ function UserList() {
                     </Grid>
                 </div>
 
-                {posjetiteljiButton && <EnhancedTable users={users} role={"POSJETITELJ"}/>}
-                {organizatoriButton && <EnhancedTable users={users} role={"ORGANIZATOR"}/>}
+                {posjetiteljiButton && <EnhancedTable users={users} key={"POSJETITELJ"} onDelete={handleDelete} role={"POSJETITELJ"}/>}
+                {organizatoriButton && <EnhancedTable users={users} key={"ORGANIZATOR"} onDelete={handleDelete} role={"ORGANIZATOR"}/>}
             </>
     )
         ;

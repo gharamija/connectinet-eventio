@@ -71,27 +71,27 @@ function Header(props) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h4"
-            noWrap
-            component="a"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+              variant="h4"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
           >
             EVENTIO
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1}}>
             {pages.map((page) => (
               <Button
                 key={page.label}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white"}}
                 onClick={page.onClick}
               >
                 {page.label}
