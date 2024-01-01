@@ -55,9 +55,7 @@ function EnhancedTable(props) {
     const role = props.role;
     const rows = users
         .filter((item) => item.uloga === role)
-        .map((item) => createData(item.id, item.username, item.email,
-            item.uloga, item.nazivOrganizacije, item.adresa,
-            item.poveznica, item.clanarina, item.organizator_id));
+        .map((item) => createData(item.id, item.username, item.email, item.uloga, item.nazivOrganizacije, item.adresa, item.poveznica, item.clanarina, item.organizator_id));
 
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("id");
@@ -111,15 +109,8 @@ function EnhancedTable(props) {
     };
 
     const handleUserDelete = () => {
-        console.log("Brisanje korisnika");
-        console.log(selected);
-        // ovdje traba pozvati backend
         let promises = selected.map((id) => {
-            return fetch(`/api/user/delete/${id}`, {method: "DELETE"}).then((response) => {
-                if (response.ok) {
-                    console.log("Korisnik " + id + " obrisan");
-                }
-            });
+            return fetch(`/api/user/delete/${id}`, {method: "DELETE"})
         });
         Promise.all(promises).then(() => {
             props.onDelete();
@@ -136,98 +127,98 @@ function EnhancedTable(props) {
     const visibleRows = React.useMemo(() => stableSort(rows, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage), [order, orderBy, page, rowsPerPage]);
 
     return (<>
-            <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
-            <Box sx={{width: "100%"}}>
-                <Paper sx={{width: "100%", mb: 2}}>
-                    <EnhancedTableToolbar
-                        numSelected={selected.length}
-                        role={role}
-                        handleUserDelte={handleUserDelete}
-                    />
-                    <TableContainer>
-                        <Table
-                            sx={{minWidth: 750}}
-                            aria-labelledby="tableTitle"
-                            size={dense ? "small" : "medium"}
-                        >
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={handleSelectAllClick}
-                                onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
-                                role={role}
-                            />
-                            <TableBody>
-                                {visibleRows.map((row, index) => {
-                                    const isItemSelected = isSelected(row.id);
-                                    const labelId = `enhanced-table-checkbox-${index}`;
-
-                                    return (<TableRow
-                                            hover
-                                            onClick={(event) => handleClick(event, row.id)}
-                                            role="checkbox"
-                                            aria-checked={isItemSelected}
-                                            tabIndex={-1}
-                                            key={row.id}
-                                            selected={isItemSelected}
-                                            sx={{cursor: "pointer"}}
-                                        >
-                                            <TableCell padding="checkbox">
-                                                <Checkbox
-                                                    color="primary"
-                                                    checked={isItemSelected}
-                                                    inputProps={{
-                                                        "aria-labelledby": labelId,
-                                                    }}
-                                                />
-                                            </TableCell>
-                                            <TableCell
-                                                component="th"
-                                                id={labelId}
-                                                scope="row"
-                                                padding="none"
-                                            >
-                                                {row.id}
-                                            </TableCell>
-                                            <TableCell align="right">{row.username}</TableCell>
-                                            <TableCell align="right">{row.email}</TableCell>
-                                            {role === "ORGANIZATOR" && (<>
-                                                    <TableCell align="right">{row.nazivOrganizacije}</TableCell>
-                                                    <TableCell align="right">{row.adresa}</TableCell>
-                                                    <TableCell align="right">{row.poveznica}</TableCell>
-                                                    <TableCell align="right">{row.clanarina.toString()}</TableCell>
-                                                </>)}
-                                        </TableRow>);
-                                })}
-                                {emptyRows > 0 && (<TableRow
-                                        style={{
-                                            height: (dense ? 33 : 53) * emptyRows,
-                                        }}
-                                    >
-                                        <TableCell colSpan={6}/>
-                                    </TableRow>)}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[5, 10, 25]}
-                        component="div"
-                        count={rows.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>
-                <FormControlLabel
-                    control={<Switch checked={dense} onChange={handleChangeDense}/>}
-                    label="Dense padding"
+        <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
+        <Box sx={{width: "100%"}}>
+            <Paper sx={{width: "100%", mb: 2}}>
+                <EnhancedTableToolbar
+                    numSelected={selected.length}
+                    role={role}
+                    handleUserDelte={handleUserDelete}
                 />
-            </Box>
-            <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
-        </>);
+                <TableContainer>
+                    <Table
+                        sx={{minWidth: 750}}
+                        aria-labelledby="tableTitle"
+                        size={dense ? "small" : "medium"}
+                    >
+                        <EnhancedTableHead
+                            numSelected={selected.length}
+                            order={order}
+                            orderBy={orderBy}
+                            onSelectAllClick={handleSelectAllClick}
+                            onRequestSort={handleRequestSort}
+                            rowCount={rows.length}
+                            role={role}
+                        />
+                        <TableBody>
+                            {visibleRows.map((row, index) => {
+                                const isItemSelected = isSelected(row.id);
+                                const labelId = `enhanced-table-checkbox-${index}`;
+
+                                return (<TableRow
+                                    hover
+                                    onClick={(event) => handleClick(event, row.id)}
+                                    role="checkbox"
+                                    aria-checked={isItemSelected}
+                                    tabIndex={-1}
+                                    key={row.id}
+                                    selected={isItemSelected}
+                                    sx={{cursor: "pointer"}}
+                                >
+                                    <TableCell padding="checkbox">
+                                        <Checkbox
+                                            color="primary"
+                                            checked={isItemSelected}
+                                            inputProps={{
+                                                "aria-labelledby": labelId,
+                                            }}
+                                        />
+                                    </TableCell>
+                                    <TableCell
+                                        component="th"
+                                        id={labelId}
+                                        scope="row"
+                                        padding="none"
+                                    >
+                                        {row.id}
+                                    </TableCell>
+                                    <TableCell align="right">{row.username}</TableCell>
+                                    <TableCell align="right">{row.email}</TableCell>
+                                    {role === "ORGANIZATOR" && (<>
+                                        <TableCell align="right">{row.nazivOrganizacije}</TableCell>
+                                        <TableCell align="right">{row.adresa}</TableCell>
+                                        <TableCell align="right">{row.poveznica}</TableCell>
+                                        <TableCell align="right">{row.clanarina.toString()}</TableCell>
+                                    </>)}
+                                </TableRow>);
+                            })}
+                            {emptyRows > 0 && (<TableRow
+                                style={{
+                                    height: (dense ? 33 : 53) * emptyRows,
+                                }}
+                            >
+                                <TableCell colSpan={6}/>
+                            </TableRow>)}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 25]}
+                    component="div"
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
+            <FormControlLabel
+                control={<Switch checked={dense} onChange={handleChangeDense}/>}
+                label="Dense padding"
+            />
+        </Box>
+        <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
+    </>);
 }
 
 export default EnhancedTable;

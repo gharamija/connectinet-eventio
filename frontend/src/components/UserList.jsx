@@ -30,7 +30,6 @@ function UserList() {
     };
 
     const handleDelete = () => {
-        console.log("Trebalo bi se renderat ispocetka")
         fetch("api/user/all").then((response) => {
                 if (response.ok) {
                     setIsAllowed(true);
