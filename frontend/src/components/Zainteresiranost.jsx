@@ -1,19 +1,16 @@
 import { Check, Close, QuestionMark } from "@mui/icons-material";
 import { CardActions, Button, ButtonGroup } from "@mui/material";
+import { useState } from "react";
 
 //komponenta treba dobiti koji je id korisnika i događaja o kojem se radi
 //te za sto je glasao trenutni korisnik (kategorija)
-function Zainteresiranost({ id, dogadajId, kategorija }) {
+function Zainteresiranost({ id, dogadajId, pocKategorija }) {
+  const [kategorija, setKategorija] = useState(pocKategorija);
+
   function vote(nova) {
-    let obj = { idDogadaj: dogadajId, idKorisnik: id, kategorija: nova };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    };
-    fetch("/api/dogadaj/zainteresiranost", options);
+    let query = `?dogadajId=${dogadajId}&korisnikId=${id}&kategorija=${nova}`;
+    fetch(`/api/dogadaj/zainteresiranost${query}`, { method: "POST" });
+    setKategorija(nova);
   }
 
   return (

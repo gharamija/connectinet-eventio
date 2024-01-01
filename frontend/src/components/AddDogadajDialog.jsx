@@ -53,7 +53,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
     e.preventDefault();
     setError("");
     const options = {
-      method: "POST",
+      method: dogadajId ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
       },

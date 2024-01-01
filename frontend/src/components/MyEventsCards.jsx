@@ -5,6 +5,7 @@ import { RoleContext, IdContext } from "../App";
 import CustomCard from "./CustomCard.jsx";
 import EditDelete from "./EditDelete.jsx";
 import InterestCounter from "./InterestCounter.jsx";
+import Recenzija from "./Recenzija.jsx";
 
 export default function MyEventsCards({ query }) {
   const [events, setEvents] = React.useState([]); // ovdje se spremaju eventi za pojedinog korisnika koji ce se prikazati
@@ -50,9 +51,13 @@ export default function MyEventsCards({ query }) {
           }
         >
           <CustomCard event={event}>
-            {role === "ORGANIZATOR" && event.organizator === id && (
+            {role === "ORGANIZATOR" && (
               <EditDelete dogadajId={event.dogadajId} />
             )}
+            {role === "POSJETITELJ" &&
+              new Date(event.vrijemePocetka) < new Date() && (
+                <Recenzija id={id} dogadajId={event.dogadajId} />
+              )}
           </CustomCard>
         </InterestCounter>
       ))}

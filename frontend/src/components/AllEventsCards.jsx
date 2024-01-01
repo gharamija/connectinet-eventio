@@ -45,7 +45,7 @@ export default function AllEventsCards({ query }) {
               <Zainteresiranost
                 id={id}
                 dogadajId={event.dogadajId}
-                kategorija={event.trenutna}
+                pocKategorija={event.trenutna}
               />
             )}
           </CustomCard>
