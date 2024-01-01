@@ -16,7 +16,7 @@ function UserList() {
         });
     }, []);
 
-    const [posjetiteljiButton, setPosjetiteljiButton] = useState(true);
+    const [posjetiteljiButton, setPosjetiteljiButton] = useState(false);
     const [organizatoriButton, setOrganizatoriButton] = useState(false);
 
     const handleButtonClick = (button) => {
@@ -31,7 +31,7 @@ function UserList() {
 
     const handleDelete = () => {
         console.log("Trebalo bi se renderat ispocetka")
-            fetch("api/user/all").then((response) => {
+        fetch("api/user/all").then((response) => {
                 if (response.ok) {
                     setIsAllowed(true);
                     response.json().then((users) => setUsers(users));
@@ -60,8 +60,8 @@ function UserList() {
                     </Grid>
                 </div>
 
-                {posjetiteljiButton && <EnhancedTable users={users} role={"POSJETITELJ"} onDelete={handleDelete} key={users.length}/>}
-                {organizatoriButton && <EnhancedTable users={users} role={"ORGANIZATOR"} onDelete={handleDelete} key={users.length}/>}
+                {posjetiteljiButton && <EnhancedTable users={users} key={"POSJETITELJ"} onDelete={handleDelete} role={"POSJETITELJ"}/>}
+                {organizatoriButton && <EnhancedTable users={users} key={"ORGANIZATOR"} onDelete={handleDelete} role={"ORGANIZATOR"}/>}
             </>
     )
         ;
