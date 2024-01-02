@@ -39,7 +39,7 @@ public class Korisnik implements UserDetails {
     @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recenzija> recenzije;
     @JsonIgnore
-    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Zainteresiranost> zainteresiranosti;
     @JsonIgnore
     @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
