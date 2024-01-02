@@ -11,7 +11,7 @@ public class Zainteresiranost {
     @ManyToOne
     @JoinColumn(name = "posjetitelj_id", nullable = false)
     private Korisnik posjetitelj;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dogadaj_id", nullable = false)
     private Dogadaj dogadaj;
     @Enumerated

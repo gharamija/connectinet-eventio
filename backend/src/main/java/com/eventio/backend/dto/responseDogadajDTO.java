@@ -1,13 +1,19 @@
 package com.eventio.backend.dto;
 
 import com.eventio.backend.domain.*;
+import org.hibernate.Hibernate;
+import org.hibernate.LazyInitializationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class responseDogadajDTO {
@@ -53,7 +59,7 @@ public class responseDogadajDTO {
         this.recenzije = dogadaj.getRecenzije().stream()
                 .map(RecenzijaDTO::new)
                 .collect(Collectors.toList());
-        this.trenutna = Kategorija.SIGURNO;
+        this.trenutna = dohvatiTrenutnuZainteresiranost(dogadaj);
         this.mozdaZainteresiranost = countZainteresiranost(dogadaj, Kategorija.MOZDA);
         this.sigurnoZainteresiranost = countZainteresiranost(dogadaj, Kategorija.SIGURNO);
         this.neDolazeZainteresiranost = countZainteresiranost(dogadaj, Kategorija.NE);
@@ -191,19 +197,31 @@ public class responseDogadajDTO {
             .count();
     }
 
-    public Zainteresiranost dohvatiTrenutnuZainteresiranost(Dogadaj dogadaj) {
+    private static final Logger logger = LoggerFactory.getLogger(responseDogadajDTO.class);
+    
+    public Kategorija dohvatiTrenutnuZainteresiranost(Dogadaj dogadaj) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails userDetails) {
-            Korisnik trenutniKorisnik = (Korisnik) userDetails;
-            return dohvatiZainteresiranostTrenutnogKorisnika(trenutniKorisnik, dogadaj);
+        if (authentication != null && authentication.getPrincipal() instanceof Korisnik trenutniKorisnik) {
+          return dohvatiZainteresiranostTrenutnogKorisnika(trenutniKorisnik, dogadaj);
         }
         return null;
     }
 
-    private Zainteresiranost dohvatiZainteresiranostTrenutnogKorisnika(Korisnik trenutniKorisnik, Dogadaj dogadaj) {
-        return trenutniKorisnik.getZainteresiranosti().stream()
-            .filter(z -> z.getDogadaj().equals(dogadaj))
-            .findFirst()
-            .orElse(null);
+    @Transactional(readOnly = true)
+    protected Kategorija dohvatiZainteresiranostTrenutnogKorisnika(Korisnik trenutniKorisnik, Dogadaj dogadaj) {
+        try {
+            Hibernate.initialize(trenutniKorisnik.getZainteresiranosti());
+            Zainteresiranost zainteresiranost = trenutniKorisnik.getZainteresiranosti().stream()
+                .filter(z -> z.getDogadaj().getId().equals(dogadaj.getId()))
+                .findFirst()
+                .orElse(null);
+            if (zainteresiranost != null) {
+                return zainteresiranost.getKategorija();
+            }
+        } catch (LazyInitializationException e) {
+            logger.error("Greska");
+        }
+
+      return null;
     }
 }
