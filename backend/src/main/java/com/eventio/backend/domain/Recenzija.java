@@ -28,8 +28,6 @@ public class Recenzija {
         this.dogadaj = dogadaj;
         this.tekst = dto.getTekst();
         this.ocjena = dto.getOcjena();
-        posjetitelj.getRecenzije().add(this);
-        dogadaj.getRecenzije().add(this);
     }
 
     public Integer getId() {
