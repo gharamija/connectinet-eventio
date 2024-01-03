@@ -8,17 +8,37 @@ public class RecenzijaDTO {
     private Integer korisnikId;
     @NotNull
     private Integer dogadajId;
+    private Integer recenzijaId;
+    private String username;
     @NotNull
     private String tekst;
     private int ocjena;
     public RecenzijaDTO() {
     }
 
-    public RecenzijaDTO(Recenzija recenzija) { 
+    public RecenzijaDTO(Recenzija recenzija) {
+        this.recenzijaId = recenzija.getId();
         this.korisnikId = recenzija.getPosjetitelj().getId();
         this.dogadajId = recenzija.getDogadaj().getId();
+        this.username = recenzija.getPosjetitelj().getUsername();
         this.tekst = recenzija.getTekst();
         this.ocjena = recenzija.getOcjena();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Integer getRecenzijaId() {
+        return recenzijaId;
+    }
+
+    public void setRecenzijaId(Integer recenzijaId) {
+        this.recenzijaId = recenzijaId;
     }
 
     public Integer getKorisnikId() {
