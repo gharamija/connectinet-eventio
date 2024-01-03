@@ -30,6 +30,8 @@ public class DogadajController {
     private ZainteresiranostService serviceZainteresiranost;
     @Autowired
     private RecenzijaService serviceRecnzija;
+    @Autowired
+    private NotifikacijaService serviceNotifikacija;
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
@@ -73,12 +75,13 @@ public class DogadajController {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
-                if (!organizator.getClanarina() && dto.getCijenaUlaznice().equals("0"))
+                if (!organizator.getClanarina() && !dto.getCijenaUlaznice().equals("0"))
                     return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
 
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
                 serviceDogadaj.spremiDogadaj(dogadaj);
+                // serviceNotifikacija.posaljiNotifikacije(dogadaj.getLokacija(),dogadaj.getVrsta(),dogadaj.getNazivDogadaja());
                 return ResponseEntity.ok("Uspješno spremljen događaj.");
             } else
                 return ResponseEntity.badRequest().body("Organizator s navedenim ID-om ne postoji.");
