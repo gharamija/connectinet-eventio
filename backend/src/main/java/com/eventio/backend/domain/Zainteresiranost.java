@@ -11,7 +11,7 @@ public class Zainteresiranost {
     @ManyToOne
     @JoinColumn(name = "posjetitelj_id", nullable = false)
     private Korisnik posjetitelj;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "dogadaj_id", nullable = false)
     private Dogadaj dogadaj;
     @Enumerated
@@ -24,10 +24,6 @@ public class Zainteresiranost {
         this.posjetitelj = posjetitelj;
         this.dogadaj = dogadaj;
         this.kategorija = kategorija;
-        // Dodaj zainteresiranost korisniku
-        posjetitelj.getZainteresiranosti().add(this);
-        // Dodaj zainteresiranost događaju
-        dogadaj.getZainteresiranosti().add(this);
     }
 
     public Zainteresiranost() {
