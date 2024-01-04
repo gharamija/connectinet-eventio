@@ -49,4 +49,8 @@ public class Notifikacija {
     public void setLokacija(String lokacija) {
         this.lokacija = lokacija;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }
