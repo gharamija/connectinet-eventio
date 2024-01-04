@@ -6,14 +6,13 @@ import org.hibernate.LazyInitializationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class responseDogadajDTO {
@@ -207,12 +206,10 @@ public class responseDogadajDTO {
         return null;
     }
 
-    @Transactional(readOnly = true)
     protected Kategorija dohvatiZainteresiranostTrenutnogKorisnika(Korisnik trenutniKorisnik, Dogadaj dogadaj) {
         try {
-            Hibernate.initialize(trenutniKorisnik.getZainteresiranosti());
-            Zainteresiranost zainteresiranost = trenutniKorisnik.getZainteresiranosti().stream()
-                .filter(z -> z.getDogadaj().getId().equals(dogadaj.getId()))
+            Zainteresiranost zainteresiranost = dogadaj.getZainteresiranosti().stream()
+                .filter(z -> z.getPosjetitelj().getId().equals(trenutniKorisnik.getId()))
                 .findFirst()
                 .orElse(null);
             if (zainteresiranost != null) {
