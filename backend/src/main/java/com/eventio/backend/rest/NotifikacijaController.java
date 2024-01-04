@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/notification")
@@ -24,16 +25,21 @@ public class NotifikacijaController {
     @Autowired
     private KorisnikService korisnikService;
     @GetMapping("/{id}")
-    public List<Notifikacija> notifikacijeKorisnika(@PathVariable(name = "id") Integer id, @AuthenticationPrincipal Korisnik korisnik){
+    public List<NotifikacijaDTO> notifikacijeKorisnika(@PathVariable(name = "id") Integer id, @AuthenticationPrincipal Korisnik korisnik){
         if (!Objects.equals(korisnik.getId(), id))
             return null;
         Optional<Korisnik> OptKorisnik = korisnikService.findById(id);
-        if (OptKorisnik.isPresent())
-        return OptKorisnik.get().getNotifikacije();
+        if (OptKorisnik.isPresent()){
+            List<NotifikacijaDTO> notifikacijeDTOList = OptKorisnik.get().getNotifikacije()
+                    .stream()
+                    .map(NotifikacijaDTO::new)
+                    .collect(Collectors.toList());
+            return notifikacijeDTOList;
+        }
 
     return null;
     }
-    @PostMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> brisanje(@PathVariable(name = "id") Integer id,
                                          @AuthenticationPrincipal Korisnik korisnik){
 
@@ -55,7 +61,7 @@ public class NotifikacijaController {
                                          @RequestBody NotifikacijaDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik){
         // dodat u konstruktoru dogadaja pregledavanje svih obavjesti te lokacije ili vrste i slanje mailova
-       if (Objects.equals(id, korisnik.getId()))
+       if (!Objects.equals(id, korisnik.getId()))
         return ResponseEntity.badRequest().body("Nemate ovlasti za dodavanje ove notifikacije");
         try {
             Optional<Korisnik> optionalKorisnik = korisnikService.findById(id);

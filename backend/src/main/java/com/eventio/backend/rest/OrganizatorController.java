@@ -49,7 +49,7 @@ public class OrganizatorController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer id,
                                          @Valid @RequestBody OrganizatorDTO dto,
                                          @AuthenticationPrincipal Korisnik trenutni) {

@@ -165,4 +165,16 @@
                 newDataType="TIMESTAMP"
                 tableName="dogadaj"/>
     </changeSet>
+    <changeSet author="grdic4" id="1702134144740-21">
+        <modifyDataType
+                columnName="vrsta"
+                newDataType="SMALLINT"
+                tableName="notifikacija"/>
+    </changeSet>
+    <changeSet author="grdic4" id="1702134144740-22">
+        <modifyDataType
+                columnName="lokacija"
+                newDataType="SMALLINT"
+                tableName="notifikacija"/>
+    </changeSet>
 </databaseChangeLog>

@@ -14,8 +14,8 @@ public class Notifikacija {
     @JoinColumn(name = "posjetitelj_id", nullable = false)
     private Korisnik posjetitelj;
 
-    private String vrsta;
-    private String lokacija;
+    private Vrste vrsta;
+    private Kvartovi lokacija;
 
     public Notifikacija(NotifikacijaDTO dto) {
         this.vrsta = dto.getVrsta();
@@ -34,19 +34,23 @@ public class Notifikacija {
         this.posjetitelj = posjetitelj;
     }
 
-    public String getVrsta() {
+    public Vrste getVrsta() {
         return vrsta;
     }
 
-    public void setVrsta(String vrsta) {
+    public void setVrsta(Vrste vrsta) {
         this.vrsta = vrsta;
     }
 
-    public String getLokacija() {
+    public Kvartovi getLokacija() {
         return lokacija;
     }
 
-    public void setLokacija(String lokacija) {
+    public void setLokacija(Kvartovi lokacija) {
         this.lokacija = lokacija;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

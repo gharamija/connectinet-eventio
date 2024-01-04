@@ -1,4 +1,4 @@
-import {Fragment, useEffect, useState} from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
     Container,
     FormControl,
@@ -10,12 +10,12 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import {Add, Delete} from "@mui/icons-material";
+import { Add, Delete } from "@mui/icons-material";
 import vrste from "./Vrste";
 import lokacije from "./Lokacije";
 
-function Notifications({id}) {
-    const [notif, setNotif] = useState({vrsta: "", lokacija: ""});
+function Notifications({ id }) {
+    const [notif, setNotif] = useState({ vrsta: "", lokacija: "" });
     const [pretplate, setPretplate] = useState([]);
 
     function dohvati() {
@@ -31,8 +31,8 @@ function Notifications({id}) {
     }, []);
 
     function onChange(event) {
-        const {name, value} = event.target;
-        setNotif({...notif, [name]: value});
+        const { name, value } = event.target;
+        setNotif({ ...notif, [name]: value });
     }
 
     function onSubmit(e) {
@@ -44,11 +44,11 @@ function Notifications({id}) {
             },
             body: JSON.stringify(notif),
         };
-        fetch(`/api/notificaiton/add/${id}`, options).then(dohvati);
+        fetch(`/api/notification/add/${id}`, options).then(dohvati);
     }
 
-    function obrisiPretplatu(notifId) {
-        fetch(`/api/notificaiton/${notifId}`, {method: "DELETE"}).then(dohvati);
+    function obrisiPretplatu(id) {
+        fetch(`/api/notification/${id}`, { method: "DELETE" }).then(dohvati);
     }
 
     return (
@@ -66,17 +66,17 @@ function Notifications({id}) {
                 {pretplate.map((pretpl) => (
                     <Fragment key={pretpl.id}>
                         <Grid item xs={5}>
-                            <TextField value={pretpl.vrsta} disabled/>
+                            <TextField value={pretpl.vrsta} disabled />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField value={pretpl.lokacija} disabled fullWidth/>
+                            <TextField value={pretpl.lokacija} disabled fullWidth />
                         </Grid>
                         <Grid item xs={1}>
                             <IconButton
                                 onClick={() => obrisiPretplatu(pretpl.id)}
-                                sx={{p: 0}}
+                                sx={{ p: 0 }}
                             >
-                                <Delete/>
+                                <Delete />
                             </IconButton>
                         </Grid>
                     </Fragment>
@@ -122,8 +122,8 @@ function Notifications({id}) {
                     </FormControl>
                 </Grid>
                 <Grid item xs={1}>
-                    <IconButton type="submit" sx={{p: 0}}>
-                        <Add/>
+                    <IconButton type="submit" sx={{ p: 0 }}>
+                        <Add />
                     </IconButton>
                 </Grid>
             </Grid>
