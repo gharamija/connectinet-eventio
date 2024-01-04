@@ -49,4 +49,8 @@ public class Notifikacija {
     public void setLokacija(Kvartovi lokacija) {
         this.lokacija = lokacija;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }
