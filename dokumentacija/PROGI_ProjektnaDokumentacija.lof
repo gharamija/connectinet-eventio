@@ -9,14 +9,15 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Dijagram obrasca uporabe, funkcionalnost posjetitelja}}{26}{figure.3.5}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Sekvencijski dijagram za UC1}}{27}{figure.3.6}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Sekvencijski dijagram za UC16}}{28}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Sekvencijski dijagram za UC19}}{30}{figure.3.8}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Sekvencijski dijagram za UC19}}{29}{figure.3.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Dijagram baze podataka}}{37}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Dijagram razreda - Kontroleri}}{41}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Dijagram razreda - Servisi}}{42}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Dijagram razreda - Data Transfer Objects}}{43}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Dijagram razreda - Models}}{44}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Dijagram stanja - Korisnik(Posjetitelj)}}{45}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Dijagram aktivnosti - Postavljanje događaja (Organizator)}}{47}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitektura sustava}}{31}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Dijagram baze podataka}}{37}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Dijagram razreda - Kontroleri}}{41}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Dijagram razreda - Servisi}}{42}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Dijagram razreda - Data Transfer Objects}}{43}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Dijagram razreda - Models}}{44}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Dijagram stanja - Korisnik (Posjetitelj)}}{45}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Dijagram aktivnosti - Postavljanje događaja (Organizator)}}{47}{figure.4.8}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

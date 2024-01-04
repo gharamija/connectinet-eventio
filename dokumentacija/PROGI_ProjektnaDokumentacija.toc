@@ -6,10 +6,10 @@
 \contentsline {subsection}{\numberline {3.1.1}Obrasci uporabe}{12}{subsection.3.1.1}%
 \contentsline {subsubsection}{Dijagrami obrazaca uporabe}{22}{subsubsection*.2}%
 \contentsline {subsection}{\numberline {3.1.2}Sekvencijski dijagrami}{27}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Ostali zahtjevi}{31}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Arhitektura i dizajn sustava}{32}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Baza podataka}{33}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Opis tablica}{34}{subsection.4.1.1}%
+\contentsline {section}{\numberline {3.2}Ostali zahtjevi}{30}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Arhitektura i dizajn sustava}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Baza podataka}{32}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Opis tablica}{33}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Dijagram baze podataka}{37}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}Dijagram razreda}{38}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Dijagram stanja}{45}{section.4.3}%

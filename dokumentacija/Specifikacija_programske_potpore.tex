@@ -8,9 +8,8 @@
 			\begin{packed_enum}
 				
 				\item Administrator
-				\item Korisnik				
+				\item Korisnik/Posjetitelj				
 				\item Organizator				
-				\item Posjetitelj
 				\item Baza podataka
 				\item PayPal
 				\item Banka
@@ -44,7 +43,7 @@
 					
 				\end{packed_enum}
 			
-			 	\item  \underbar{Korisnik  (inicijator) može:}
+			 	\item  \underbar{Korisnik/Posjetitelj  (inicijator) može:}
 			 	
 			 	\begin{packed_enum}
 			 		
@@ -54,13 +53,16 @@
 			 		\item pregledavati događaje
 			 		\begin{packed_enum}
 			 			
-			 			\item  filtrirati događaje po vremenskom razdoblju
+			 			\item  filtrirati događaje po vremenskom razdoblju i ostalim parametrima
 			 			
 			 		\end{packed_enum}
 			 		
+			 		\item uključiti obavijesti o najnovijim događajima po kriterijima: vrsta događanja i područje
+			 		\item iskazati interese za događaj („sigurno dolazim“, „možda dolazim“, „ne dolazim“)
+			 		\item recenzirati događaj
+			 		
 			 	\end{packed_enum}
 			    
-			    \newpage
 			    
 			    \item  \underbar{Organizator (inicijator) može:}
 				
@@ -79,29 +81,12 @@
 					\item pregledavati događaje
 					\begin{packed_enum}
 	
-						\item filtriraj događaje po vremenskom razdoblju
+						\item filtrirati događaje po vremenskom razdoblju i ostalim parametrima
 	
 					\end{packed_enum}
 					
 				\end{packed_enum}
 				
-				\item  \underbar{Posjetitelj   (inicijator) može:}
-				
-				\begin{packed_enum}
-					\item iskazati interese za događaj („sigurno dolazim“, „možda dolazim“, „ne dolazim“)
-					\item recenzirati događaj	
-					\item prijaviti se i odjaviti sa stranice
-					\item napraviti profil
-					\item prikazati profil i urediti ga
-					\item uključiti obavijesti o najnovijim događajima po kriterijima: vrsta događanja i područje
-					\item pregledavati događaje
-					\begin{packed_enum}
-						
-						\item  filtrirati događaje po vremenskom razdoblju
-						
-					\end{packed_enum}
-					
-				\end{packed_enum}
 				
 				\item  \underbar{Baza podataka (sudionik):}	
 							
@@ -674,7 +659,7 @@
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Urediti ili obrisati korisnika
-	\item  \textbf{Sudionici:} 1
+	\item  \textbf{Sudionici:} Baza podataka
 	\item  \textbf{Preduvjet:} Korisnik je registriran i ima prava administratora
 	\item  \textbf{Opis osnovnog tijeka:}
 	
@@ -751,7 +736,7 @@
 			\subsection{Sekvencijski dijagrami}
 				
 	
-				\LARGE {Obrazac uporabe UC1 - Registracija}
+				\textbf{\large {Obrazac uporabe UC1 - Registracija}}
 				\newline
 				\normalsize
 				Korisnik prilikom procesa registracije odabire opciju registracije: Posjetitelj ili Organizator. Na temelju odabira, korisnik dohvaća obrazac za registraciju. Nakon ispunjavanja obrasca, korisnik šalje zahtjev za registraciju. Nakon provjere ispravnosti unesenih podataka moguće su dvije opcije:
@@ -769,7 +754,7 @@
 				\end{figure}
 				\eject		
 				
-				\LARGE {Obrazac uporabe UC16 - Postavljanje događaja}
+				\textbf{\large {Obrazac uporabe UC16 - Postavljanje događaja}}
 				\newline
 				\normalsize
 				Tijekom procesa postavljanja događaja Organizator ima mogućnost izabrati objavu bez plaćanje ulaznice za događaj ili uz plaćanje. U slučaju postavljanja događaja bez plaćanja ulaznice odmah dohvaća obrazac za novi događaj. 
@@ -783,14 +768,14 @@
 				\end{figure}
 				\eject		
 				
-				\LARGE {Obrazac uporabe UC19 - Plaćanje članarine}
+				\textbf {\large {Obrazac uporabe UC19 - Plaćanje članarine}}
 				\newline
 				\normalsize
 				Tijekom procesa objave događaja moguće je izabrati opciju za plaćanje ulaznice te u tom slučaju prije slanja obrasca za postavljanje novog događaja dolazi do plaćanje članarine ukoliko je potrebno. 
 				Organizator odabire način plaćanje te mu se prikazuje sučelje za unos podataka od izabranog izvora sa trenutnom cijenom članarine. U ovom trenutku Organizator može nastaviti sa procesom plaćanja ili odustati. U slučaju odustajanja dobiva potvrdu, a u suprotnom šalje ispunjen obrazac za plaćanje. Na temeju poslanog obrasca se izvršava plaćanje koje može biti uspješno ili neuspješno. Nakon uspješnog plaćanja se navedene promjene spremaju te Organizator dobiva potvrdu transakcije i novi prikaz. U slučaju neuspješne transakcije Organizator dobiva poruku i razlog neuspješne transakcije.
 				
 				\begin{figure}[H]
-					\includegraphics[scale=0.5]{dijagrami/sd-UC19-Placanje-clanarine.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+					\includegraphics[scale=0.45]{dijagrami/sd-UC19-Placanje-clanarine.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 					\centering
 					\caption{Sekvencijski dijagram za UC19}
 					\label{fig:promjene}
