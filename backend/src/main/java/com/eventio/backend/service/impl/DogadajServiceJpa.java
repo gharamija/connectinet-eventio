@@ -123,21 +123,21 @@ public class DogadajServiceJpa implements DogadajService {
       LocalDateTime trenutnoVrijeme = LocalDateTime.now();
 
       switch (vrijeme) {
-        case "24 sata":
+        case "1":
           sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(1))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(1)))
                   .collect(Collectors.toList());
           break;
 
-        case "7 dana":
+        case "7":
           sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(7))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(7)))
                   .collect(Collectors.toList());
           break;
 
-        case "30 dana":
+        case "30":
           sviDogadaji = sviDogadaji.stream()
                   .filter(dogadaj -> dogadaj.getVrijemePocetka().isAfter(trenutnoVrijeme.minusDays(30))
                           && dogadaj.getVrijemePocetka().isBefore(trenutnoVrijeme.plusDays(30)))
