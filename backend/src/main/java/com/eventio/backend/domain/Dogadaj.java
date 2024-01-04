@@ -3,6 +3,11 @@ package com.eventio.backend.domain;
 import com.eventio.backend.dto.requestDogadajDTO;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +36,12 @@ public class Dogadaj {
     @Column(nullable = false)
     private String opis;
     private String galerija;
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
     @JsonIgnore
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
     @JsonIgnore
     private List<Zainteresiranost> zainteresiranosti;
 
@@ -127,12 +134,10 @@ public class Dogadaj {
         this.galerija = galerija;
     }
 
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Recenzija> getRecenzije() {
         return recenzije;
     }
 
-    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
     }
