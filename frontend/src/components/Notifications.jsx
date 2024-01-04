@@ -44,11 +44,11 @@ function Notifications({id}) {
             },
             body: JSON.stringify(notif),
         };
-        fetch(`/api/notificaiton/add/${id}`, options).then(dohvati);
+        fetch(`/api/notification/add/${id}`, options).then(dohvati);
     }
 
-    function obrisiPretplatu(notifId) {
-        fetch(`/api/notificaiton/${notifId}`, {method: "DELETE"}).then(dohvati);
+    function obrisiPretplatu(id) {
+        fetch(`/api/notification/${id}`, {method: "POST"}).then(dohvati);
     }
 
     return (
