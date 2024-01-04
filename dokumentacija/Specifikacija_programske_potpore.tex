@@ -159,7 +159,7 @@
 						\item Sustav šalje korisnika na prozor za prijavu na stranicu
 					\end{packed_enum}
 					
-											\item  \textbf{Opis mogućih odstupanja:}
+					\item  \textbf{Opis mogućih odstupanja:}
 					
 					\item[] \begin{packed_item}
 						
@@ -168,7 +168,7 @@
 							
 							\item Sustav obavještava korisnika o neuspješnoj registraciji, navodi razlog zašto
 							registracija nije uspjela te ga vraća na stranicu za registraciju
-							\item Korisnik promijeni potrebne podatke, završi registraciju ili odustane od registracije
+							\item Korisnik mijenja potrebne podatke, završi registraciju ili odustane od registracije
 							
 						\end{packed_enum}
 					\end{packed_item}
@@ -186,7 +186,7 @@
 					\item[] \begin{packed_enum}
 						
 						\item Korisnik izabire opciju registracije uz odabir polja "Organizator"
-						\item Korisnik unosi korisničke podatke
+						\item Korisnik unosi korisničke podatke koji se od njega traže
 						\item Sustav provjerava ispravnost unesenih podataka te šalje obavijest potvrde registracije
 						\item Sustav šalje korisnika na prozor za prijavu na stranicu
 					\end{packed_enum}
@@ -200,7 +200,7 @@
 							
 							\item Sustav obavještava korisnika o neuspješnoj registraciji, navodi razlog zašto
 							registracija nije uspjela te ga vraća na stranicu za registraciju
-							\item Korisnik promijeni potrebne podatke, završi registraciju ili odustane od registracije
+							\item Korisnik mijenja potrebne podatke, završi registraciju ili odustane od registracije
 							
 						\end{packed_enum}
 					\end{packed_item}
@@ -249,9 +249,9 @@
 					
 					\item[] \begin{packed_enum}
 						
-						\item Nakon prijave korisnika se prebacuje na stranicu za pregledavanje događaja
+						\item Nakon prijave korisnika se prebacuje na stranicu za pregledavanje događaja - "Svi događaji"
 						\item Korisniku su događaji izlistani jedan ispod drugog
-						\item Kod svakog događaja prikazane su sve informacije o događaju (npr. datum održavanja, broj zainteresiranih itd.)te pripadajuća fotografija
+						\item Kod svakog događaja prikazane su sve informacije o događaju (npr. datum održavanja, broj zainteresiranih itd.) te pripadajuća fotografija
 					\end{packed_enum}
 					
 				\end{packed_item}
@@ -266,7 +266,7 @@
 					
 					\item[] \begin{packed_enum}
 						
-						\item Korisnik na stranici za pregledavanje događaja bira između više ponuđenih opcija za sortiranje događaja
+						\item Korisnik na stranici za pregledavanje događaja bira između više ponuđenih opcija za filtriranje događaja
 					\end{packed_enum}
 					
 					\item  \textbf{Opis mogućih odstupanja:}
@@ -292,7 +292,7 @@
 	
 				\item[] \begin{packed_enum}
 		
-				\item Korisnik odabire opciju "Profil"
+				\item Korisnik klikne na ime svog računa te odabire opciju "Profil"
 				\item Stranica prikazuje korisnikov osobni profil
 				\end{packed_enum}
 	
@@ -308,10 +308,11 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Korisnik na stranici osobnog profila odabire opciju "Uredi profil"
-		\item Sustav korisniku otvara stranicu na kojoj može promijeniti osobne podatke
+		\item Korisnik na stranici osobnog profila pored podatka koji želi promijeniti pritsne ikonu olovke
+		\item Sustav omogućuje izmjenu podatka
 		\item Korisnik mijenja jedan ili više osobnih podataka
-		\item Korisnik odabire opciju "Spremi promjene"
+		\item Korisnik odabire ikonu kvačice
+		\item Korisnik odabire opciju "SPREMI"
 		\item Sustav korisniku javlja da su promjene uspješno pohranjene te ga vraća na stranicu profila
 	\end{packed_enum}
 	
@@ -319,11 +320,11 @@
 	
 	\item[] \begin{packed_item}
 		
-		\item[4.a] Korisnik je promijenio korisničko ime u nešto što već postoji u sustavu
+		\item[4.a] Korisnik je promijenio korisničko ime ili e-mail u nešto što već postoji u sustavu
 		\item[] \begin{packed_enum}
 			
-			\item Sustav javlja korisniku da je novo korisničko ime zauzeto
-			\item Korisnik ponovno upisuje korisničko ime ili odustaje od promjena te odabire opciju "Odustani"
+			\item Sustav javlja korisniku da je novo korisničko ime ili e-mail zauzet
+			\item Korisnik ponovno upisuje ime/e-mail ili odustaje od promjena te odabire opciju "Odustani"
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -339,7 +340,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Korisnik/Administrator odabire opciju "Odjava"
+		\item Korisnik/Administrator nakon klika na korisničko ime odabire opciju "Odjava"
 		\item Sustav odjavljuje korisnika/administratora sa stranice
 	\end{packed_enum}
 
@@ -356,26 +357,18 @@
 	\item[] \begin{packed_enum}
 		
 		\item Posjetitelj pregledava događaje (UC4) te dolazi do događaja koji ga zanima
-		\item Posjetitelj odabire opciju "Moj interes" 
-		\item Posjetitelju se otvara obrazac za izražavanje interesa gdje mu se nude tri opcije: "sigurno dolazim", "možda dolazim", "ne dolazim"
-		\item Posjetitelj odabire jednu od ponuđenih opcija
-		\item Sustav pohranjuje podatak o posjetiteljevom interesu i u slučaju da je posjetitelj odabrao "sigurno dolazim" ili "možda dolazim" ažurira odgovarajući brojač kod prikaza događaja
+		\item Posjetitelj odabire jednu od tri ponuđene opcije interesa: "DOLAZIM", "MOŽDA", "NE DOLAZIM"
+		\item Sustav pohranjuje podatak o posjetiteljevom interesu, a u slučaju da je posjetitelj odabrao "DOLAZIM" ili "MOŽDA", ažurira odgovarajući brojač kod prikaza događaja te dodaje taj događaj na popis posjetiteljevih interesnih događaja
 	\end{packed_enum}
 	
 		\item  \textbf{Opis mogućih odstupanja:}
 	
 	\item[] \begin{packed_item}
 		
-		\item[2] Posjetitelj odabrao opciju "Moj interes", no nije odabrao niti jednu ponuđenu opciju
+		\item[2.a] Posjetitelj odabrao pogrešnu opciju ili želi promijeniti interes
 		\item[] \begin{packed_enum}
 			
-			\item Sustav ne ažurira brojač i ne događa se nikakva promjena kod prikaza događaja
-			
-		\end{packed_enum}
-		\item[4] Posjetitelj odabrao pogrešnu opciju ili želi promijeniti interes
-		\item[] \begin{packed_enum}
-			
-			\item Posjetitelj ponovno odabire opciju "Moj interes" i odabire drugu opciju
+			\item Posjetitelj odabire neku drugu ponuđenu opciju
 			
 		\end{packed_enum}
 		
@@ -394,7 +387,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Posjetitelj na početnoj stranici odabire opciju "Pregled interesnih događaja"
+		\item Posjetitelj na početnoj stranici odabire opciju "MOJI DOGAĐAJI"
 		\item Sustav posjetitelju otvara stranicu na kojoj je popis svih događaja za koje je postavio interes "sigurno dolazim" ili "možda dolazim"
 	\end{packed_enum}
 	
@@ -421,7 +414,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Posjetitelj dolazi do događaja kojeg želi recenzirati i odabire opciju "Recenziraj!"
+		\item Posjetitelj dolazi do događaja kojeg želi recenzirati i odabire opciju "RECENZIRAJ!"
 		\item Ako je događaj završio i nije prošlo 48 sati od njegovog završetka, posjetitelju se otvara obrazac za recenziranje u kojem posjetitelj odabire ocjenu te piše recenziju
 		\item Posjetitelj završava recenziju i odabire opciju "Spremi recenziju"
 		\item Sustav pohranjuje recenziju te javlja posjetitelju da je recenzija uspješna
@@ -442,14 +435,13 @@
 	\item \textbf{Glavni sudionik:} Posjetitelj
 	\item  \textbf{Cilj:} Kroz aplikaciju postaviti automatsko primanje obavijesti za najnovije događaje na temelju zadanih kriterija
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Posjetitelj prijavljen i nalazi se na stranicu osobnog korisničkog računa
+	\item  \textbf{Preduvjet:} Posjetitelj prijavljen i nalazi se na stranici osobnog korisničkog računa
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Korisnik odabire opciju "Uključi obavijesti o novim događajima"
-		\item Korisnik zadaje kriterij: vrstu događaja te područje
-		\item Korisnik odabire opciju "Spremi" te sustav pohranjuje korisnikov odabir
+		\item Korisnik ispod naznake "Pretplate na obavijesti" zadaje kriterij notifikacija - vrstu događaja te lokaciju
+		\item Korisnik sprema pretplatu na obavijesti pritiskom na ikonu plusa te sustav pohranjuje korisnikov odabir
 	\end{packed_enum}
 
 \end{packed_item}
@@ -466,10 +458,10 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Organizator odabire opciju "Postavi novi događaj"
-		\item Organizatoru se otvara obrazac za postavljanje događaja
-		\item Organizator popunjava sve potrebne podatke o događaju te postavlja događaj odabirom opcije "Postavi događaj"
-		\item Sustav organizatora pita za potvrdu postavljanja događaja i organizator potvrđuje, te sustav javlja organizatoru da je događaj uspješno objavljen
+		\item Organizator započinje proces izrade novog događaja pritiskom na ikonu plusa u desnom donjem kutu
+		\item Organizatoru se otvara obrazac za dodavanje događaja
+		\item Organizator popunjava sve potrebne podatke o događaju te postavlja događaj odabirom opcije "DODAJ"
+		\item Sustav organizatora pita za potvrdu postavljanja događaja; organizator potvrđuje te sustav javlja organizatoru da je događaj uspješno objavljen
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
@@ -495,12 +487,12 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Organizator odabire opciju "Postavi novi događaj s naplaćivanjem ulaznica"
+		\item Organizator pri ispunjavanju podataka o događaju kojeg želi postaviti stavlja cijenu događaja veću od 0
 		\item Sustav javlja organizatoru da za postavljanje događaja s naplatom ulaznica mora platiti članarinu
 		\item Organizator odabire opciju "Nastavi" te započinje plaćanje članarine
 		\item Organizator ispunjava podatke za plaćanje
 		\item Sustav javlja organizatoru da je plaćanje članarine uspješno, te mu otvara obrazac za postavljanje novog događaja
-		\item Organizator ispunjava potrebne podatke te postavlja događaj odabirom opcije "Postavi događaj"
+		\item Organizator ispunjava potrebne podatke te postavlja događaj odabirom opcije "DODAJ"
 		\item Sustav organizatora pita za potvrdu postavljanja događaja i organizator potvrđuje, te sustav javlja organizatoru da je događaj uspješno objavljen
 	\end{packed_enum}
 	
@@ -558,7 +550,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Organizator na početnoj stranici odabire opciju "Pregled vlastitih događaja"
+		\item Organizator na početnoj stranici odabire opciju "MOJI DOGAĐAJI"
 		\item Sustav otvara organizatoru stranicu na kojoj prikazuje sve njegove postavljene događaje
 	\end{packed_enum}
 	
@@ -580,15 +572,15 @@
 	\item \textbf{Glavni sudionik:} Organizator
 	\item  \textbf{Cilj:} Urediti ili obrisati postavljeni događaj
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Organizator prijavljen, nalazi se na stranici "Pregled vlastitih događaja" te ima postavljeni događaj
+	\item  \textbf{Preduvjet:} Organizator prijavljen, nalazi se na stranici "MOJI DOGAĐAJI" te ima postavljeni događaj
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Organizator pronalazi događaj kojeg želi urediti i odabire opciju "Uredi"
-		\item Sustav otvara organizatoru obrazac za postavljanje događaja ispunjen s njegovim podacima i dozvoljava uređivanje
-		\item Organizator uređuje podatke i bira opciju "Spremi" ili briše događaj odabirom opcije "Obriši događaj"
-		\item Sustav javlja organizatoru da je njegovo uređivanje uspješno te ga vraća na pregled događaja
+		\item Organizator pronalazi događaj kojeg želi urediti ili izbrisati i pritisne na ikonu olovke, odnosno koša za smeće
+		\item Ako je izabrana ikona olovke, sustav otvara organizatoru obrazac za postavljanje događaja ispunjen s njegovim podacima i dozvoljava uređivanje; organizator zatim uređuje podatke i bira opciju "Spremi"
+		\item Ako je izabrana ikona koša za smeće, sustav traži od organizatora potvrdu da želi izbrisati događaj te organizator potvrđuje odabirom opcije "Nastavi"
+		\item Sustav javlja organizatoru da je uređivanje/brisanje uspješno te ga vraća na pregled događaja
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
@@ -599,7 +591,7 @@
 		\item[] \begin{packed_enum}
 			
 			\item Sustav prije spremanja traži od organizatora da potvrdi željene promjene/brisanje događaja
-			\item Organizator potvrđuje željenej promjene ili odustaje odabirom opcije "Odustani"
+			\item Organizator potvrđuje željene promjene ili odustaje odabirom opcije "Odustani"
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -617,7 +609,7 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator na početnoj stranici odabire opciju "Pregled događaja"
+		\item Administrator na početnoj stranici odabire opciju "SVI DOGAĐAJI"
 		\item Sustav administratora prebacuje na stranicu s popisom događaja
 	\end{packed_enum}
 	
@@ -629,14 +621,12 @@
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Postaviti ili promijeniti cijenu članstva 
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik je registriran, ima prava administratora i uspješno se prijavio
+	\item  \textbf{Preduvjet:} Korisnik je registriran, ima prava administratora i nalazi se na stranici osobnog profila
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator na početnoj stranici odabire opciju "Postavi cijenu članstva"
-		\item Sustav administratora prebacuje na stranicu za postavljanje cijene članstva
-		\item Administrator ažurira cijenu članstva i odabire opciju "Spremi"
+		\item Administrator ispod naznake "Cijena pretplate" ažurira cijenu članstva i odabire opciju "Spremi"
 		\item Sustav javlja administratoru da je postavljanje cijene članstva prošlo uspješno
 	\end{packed_enum}
 	
@@ -644,14 +634,14 @@
 	
 	\item[] \begin{packed_item}
 		
-		\item[4.a] Administrator postavio neispravnu cijenu
+		\item[1.a] Administrator postavio neispravnu cijenu
 		\item[] \begin{packed_enum}
 			
 			\item Sustav javlja administratoru da je postavio neispravnu cijenu
 			\item Administrator ispravlja pogrešku ili odustaje odabirom opcije "Odustani"
 			
 		\end{packed_enum}
-		\item[4.b] Administrator postavio ispravnu, ali pogrešnu cijenu ili želi odustati od promjene
+		\item[1.b] Administrator postavio ispravnu, ali pogrešnu cijenu ili želi odustati od promjene
 		\item[] \begin{packed_enum}
 			
 			\item Sustav prije potvrđivanja postavljanje cijene od administratora traži potvrdu da on želi izvršiti napravljenu promjenu
@@ -672,8 +662,8 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator na početnoj stranici odabire opciju "Upravljanje korisnicima"
-		\item Sustav administratora prebacuje na stranicu s popisom korisnika i njihovih podataka
+		\item Administrator na početnoj stranici odabire opciju "SVI KORISNICI"
+		\item Sustav administratora prebacuje na stranicu s popisom korisnika i njihovim podacima
 
 	\end{packed_enum}
 
@@ -691,7 +681,7 @@
 	\item[] \begin{packed_enum}
 		
 		\item Administrator pronalazi željenog korisnika
-		\item Administrator odabire opciju "Ukloni korisnika" te briše njegove podatke iz baze podataka
+		\item Administrator odabire ikonu koša za smeće te briše njegove podatke iz baze podataka
 	\end{packed_enum}
 
 \end{packed_item}
@@ -702,15 +692,15 @@
 	\item \textbf{Glavni sudionik:} Administrator
 	\item  \textbf{Cilj:} Urediti/obrisati objave korisnika
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik je registriran i ima prava administratora
+	\item  \textbf{Preduvjet:} Korisnik je registriran, ima prava administratora i pregledava sve događaje
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator pronalazi željenog korisnika te odabere opciju "Objave"
-		\item Sustav administratoru prikazuje popis svih objava korisnika
-		\item Administrator pronalazi željenu objavu te odabire opciju "Uredi"
-		\item Administrator uređuje objavu ili ju briše iz baze podataka
+		\item Administrator pronalazi željeni događaj te odabere opciju ikonu olovke ili ikonu koša za smeće
+		\item Ako je odabrana ikona olovke, sustav otvara obrazac za postavljanje događaja ispunjen s njegovim podacima i dozvoljava uređivanje; administrator zatim uređuje podatke i bira opciju "Spremi"
+		\item Ako je izabrana ikona koša za smeće, sustav traži od administratora potvrdu da želi izbrisati događaj te administrator potvrđuje odabirom opcije "Nastavi"
+		\item Sustav javlja da je uređivanje/brisanje uspješno te vraća administratora na pregled događaja
 	\end{packed_enum}
 	
 \end{packed_item}
