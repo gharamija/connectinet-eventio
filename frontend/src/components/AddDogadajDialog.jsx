@@ -12,10 +12,13 @@ import {
   Grid,
   InputLabel,
   FormControl,
+  Input,
 } from "@mui/material";
+
 import vrste from "./Vrste";
 import lokacije from "./Lokacije";
 import { IdContext } from "../App";
+import { CloudUpload } from "@mui/icons-material";
 
 //ako se u props daje dogadajId, onda znaci edit postojeceg događaja
 function AddDogadajDialog({ handleClose, open, dogadajId }) {
@@ -30,8 +33,8 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
     vrijemePocetka: "",
     cijenaUlaznice: "",
     opis: "",
-    galerija: "",
   });
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     if (dogadajId) {
@@ -52,6 +55,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
   function onSubmit(e) {
     e.preventDefault();
     setError("");
+
     const options = {
       method: dogadajId ? "PUT" : "POST",
       headers: {
@@ -59,16 +63,41 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
       },
       body: JSON.stringify(form),
     };
+
     let url = dogadajId
       ? `/api/dogadaj/update/${dogadajId}`
       : `/api/dogadaj/izrada/${id}`;
-    fetch(url, options).then((response) => {
+
+    fetch(url, options).then(async (response) => {
       if (response.status === 200) {
         handleClose();
+        if (file) {
+          //response bi trebao imati novi id ako je događaj tek nastao
+          const text = await response.text();
+          uploadImage(text);
+        }
       } else {
         setError(response.statusText);
       }
     });
+  }
+
+  function uploadImage(newId) {
+    let url = dogadajId
+      ? `/api/dogadaj/slika/${dogadajId}`
+      : `/api/dogadaj/slika/${newId}`;
+
+    fetch(url, { method: "POST" });
+  }
+
+  function handleFileUpload(e) {
+    const file = e.target.files[0];
+    if (file.type.startsWith("image")) {
+      setFile(file);
+    } else {
+      setFile(null);
+      e.target.value = null;
+    }
   }
 
   return (
@@ -84,9 +113,9 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           value={form.nazivDogadaja}
           required
           fullWidth
-          margin="normal"
+          margin="dense"
         />
-        <FormControl fullWidth sx={{ mt: 1, mb: 1 }}>
+        <FormControl fullWidth margin="dense">
           <InputLabel id="vrsta-label">Vrsta</InputLabel>
           <Select
             labelId="vrsta-label"
@@ -107,7 +136,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
             ))}
           </Select>
         </FormControl>
-        <FormControl fullWidth sx={{ mt: 1, mb: 1 }}>
+        <FormControl fullWidth margin="dense">
           <InputLabel id="lokacija-label">Lokacija</InputLabel>
           <Select
             labelId="lokacija-label"
@@ -135,7 +164,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           value={form.opisLokacije}
           required
           fullWidth
-          margin="normal"
+          margin="dense"
         />
         <TextField
           name="vrijemePocetka"
@@ -144,7 +173,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           value={form.vrijemePocetka}
           required
           fullWidth
-          margin="normal"
+          margin="dense"
         />
         <TextField
           label="cijena ulaznice"
@@ -153,7 +182,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           value={form.cijenaUlaznice}
           required
           fullWidth
-          margin="normal"
+          margin="dense"
         />
         <TextField
           label="opis"
@@ -162,17 +191,26 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           value={form.opis}
           required
           fullWidth
-          margin="normal"
+          margin="dense"
         />
-        <TextField
-          label="galerija"
-          name="galerija"
-          onChange={onChange}
-          value={form.galerija}
-          required
+        <Button
+          type="button"
+          component="label"
+          variant="outlined"
+          startIcon={<CloudUpload />}
           fullWidth
-          margin="normal"
-        />
+          sx={{ mt: 1 }}
+        >
+          {file ? file.name : "Odaberi sliku"}
+          <Input
+            type="file"
+            name="galerija"
+            onChange={handleFileUpload}
+            required={!dogadajId}
+            sx={{ opacity: 0 }}
+            inputProps={{ accept: "image/*" }}
+          />
+        </Button>
         <Collapse in={error !== ""}>
           <Alert severity="error">{error}</Alert>
         </Collapse>
