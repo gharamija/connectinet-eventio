@@ -94,7 +94,7 @@ public class DogadajController {
     public ResponseEntity<String> update(@PathVariable(name = "id") Integer dogadajId,
                                          @Valid @RequestBody requestDogadajDTO dto,
                                          @AuthenticationPrincipal Korisnik korisnik) {
-        if (!Objects.equals(dto.getOrganizator().getId(),korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
+        if (!Objects.equals(dto.getOrganizatorId(), korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
         if (serviceDogadaj.updateDogadaj(dto,dogadajId)) {

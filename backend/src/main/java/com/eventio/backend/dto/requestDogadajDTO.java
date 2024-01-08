@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class requestDogadajDTO {
-    private Organizator organizator;
+    private Integer organizatorId;
     @NotNull
     private String nazivDogadaja;
     @NotNull
@@ -36,12 +36,12 @@ public class requestDogadajDTO {
         this.galerija = dogadaj.getGalerija();
     }
 
-    public Organizator getOrganizator() {
-        return organizator;
+    public Integer getOrganizatorId() {
+        return organizatorId;
     }
 
-    public void setOrganizator(Organizator organizator) {
-        this.organizator = organizator;
+    public void setOrganizatorId(Integer organizatorId) {
+        this.organizatorId = organizatorId;
     }
 
     public String getNazivDogadaja() {
