@@ -5,11 +5,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddDogadajDialog from "./AddDogadajDialog";
 
-export default function EditDelete({ dogadajId }) {
+export default function EditDelete({ dogadajId, fetchData }) {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   function deleteDogadaj() {
-    fetch(`/api/dogadaj/delete/${dogadajId}`);
+    fetch(`/api/dogadaj/delete/${dogadajId}`, { method: "DELETE" }).then(() =>
+      fetchData()
+    );
   }
 
   return (

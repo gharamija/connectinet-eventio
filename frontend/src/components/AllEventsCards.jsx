@@ -12,7 +12,7 @@ export default function AllEventsCards({ query }) {
   const role = useContext(RoleContext);
   const id = useContext(IdContext);
 
-  React.useEffect(() => {
+  function fetchData() {
     fetch(`/api/dogadaj/filter${query}`).then((response) => {
       if (response.ok) {
         response.json().then((events) => {
@@ -20,6 +20,10 @@ export default function AllEventsCards({ query }) {
         });
       }
     });
+  }
+
+  React.useEffect(() => {
+    fetchData();
   }, [query]);
   // ako je query "" onda prikazuje sve dogadjaje
 
@@ -40,7 +44,9 @@ export default function AllEventsCards({ query }) {
           }
         >
           <CustomCard event={event}>
-            {role === "ADMIN" && <EditDelete dogadajId={event.dogadajId} />}
+            {role === "ADMIN" && (
+              <EditDelete dogadajId={event.dogadajId} fetchData={fetchData} />
+            )}
             {role !== "ADMIN" && (
               <Zainteresiranost
                 id={id}
