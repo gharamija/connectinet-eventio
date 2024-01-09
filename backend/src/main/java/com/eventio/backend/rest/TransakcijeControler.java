@@ -2,6 +2,7 @@ package com.eventio.backend.rest;
 
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.service.OrganizatorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,9 @@ import java.util.Random;
 @RestController
 @RequestMapping("/transakcija")
 public class TransakcijeControler {
-private OrganizatorService organizatorService;
+
+    @Autowired
+    private OrganizatorService organizatorService;
     @PostMapping("/paypal/{id}")
     public ResponseEntity<String> PlacanjePayPal(@PathVariable(name = "id") Integer id){
         return Plati(95,id);

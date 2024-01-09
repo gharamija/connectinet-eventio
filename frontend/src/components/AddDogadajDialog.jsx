@@ -37,6 +37,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
   const [file, setFile] = useState(null);
 
   useEffect(() => {
+    setFile(null);
     if (dogadajId) {
       fetch(`/api/dogadaj/${dogadajId}`).then((response) =>
         response.json().then((dogadaj) => setForm(dogadaj))
@@ -83,11 +84,19 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
   }
 
   function uploadImage(newId) {
+    let formData = new FormData();
+    formData.append("file", file);
+
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+
     let url = dogadajId
       ? `/api/dogadaj/slika/${dogadajId}`
       : `/api/dogadaj/slika/${newId}`;
 
-    fetch(url, { method: "POST" });
+    fetch(url, options);
   }
 
   function handleFileUpload(e) {
@@ -199,7 +208,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           variant="outlined"
           startIcon={<CloudUpload />}
           fullWidth
-          sx={{ mt: 1 }}
+          sx={{ mt: 1, mb: 1 }}
         >
           {file ? file.name : "Odaberi sliku"}
           <Input

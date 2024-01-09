@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -80,9 +81,9 @@ public class DogadajController {
 
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
-                serviceDogadaj.spremiDogadaj(dogadaj);
+                Dogadaj novi = serviceDogadaj.spremiDogadaj(dogadaj);
                 // serviceNotifikacija.posaljiNotifikacije(dogadaj.getLokacija(),dogadaj.getVrsta(),dogadaj.getNazivDogadaja());
-                return ResponseEntity.ok("Uspješno spremljen događaj.");
+                return ResponseEntity.ok(String.valueOf(novi.getId()));
             } else
                 return ResponseEntity.badRequest().body("Organizator s navedenim ID-om ne postoji.");
         } catch (Exception e) {
@@ -104,6 +105,13 @@ public class DogadajController {
         }
 
     }
+
+    @PostMapping("/slika/{dogadajId}")
+    public ResponseEntity<String> slika(@PathVariable(name = "dogadajId") Integer dogadajId, @RequestParam("file") MultipartFile slika) {
+        System.out.println(slika.getOriginalFilename());
+        return ResponseEntity.ok("");
+    }
+
     @GetMapping("/organizator/{id}")
     public List<responseDogadajDTO>  PrikazDogOrg(@PathVariable(name = "id") Integer organizatorId){
         Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);

@@ -55,7 +55,6 @@ public class Dogadaj {
         this.vrijemePocetka = dto.getVrijemePocetka();
         this.cijenaUlaznice = dto.getCijenaUlaznice();
         this.opis = dto.getOpis();
-        this.galerija = dto.getGalerija();
     }
     public Dogadaj(){}
     public Integer getId() {

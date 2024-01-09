@@ -84,7 +84,6 @@ public class DogadajServiceJpa implements DogadajService {
       Dogadaj dogadaj = optionalDogadaj.get();
 
       dogadaj.setOpis(dto.getOpis());
-      dogadaj.setGalerija(dto.getGalerija());
       dogadaj.setCijenaUlaznice(dto.getCijenaUlaznice());
       dogadaj.setVrsta(dto.getVrsta());
       dogadaj.setNazivDogadaja(dto.getNazivDogadaja());
