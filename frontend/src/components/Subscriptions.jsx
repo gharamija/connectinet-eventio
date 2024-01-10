@@ -8,7 +8,7 @@ import { Select as BaseSelect, selectClasses } from '@mui/base/Select';
 import { useContext } from "react";
 import { IdContext } from "../App.jsx";
 import { useNavigate } from "react-router-dom";
-import PayPalImage from "./paypal.png";
+import PayPalImage from "../assets/paypal.png";
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }) {
@@ -26,7 +26,7 @@ function Subscriptions() {
         "disable-funding": "paylater,venmo,card",
         "data-sdk-integration-source": "integrationbuilder_sc",
     };
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = React.useState("");
     const id = useContext(IdContext);
     const [error, setError] = React.useState("");
     const navigate = useNavigate();
@@ -36,48 +36,34 @@ function Subscriptions() {
     const [postalCode, setPostalCode] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const [isPayPalDisabled, setIsPayPalDisabled] = useState(true);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        checkPayPalAvailability();
     };
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-        checkPayPalAvailability();
     };
 
     const handleCardNumberChange = (e) => {
         setCardNumber(e.target.value);
-        checkButtonAvailability();
     };
 
     const handleCcvChange = (e) => {
         setCcv(e.target.value);
-        checkButtonAvailability();
     };
 
     const handleCardHolderNameChange = (e) => {
         setCardHolderName(e.target.value);
-        checkButtonAvailability();
     };
 
     const handlePostalCodeChange = (e) => {
         setPostalCode(e.target.value);
-        checkButtonAvailability();
     };
 
-    const checkButtonAvailability = () => {
-        const areAllFieldsFilled = cardNumber && ccv && cardHolderName && postalCode;
-        setIsButtonDisabled(!areAllFieldsFilled);
-    };
+    const isButtonAvailable = cardNumber && ccv && cardHolderName && postalCode;
 
-    const checkPayPalAvailability = () => {
-        const areAllFieldsFilledPP = email && password;
-        setIsPayPalDisabled(!areAllFieldsFilledPP);
-    };
+    const isPayPalAvailable = email && password;
 
 
     const povratakNaProfil = () => {
@@ -88,13 +74,12 @@ function Subscriptions() {
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
             },
-            body: `id=${id}`,
         };
         fetch(`/api/transakcija/paypal/${id}`, options).then((response) => {
             if (response.status === 200) {
-                setError(response.statusText);
+                setMessage(response.statusText);
             } else {
                 setError(response.statusText);
             }
@@ -106,14 +91,12 @@ function Subscriptions() {
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
             },
-            body: `id=${id}`,
         };
         fetch(`/api/transakcija/banka/${id}`, options).then((response) => {
             if (response.status === 200) {
-                setError(response.statusText);
-
+                setMessage(response.statusText);
             } else {
                 setError(response.statusText);
             }
@@ -141,7 +124,7 @@ function Subscriptions() {
                             fullWidth
                             onClick={handlePayPal}
                             style={{ backgroundColor: '#FCBB32', margin: '3px' }}
-                            disabled={isPayPalDisabled}
+                            disabled={!isPayPalAvailable}
                         >
                             <img src={PayPalImage} alt="Icon" style={{ width: 'auto', height: '23px' }} />
                         </Button>
@@ -157,7 +140,7 @@ function Subscriptions() {
                             size="large"
                             fullWidth
                             onClick={pretplati}
-                            disabled={isButtonDisabled}
+                            disabled={!isButtonAvailable}
                             style={{ margin: '3px' }}
                         >
                             Pretplati se
@@ -173,6 +156,9 @@ function Subscriptions() {
                         </Button>
                         <Collapse in={error !== ""}>
                             <Alert severity="error">{error}</Alert>
+                        </Collapse>
+                        <Collapse in={message !== ""}>
+                            <Alert severity="success">{message}</Alert>
                         </Collapse>
                     </Grid>
                 </Container>
