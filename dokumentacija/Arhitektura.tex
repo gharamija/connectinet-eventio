@@ -1,21 +1,28 @@
 \chapter{Arhitektura i dizajn sustava}
 		
-	
 	Arhitektura našeg sustava temeljit će se na kombinaciji modernih tehnologija kako bismo ostvarili funkcionalan i skalabilan sustav. Sustav će se podijeliti na tri ključna podsustava: 
 	\begin{itemize}
 		\item 	\textit{\textbf{Web poslužitelj}}		
-		\item 	\textit{\textbf{Web preglednik}}	
+		\item 	\textit{\textbf{Web klijent}}	
 		\item 	\textit{\textbf{Baza podataka}}
 	\end{itemize}
-	Organizacija će biti usklađena s MVC (Model-View-Controller) konceptom, omogućavajući neovisnost između različitih dijelova sustava te olakšavajući razvoj, ispitivanje i dodavanje novih funkcionalnosti.
 	
-	\textit{Web preglednik}, kao program koji omogućuje korisnicima pregled web-stranica i multimedijalnih sadržaja, igra ključnu ulogu. Klijenti, putem web preglednika, šalju zahtjeve web poslužitelju kako bi pristupili željenim resursima.
+	\begin{figure}[H]
+		\includegraphics[scale=0.75]{slike/skica arh.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+		\centering
+		\caption{Arhitektura sustava}
+		\label{fig:promjene}
+	\end{figure}
 	
-	\textit{Web poslužitelj} je osnova rada web aplikacije i odgovoran je za komunikaciju između klijenta i aplikacije. Komunikacija se odvija putem HTTP protokola, koji omogućuje prijenos informacija na webu. Poslužitelj pokreće web aplikaciju i prosljeđuje joj zahtjeve koje prima od klijenata.	
+	Organizacija će biti usklađena s MVC (Model-View-Controller) konceptom, što će omogućiti neovisnost između različitih dijelova sustava te olakšati razvoj, ispitivanje i dodavanje novih funkcionalnosti.
+	
+	\textit{\textbf{Web preglednik}}, kao program koji omogućuje korisnicima pregled web-stranica i multimedijalnih sadržaja, igra ključnu ulogu kao sučelje između web klijenta i web aplikacije. Klijenti, putem web preglednika, šalju zahtjeve web poslužitelju kako bi pristupili željenim resursima.
+	
+	\textit{\textbf{Web poslužitelj}} je osnova rada web aplikacije i odgovoran je za komunikaciju između klijenta i aplikacije. Komunikacija se odvija putem HTTP protokola, koji omogućuje prijenos informacija na webu. Poslužitelj pokreće web aplikaciju i prosljeđuje joj zahtjeve koje prima od klijenata.	
 
 	\textit{\textbf{Web aplikacija}}, smještena na poslužitelju, obrađuje zahtjeve korisnika. Ovisno o tim zahtjevima, pristupa poslužitelju baze podataka i na temelju dobivenih podataka, putem web poslužitelja, šalje odgovor korisnicima. Aplikacija se sastoji od backend i frontend dijela, koji se razvijaju koristeći različite tehnologije u skladu s opisanom arhitekturom sustava. Konkretno, za backend dio koristit ćemo Spring, dok će za frontend biti korišten React, što je u skladu s MVC načelima.
 		
-	Ključna karakteristika MVC koncepta je nezavisan razvoj pojedinih dijelova aplikacije. Ova karakteristika rezultira jednostavnijim ispitivanjem, kao i olakšanim razvojem i dodavanjem novih svojstava u sustav.
+	Ključna karakteristika arhitekturnog obrasca MVC-a je nezavisan razvoj pojedinih dijelova aplikacije. Ova karakteristika rezultira jednostavnijim ispitivanjem, kao i olakšanim razvojem i dodavanjem novih svojstava u sustav.
 	
 	MVC koncept sastoji se od tri osnovna dijela:
 	
@@ -288,9 +295,9 @@
 			Dijagram stanja opisuje dinamičko ponašanje dijela sustava u vremenu; prikazuje stanja objekta i prijelaze iz jednog stanja u drugo temeljene na događajima. Na slici 4.6 prikazan je dijagram stanja za korisnika - posjetitelja. Kada se korisnik prijavi prikazuje mu se početna stranica na kojoj su vidljivi događaji, filter pomoću kojeg može odlučiti koje događaje želi pregledati, te navigacijska traka preko kojeg pristupa svim događajima, događajima za koje je označio "Sigurno dolazim" ili "Možda dolazim" te profilu. Klikom na događaj korisniku se prikazuje stranica događaja s dodatnim informacijama gdje također ima mogućnost reagirati na događaj. Klikom na "Moji događaji" prikazuju mu se događaji na koje je prethodno reagirao sa "Sigurno dolazim" ili "Možda dolazim". Ako među ovim događajima postoje događaji koji su završili i nije prošlo 48 sati od njihovog završetka, korisnik za njih može izraditi recenziju. Klikom na korisničko ime prikazuju mu se stranica profila na kojoj može promijeniti osobne podatke te urediti postavke notifikacija.
 			
 			\begin{figure}[H]
-			\includegraphics[scale=0.5]{dijagrami/DijagramStanja-Korisnik.png}
+			\includegraphics[scale=0.48]{dijagrami/DijagramStanja-Korisnik.png}
 			\centering
-			\caption{Dijagram stanja - Korisnik(Posjetitelj)}
+			\caption{Dijagram stanja - Korisnik (Posjetitelj)}
 			\label{fig:promjene}
 			\end{figure}
 			
@@ -301,7 +308,7 @@
 			Dijagram aktivnosti primjenjuje se za modeliranje poslovnih procesa, upravljačkog i podatkovnog toka. Na slici 4.7 prikazan je dijagram aktivnosti za proces stvaranje novog događaja. Nakon prijave organizator na početnoj stranici odabire opciju postavljanja događaja. Otvara mu se stranica za postavljanje događaja na kojoj unosi sve potrebne podatke o događaju. Ukoliko organizator želi događaj bez plaćanja ulaza, podaci o događaju se odmah procesiraju, spremaju u bazu te se organizatoru prikazuje potvrda o uspješno postavljenom događaju. Ako organizator želi događaj koji će imati plaćanje ulaza, provodi se provjera članarine. Ako je članarina plaćena, proces se nastavlja jednako kao i u slučaju besplatnog događaja. Ako nije, pokreće se plaćanje članarine - transakcija koja se može izvršiti karticom ili PayPal-om. Nakon uspješne transakcije podaci se prihvaćaju, spremaju u bazu te organizator dobiva potvrdu.
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.47]{dijagrami/DijagramAktivnosti-Postavljanje_događaja.png}
+				\includegraphics[scale=0.45]{dijagrami/DijagramAktivnosti-Postavljanje_događaja.png}
 				\centering
 				\caption{Dijagram aktivnosti - Postavljanje događaja (Organizator)}
 				\label{fig:promjene}
