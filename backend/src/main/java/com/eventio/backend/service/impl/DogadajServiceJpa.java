@@ -198,15 +198,15 @@ public void izbrisiDogadaj(Dogadaj dogadaj){
 }
 
   @Override
-  public void saveFile(String uploadPath, MultipartFile file) throws IOException {
+  public void saveFile(String uploadPath, String fileName, MultipartFile file) throws IOException {
     Path uploadDir = Path.of(uploadPath).toAbsolutePath().normalize();
+    Path filePath = uploadDir.resolve(fileName);
 
     if (!Files.exists(uploadDir)) {
       Files.createDirectories(uploadDir);
     }
 
     try (var inputStream = file.getInputStream()) {
-      Path filePath = uploadDir.resolve(file.getOriginalFilename());
       Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     }
   }

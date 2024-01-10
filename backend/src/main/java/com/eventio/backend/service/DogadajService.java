@@ -24,5 +24,5 @@ public interface DogadajService {
   List<Dogadaj> sortirajDogadaje(List<Dogadaj> filtriraniDogađaji, String sort);
   List<Dogadaj> filtrirajDogadaje(List<Dogadaj> sviDogadaji, Kvartovi lokacija, String vrijeme, Vrste vrsta, String zavrseno, String placanje);
   void izbrisiDogadaj(Dogadaj dogadaj);
-  void saveFile(String uploadPath, MultipartFile file) throws IOException;
+  void saveFile(String uploadPath, String fileName, MultipartFile file) throws IOException;
 }

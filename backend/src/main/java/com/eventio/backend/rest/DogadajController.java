@@ -117,14 +117,15 @@ public class DogadajController {
             return ResponseEntity.badRequest().body("Molimo, odaberite sliku");
         }
         try {
+            String filename = dogadajId + slika.getOriginalFilename().substring(slika.getOriginalFilename().lastIndexOf('.'));
             // Spremi sliku na odredište
-            serviceDogadaj.saveFile(uploadDir, slika);
+            serviceDogadaj.saveFile(uploadDir, filename , slika);
 
             // Ažurirajte galeriju u Dogadaj objektu
             Optional<Dogadaj> OptDogadaj = serviceDogadaj.findById(dogadajId);
             if (OptDogadaj.isPresent()) {
                 Dogadaj dogadaj = OptDogadaj.get();
-                dogadaj.setGalerija(slika.getOriginalFilename());
+                dogadaj.setGalerija(filename);
                 serviceDogadaj.spremiDogadaj(dogadaj);
             }
 
