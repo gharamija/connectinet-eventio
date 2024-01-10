@@ -12,7 +12,7 @@ export default function MyEventsCards({ query }) {
   const role = useContext(RoleContext);
   const id = useContext(IdContext);
 
-  React.useEffect(() => {
+  function fetchData() {
     if (role === "POSJETITELJ") {
       fetch(`/api/dogadaj/user/${id}${query}`).then((response) => {
         if (response.ok) {
@@ -29,9 +29,11 @@ export default function MyEventsCards({ query }) {
           });
         }
       });
-    } else {
-      console.log("Za trenutnog Aliena nema dogadjaja na Zemlji");
     }
+  }
+
+  React.useEffect(() => {
+    fetchData();
   }, [role, id, query]);
 
   return (
@@ -52,11 +54,15 @@ export default function MyEventsCards({ query }) {
         >
           <CustomCard event={event}>
             {role === "ORGANIZATOR" && (
-              <EditDelete dogadajId={event.dogadajId} />
+              <EditDelete dogadajId={event.dogadajId} fetchData={fetchData} />
             )}
             {role === "POSJETITELJ" &&
               new Date(event.vrijemePocetka) < new Date() && (
-                <Recenzija id={id} dogadajId={event.dogadajId} />
+                <Recenzija
+                  id={id}
+                  dogadajId={event.dogadajId}
+                  fetchData={fetchData}
+                />
               )}
           </CustomCard>
         </InterestCounter>

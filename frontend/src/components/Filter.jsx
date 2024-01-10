@@ -149,8 +149,8 @@ function Filter(props) {
               <MenuItem key={"clear"} value={"clear"}>
                 --
               </MenuItem>
-              <MenuItem value="1">Da</MenuItem>
-              <MenuItem value="0">Ne</MenuItem>
+              <MenuItem value="Da">Da</MenuItem>
+              <MenuItem value="Ne">Ne</MenuItem>
             </Select>
           </FormControl>
 
@@ -166,8 +166,8 @@ function Filter(props) {
               <MenuItem key={"clear"} value={"clear"}>
                 --
               </MenuItem>
-              <MenuItem value="1">Placa se</MenuItem>
-              <MenuItem value="0">Besplatno</MenuItem>
+              <MenuItem value="placa se">Placa se</MenuItem>
+              <MenuItem value="besplatno">Besplatno</MenuItem>
             </Select>
           </FormControl>
 

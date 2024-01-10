@@ -7,10 +7,16 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-function Recenzija({ id, dogadajId }) {
+function Recenzija({ id, dogadajId, fetchData }) {
   const [rating, setRating] = useState(null);
   const [recenzija, setRecenzija] = useState("");
   const [valid, setValid] = useState(false);
+
+  function clear() {
+    setRating(null);
+    setRecenzija("");
+    setValid(false);
+  }
 
   function onSubmit() {
     let obj = {
@@ -26,7 +32,10 @@ function Recenzija({ id, dogadajId }) {
       },
       body: JSON.stringify(obj),
     };
-    fetch("/api/dogadaj/recenzija", options);
+    fetch("/api/dogadaj/recenzija", options).then(() => {
+      fetchData();
+      clear();
+    });
   }
 
   return (

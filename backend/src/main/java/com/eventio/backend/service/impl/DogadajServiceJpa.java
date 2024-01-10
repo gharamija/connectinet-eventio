@@ -1,5 +1,9 @@
 package com.eventio.backend.service.impl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -16,6 +20,7 @@ import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.DogadajService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class DogadajServiceJpa implements DogadajService {
@@ -84,7 +89,6 @@ public class DogadajServiceJpa implements DogadajService {
       Dogadaj dogadaj = optionalDogadaj.get();
 
       dogadaj.setOpis(dto.getOpis());
-      dogadaj.setGalerija(dto.getGalerija());
       dogadaj.setCijenaUlaznice(dto.getCijenaUlaznice());
       dogadaj.setVrsta(dto.getVrsta());
       dogadaj.setNazivDogadaja(dto.getNazivDogadaja());
@@ -193,4 +197,18 @@ public void izbrisiDogadaj(Dogadaj dogadaj){
     dogadajRepository.delete(dogadaj);
 }
 
+  @Override
+  public void saveFile(String uploadPath, String fileName, MultipartFile file) throws IOException {
+    Path uploadDir = Path.of(uploadPath).toAbsolutePath().normalize();
+    Path filePath = uploadDir.resolve(fileName);
+
+    if (!Files.exists(uploadDir)) {
+      Files.createDirectories(uploadDir);
+    }
+
+    try (var inputStream = file.getInputStream()) {
+      Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+    }
+  }
 }
+

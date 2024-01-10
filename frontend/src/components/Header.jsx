@@ -133,7 +133,10 @@ function Header(props) {
                             {settings.map((setting) => (
                                 <MenuItem
                                     key={setting.label}
-                                    onClick={setting.onClick || handleCloseUserMenu}
+                                    onClick={() => {
+                                        setting.onClick(); 
+                                        handleCloseUserMenu();
+                                    }}
                                 >
                                     <Typography textAlign="center">{setting.label}</Typography>
                                 </MenuItem>

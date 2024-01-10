@@ -20,8 +20,6 @@ public class requestDogadajDTO {
     private String cijenaUlaznice;
     @NotNull
     private String opis;
-    @NotNull
-    private String galerija;
 
     public requestDogadajDTO() {
     }
@@ -33,7 +31,6 @@ public class requestDogadajDTO {
         this.vrijemePocetka = dogadaj.getVrijemePocetka();
         this.cijenaUlaznice = dogadaj.getCijenaUlaznice();
         this.opis = dogadaj.getOpis();
-        this.galerija = dogadaj.getGalerija();
     }
 
     public Integer getOrganizatorId() {
@@ -100,12 +97,5 @@ public class requestDogadajDTO {
         this.opis = opis;
     }
 
-    public String getGalerija() {
-        return galerija;
-    }
-
-    public void setGalerija(String galerija) {
-        this.galerija = galerija;
-    }
 
 }
