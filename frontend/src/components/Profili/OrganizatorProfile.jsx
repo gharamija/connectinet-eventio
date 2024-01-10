@@ -219,7 +219,9 @@ const organizatorProfile = () => {
                 variant="contained"
                 size="large"
                 onClick={odiNaPretplate}
+                disabled={profile.clanarina} // ako je user vec pretplacen, ne moze vise pristupit toj stranici
                 fullWidth
+
               >
                 Pretplata
               </Button>

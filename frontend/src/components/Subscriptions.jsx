@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Box, Button, Container, Typography, Collapse, Alert, Grid } from "@mui/material";
 import { Input as BaseInput } from '@mui/base/Input';
 import { styled } from '@mui/system';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import PropTypes from 'prop-types';
 import { Select as BaseSelect, selectClasses } from '@mui/base/Select';
-import { useSwitch } from '@mui/base/useSwitch';
-import clsx from 'clsx';
 import { useContext } from "react";
 import { IdContext } from "../App.jsx";
 import { useNavigate } from "react-router-dom";
+import PayPalImage from "./paypal.png";
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }) {
@@ -19,23 +17,6 @@ function Message({ content }) {
 const CustomInput = React.forwardRef(function CustomInput(props, ref) {
     return <BaseInput slots={{ input: InputElement }} {...props} ref={ref} />;
 });
-
-function BasicSwitch(props) {
-    const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
-
-    const stateClasses = {
-        'Switch-checked': checked,
-        'Switch-disabled': disabled,
-        'Switch-focusVisible': focusVisible,
-    };
-
-    return (
-        <BasicSwitchRoot className={clsx(stateClasses)}>
-            <BasicSwitchThumb className={clsx(stateClasses)} />
-            <BasicSwitchInput {...getInputProps()} aria-label="Demo switch" />
-        </BasicSwitchRoot>
-    );
-}
 
 
 function Subscriptions() {
@@ -46,7 +27,6 @@ function Subscriptions() {
         "data-sdk-integration-source": "integrationbuilder_sc",
     };
     const [message, setMessage] = useState("");
-    const [show, setShow] = useState(false);
     const id = useContext(IdContext);
     const [error, setError] = React.useState("");
     const navigate = useNavigate();
@@ -54,7 +34,20 @@ function Subscriptions() {
     const [ccv, setCcv] = useState("");
     const [cardHolderName, setCardHolderName] = useState("");
     const [postalCode, setPostalCode] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [isPayPalDisabled, setIsPayPalDisabled] = useState(true);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        checkPayPalAvailability();
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        checkPayPalAvailability();
+    };
 
     const handleCardNumberChange = (e) => {
         setCardNumber(e.target.value);
@@ -81,16 +74,12 @@ function Subscriptions() {
         setIsButtonDisabled(!areAllFieldsFilled);
     };
 
-
-    const handleSwitchChange = () => {
-        setShow(!show);
-        setIsButtonDisabled(true);
-        setCardNumber("");
-        setCcv("");
-        setCardHolderName("");
-        setPostalCode("");
-        setError("");
+    const checkPayPalAvailability = () => {
+        const areAllFieldsFilledPP = email && password;
+        setIsPayPalDisabled(!areAllFieldsFilledPP);
     };
+
+
     const povratakNaProfil = () => {
         navigate("/profil");
     };
@@ -137,66 +126,54 @@ function Subscriptions() {
                 <Container maxWidth="sm" sx={{ mb: 2 }}>
                     <Grid container spacing={1} alignItems="center" >
                         <Typography variant="h3" mb={1} marginBottom={5}>
-                            Upravitelj pretplatom
+                            Upravitelj pretplatama
                         </Typography>
-                        <Typography variant="h4" mb={1}>
-                            Pretplata <BasicSwitch onChange={handleSwitchChange} />
+
+
+                        <Typography variant="h5" mb={1} style={{ margin: '3px' }} >
+                            Plati putem PayPal-a
                         </Typography>
-                        {show ? (
-                            <div>
-                                <Typography variant="h5" mb={1} >
-                                    Plati putem PayPal-a
-                                </Typography>
-                                <div className="App">
-                                    <PayPalScriptProvider options={initialOptions}>
-                                        <PayPalButtons
-                                            style={{
-                                                shape: "rect",
-                                                layout: "vertical",
-                                            }}
-                                            onClick={handlePayPal}
-                                        />
-                                    </PayPalScriptProvider>
-                                    <Message content={message} />
-                                </div>
-                                <Typography variant="h5" mb={1}>
-                                    ili kartičnim plaćanjem
-                                </Typography>
-                                <CustomInput aria-label="Demo input" placeholder="Broj kartice" onChange={handleCardNumberChange} />
-                                <CustomInput aria-label="Demo input" placeholder="CCV" onChange={handleCcvChange} />
-                                <CustomInput aria-label="Demo input" placeholder="Ime na kartici" onChange={handleCardHolderNameChange} />
-                                <CustomInput aria-label="Demo input" placeholder="Poštanski broj" onChange={handlePostalCodeChange} />
-                                <Button
-                                    variant="contained"
-                                    size="large"
-                                    fullWidth
-                                    onClick={pretplati}
-                                    disabled={isButtonDisabled}
-                                >
-                                    Pretplati se
-                                </Button>
-                                <Collapse in={error !== ""}>
-                                    <Alert severity="error">{error}</Alert>
-                                </Collapse>
-                            </div>
-                        ) : null}
+                        <CustomInput aria-label="Demo input" placeholder="Email" onChange={handleEmailChange} style={{ margin: '3px' }} />
+                        <CustomInput aria-label="Demo input" placeholder="Lozinka" type="password" onChange={handlePasswordChange} style={{ margin: '3px' }} />
+                        <Button
+                            variant="contained"
+                            size="large"
+                            fullWidth
+                            onClick={handlePayPal}
+                            style={{ backgroundColor: '#FCBB32', margin: '3px' }}
+                            disabled={isPayPalDisabled}
+                        >
+                            <img src={PayPalImage} alt="Icon" style={{ width: 'auto', height: '23px' }} />
+                        </Button>
+                        <Typography variant="h5" mb={1} style={{ margin: '3px' }}>
+                            ili kartičnim plaćanjem
+                        </Typography>
+                        <CustomInput aria-label="Demo input" placeholder="Broj kartice" onChange={handleCardNumberChange} style={{ margin: '3px' }} />
+                        <CustomInput aria-label="Demo input" placeholder="CCV" onChange={handleCcvChange} style={{ margin: '3px' }} />
+                        <CustomInput aria-label="Demo input" placeholder="Ime na kartici" onChange={handleCardHolderNameChange} style={{ margin: '3px' }} />
+                        <CustomInput aria-label="Demo input" placeholder="Poštanski broj" onChange={handlePostalCodeChange} style={{ margin: '3px' }} />
+                        <Button
+                            variant="contained"
+                            size="large"
+                            fullWidth
+                            onClick={pretplati}
+                            disabled={isButtonDisabled}
+                            style={{ margin: '3px' }}
+                        >
+                            Pretplati se
+                        </Button>
                         <Button
                             variant="contained"
                             size="large"
                             fullWidth
                             onClick={povratakNaProfil}
-                            sx={{
-                                backgroundColor: "#e0e0e0", // Adjust the color to make it less prominent
-                                '&:hover': {
-                                    backgroundColor: "#d0d0d0", // Adjust the hover color
-
-                                },
-                                margin: '10px',
-                            }}
+                            style={{ margin: '3px' }}
                         >
                             Povratak na profil
                         </Button>
-
+                        <Collapse in={error !== ""}>
+                            <Alert severity="error">{error}</Alert>
+                        </Collapse>
                     </Grid>
                 </Container>
             </Box>
@@ -226,6 +203,7 @@ const grey = {
     800: '#303740',
     900: '#1C2025',
 };
+
 
 const InputElement = styled('input')(
     ({ theme }) => `
@@ -312,82 +290,4 @@ const StyledButton = styled('button', { shouldForwardProp: () => true })(
       right: 10px;
     }
     `,
-);
-
-const BasicSwitchRoot = styled('span')(
-    ({ theme }) => `
-    font-size: 0;
-    position: relative;
-    display: inline-block;
-    width: 38px;
-    height: 24px;
-    margin: 10px;
-    cursor: pointer;
-    background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-    border-radius: 24px;
-    box-shadow: inset 0px 1px 1px ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.05)'
-        };
-  
-    &:hover {
-      background: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
-    }
-      
-    &.Switch-focusVisible {
-      box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[700] : blue[200]};
-    }
-  
-    &.Switch-disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  
-    &.Switch-checked {
-      border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-      background: ${blue[500]};
-      box-shadow: inset 0px 1px 1px ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.05)'
-        };
-      &.Switch-focusVisible {
-        box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[700] : blue[200]};
-      }
-    }
-    
-    `,
-);
-
-const BasicSwitchInput = styled('input')`
-    cursor: inherit;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-    margin: 0;
-  `;
-
-const BasicSwitchThumb = styled('span')(
-    ({ theme }) => `
-    display: block;
-    width: 16px;
-    height: 16px;
-    top: 3px;
-    left: 2px;
-    border-radius: 16px;
-    background-color: #fff;
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-    position: relative;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 120ms;
-    box-shadow: 0px 1px 2px
-      ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.1)'};
-  
-    &.Switch-checked {
-      left: 17px;
-      background-color: #fff;
-      border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-    }
-  `,
 );
