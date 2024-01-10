@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import Editable from "../Editable";
 import Notifications from "../Notifications";
+import { useNavigate } from "react-router-dom";
+
 
 const organizatorProfile = () => {
   const id = useContext(IdContext);
@@ -36,6 +38,11 @@ const organizatorProfile = () => {
     poveznica: "",
     clanarina: "",
   });
+  const navigate = useNavigate();
+
+  const odiNaPretplate = () => {
+    navigate("/pretplate");
+  };
 
   useEffect(() => {
     //backend vraca i trenutnu vrijednost clanarine, pa se to salje i natrag
@@ -207,6 +214,14 @@ const organizatorProfile = () => {
                 disabled={!changed || editUsername || editPass || editEmail}
               >
                 Spremi
+              </Button>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={odiNaPretplate}
+                fullWidth
+              >
+                Pretplata
               </Button>
             </Grid>
           </Grid>
