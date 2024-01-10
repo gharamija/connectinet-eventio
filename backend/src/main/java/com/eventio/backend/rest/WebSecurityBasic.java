@@ -26,7 +26,7 @@ public class WebSecurityBasic {
                 .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/user/register")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/organizator/register")).permitAll()
-                .anyRequest().permitAll());
+                .anyRequest().authenticated());
         http.formLogin(configurer -> {
             configurer.successHandler((request, response, authentication) ->
                             response.setStatus(HttpStatus.OK.value()))
