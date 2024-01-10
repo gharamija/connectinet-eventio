@@ -10,6 +10,7 @@ import Profile from "./components/Profile.jsx";
 import Header from "./components/Header";
 import UserList from "./components/UserList";
 import MyEventsPage from "./components/MyEventsPage.jsx";
+import Subscriptions from "./components/Subscriptions.jsx";
 
 const RoleContext = createContext();
 const IdContext = createContext();
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/moji" element={<MyEventsPage />} />
                 <Route path="/profil" element={<Profile />} />
                 <Route path="/korisnici" element={<UserList />} />
+                <Route path="/pretplate" element={<Subscriptions />} />
                 <Route path="*" element={<Nopage />} />
               </Routes>
               <Footer />

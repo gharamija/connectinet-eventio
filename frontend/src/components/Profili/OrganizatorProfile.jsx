@@ -12,8 +12,9 @@ import {
 } from "@mui/material";
 import Editable from "../Editable";
 import Notifications from "../Notifications";
+import { useNavigate } from "react-router-dom";
 
-const organizatorProfile = () => {
+const OrganizatorProfile = () => {
   const id = useContext(IdContext);
 
   const [error, setError] = useState(false);
@@ -36,13 +37,17 @@ const organizatorProfile = () => {
     poveznica: "",
     clanarina: "",
   });
+  const navigate = useNavigate();
+
+  const odiNaPretplate = () => {
+    navigate("/pretplate");
+  };
 
   useEffect(() => {
     //backend vraca i trenutnu vrijednost clanarine, pa se to salje i natrag
     fetch("/api/organizator").then((response) => {
       response.json().then((details) => {
-        setProfile(details);
-        console.log(details);
+        setProfile({ ...details, password: "" });
       });
     });
   }, []);
@@ -209,6 +214,17 @@ const organizatorProfile = () => {
                 Spremi
               </Button>
             </Grid>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={odiNaPretplate}
+                disabled={Boolean(profile.clanarina)} // ako je user vec pretplacen, ne moze vise pristupit toj stranici
+                fullWidth
+              >
+                Pretplata
+              </Button>
+            </Grid>
           </Grid>
         </Container>
         <Notifications id={id} />
@@ -217,4 +233,4 @@ const organizatorProfile = () => {
   );
 };
 
-export default organizatorProfile;
+export default OrganizatorProfile;
