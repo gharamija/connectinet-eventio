@@ -6,12 +6,14 @@ import com.eventio.backend.dto.responseDogadajDTO;
 import com.eventio.backend.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -105,11 +107,31 @@ public class DogadajController {
         }
 
     }
+    @Value("${slika.upload.dir}") // Postavite putanju za spremanje slika u application.properties
+    private String uploadDir;
+    @PostMapping("/slika/{dogadajId}")    //treba jos istestirat
+    public ResponseEntity<String> slika(
+            @PathVariable(name = "dogadajId") Integer dogadajId,
+            @RequestPart("file") MultipartFile slika) {
+        if (slika.isEmpty()) {
+            return ResponseEntity.badRequest().body("Molimo, odaberite sliku");
+        }
+        try {
+            // Spremi sliku na odredište
+            serviceDogadaj.saveFile(uploadDir, slika);
 
-    @PostMapping("/slika/{dogadajId}")
-    public ResponseEntity<String> slika(@PathVariable(name = "dogadajId") Integer dogadajId, @RequestParam("file") MultipartFile slika) {
-        System.out.println(slika.getOriginalFilename());
-        return ResponseEntity.ok("");
+            // Ažurirajte galeriju u Dogadaj objektu
+            Optional<Dogadaj> OptDogadaj = serviceDogadaj.findById(dogadajId);
+            if (OptDogadaj.isPresent()) {
+                Dogadaj dogadaj = OptDogadaj.get();
+                dogadaj.setGalerija(slika.getOriginalFilename());
+                serviceDogadaj.spremiDogadaj(dogadaj);
+            }
+
+            return ResponseEntity.ok("Slika uspješno spremljena");
+        } catch (IOException e) {
+            return ResponseEntity.badRequest().body("Pogreška pri spremanju slike");
+        }
     }
 
     @GetMapping("/organizator/{id}")
