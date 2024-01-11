@@ -19,7 +19,7 @@ public class Korisnik implements UserDetails {
     private static final long serialVersionUID = 923686612483130334L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "korisnik_id")
+    @Column(name = "korisnikId")
     private Integer id;
 
     @Column(unique = true, nullable = false)

@@ -9,13 +9,13 @@ import jakarta.validation.constraints.Min;
 public class Recenzija {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recenzija_id")
+    @Column(name = "recenzijaId")
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "posjetitelj_id", nullable = false)
+    @JoinColumn(name = "posjetiteljId", nullable = false)
     private Korisnik posjetitelj;
     @ManyToOne
-    @JoinColumn(name = "dogadaj_id", nullable = false)
+    @JoinColumn(name = "dogadajId", nullable = false)
     private Dogadaj dogadaj;
     @Column(nullable = false)
     private String tekst;

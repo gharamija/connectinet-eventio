@@ -177,4 +177,43 @@
                 newDataType="SMALLINT"
                 tableName="notifikacija"/>
     </changeSet>
+    <changeSet author="grdic4" id="1702134144740-23">
+        <renameColumn tableName="dogadaj" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+        <renameColumn tableName="dogadaj" oldColumnName="organizator_id" newColumnName="organizatorId"/>
+
+        <renameColumn tableName="korisnik" oldColumnName="korisnik_id" newColumnName="korisnikId"/>
+
+        <renameColumn tableName="notifikacija" oldColumnName="notifikacija_id" newColumnName="notifikacijaId"/>
+        <renameColumn tableName="notifikacija" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+
+        <renameColumn tableName="recenzija" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+        <renameColumn tableName="recenzija" oldColumnName="recenzija_id" newColumnName="recenzijaId"/>
+        <renameColumn tableName="recenzija" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+
+        <renameColumn tableName="zainteresiranost" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+        <renameColumn tableName="zainteresiranost" oldColumnName="zainteresiranost_id" newColumnName="zainteresiranostId"/>
+        <renameColumn tableName="zainteresiranost" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+
+        <dropColumn tableName="zainteresiranost" columnName="obavijesti"/>
+
+    </changeSet>
+    <changeSet author="grdic4" id="1702134144740-24">
+        <createTable tableName="Misc">
+            <column name="ime" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="vrijednost" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="grdic4" id="1702134144740-25">
+    <renameColumn tableName="organizator" oldColumnName="naziv_organizacije" newColumnName="nazivOrganizacije"/>
+    <renameColumn tableName="organizator" oldColumnName="organizator_id" newColumnName="organizatorId"/>
+
+    <renameColumn tableName="dogadaj" oldColumnName="naziv_dogadaja" newColumnName="nazivDogadaja"/>
+    <renameColumn tableName="dogadaj" oldColumnName="cijena_ulaznice" newColumnName="cijenaUlaznice"/>
+    <renameColumn tableName="dogadaj" oldColumnName="opis_lokacije" newColumnName="opisLokacije"/>
+    <renameColumn tableName="dogadaj" oldColumnName="vrijeme_pocetka" newColumnName="vrijemePocetka"/>
+    </changeSet>
 </databaseChangeLog>
