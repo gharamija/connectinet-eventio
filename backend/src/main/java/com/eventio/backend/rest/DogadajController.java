@@ -210,6 +210,10 @@ public class DogadajController {
     }
     @PostMapping("/recenzija")
     public ResponseEntity<String> stvoriRecenziju(@Valid @RequestBody RecenzijaDTO dto){
+        if (dto.getTekst().length() >= 200)
+            return ResponseEntity.badRequest().body("Prevelika recenzija, ima više od 200 znakova. Broj znakova je" + dto.getTekst().length());
+
+
         try {
             Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnikId());
             Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadajId());
