@@ -34,7 +34,7 @@ public class DogadajController {
     @Autowired
     private RecenzijaService serviceRecnzija;
     @Autowired
-    private NotifikacijaService serviceNotifikacija;
+    private NotifikacijaService serviceNotifikacija;  // ne brisi koristi se
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,

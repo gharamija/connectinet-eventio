@@ -47,9 +47,6 @@ public class KorisnikController {
         return ResponseEntity.ok(korisnici);
     }
 
-
-
-
     @Secured("ROLE_ADMIN")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable(name = "id") Integer korisnikId) {
