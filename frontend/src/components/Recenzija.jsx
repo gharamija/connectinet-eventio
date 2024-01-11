@@ -11,6 +11,7 @@ function Recenzija({ id, dogadajId, fetchData }) {
   const [rating, setRating] = useState(null);
   const [recenzija, setRecenzija] = useState("");
   const [valid, setValid] = useState(false);
+  const [error, setError] = useState("");
 
   function clear() {
     setRating(null);
@@ -19,6 +20,7 @@ function Recenzija({ id, dogadajId, fetchData }) {
   }
 
   function onSubmit() {
+    setError("");
     let obj = {
       korisnikId: id,
       dogadajId: dogadajId,
@@ -32,9 +34,13 @@ function Recenzija({ id, dogadajId, fetchData }) {
       },
       body: JSON.stringify(obj),
     };
-    fetch("/api/dogadaj/recenzija", options).then(() => {
-      fetchData();
-      clear();
+    fetch("/api/dogadaj/recenzija", options).then((response) => {
+      if (response.status === 200) {
+        fetchData();
+        clear();
+      } else {
+        response.text().then((text) => setError(text));
+      }
     });
   }
 
@@ -64,6 +70,9 @@ function Recenzija({ id, dogadajId, fetchData }) {
           }}
         />
       </FormControl>
+      <Collapse in={error !== ""}>
+        <Alert severity="error">{error}</Alert>
+      </Collapse>
       <Button variant="contained" onClick={onSubmit} disabled={!valid}>
         Pohrani recenziju
       </Button>

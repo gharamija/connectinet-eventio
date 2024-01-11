@@ -79,9 +79,9 @@ function Subscriptions() {
         };
         fetch(`/api/transakcija/paypal/${id}`, options).then((response) => {
             if (response.status === 200) {
-                setMessage(response.statusText);
+                response.text().then((text) => setMessage(text));
             } else {
-                setError(response.statusText);
+                response.text().then((text) => setError(text));
             }
         });
     };
@@ -96,9 +96,9 @@ function Subscriptions() {
         };
         fetch(`/api/transakcija/banka/${id}`, options).then((response) => {
             if (response.status === 200) {
-                setMessage(response.statusText);
+                response.text().then((text) => setMessage(text));
             } else {
-                setError(response.statusText);
+                response.text().then((text) => setError(text));
             }
         });
     };

@@ -61,7 +61,7 @@ function Register(props) {
         if (response.status === 200) {
           goToLogin();
         } else {
-          setError(response.statusText);
+          response.text().then((text) => setError(text));
         }
       });
     } else {
@@ -79,7 +79,7 @@ function Register(props) {
         if (response.status === 200) {
           goToLogin();
         } else {
-          setError(response.statusText);
+          response.text().then((text) => setError(text));
         }
       });
     }
@@ -111,6 +111,7 @@ function Register(props) {
             required
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 30 }}
           />
           <TextField
             label="email"
@@ -120,6 +121,7 @@ function Register(props) {
             required
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 100 }}
           />
           <TextField
             label="password"
@@ -129,6 +131,7 @@ function Register(props) {
             required
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 200 }}
           />
           <FormControlLabel
             control={<Checkbox />}
@@ -146,6 +149,7 @@ function Register(props) {
                 required
                 fullWidth
                 margin="normal"
+                inputProps={{ maxLength: 200 }}
               />
               <TextField
                 label="adresa"
@@ -154,6 +158,7 @@ function Register(props) {
                 required
                 fullWidth
                 margin="normal"
+                inputProps={{ maxLength: 200 }}
               />
               <TextField
                 label="link"
@@ -161,6 +166,7 @@ function Register(props) {
                 onChange={onChange}
                 fullWidth
                 margin="normal"
+                inputProps={{ maxLength: 200 }}
               />
             </>
           )}

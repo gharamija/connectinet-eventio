@@ -44,8 +44,9 @@ export default function CustomCard({ event, children }) {
       />
       <CardMedia
         component="img"
-        height="194"
+        height="200"
         src={`/api/static/${event.galerija}`}
+        sx={{ objectFit: "contain" }}
       />
       <CardContent sx={{ pb: 0 }}>
         <Typography paragraph color="text.primary">
