@@ -252,6 +252,16 @@
         <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "vrijemePocetka" TO vrijemePocetka;]]>
     </sql>
     </changeSet>
-
+    <changeSet id="grdic4" author="indexi">
+        <sql>
+            CREATE INDEX korisnik_ind ON korisnik (korisnikId);
+            CREATE INDEX dogadaj_ind ON dogadaj (dogadajId);
+            CREATE INDEX notifikacija_ind ON notifikacija (notifikacijaId);
+            CREATE INDEX organizator_ind ON organizator (organizatorId);
+            CREATE INDEX zainteresiranost_ind ON zainteresiranost (zainteresiranostId);
+            CREATE INDEX recenzija_ind ON recenzija (recenzijaId);
+            CREATE INDEX idx_lokacija_vrsta ON notifikacija (lokacija, vrsta);
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>
