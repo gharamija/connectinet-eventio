@@ -192,8 +192,8 @@ public class DogadajServiceJpa implements DogadajService {
     }
     return sviDogadaji;
   }
-@Override
-public void izbrisiDogadaj(Dogadaj dogadaj){
+  @Override
+  public void izbrisiDogadaj(Dogadaj dogadaj){
     dogadajRepository.delete(dogadaj);
 }
 

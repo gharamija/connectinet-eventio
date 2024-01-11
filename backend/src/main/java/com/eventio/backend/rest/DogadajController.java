@@ -100,6 +100,9 @@ public class DogadajController {
         if (!Objects.equals(dto.getOrganizatorId(), korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
+        if (!dto.getCijenaUlaznice().equals("0") && !serviceOrganizator.findById(dto.getOrganizatorId()).get().getClanarina() && korisnik.getUloga() != Uloga.ADMIN)
+            return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
+
         if (serviceDogadaj.updateDogadaj(dto,dogadajId)) {
             return ResponseEntity.ok().body("Dogadaj promjenjen");
         } else {
