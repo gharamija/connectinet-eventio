@@ -68,6 +68,7 @@ function Recenzija({ id, dogadajId, fetchData }) {
           onChange={(event) => {
             setRecenzija(event.target.value);
           }}
+          inputProps={{ maxLength: 250 }}
         />
       </FormControl>
       <Collapse in={error !== ""}>

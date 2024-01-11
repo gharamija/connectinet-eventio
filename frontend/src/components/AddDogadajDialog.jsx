@@ -122,6 +122,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 200 }}
         />
         <FormControl fullWidth margin="dense">
           <InputLabel id="vrsta-label">Vrsta</InputLabel>
@@ -173,6 +174,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 250 }}
         />
         <TextField
           name="vrijemePocetka"
@@ -191,6 +193,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 9 }}
         />
         <TextField
           label="opis"
@@ -200,6 +203,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 250 }}
         />
         <Button
           type="button"

@@ -65,6 +65,7 @@ function Login(props) {
             required
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 30 }}
           />
           <TextField
             label="password"
@@ -74,6 +75,7 @@ function Login(props) {
             required
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 200 }}
           />
           <Collapse in={error}>
             <Alert severity="error">Login failed</Alert>

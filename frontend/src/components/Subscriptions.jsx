@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Container, Typography, Collapse, Alert, Grid } from "@mui/material";
-import { Input as BaseInput } from '@mui/base/Input';
+import { Box, Button, Container, Typography, Collapse, Alert, Grid, InputBase } from "@mui/material";
 import { styled } from '@mui/system';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import PropTypes from 'prop-types';
@@ -10,12 +9,8 @@ import { IdContext } from "../App.jsx";
 import { useNavigate } from "react-router-dom";
 import PayPalImage from "../assets/paypal.png";
 
-// Renders errors or successfull transactions on the screen.
-function Message({ content }) {
-    return <p>{content}</p>;
-}
 const CustomInput = React.forwardRef(function CustomInput(props, ref) {
-    return <BaseInput slots={{ input: InputElement }} {...props} ref={ref} />;
+    return <InputBase slots={{ input: InputElement }} inputProps={{ maxLength: 40 }} {...props} ref={ref} />;
 });
 
 
@@ -71,6 +66,7 @@ function Subscriptions() {
     };
     const handlePayPal = () => {
         setError("");
+        setMessage("");
         const options = {
             method: "POST",
             headers: {
@@ -88,6 +84,7 @@ function Subscriptions() {
 
     const pretplati = () => {
         setError("");
+        setMessage("");
         const options = {
             method: "POST",
             headers: {
@@ -104,66 +101,60 @@ function Subscriptions() {
     };
 
     return (
-        <>
-            <Box sx={{ marginBottom: 15 }}>
-                <Container maxWidth="sm" sx={{ mb: 2 }}>
-                    <Grid container spacing={1} alignItems="center" >
-                        <Typography variant="h3" mb={1} marginBottom={5}>
-                            Upravitelj pretplatama
-                        </Typography>
+        <Container maxWidth="sm" sx={{ mb: 2 }}>
+            <Typography variant="h3" mb={1} marginBottom={5}>
+                Upravitelj pretplatama
+            </Typography>
 
 
-                        <Typography variant="h5" mb={1} style={{ margin: '3px' }} >
-                            Plati putem PayPal-a
-                        </Typography>
-                        <CustomInput aria-label="Demo input" placeholder="Email" onChange={handleEmailChange} style={{ margin: '3px' }} />
-                        <CustomInput aria-label="Demo input" placeholder="Lozinka" type="password" onChange={handlePasswordChange} style={{ margin: '3px' }} />
-                        <Button
-                            variant="contained"
-                            size="large"
-                            fullWidth
-                            onClick={handlePayPal}
-                            style={{ backgroundColor: '#FCBB32', margin: '3px' }}
-                            disabled={!isPayPalAvailable}
-                        >
-                            <img src={PayPalImage} alt="Icon" style={{ width: 'auto', height: '23px' }} />
-                        </Button>
-                        <Typography variant="h5" mb={1} style={{ margin: '3px' }}>
-                            ili kartičnim plaćanjem
-                        </Typography>
-                        <CustomInput aria-label="Demo input" placeholder="Broj kartice" onChange={handleCardNumberChange} style={{ margin: '3px' }} />
-                        <CustomInput aria-label="Demo input" placeholder="CCV" onChange={handleCcvChange} style={{ margin: '3px' }} />
-                        <CustomInput aria-label="Demo input" placeholder="Ime na kartici" onChange={handleCardHolderNameChange} style={{ margin: '3px' }} />
-                        <CustomInput aria-label="Demo input" placeholder="Poštanski broj" onChange={handlePostalCodeChange} style={{ margin: '3px' }} />
-                        <Button
-                            variant="contained"
-                            size="large"
-                            fullWidth
-                            onClick={pretplati}
-                            disabled={!isButtonAvailable}
-                            style={{ margin: '3px' }}
-                        >
-                            Pretplati se
-                        </Button>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            fullWidth
-                            onClick={povratakNaProfil}
-                            style={{ margin: '3px' }}
-                        >
-                            Povratak na profil
-                        </Button>
-                        <Collapse in={error !== ""}>
-                            <Alert severity="error">{error}</Alert>
-                        </Collapse>
-                        <Collapse in={message !== ""}>
-                            <Alert severity="success">{message}</Alert>
-                        </Collapse>
-                    </Grid>
-                </Container>
-            </Box>
-        </>
+            <Typography variant="h5" mb={1} style={{ margin: '3px' }} >
+                Plati putem PayPal-a
+            </Typography>
+            <CustomInput aria-label="Demo input" placeholder="Email" onChange={handleEmailChange} style={{ margin: '3px' }} />
+            <CustomInput aria-label="Demo input" placeholder="Lozinka" type="password" onChange={handlePasswordChange} style={{ margin: '3px' }} />
+            <Button
+                variant="contained"
+                size="large"
+                fullWidth
+                onClick={handlePayPal}
+                style={{ backgroundColor: '#FCBB32', margin: '3px' }}
+                disabled={!isPayPalAvailable}
+            >
+                <img src={PayPalImage} alt="Icon" style={{ width: 'auto', height: '23px' }} />
+            </Button>
+            <Typography variant="h5" mb={1} style={{ margin: '3px' }}>
+                ili kartičnim plaćanjem
+            </Typography>
+            <CustomInput aria-label="Demo input" placeholder="Broj kartice" onChange={handleCardNumberChange} style={{ margin: '3px' }} />
+            <CustomInput aria-label="Demo input" placeholder="CCV" onChange={handleCcvChange} style={{ margin: '3px' }} />
+            <CustomInput aria-label="Demo input" placeholder="Ime na kartici" onChange={handleCardHolderNameChange} style={{ margin: '3px' }} />
+            <CustomInput aria-label="Demo input" placeholder="Poštanski broj" onChange={handlePostalCodeChange} style={{ margin: '3px' }} />
+            <Button
+                variant="contained"
+                size="large"
+                fullWidth
+                onClick={pretplati}
+                disabled={!isButtonAvailable}
+                style={{ margin: '3px' }}
+            >
+                Pretplati se
+            </Button>
+            <Button
+                variant="contained"
+                size="large"
+                fullWidth
+                onClick={povratakNaProfil}
+                style={{ margin: '3px' }}
+            >
+                Povratak na profil
+            </Button>
+            <Collapse in={error !== ""}>
+                <Alert severity="error">{error}</Alert>
+            </Collapse>
+            <Collapse in={message !== ""}>
+                <Alert severity="success">{message}</Alert>
+            </Collapse>
+        </Container>
     );
 }
 
