@@ -216,4 +216,42 @@
     <renameColumn tableName="dogadaj" oldColumnName="opis_lokacije" newColumnName="opisLokacije"/>
     <renameColumn tableName="dogadaj" oldColumnName="vrijeme_pocetka" newColumnName="vrijemePocetka"/>
     </changeSet>
+    <changeSet author="grdic4" id="neki-jedinstveni-id">
+        <renameTable oldTableName="Misc" newTableName="misc"/>
+    </changeSet>
+    <changeSet author="grdic4" id="1111">
+        <sql>
+        <![CDATA[ALTER TABLE korisnik RENAME COLUMN "korisnikId" TO korisnikId;]]>
+        </sql>
+    </changeSet>
+
+    <changeSet author="grdic4" id="sve-promjene">
+        <sql>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "dogadajId" TO dogadajId;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "organizatorId" TO organizatorId;]]>
+        <![CDATA[ALTER TABLE notifikacija RENAME COLUMN "notifikacijaId" TO notifikacijaId;]]>
+        <![CDATA[ALTER TABLE notifikacija RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "recenzijaId" TO recenzijaId;]]>
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "dogadajId" TO dogadajId;]]>
+
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "zainteresiranostId" TO zainteresiranostId;]]>
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "dogadajId" TO dogadajId;]]>
+    </sql>
+    </changeSet>
+    <changeSet author="grdic4" id="jos-promjena">
+        <sql>
+        <![CDATA[ALTER TABLE organizator RENAME COLUMN "nazivOrganizacije" TO nazivOrganizacije;]]>
+        <![CDATA[ALTER TABLE organizator RENAME COLUMN "organizatorId" TO organizatorId;]]>
+
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "nazivDogadaja" TO nazivDogadaja;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "cijenaUlaznice" TO cijenaUlaznice;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "opisLokacije" TO opisLokacije;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "vrijemePocetka" TO vrijemePocetka;]]>
+    </sql>
+    </changeSet>
+
+
 </databaseChangeLog>
