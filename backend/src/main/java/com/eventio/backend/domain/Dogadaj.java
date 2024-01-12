@@ -16,10 +16,10 @@ import java.util.List;
 public class Dogadaj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dogadaj_id")
+    @Column(name = "dogadajId")
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "organizator_id", nullable = false)
+    @JoinColumn(name = "organizatorId", nullable = false)
     private Organizator organizator;
     @Column(nullable = false)
     private String nazivDogadaja;

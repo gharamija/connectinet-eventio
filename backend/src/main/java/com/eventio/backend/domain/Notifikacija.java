@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class Notifikacija {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notifikacija_id")
+    @Column(name = "notifikacijaId")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "posjetitelj_id", nullable = false)
+    @JoinColumn(name = "posjetiteljId", nullable = false)
     private Korisnik posjetitelj;
 
     private Vrste vrsta;

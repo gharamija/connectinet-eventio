@@ -34,7 +34,7 @@ public class DogadajController {
     @Autowired
     private RecenzijaService serviceRecnzija;
     @Autowired
-    private NotifikacijaService serviceNotifikacija;
+    private NotifikacijaService serviceNotifikacija;  // ne brisi koristi se
     @GetMapping("/filter")
     public List<responseDogadajDTO>  filter(
             @RequestParam(name = "sort", defaultValue = "vrijeme-uzlazno") String sort,
@@ -99,6 +99,9 @@ public class DogadajController {
                                          @AuthenticationPrincipal Korisnik korisnik) {
         if (!Objects.equals(dto.getOrganizatorId(), korisnik.getId()) && korisnik.getUloga() != Uloga.ADMIN )
             return ResponseEntity.badRequest().body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
+
+        if (!dto.getCijenaUlaznice().equals("0") && !serviceOrganizator.findById(dto.getOrganizatorId()).get().getClanarina() && korisnik.getUloga() != Uloga.ADMIN)
+            return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
 
         if (serviceDogadaj.updateDogadaj(dto,dogadajId)) {
             return ResponseEntity.ok().body("Dogadaj promjenjen");
@@ -210,6 +213,10 @@ public class DogadajController {
     }
     @PostMapping("/recenzija")
     public ResponseEntity<String> stvoriRecenziju(@Valid @RequestBody RecenzijaDTO dto){
+        if (dto.getTekst().length() >= 200)
+            return ResponseEntity.badRequest().body("Prevelika recenzija, ima više od 200 znakova. Broj znakova je" + dto.getTekst().length());
+
+
         try {
             Optional<Korisnik> optionalKorisnik = serviceKorisnik.findById(dto.getKorisnikId());
             Optional<Dogadaj> optionalDogadaji = serviceDogadaj.findById(dto.getDogadajId());

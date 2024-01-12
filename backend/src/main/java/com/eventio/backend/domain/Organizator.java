@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "organizator_id")
+@PrimaryKeyJoinColumn(name = "organizatorId")
 public class Organizator extends Korisnik {
     @Column(nullable = false)
     private String nazivOrganizacije;
