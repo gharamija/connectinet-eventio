@@ -101,11 +101,11 @@ function Register(props) {
         }}
       >
         <Typography variant="h4" color="text.primary">
-          Register
+          Registracija
         </Typography>
         <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
           <TextField
-            label="username"
+            label="Korisničko ime"
             name="username"
             onChange={onChange}
             required
@@ -114,7 +114,7 @@ function Register(props) {
             inputProps={{ maxLength: 30 }}
           />
           <TextField
-            label="email"
+            label="Email"
             name="email"
             type="email"
             onChange={onChange}
@@ -124,7 +124,7 @@ function Register(props) {
             inputProps={{ maxLength: 100 }}
           />
           <TextField
-            label="password"
+            label="Lozinka"
             name="password"
             type="password"
             onChange={onChange}
@@ -143,7 +143,7 @@ function Register(props) {
           {isChecked && (
             <>
               <TextField
-                label="naziv"
+                label="Naziv događaja"
                 name="naziv"
                 onChange={onChange}
                 required
@@ -152,7 +152,7 @@ function Register(props) {
                 inputProps={{ maxLength: 200 }}
               />
               <TextField
-                label="adresa"
+                label="Adresa"
                 name="adresa"
                 onChange={onChange}
                 required
@@ -161,7 +161,7 @@ function Register(props) {
                 inputProps={{ maxLength: 200 }}
               />
               <TextField
-                label="link"
+                label="Poveznica"
                 name="poveznica"
                 onChange={onChange}
                 fullWidth
@@ -176,7 +176,7 @@ function Register(props) {
           <Grid container spacing={1} sx={{ mt: 1 }}>
             <Grid item xs={6}>
               <Button href="/" variant="outlined" fullWidth size="large">
-                Login
+                Prijava
               </Button>
             </Grid>
             <Grid item xs={6}>
@@ -187,7 +187,7 @@ function Register(props) {
                 fullWidth
                 size="large"
               >
-                Register
+                Registracija
               </Button>
             </Grid>
           </Grid>

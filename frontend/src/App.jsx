@@ -44,7 +44,7 @@ function App() {
   useEffect(validateSession, []);
 
   if (loadingUser) {
-    return <div>Loading...</div>;
+    return <div>Ucitavanje...</div>;
   }
 
   function onLogin() {

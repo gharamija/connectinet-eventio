@@ -95,7 +95,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="username"
+                label="Korisničko ime"
                 name="username"
                 value={profile.username}
                 onChange={onChange}
@@ -112,7 +112,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="password"
+                label="Lozinka"
                 name="password"
                 type="password"
                 value={profile.password}
@@ -130,7 +130,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="email"
+                label="Email"
                 name="email"
                 type="email"
                 value={profile.email}
@@ -150,7 +150,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="naziv"
+                label="Naziv organizacije"
                 name="naziv"
                 value={profile.nazivOrganizacije}
                 onChange={onChange}
@@ -167,7 +167,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="adresa"
+                label="Adresa"
                 name="adresa"
                 value={profile.adresa}
                 onChange={onChange}
@@ -184,7 +184,7 @@ const OrganizatorProfile = () => {
               change={setChanged}
             >
               <TextField
-                label="poveznica"
+                label="Poveznica"
                 name="poveznica"
                 value={profile.poveznica}
                 onChange={onChange}

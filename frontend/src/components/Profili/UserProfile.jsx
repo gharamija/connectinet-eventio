@@ -25,7 +25,7 @@ const UserProfile = () => {
     useEffect(() => {
         fetch("/api/user").then((response) => {
             response.json().then((details) => {
-                setProfile(details);
+                setProfile({ ...details, password: "" });
             });
         });
     }, []);
@@ -73,7 +73,7 @@ const UserProfile = () => {
                             change={setChanged}
                         >
                             <TextField
-                                label="username"
+                                label="Korisničko ime"
                                 name="username"
                                 value={profile.username}
                                 onChange={onChange}
@@ -90,7 +90,7 @@ const UserProfile = () => {
                             change={setChanged}
                         >
                             <TextField
-                                label="password"
+                                label="Lozinka"
                                 name="password"
                                 type="password"
                                 value={profile.password}
@@ -108,7 +108,7 @@ const UserProfile = () => {
                             change={setChanged}
                         >
                             <TextField
-                                label="email"
+                                label="Email"
                                 name="email"
                                 type="email"
                                 value={profile.email}

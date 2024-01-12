@@ -55,11 +55,11 @@ function Login(props) {
         }}
       >
         <Typography variant="h4" color="text.primary">
-          Login
+          Prijava
         </Typography>
         <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
           <TextField
-            label="username"
+            label="Korisničko ime"
             name="username"
             onChange={onChange}
             required
@@ -68,7 +68,7 @@ function Login(props) {
             inputProps={{ maxLength: 30 }}
           />
           <TextField
-            label="password"
+            label="Lozinka"
             name="password"
             type="password"
             onChange={onChange}
@@ -78,12 +78,14 @@ function Login(props) {
             inputProps={{ maxLength: 200 }}
           />
           <Collapse in={error}>
-            <Alert severity="error">Login failed</Alert>
+            <Alert severity="error">
+              Prijava nije uspjela. Pokušajte ponovo.
+            </Alert>
           </Collapse>
           <Grid container spacing={1} sx={{ mt: 1 }}>
             <Grid item xs={6}>
               <Button type="submit" variant="contained" fullWidth size="large">
-                Login
+                Prijava
               </Button>
             </Grid>
             <Grid item xs={6}>
@@ -94,7 +96,7 @@ function Login(props) {
                 fullWidth
                 size="large"
               >
-                Register
+                Registracija
               </Button>
             </Grid>
           </Grid>

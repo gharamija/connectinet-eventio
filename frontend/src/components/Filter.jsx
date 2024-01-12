@@ -155,7 +155,7 @@ function Filter(props) {
           </FormControl>
 
           <FormControl sx={{ mb: 1 }} size="small">
-            <InputLabel id="placanje-label">Cijena</InputLabel>
+            <InputLabel id="placanje-label">Placanje</InputLabel>
             <Select
               labelId="placanje-label"
               label="placanje"
