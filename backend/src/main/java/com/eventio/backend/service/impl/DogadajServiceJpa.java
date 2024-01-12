@@ -106,8 +106,8 @@ public class DogadajServiceJpa implements DogadajService {
   public List<Dogadaj> sortirajDogadaje(List<Dogadaj> filtriraniDogadaji, String sort) {
     Comparator<Dogadaj> comparator = switch (sort) {
       case "vrijeme-silazno" -> Comparator.comparing(Dogadaj::getVrijemePocetka).reversed();
-      case "zainteresiranost-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
-      case "zainteresiranost-silazno" -> Comparator.comparing(Dogadaj::zainteresiranost).reversed();
+      case "zainteresirani-uzlazno" -> Comparator.comparing(Dogadaj::zainteresiranost);
+      case "zainteresirani-silazno" -> Comparator.comparing(Dogadaj::zainteresiranost).reversed();
       default -> Comparator.comparing(Dogadaj::getVrijemePocetka);
     };
 
