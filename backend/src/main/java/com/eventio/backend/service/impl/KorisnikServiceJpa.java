@@ -54,13 +54,14 @@ public class KorisnikServiceJpa implements KorisnikService {
     }
     @Override
     public boolean registerUser(requestKorisnikDTO dto) {
-        dto.setPassword(encoder.encode(dto.getPassword()));
-        Korisnik user = new Korisnik(dto);
-        user = repository.saveAndFlush(user);
-        if (user.getId() == null) {
+        try {
+            dto.setPassword(encoder.encode(dto.getPassword()));
+            Korisnik user = new Korisnik(dto);
+            repository.saveAndFlush(user);
+            return true;
+        } catch (Exception e) {
             return false;
         }
-        return true;
     }
 
     @Override
