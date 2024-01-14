@@ -4,6 +4,7 @@ import com.eventio.backend.domain.Korisnik;
 import com.eventio.backend.domain.Organizator;
 import com.eventio.backend.domain.Uloga;
 import com.eventio.backend.dto.OrganizatorDTO;
+import com.eventio.backend.service.MiscService;
 import com.eventio.backend.service.OrganizatorService;
 import com.eventio.backend.service.KorisnikService;
 import jakarta.validation.Valid;
@@ -23,11 +24,19 @@ public class OrganizatorController {
     @Autowired
     private KorisnikService userService;
 
+    @Autowired
+    private MiscService miscService;
     @Secured("ROLE_ADMIN")
-    @PutMapping("/cijena")
-    public ResponseEntity<String> editCijena() {
-        return ResponseEntity.badRequest().body("Nepoznata greška");
+    @PutMapping("/cijena/{iznos}")
+    public ResponseEntity<String> editCijena(@PathVariable(name = "iznos") String iznos) {
+        miscService.postaviVrijednost("cijena", iznos);
+        return ResponseEntity.ok().body("Cijena promjenjena");
     }
+    @GetMapping("/cijena")
+    public String vratiCijenu(){
+        return miscService.dohvatiVrijednost("cijena");
+    }
+
     @Secured("ROLE_ORGANIZATOR")
     @GetMapping
     public OrganizatorDTO getDetails(@AuthenticationPrincipal Korisnik korisnik) {

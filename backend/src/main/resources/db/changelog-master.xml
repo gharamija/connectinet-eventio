@@ -177,4 +177,91 @@
                 newDataType="SMALLINT"
                 tableName="notifikacija"/>
     </changeSet>
+    <changeSet author="grdic4" id="1702134144740-23">
+        <renameColumn tableName="dogadaj" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+        <renameColumn tableName="dogadaj" oldColumnName="organizator_id" newColumnName="organizatorId"/>
+
+        <renameColumn tableName="korisnik" oldColumnName="korisnik_id" newColumnName="korisnikId"/>
+
+        <renameColumn tableName="notifikacija" oldColumnName="notifikacija_id" newColumnName="notifikacijaId"/>
+        <renameColumn tableName="notifikacija" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+
+        <renameColumn tableName="recenzija" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+        <renameColumn tableName="recenzija" oldColumnName="recenzija_id" newColumnName="recenzijaId"/>
+        <renameColumn tableName="recenzija" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+
+        <renameColumn tableName="zainteresiranost" oldColumnName="posjetitelj_id" newColumnName="posjetiteljId"/>
+        <renameColumn tableName="zainteresiranost" oldColumnName="zainteresiranost_id" newColumnName="zainteresiranostId"/>
+        <renameColumn tableName="zainteresiranost" oldColumnName="dogadaj_id" newColumnName="dogadajId"/>
+
+        <dropColumn tableName="zainteresiranost" columnName="obavijesti"/>
+
+    </changeSet>
+    <changeSet author="grdic4" id="1702134144740-24">
+        <createTable tableName="Misc">
+            <column name="ime" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="vrijednost" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="grdic4" id="1702134144740-25">
+    <renameColumn tableName="organizator" oldColumnName="naziv_organizacije" newColumnName="nazivOrganizacije"/>
+    <renameColumn tableName="organizator" oldColumnName="organizator_id" newColumnName="organizatorId"/>
+
+    <renameColumn tableName="dogadaj" oldColumnName="naziv_dogadaja" newColumnName="nazivDogadaja"/>
+    <renameColumn tableName="dogadaj" oldColumnName="cijena_ulaznice" newColumnName="cijenaUlaznice"/>
+    <renameColumn tableName="dogadaj" oldColumnName="opis_lokacije" newColumnName="opisLokacije"/>
+    <renameColumn tableName="dogadaj" oldColumnName="vrijeme_pocetka" newColumnName="vrijemePocetka"/>
+    </changeSet>
+    <changeSet author="grdic4" id="neki-jedinstveni-id">
+        <renameTable oldTableName="Misc" newTableName="misc"/>
+    </changeSet>
+    <changeSet author="grdic4" id="1111">
+        <sql>
+        <![CDATA[ALTER TABLE korisnik RENAME COLUMN "korisnikId" TO korisnikId;]]>
+        </sql>
+    </changeSet>
+
+    <changeSet author="grdic4" id="sve-promjene">
+        <sql>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "dogadajId" TO dogadajId;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "organizatorId" TO organizatorId;]]>
+        <![CDATA[ALTER TABLE notifikacija RENAME COLUMN "notifikacijaId" TO notifikacijaId;]]>
+        <![CDATA[ALTER TABLE notifikacija RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "recenzijaId" TO recenzijaId;]]>
+        <![CDATA[ALTER TABLE recenzija RENAME COLUMN "dogadajId" TO dogadajId;]]>
+
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "posjetiteljId" TO posjetiteljId;]]>
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "zainteresiranostId" TO zainteresiranostId;]]>
+        <![CDATA[ALTER TABLE zainteresiranost RENAME COLUMN "dogadajId" TO dogadajId;]]>
+    </sql>
+    </changeSet>
+    <changeSet author="grdic4" id="jos-promjena">
+        <sql>
+        <![CDATA[ALTER TABLE organizator RENAME COLUMN "nazivOrganizacije" TO nazivOrganizacije;]]>
+        <![CDATA[ALTER TABLE organizator RENAME COLUMN "organizatorId" TO organizatorId;]]>
+
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "nazivDogadaja" TO nazivDogadaja;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "cijenaUlaznice" TO cijenaUlaznice;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "opisLokacije" TO opisLokacije;]]>
+        <![CDATA[ALTER TABLE dogadaj RENAME COLUMN "vrijemePocetka" TO vrijemePocetka;]]>
+    </sql>
+    </changeSet>
+    <changeSet id="grdic4" author="indexi">
+        <sql>
+            CREATE INDEX korisnik_ind ON korisnik (korisnikId);
+            CREATE INDEX dogadaj_ind ON dogadaj (dogadajId);
+            CREATE INDEX notifikacija_ind ON notifikacija (notifikacijaId);
+            CREATE INDEX organizator_ind ON organizator (organizatorId);
+            CREATE INDEX zainteresiranost_ind ON zainteresiranost (zainteresiranostId);
+            CREATE INDEX recenzija_ind ON recenzija (recenzijaId);
+            CREATE INDEX idx_lokacija_vrsta ON notifikacija (lokacija, vrsta);
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
