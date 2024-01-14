@@ -218,7 +218,6 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
             type="file"
             name="galerija"
             onChange={handleFileUpload}
-            required={!dogadajId}
             sx={{ opacity: 0 }}
             inputProps={{ accept: "image/*" }}
           />
