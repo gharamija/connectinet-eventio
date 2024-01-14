@@ -61,6 +61,7 @@ public class Korisnik implements UserDetails {
         return id;
     }
 
+    public void setId(int id) { this.id = id; }
     @Override
     public String getUsername() {
         return username;
@@ -131,4 +132,5 @@ public class Korisnik implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + getUloga()));
     }
+
 }
