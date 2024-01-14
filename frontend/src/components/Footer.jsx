@@ -15,7 +15,7 @@ const Footer = () => {
                     <Container maxWidth="xl">
                         <Toolbar sx={{ justifyContent: 'center' }}>
                             <Typography variant="h6" color="inherit">
-                                © 2023 EVENTIO. All rights reserved.
+                                © 2023 EVENTIO. Sva prava pridržana.
                             </Typography>
                         </Toolbar>
                     </Container>

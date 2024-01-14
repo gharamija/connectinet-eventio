@@ -52,6 +52,7 @@ export default function AllEventsCards({ query }) {
                 id={id}
                 dogadajId={event.dogadajId}
                 pocKategorija={event.trenutna}
+                gotov={new Date(event.vrijemePocetka) < Date.now()}
               />
             )}
           </CustomCard>

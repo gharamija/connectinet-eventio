@@ -42,11 +42,15 @@ export default function CustomCard({ event, children }) {
         title={event.nazivDogadaja}
         subheader={event.username}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        src={`/api/static/${event.galerija}`}
-      />
+      {event.galerija && (
+        <CardMedia
+          component="img"
+          height="200"
+          src={`/api/static/${event.galerija}`}
+          alt="Slika nije pronađena"
+          sx={{ objectFit: "contain" }}
+        />
+      )}
       <CardContent sx={{ pb: 0 }}>
         <Typography paragraph color="text.primary">
           {event.lokacija.replaceAll("_", " ")}

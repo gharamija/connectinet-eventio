@@ -44,7 +44,7 @@ function BuduciSvrseniFilter(props) {
             <InputLabel id="zavrseno-label">Zavrseno</InputLabel>
             <Select
               labelId="zavrseno-label"
-              label="zavrseno"
+              label="Zavrseno"
               name="zavrseno"
               value={filter.zavrseno}
               onChange={handleChange}

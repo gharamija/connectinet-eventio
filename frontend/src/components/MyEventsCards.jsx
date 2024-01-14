@@ -32,6 +32,11 @@ export default function MyEventsCards({ query }) {
     }
   }
 
+  //provjerava ako je datum između prekjučer i danas
+  function dvaDana(dat) {
+    return new Date(Date.now() - 48 * 3600 * 1000) < dat && dat < Date.now();
+  }
+
   React.useEffect(() => {
     fetchData();
   }, [role, id, query]);
@@ -57,7 +62,7 @@ export default function MyEventsCards({ query }) {
               <EditDelete dogadajId={event.dogadajId} fetchData={fetchData} />
             )}
             {role === "POSJETITELJ" &&
-              new Date(event.vrijemePocetka) < new Date() && (
+              dvaDana(new Date(event.vrijemePocetka)) && (
                 <Recenzija
                   id={id}
                   dogadajId={event.dogadajId}

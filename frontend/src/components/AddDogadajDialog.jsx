@@ -69,16 +69,15 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
       ? `/api/dogadaj/update/${dogadajId}`
       : `/api/dogadaj/izrada/${id}`;
 
-    fetch(url, options).then(async (response) => {
+    fetch(url, options).then((response) => {
       if (response.status === 200) {
         handleClose();
         if (file) {
           //response bi trebao imati novi id ako je događaj tek nastao
-          const text = await response.text();
-          uploadImage(text);
+          response.text().then((text) => uploadImage(text));
         }
       } else {
-        setError(response.statusText);
+        response.text().then((text) => setError(text));
       }
     });
   }
@@ -116,19 +115,20 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
       </DialogTitle>
       <Box component="form" sx={{ m: 2 }}>
         <TextField
-          label="naziv"
+          label="Naziv događaja"
           name="nazivDogadaja"
           onChange={onChange}
           value={form.nazivDogadaja}
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 200 }}
         />
         <FormControl fullWidth margin="dense">
-          <InputLabel id="vrsta-label">Vrsta</InputLabel>
+          <InputLabel id="vrsta-label">Vrsta događaja</InputLabel>
           <Select
             labelId="vrsta-label"
-            label="vrsta"
+            label="Vrsta događaja"
             name="vrsta"
             onChange={onChange}
             value={form.vrsta}
@@ -149,7 +149,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           <InputLabel id="lokacija-label">Lokacija</InputLabel>
           <Select
             labelId="lokacija-label"
-            label="lokacija"
+            label="Lokacija"
             name="lokacija"
             onChange={onChange}
             value={form.lokacija}
@@ -167,13 +167,14 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           </Select>
         </FormControl>
         <TextField
-          label="opis lokacije"
+          label="Opis lokacije"
           name="opisLokacije"
           onChange={onChange}
           value={form.opisLokacije}
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 250 }}
         />
         <TextField
           name="vrijemePocetka"
@@ -185,22 +186,24 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           margin="dense"
         />
         <TextField
-          label="cijena ulaznice"
+          label="Cijena ulaznice"
           name="cijenaUlaznice"
           onChange={onChange}
           value={form.cijenaUlaznice}
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 9 }}
         />
         <TextField
-          label="opis"
+          label="Opis"
           name="opis"
           onChange={onChange}
           value={form.opis}
           required
           fullWidth
           margin="dense"
+          inputProps={{ maxLength: 250 }}
         />
         <Button
           type="button"
@@ -210,12 +213,11 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
           fullWidth
           sx={{ mt: 1, mb: 1 }}
         >
-          {file ? file.name : "Odaberi sliku"}
+          {file ? file.name : "Odaberite sliku"}
           <Input
             type="file"
             name="galerija"
             onChange={handleFileUpload}
-            required={!dogadajId}
             sx={{ opacity: 0 }}
             inputProps={{ accept: "image/*" }}
           />

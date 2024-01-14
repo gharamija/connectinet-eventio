@@ -4,7 +4,7 @@ import { useState } from "react";
 
 //komponenta treba dobiti koji je id korisnika i događaja o kojem se radi
 //te za sto je glasao trenutni korisnik (kategorija)
-function Zainteresiranost({ id, dogadajId, pocKategorija }) {
+function Zainteresiranost({ id, dogadajId, pocKategorija, gotov }) {
   const [kategorija, setKategorija] = useState(pocKategorija);
 
   function vote(nova) {
@@ -15,7 +15,7 @@ function Zainteresiranost({ id, dogadajId, pocKategorija }) {
 
   return (
     <CardActions disableSpacing>
-      <ButtonGroup fullWidth>
+      <ButtonGroup fullWidth disabled={gotov}>
         <Button
           variant={kategorija === "SIGURNO" ? "contained" : "outlined"}
           color="success"
