@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PrikazRecenzije from "./PrikazRecenzije.jsx";
+import { useNavigate } from "react-router-dom";
+import { ContactPageTwoTone } from "@mui/icons-material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,16 +33,23 @@ export default function CustomCard({ event, children }) {
     setExpanded(!expanded);
   };
 
+  const navigate = useNavigate();
+
   return (
     <Card sx={{ width: { xs: "90vw", md: "50vw", maxWidth: 500 } }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="event">
-            {event.organizator}
-          </Avatar>
-        }
+        avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="event" />}
         title={event.nazivDogadaja}
         subheader={event.username}
+        action={
+          <IconButton
+            aria-label="profil"
+            onClick={() => navigate(`/profil/${event.organizatorId}`)}
+            title="Profil organizatora"
+          >
+            <ContactPageTwoTone fontSize="large" />
+          </IconButton>
+        }
       />
       {event.galerija && (
         <CardMedia

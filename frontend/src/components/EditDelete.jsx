@@ -28,6 +28,7 @@ export default function EditDelete({ dogadajId, fetchData }) {
         handleClose={() => setDialogOpen(false)}
         open={dialogOpen}
         dogadajId={dogadajId}
+        fetchData={fetchData}
       />
     </>
   );

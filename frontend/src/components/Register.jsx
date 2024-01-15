@@ -143,7 +143,7 @@ function Register(props) {
           {isChecked && (
             <>
               <TextField
-                label="Naziv događaja"
+                label="Naziv organizacije"
                 name="naziv"
                 onChange={onChange}
                 required

@@ -1,15 +1,41 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Box, Container, Fab } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import AddDogadajDialog from "./AddDogadajDialog.jsx";
 import MyEventsCards from "./MyEventsCards.jsx";
 import BuduciSvrseniFilter from "./BuduciSvrseniFilter.jsx";
-import { RoleContext } from "../App.jsx";
+import { RoleContext, IdContext } from "../App.jsx";
 
 function MyEventsPage() {
+  const [events, setEvents] = useState([]); // ovdje se spremaju eventi za pojedinog korisnika koji ce se prikazati
   const [dialogOpen, setDialogOpen] = useState(false);
   const [query, setQuery] = useState("");
   const role = useContext(RoleContext);
+  const id = useContext(IdContext);
+
+  function fetchData() {
+    if (role === "POSJETITELJ") {
+      fetch(`/api/dogadaj/user/${id}${query}`).then((response) => {
+        if (response.ok) {
+          response.json().then((events) => {
+            setEvents(events);
+          });
+        }
+      });
+    } else if (role === "ORGANIZATOR") {
+      fetch(`/api/dogadaj/organizator/${id}`).then((response) => {
+        if (response.ok) {
+          response.json().then((events) => {
+            setEvents(events);
+          });
+        }
+      });
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [role, query]);
 
   return (
     <Box sx={{ marginBottom: 15 }}>
@@ -22,7 +48,7 @@ function MyEventsPage() {
         }}
       >
         {role === "POSJETITELJ" && <BuduciSvrseniFilter setQuery={setQuery} />}
-        <MyEventsCards query={query} />
+        <MyEventsCards events={events} fetchData={fetchData} />
         <Fab
           color="primary"
           aria-label="add"
@@ -36,6 +62,7 @@ function MyEventsPage() {
       <AddDogadajDialog
         handleClose={() => setDialogOpen(false)}
         open={dialogOpen}
+        fetchData={fetchData}
       />
     </Box>
   );
