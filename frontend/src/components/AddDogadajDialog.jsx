@@ -21,7 +21,7 @@ import { IdContext } from "../App";
 import { CloudUpload } from "@mui/icons-material";
 
 //ako se u props daje dogadajId, onda znaci edit postojeceg događaja
-function AddDogadajDialog({ handleClose, open, dogadajId }) {
+function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
   const id = useContext(IdContext);
 
   const [error, setError] = useState("");
@@ -69,17 +69,19 @@ function AddDogadajDialog({ handleClose, open, dogadajId }) {
       ? `/api/dogadaj/update/${dogadajId}`
       : `/api/dogadaj/izrada/${id}`;
 
-    fetch(url, options).then((response) => {
-      if (response.status === 200) {
-        handleClose();
-        if (file) {
-          //response bi trebao imati novi id ako je događaj tek nastao
-          response.text().then((text) => uploadImage(text));
+    fetch(url, options)
+      .then((response) => {
+        if (response.status === 200) {
+          handleClose();
+          if (file) {
+            //response bi trebao imati novi id ako je događaj tek nastao
+            response.text().then((text) => uploadImage(text));
+          }
+        } else {
+          response.text().then((text) => setError(text));
         }
-      } else {
-        response.text().then((text) => setError(text));
-      }
-    });
+      })
+      .then(() => fetchData());
   }
 
   function uploadImage(newId) {

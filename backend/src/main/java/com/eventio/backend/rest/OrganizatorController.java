@@ -14,6 +14,8 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/organizator")
 public class OrganizatorController {
@@ -41,6 +43,16 @@ public class OrganizatorController {
     @GetMapping
     public OrganizatorDTO getDetails(@AuthenticationPrincipal Korisnik korisnik) {
         return new OrganizatorDTO(service.findById(korisnik.getId()).get());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrganizatorDTO> getOrganizator(@PathVariable(name = "id") Integer id) {
+        Optional<Organizator> org = service.findById(id);
+        if (org.isPresent()) {
+            return ResponseEntity.ok(new OrganizatorDTO(org.get()));
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PostMapping("/register")
