@@ -66,7 +66,7 @@ const headCellsOrg = [
         id: 'username',
         numeric: false,
         disablePadding: false,
-        label: 'Username',
+        label: 'Korisničko ime',
     },
     {
         id: 'email',
@@ -111,7 +111,7 @@ const headCellsPos = [
         id: 'username',
         numeric: false,
         disablePadding: false,
-        label: 'Username',
+        label: 'Korisničko ime',
     },
     {
         id: 'email',
