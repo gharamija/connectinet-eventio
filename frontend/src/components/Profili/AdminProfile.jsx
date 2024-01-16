@@ -78,15 +78,8 @@ const AdminProfile = () => {
             }
         };
 
-        fetch(`/api/organizator/cijena/${subscriptionPrice.toString()}`, options).then((response) => {
-            if (response.status === 200) {
-                console.log("Cijena pretplate uspješno promijenjena");
-            } else {
-                console.log("JBG");
-            }
-        })
+        fetch(`/api/organizator/cijena/${subscriptionPrice.toString()}`, options).then();
 
-        console.log('New subscription price:', subscriptionPrice);
         setIsEditing(false);
     };
 
