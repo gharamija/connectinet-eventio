@@ -54,6 +54,7 @@ export default function CustomCard({ event, children }) {
       {event.galerija && (
         <CardMedia
           component="img"
+          key={Date.now()}
           height="200"
           src={`/api/static/${event.galerija}`}
           alt="Slika nije pronađena"

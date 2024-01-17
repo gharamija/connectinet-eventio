@@ -69,22 +69,23 @@ function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
       ? `/api/dogadaj/update/${dogadajId}`
       : `/api/dogadaj/izrada/${id}`;
 
-    fetch(url, options)
-      .then((response) => {
-        if (response.status === 200) {
-          handleClose();
-          if (file) {
-            //response bi trebao imati novi id ako je događaj tek nastao
-            response.text().then((text) => uploadImage(text));
-          }
-        } else {
-          response.text().then((text) => setError(text));
+    fetch(url, options).then((response) => {
+      if (response.status === 200) {
+        handleClose();
+        if (file) {
+          //response bi trebao imati novi id ako je događaj tek nastao, inace stari
+          response
+            .text()
+            .then((text) => uploadImage(text))
+            .then(() => fetchData());
         }
-      })
-      .then(() => fetchData());
+      } else {
+        response.text().then((text) => setError(text));
+      }
+    });
   }
 
-  function uploadImage(newId) {
+  async function uploadImage(newId) {
     let formData = new FormData();
     formData.append("file", file);
 
@@ -97,7 +98,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
       ? `/api/dogadaj/slika/${dogadajId}`
       : `/api/dogadaj/slika/${newId}`;
 
-    fetch(url, options);
+    await fetch(url, options);
   }
 
   function handleFileUpload(e) {
