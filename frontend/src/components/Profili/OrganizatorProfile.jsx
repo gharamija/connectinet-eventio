@@ -151,7 +151,7 @@ const OrganizatorProfile = () => {
             >
               <TextField
                 label="Naziv organizacije"
-                name="naziv"
+                name="nazivOrganizacije"
                 value={profile.nazivOrganizacije}
                 onChange={onChange}
                 disabled={!editNaziv}

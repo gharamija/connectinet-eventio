@@ -210,11 +210,12 @@ function EnhancedTable(props) {
                     page={page}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
+                    labelRowsPerPage={"Broj redaka po stranici"}
                 />
             </Paper>
             <FormControlLabel
                 control={<Switch checked={dense} onChange={handleChangeDense}/>}
-                label="Dense padding"
+                label="Gusti prikaz"
             />
         </Box>
         <Box sx={{my: 2, mx: 1, marginBottom: 10, marginTop: 10}}></Box>
