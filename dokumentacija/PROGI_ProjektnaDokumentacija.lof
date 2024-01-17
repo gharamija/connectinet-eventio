@@ -33,4 +33,10 @@
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Test promjena cijene pretplate}}{57}{figure.5.10}%
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Test stvaranje nove recenzije}}{58}{figure.5.11}%
 \contentsline {figure}{\numberline {5.12}{\ignorespaces Dijagram razmještaja}}{59}{figure.5.12}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Postavke PostgreSQL baze podataka nakon kreiranja}}{60}{figure.5.13}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Environment varijable za backend}}{61}{figure.5.14}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Konfiguracijske postavke backend poslužitelja}}{62}{figure.5.15}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Dockerfile na putanju /docker/maven/Dockerfile}}{62}{figure.5.16}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Konfiguracijske postavke frontend poslužitelja}}{63}{figure.5.17}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Environment varijable za frontend}}{64}{figure.5.18}%
 \addvspace {10\p@ }

@@ -129,12 +129,107 @@
 		
 		\section{Upute za puštanje u pogon}
 		
-			\textbf{\textit{dio 2. revizije}}\\
+			U ovom poglavlju opisat ćemo postupak puštanja web aplikacije u pogon - na koji način se od izvornog koda dolazi do potpuno postavljene baze podataka i poslužitelja koji odgovara na upite korisnika. U ovom postupku posebno ćemo opisat postavljanje baze podataka, backend poslužitelja i frontend poslužitelja. Za puštanje aplikacije u pogon preporuča se korištenje pružatelja servera te smo se odlučili za Render.
+			
+			\textbf{Kreiranje baze podataka}
+			
+			Za postavljanje baze podataka u Render-u potrebno je pratiti sljedeće korake:
+			
+			\begin{packed_enum}
+				
+				\item  U padajućem izborniku "New" izabrati opciju "PostgreSQL"
+				\item	Postaviti ime baze podataka te korisničko ime (username) za korisnika baze, lozinka je automatski generirana
+				\item	U padajućem izborniku "Region" izabrati opciju "Frankfurt"
+				\item	Odabrati opciju "Create database", u slučaju odabira besplatnog plana valja napomenuti da ima maksimalnu pohranu podataka do 1GB te da se baza podataka briše nakon 90 dana 
+
+			\end{packed_enum}
 		
-			 \textit{U ovom poglavlju potrebno je dati upute za puštanje u pogon (engl. deployment) ostvarene aplikacije. Na primjer, za web aplikacije, opisati postupak kojim se od izvornog kôda dolazi do potpuno postavljene baze podataka i poslužitelja koji odgovara na upite korisnika. Za mobilnu aplikaciju, postupak kojim se aplikacija izgradi, te postavi na neku od trgovina. Za stolnu (engl. desktop) aplikaciju, postupak kojim se aplikacija instalira na računalo. Ukoliko mobilne i stolne aplikacije komuniciraju s poslužiteljem i/ili bazom podataka, opisati i postupak njihovog postavljanja. Pri izradi uputa preporučuje se \textbf{naglasiti korake instalacije uporabom natuknica} te koristiti što je više moguće \textbf{slike ekrana} (engl. screenshots) kako bi upute bile jasne i jednostavne za slijediti.}
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{deploy/baza.png}
+				\centering
+				\caption{Postavke PostgreSQL baze podataka nakon kreiranja}
+				\label{fig:promjene}
+			\end{figure}
 			
+			\textbf{Kreiranje backenda}
 			
-			 \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
+			Na slici 5.13. također su prikazane varijable koje će se koristiti za spajanje na backend poslužitelj što je opisano u sljedećim koracima.
+			
+			\begin{packed_enum}
+				
+				\item  U padajućem izborniku "New" izabrati opciju "Web Service"
+				\item	Povezati GitHub račun te u odabrati odgovarajući projekt za povezivanje
+				\item	Postaviti ime koje će također biti postati i dio web adrese
+				\item	Opciju "Root directory" ostaviti praznom te postaviti "Environment - Docker"
+				\item 	U padajućem izborniku "Region" izabrati opciju "Frankfurt"
+				\item 	Na dnu stranice proširiti opciju "Advanced"
+				\item 	Dodati potrebne environment varijable koje se trebaju kopirati iz postavki baze podataka na Render, slika 5.13.
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.3]{deploy/backendEnv.jpeg}
+					\centering
+					\caption{Environment varijable za backend}
+					\label{fig:promjene}
+				\end{figure}
+				
+				\item 	Postaviti putanju na Dockerfile (ovisno o packet manageru), u našem slučaju to je "./docker/maven/Dockerfile"
+				
+				Ovdje prilažemo slike koje prikazuju kofiguracijske postavke na Renderu, Dockerfile na spomenutoj putanji te dio datoteke 
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.4]{deploy/backendConf.jpeg}
+					\centering
+					\caption{Konfiguracijske postavke backend poslužitelja}
+					\label{fig:promjene}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.45]{deploy/dockerFile.png}
+					\centering
+					\caption{Dockerfile na putanju /docker/maven/Dockerfile}
+					\label{fig:promjene}
+				\end{figure}
+				
+				\item 	Odabrati opciju "Create Web Service"
+				
+				Ovdje napominjemo da u slučaju korištenja besplate verzije, nakon neaktivnosti aplikacije ona će biti automatski ugašena te ponovno podignuta zaprimanjem prvog zahtjeva. Drugim riječima, ovo može rezultirati sa nekoliko minuta nedostupnosti aplikacije nakon perioda neaktivnosti.
+				
+			\end{packed_enum}
+
+
+			\textbf{Kreiranje frontenda}
+			
+			\begin{packed_enum}
+				
+				\item  U padajućem izborniku "New" izabrati opciju "Web Service"
+				\item	Povezati GitHub račun te u odabrati odgovarajući projekt za povezivanje
+				\item	Postaviti ime koje će također biti postati i dio web adrese
+				\item	Opciju "Root directory" ostaviti praznom te postaviti "Environment - Node"
+				\item 	U padajućem izborniku "Region" izabrati opciju "Frankfurt"
+				\item 	Opciju "Build command" postaviti na "npm run build"
+				\item 	Opciju "Start command" postaviti na "npm run start-prod"
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.4]{deploy/frontendConf.jpeg}
+					\centering
+					\caption{Konfiguracijske postavke frontend poslužitelja}
+					\label{fig:promjene}
+				\end{figure}
+				
+				\item 	Na dnu stranice proširiti opciju "Advanced"
+				\item 	Dodati potrebne environment varijable, "API-BASE-URL" postaviti na adresu podignutog backenda što je prikazano Render Dashboardu
+				
+				\begin{figure}[H]
+					\includegraphics[scale=0.25]{deploy/frontendEnv.jpeg}
+					\centering
+					\caption{Environment varijable za frontend}
+					\label{fig:promjene}
+				\end{figure}
+				
+				\item 	Odabrati opciju "Create Web Service"
+				
+				
+			\end{packed_enum}
 			
 			
 			\eject 
