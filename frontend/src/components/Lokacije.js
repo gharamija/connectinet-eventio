@@ -1,0 +1,21 @@
+const lokacije = [
+  "BREZOVICA",
+  "CRNOMEREC",
+  "DONJA_DUBRAVA",
+  "DONJI_GRAD",
+  "GORNJI_GRAD",
+  "GORNJA_DUBRAVA",
+  "MAKSIMIR",
+  "NOVI_ZAGREB_ISTOK",
+  "NOVI_ZAGREB_ZAPAD",
+  "PESCENICA_ZITNJAK",
+  "PODSUSED_VRAPCE",
+  "PODSLJEME",
+  "SESVETE",
+  "STENJEVEC",
+  "TRESNJEVKA_SJEVER",
+  "TRESNJEVKA_JUG",
+  "TRNJE",
+];
+
+export default lokacije;

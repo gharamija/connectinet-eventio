@@ -1,66 +1,109 @@
-import React from 'react';
-import './Login.css';
-import {useNavigate}   from 'react-router-dom';
-
+import React from "react";
+import {
+  Typography,
+  Container,
+  CssBaseline,
+  Box,
+  TextField,
+  Button,
+  Grid,
+  Collapse,
+  Alert,
+} from "@mui/material";
 
 function Login(props) {
-    const [loginForm, setLoginForm] = React.useState({ username: '', password: '' });
-    const [error, setError] = React.useState('');
+  const [loginForm, setLoginForm] = React.useState({
+    username: "",
+    password: "",
+  });
+  const [error, setError] = React.useState(false);
 
-    const navigate = useNavigate();
+  function onChange(event) {
+    const { name, value } = event.target;
+    setLoginForm((oldForm) => ({ ...oldForm, [name]: value }));
+  }
 
-    function onChange(event) {
-        const { name, value } = event.target;
-        setLoginForm(oldForm => ({ ...oldForm, [name]: value }))
-    }
+  function onSubmit(e) {
+    e.preventDefault();
+    setError(false);
+    const formData = `username=${loginForm.username}&password=${loginForm.password}`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData.toString(),
+    };
+    fetch("/api/login", options).then((response) => {
+      if (response.status === 200) {
+        props.onLogin();
+      } else {
+        setError(true);
+      }
+    });
+  }
 
-    function onSubmit(e) {
-        e.preventDefault();
-        setError("");
-        const body = `username=${loginForm.username}&password=${loginForm.password}`;
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: body
-        };
-        fetch('/login', options)
-            .then(response => {
-                if (response.status === 401) {
-                    setError("Login failed");
-                } else {
-                    props.onLogin();
-                }
-            });
-    }
-
-    const goToRegister = () => {
-        navigate('/register');
-      };
-
-    return (
-        <div className="App">   <div className="Login">
-            <h1 className='Naslov'>Login</h1>
-            <form onSubmit={onSubmit}>
-                <div className="FormRow">
-                    <label>Username</label>
-                    <input name='username' onChange={onChange} value={loginForm.username} required />
-                </div>
-                <div className="FormRow">
-                    <label>Password</label>
-                    <input name='password' type="password" onChange={onChange} value={loginForm.password} required />
-                </div>
-                <div className='error'>{error}</div>
-                <div className="button-container">
-                    <button type="submit">Login</button>
-                    {/* <button onClick={() => window.location.href = '/register'}>Register</button> */}
-                    <button onClick={goToRegister}>Register</button> 
-                </div>
-            </form>
-        </div>
-        </div>
-    )
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" color="text.primary">
+          Prijava
+        </Typography>
+        <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
+          <TextField
+            label="Korisničko ime"
+            name="username"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 30 }}
+          />
+          <TextField
+            label="Lozinka"
+            name="password"
+            type="password"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 200 }}
+          />
+          <Collapse in={error}>
+            <Alert severity="error">
+              Prijava nije uspjela. Pokušajte ponovo.
+            </Alert>
+          </Collapse>
+          <Grid container spacing={1} sx={{ mt: 1 }}>
+            <Grid item xs={6}>
+              <Button type="submit" variant="contained" fullWidth size="large">
+                Prijava
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                href="/register"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                size="large"
+              >
+                Registracija
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
+  );
 }
 
 export default Login;

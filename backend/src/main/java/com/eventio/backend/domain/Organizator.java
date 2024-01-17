@@ -1,12 +1,13 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "organizator_id")
+@PrimaryKeyJoinColumn(name = "organizatorId")
 public class Organizator extends Korisnik {
     @Column(nullable = false)
     private String nazivOrganizacije;
@@ -15,14 +16,15 @@ public class Organizator extends Korisnik {
     @Column(nullable = false)
     private String poveznica;
     @Column(nullable = false)
-    private boolean clanarina;
-    @OneToMany(mappedBy = "organizator")
+    private boolean clanarina = false;
+    @JsonIgnore
+    @OneToMany(mappedBy = "organizator", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Dogadaj> dogadaji;
 
     public Organizator() {
     }
 
-    public Organizator(KorisnikDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
+    public Organizator(requestKorisnikDTO dto, String nazivOrganizacije, String adresa, String poveznica, boolean clanarina) {
         super(dto);
         this.nazivOrganizacije = nazivOrganizacije;
         this.adresa = adresa;

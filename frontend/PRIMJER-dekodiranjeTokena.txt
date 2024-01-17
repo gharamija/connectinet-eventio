@@ -1,0 +1,31 @@
+import jwt_decode from 'jsonwebtoken';
+
+// ...
+
+// Funkcija za dekodiranje JWT tokena
+const decodeToken = (token) => {
+  try {
+    const decoded = jwt_decode(token);
+    return decoded;
+  } catch (error) {
+    console.error('Error decoding token:', error);
+    return null;
+  }
+};
+
+// ...
+
+// Nakon što dobijete token iz localStorage
+const storedToken = localStorage.getItem('token');
+
+if (storedToken) {
+  const decodedToken = decodeToken(storedToken);
+
+  if (decodedToken) {
+    // Pristupanje 'userId'
+    const userId = decodedToken.userId;
+    console.log('User ID:', userId);
+  } else {
+    console.error('Unable to decode token');
+  }
+}

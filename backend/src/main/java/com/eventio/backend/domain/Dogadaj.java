@@ -1,38 +1,62 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.requestDogadajDTO;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Dogadaj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dogadaj_id")
+    @Column(name = "dogadajId")
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "organizator_id", nullable = false)
+    @JoinColumn(name = "organizatorId", nullable = false)
     private Organizator organizator;
     @Column(nullable = false)
     private String nazivDogadaja;
     @Column(nullable = false)
-    private String vrsta;
+    private Vrste vrsta;
     @Enumerated
     @Column(nullable = false)
     private Kvartovi lokacija;
     @Column(nullable = false)
     private String opisLokacije;
     @Column(nullable = false)
-    private String vrijemePocetka;
+    private LocalDateTime vrijemePocetka;
     private String cijenaUlaznice;
     @Column(nullable = false)
     private String opis;
     private String galerija;
-    @OneToMany(mappedBy = "dogadaj")
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
+    @JsonIgnore
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "dogadaj")
+    @OneToMany(mappedBy = "dogadaj", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
+    @JsonIgnore
     private List<Zainteresiranost> zainteresiranosti;
 
+    public Dogadaj(requestDogadajDTO dto){
+        this.recenzije = new ArrayList<>();
+        this.zainteresiranosti = new ArrayList<>();
+        this.nazivDogadaja = dto.getNazivDogadaja();
+        this.vrsta = dto.getVrsta();
+        this.lokacija = dto.getLokacija();
+        this.opisLokacije = dto.getOpisLokacije();
+        this.vrijemePocetka = dto.getVrijemePocetka();
+        this.cijenaUlaznice = dto.getCijenaUlaznice();
+        this.opis = dto.getOpis();
+    }
+    public Dogadaj(){}
     public Integer getId() {
         return id;
     }
@@ -53,11 +77,11 @@ public class Dogadaj {
         this.nazivDogadaja = nazivDogadaja;
     }
 
-    public String getVrsta() {
+    public Vrste getVrsta() {
         return vrsta;
     }
 
-    public void setVrsta(String vrsta) {
+    public void setVrsta(Vrste vrsta) {
         this.vrsta = vrsta;
     }
 
@@ -77,11 +101,11 @@ public class Dogadaj {
         this.opisLokacije = opisLokacije;
     }
 
-    public String getVrijemePocetka() {
+    public LocalDateTime getVrijemePocetka() {
         return vrijemePocetka;
     }
 
-    public void setVrijemePocetka(String vrijemePocetka) {
+    public void setVrijemePocetka(LocalDateTime vrijemePocetka) {
         this.vrijemePocetka = vrijemePocetka;
     }
 
@@ -115,5 +139,11 @@ public class Dogadaj {
 
     public List<Zainteresiranost> getZainteresiranosti() {
         return zainteresiranosti;
+    }
+
+    public long zainteresiranost() {
+        return zainteresiranosti.stream()
+            .filter(zainteresiranost -> zainteresiranost.getKategorija() == Kategorija.SIGURNO)
+            .count();
     }
 }

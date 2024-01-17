@@ -6,19 +6,26 @@ import jakarta.persistence.*;
 public class Zainteresiranost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "zainteresiranost_id")
+    @Column(name = "zainteresiranostId")
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "posjetitelj_id", nullable = false)
+    @JoinColumn(name = "posjetiteljId", nullable = false)
     private Korisnik posjetitelj;
     @ManyToOne
-    @JoinColumn(name = "dogadaj_id", nullable = false)
+    @JoinColumn(name = "dogadajId", nullable = false)
     private Dogadaj dogadaj;
     @Enumerated
     @Column(nullable = false)
     private Kategorija kategorija;
-    @Column(nullable = false)
-    private boolean obavijesti;
+
+    public Zainteresiranost(Korisnik posjetitelj, Dogadaj dogadaj, Kategorija kategorija) {
+        this.posjetitelj = posjetitelj;
+        this.dogadaj = dogadaj;
+        this.kategorija = kategorija;
+    }
+
+    public Zainteresiranost() {
+    }
 
     public Integer getId() {
         return id;
@@ -48,11 +55,4 @@ public class Zainteresiranost {
         this.kategorija = kategorija;
     }
 
-    public boolean isObavijesti() {
-        return obavijesti;
-    }
-
-    public void setObavijesti(boolean obavijesti) {
-        this.obavijesti = obavijesti;
-    }
 }

@@ -18,6 +18,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 @Configuration
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = false)
 public class WebSecurityBasic {
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
@@ -25,18 +26,18 @@ public class WebSecurityBasic {
                 .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/user/register")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/organizator/register")).permitAll()
-                .anyRequest().permitAll());
+                .anyRequest().authenticated());
         http.formLogin(configurer -> {
-                    configurer.successHandler((request, response, authentication) ->
-                                    response.setStatus(HttpStatus.OK.value()))
-                            .failureHandler(new SimpleUrlAuthenticationFailureHandler());
-                });
+            configurer.successHandler((request, response, authentication) ->
+                            response.setStatus(HttpStatus.OK.value()))
+                    .failureHandler(new SimpleUrlAuthenticationFailureHandler());
+        });
         http.exceptionHandling(configurer -> {
             final RequestMatcher matcher = new NegatedRequestMatcher(
                     new MediaTypeRequestMatcher(MediaType.TEXT_HTML));
             configurer.defaultAuthenticationEntryPointFor((request, response, authException) -> {
-                        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    }, matcher);
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            }, matcher);
         });
         http.logout(configurer -> configurer
                 .logoutUrl("/logout")
@@ -45,6 +46,5 @@ public class WebSecurityBasic {
         http.csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
-
 }
 

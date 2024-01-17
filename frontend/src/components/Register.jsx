@@ -1,133 +1,200 @@
-import React, { useState } from 'react';
-import './Register.css';
-import {useNavigate}   from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Checkbox,
+  Container,
+  CssBaseline,
+  FormControlLabel,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  Collapse,
+  Alert,
+} from "@mui/material";
 
 function Register(props) {
-    const [registerForm, setRegisterForm] = React.useState({ username: '', email: '', password: '', type: '', naziv: '', adresa: '', poveznica: '', clanarina: '' });
-    const [error, setError] = React.useState('');
-    const [isChecked, setIsChecked] = useState(false);
-    const [isPaid, setIsPaid] = useState(false);
+  const [registerForm, setRegisterForm] = React.useState({
+    username: "",
+    email: "",
+    password: "",
+    type: "",
+    naziv: "",
+    adresa: "",
+    poveznica: "",
+  });
+  const [error, setError] = React.useState("");
+  const [isChecked, setIsChecked] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function onChange(event) {
-        const { name, value, type, checked } = event.target;
-        if (type === 'checkbox' && name === 'admin') {
-            setRegisterForm(oldForm => ({ ...oldForm, [name]: checked }))
-            setIsChecked(checked);
-        } else if (type === 'checkbox' && name === 'clanarina') {
-            setRegisterForm(oldForm => ({ ...oldForm, [name]: checked }))
-            setIsPaid(checked);
-        } else {
-            setRegisterForm(oldForm => ({ ...oldForm, [name]: value }))
-        }
+  function onChange(event) {
+    const { name, value, type, checked } = event.target;
+    if (type === "checkbox" && name === "admin") {
+      setRegisterForm((oldForm) => ({ ...oldForm, [name]: checked }));
+      setIsChecked(checked);
+    } else {
+      setRegisterForm((oldForm) => ({ ...oldForm, [name]: value }));
     }
+  }
 
-    function onSubmit(e) {
-        e.preventDefault();
-        setError("");
-        if (isChecked) {
-            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"ORGANIZATOR"}&nazivOrganizacije=${registerForm.naziv}&adresa=${registerForm.adresa}&poveznica=${registerForm.poveznica}&članarina=${registerForm.clanarina}`;
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: body
-            };
-            fetch('/api/organizator/register', options)
-                .then(response => {
-                    if (response.status === 400) {
-                        setError(response.statusText);
-                    } else {
-                        goToLogin();
-                    }
-                });
+  function onSubmit(e) {
+    e.preventDefault();
+    setError("");
+    if (isChecked) {
+      const body = `username=${registerForm.username}&email=${
+        registerForm.email
+      }&password=${
+        registerForm.password
+      }&uloga=${"ORGANIZATOR"}&nazivOrganizacije=${registerForm.naziv}&adresa=${
+        registerForm.adresa
+      }&poveznica=${registerForm.poveznica}`;
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: body,
+      };
+      fetch("/api/organizator/register", options).then((response) => {
+        if (response.status === 200) {
+          goToLogin();
         } else {
-            const body = `username=${registerForm.username}&email=${registerForm.email}&password=${registerForm.password}&uloga=${"POSJETITELJ"}`;
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: body
-            };
-            fetch('/api/user/register', options)
-                .then(response => {
-                    if (response.status === 400) {
-                        setError(response.statusText);
-                    } else {
-                        goToLogin();
-                    }
-                });
+          response.text().then((text) => setError(text));
         }
+      });
+    } else {
+      const body = `username=${registerForm.username}&email=${
+        registerForm.email
+      }&password=${registerForm.password}&uloga=${"POSJETITELJ"}`;
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: body,
+      };
+      fetch("/api/user/register", options).then((response) => {
+        if (response.status === 200) {
+          goToLogin();
+        } else {
+          response.text().then((text) => setError(text));
+        }
+      });
     }
+  }
 
-    const goToLogin = () => {
-        navigate('/');
-    };
-    
-    return (
-        <div className="App">
-            <div className="Register">
-                <div className='Title'>
-                    <h1 className='Naslov'>Register</h1>
-                </div>
-                <form onSubmit={onSubmit}>
-                    <div className="FormRow">
-                        <label>Username</label>
-                        <input name='username' onChange={onChange} value={registerForm.username} required />
-                    </div>
-                    <div className="FormRow">
-                        <label>Email</label>
-                        <input name='email' onChange={onChange} value={registerForm.email} type="email" required />
-                    </div>
-                    <div className="FormRow">
-                        <label>Password</label>
-                        <input name='password' type="password" onChange={onChange} value={registerForm.password} required />
-                    </div>
-                    <div className='FormRow'>
-                        <label>
-                            Organiser role
-                            <input
-                                type="checkbox"
-                                name='admin'
-                                className='CheckBoxZaReg'
-                                checked={isChecked}
-                                onChange={onChange}
-                            />
-                        </label>
-                    </div>
-                    {isChecked && (
-                        <div className="AddInfo">
-                            <div className="FormRow">
-                                <label>Name</label>
-                                <input name='naziv' onChange={onChange} value={registerForm.naziv} required />
-                            </div>
-                            <div className="FormRow">
-                                <label>Address</label>
-                                <input name='adresa' onChange={onChange} value={registerForm.adresa} required />
-                            </div>
-                            <div className="FormRow">
-                                <label>Link</label>
-                                <input name='poveznica' onChange={onChange} value={registerForm.poveznica} />
-                            </div>
-                            <div className="FormRow">
-                                <label>Subscription</label>
-                                <input type='checkbox' name='clanarina' className="CheckBoxZaReg" onChange={onChange} checked={isPaid} />
-                            </div>
-                        </div>
-                    )}
-                    <div className='error'>{error}</div>
-                    <div className="button-container">
-                        <button type="submit">Register</button>
-                        {/* <button onClick={() => window.location.href = '/'}>Login</button> */}
-                        <button onClick={goToLogin}>Login</button> 
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
+  const goToLogin = () => {
+    navigate("/");
+  };
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" color="text.primary">
+          Registracija
+        </Typography>
+        <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
+          <TextField
+            label="Korisničko ime"
+            name="username"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 30 }}
+          />
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 100 }}
+          />
+          <TextField
+            label="Lozinka"
+            name="password"
+            type="password"
+            onChange={onChange}
+            required
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 200 }}
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            label="Organizator"
+            name="admin"
+            checked={isChecked}
+            onChange={onChange}
+          />
+          {isChecked && (
+            <>
+              <TextField
+                label="Naziv organizacije"
+                name="naziv"
+                onChange={onChange}
+                required
+                fullWidth
+                margin="normal"
+                inputProps={{ maxLength: 200 }}
+              />
+              <TextField
+                label="Adresa"
+                name="adresa"
+                onChange={onChange}
+                required
+                fullWidth
+                margin="normal"
+                inputProps={{ maxLength: 200 }}
+              />
+              <TextField
+                label="Poveznica"
+                name="poveznica"
+                onChange={onChange}
+                fullWidth
+                margin="normal"
+                inputProps={{ maxLength: 200 }}
+              />
+            </>
+          )}
+          <Collapse in={error !== ""}>
+            <Alert severity="error">{error}</Alert>
+          </Collapse>
+          <Grid container spacing={1} sx={{ mt: 1 }}>
+            <Grid item xs={6}>
+              <Button href="/" variant="outlined" fullWidth size="large">
+                Prijava
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                fullWidth
+                size="large"
+              >
+                Registracija
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
+  );
 }
 
 export default Register;

@@ -1,5 +1,6 @@
 package com.eventio.backend.domain;
 
+import com.eventio.backend.dto.RecenzijaDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -8,19 +9,26 @@ import jakarta.validation.constraints.Min;
 public class Recenzija {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recenzija_id")
+    @Column(name = "recenzijaId")
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "posjetitelj_id", nullable = false)
+    @JoinColumn(name = "posjetiteljId", nullable = false)
     private Korisnik posjetitelj;
     @ManyToOne
-    @JoinColumn(name = "dogadaj_id", nullable = false)
+    @JoinColumn(name = "dogadajId", nullable = false)
     private Dogadaj dogadaj;
     @Column(nullable = false)
     private String tekst;
     @Min(1)
-    @Max(10)
+    @Max(5)
     private int ocjena;
+    public Recenzija(){}
+    public Recenzija(RecenzijaDTO dto, Korisnik posjetitelj, Dogadaj dogadaj) {
+        this.posjetitelj = posjetitelj;
+        this.dogadaj = dogadaj;
+        this.tekst = dto.getTekst();
+        this.ocjena = dto.getOcjena();
+    }
 
     public Integer getId() {
         return id;

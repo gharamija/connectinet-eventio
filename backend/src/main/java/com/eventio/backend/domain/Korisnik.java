@@ -1,12 +1,14 @@
 package com.eventio.backend.domain;
 
-import com.eventio.backend.dto.KorisnikDTO;
+import com.eventio.backend.dto.requestKorisnikDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Korisnik implements UserDetails {
     private static final long serialVersionUID = 923686612483130334L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "korisnik_id")
+    @Column(name = "korisnikId")
     private Integer id;
 
     @Column(unique = true, nullable = false)
@@ -33,28 +35,33 @@ public class Korisnik implements UserDetails {
     @Column(nullable = false)
     private Uloga uloga;
 
-    @OneToMany(mappedBy = "posjetitelj")
+    @JsonIgnore
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recenzija> recenzije;
-    @OneToMany(mappedBy = "posjetitelj")
+    @JsonIgnore
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Zainteresiranost> zainteresiranosti;
-
-    @OneToMany(mappedBy = "posjetitelj")
+    @JsonIgnore
+    @OneToMany(mappedBy = "posjetitelj", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notifikacija> notifikacije;
 
     public Korisnik() {
     }
 
-    public Korisnik(KorisnikDTO dto) {
+    public Korisnik(requestKorisnikDTO dto) {
+        this.recenzije = new ArrayList<>();
+        this.zainteresiranosti = new ArrayList<>();
+        this.notifikacije = new ArrayList<>();
         this.username = dto.getUsername();
         this.email = dto.getEmail();
         this.password = dto.getPassword();
         this.uloga = dto.getUloga();
     }
-
     public Integer getId() {
         return id;
     }
 
+    public void setId(int id) { this.id = id; }
     @Override
     public String getUsername() {
         return username;
@@ -125,4 +132,5 @@ public class Korisnik implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + getUloga()));
     }
+
 }
