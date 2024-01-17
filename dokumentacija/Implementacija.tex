@@ -115,9 +115,15 @@
 		
 		\section{Dijagram razmještaja}
 			
-			\textbf{\textit{dio 2. revizije}}
-			
-			 \textit{Potrebno je umetnuti \textbf{specifikacijski} dijagram razmještaja i opisati ga. Moguće je umjesto specifikacijskog dijagrama razmještaja umetnuti dijagram razmještaja instanci, pod uvjetom da taj dijagram bolje opisuje neki važniji dio sustava.}
+			Dijagrami razmještaja opisuju topologiju sklopovlja i programsku potporu koja se koristi u implementaciji sustava u njegovom radnom okruženju. Korisnici pristupaju web aplikaciji putem web preglednika na svojim osobnim računalima. Arhitektura sustava temelji se na jasno odvojenim slojevima: frontendu, backendu i bazi podataka. 
+			Frontend poslužitelj posvećen je izvršavanju i posluživanju resursa vezanih uz korisničko sučelje. Backend poslužitelj fokusiran  je na izvršavanje poslovne logike, pružanje API-ja te komunikaciju s bazom podataka. Na ovom sloju obavljaju se operacije i logika sustava, pružajući funkcionalnosti koje podržavaju rad aplikacije. Baza podataka poslužitelj je posvećen upravljanju bazom podataka. Ovdje se nalazi sama baza podataka i sustav za pohranu i dohvat podataka.  Komunikacija između korisnika i poslužitelja odvija se preko HTTP veze.
+			 
+			 \begin{figure}[H]
+			 	\includegraphics[scale=0.45]{dijagrami/dijagramRazmjestaja.png}
+			 	\centering
+			 	\caption{Dijagram razmještaja}
+			 	\label{fig:promjene}
+			 \end{figure}
 			
 			\eject 
 		

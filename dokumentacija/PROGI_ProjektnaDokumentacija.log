@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 12:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 13:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2894,6 +2894,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.10})
                                                   \__shipout_drop_firstpage_...
 l.113 			
           <./testovi/selNoviDogadaj.jpeg> <./testovi/selPretplata.jpeg>]
+<dijagrami/dijagramRazmjestaja.png, id=651, 932.98563pt x 517.43312pt>
+File: dijagrami/dijagramRazmjestaja.png Graphic file (type png)
+<use dijagrami/dijagramRazmjestaja.png>
+Package pdftex.def Info: dijagrami/dijagramRazmjestaja.png  used on input line 
+122.
+(pdftex.def)             Requested size: 419.83966pt x 232.84274pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2907,9 +2914,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.11})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.122 			\eject
-                <./testovi/selRecenzija.jpeg>]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+l.127 			
+          <./testovi/selRecenzija.jpeg>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[59
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.12})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.128 			\eject
+                <./dijagrami/dijagramRazmjestaja.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
@@ -2921,7 +2943,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[59])
+[60])
 \openout2 = `Zakljucak.aux'.
 
  (./Zakljucak.tex
@@ -2939,7 +2961,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[60
+[61
 
 
 
@@ -2974,7 +2996,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[61
+[62
 
 
 
@@ -2992,7 +3014,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[62
+[63
 
 
 
@@ -3008,7 +3030,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[63
+[64
 
 
 ]
@@ -3020,7 +3042,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[64]
+[65]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -3038,7 +3060,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[65]
+[66]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3047,7 +3069,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[66])
+[67])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3056,7 +3078,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[67] 
+[68] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
 (./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
@@ -3070,10 +3092,10 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 18057 strings out of 476025
- 324513 string characters out of 5790016
+ 18066 strings out of 476025
+ 324783 string characters out of 5790016
  2019388 words of memory out of 5000000
- 37860 multiletter control sequences out of 15000+600000
+ 37866 multiletter control sequences out of 15000+600000
  562074 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,13n,116p,1166b,1078s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3082,10 +3104,10 @@ Here is how much of TeX's memory you used:
 /local/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (68 pages, 6019104 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (69 pages, 6084478 bytes).
 PDF statistics:
- 843 PDF objects out of 1000 (max. 8388607)
- 709 compressed objects within 8 object streams
- 272 named destinations out of 1000 (max. 500000)
- 349 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 851 PDF objects out of 1000 (max. 8388607)
+ 714 compressed objects within 8 object streams
+ 274 named destinations out of 1000 (max. 500000)
+ 354 words of extra memory for PDF output out of 10000 (max. 10000000)
 
