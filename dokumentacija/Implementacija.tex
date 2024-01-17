@@ -13,28 +13,104 @@
 	
 		\section{Ispitivanje programskog rješenja}
 			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
-	
+			U ovom poglavlju usredotočili smo se na testiranje programskog rješenja testirajući cijeli sustav, ali i komponente istog. Tijekom ispitivanja komponenti sustava korišteni su JUnit za izvršavanje testova te Mockito za stvaranje mock objekata korištenih u testiranju. Selenium IDE korišten je u ispitivanju sustava te nam je omogućio brzo i precizno provjeravanje funkcionalnosti web aplikacije.
 			
 			\subsection{Ispitivanje komponenti}
-			\textit{Potrebno je provesti ispitivanje jedinica (engl. unit testing) nad razredima koji implementiraju temeljne funkcionalnosti. Razraditi \textbf{minimalno 6 ispitnih slučajeva} u kojima će se ispitati redovni slučajevi, rubni uvjeti te izazivanje pogreške (engl. exception throwing). Poželjno je stvoriti i ispitni slučaj koji koristi funkcionalnosti koje nisu implementirane. Potrebno je priložiti izvorni kôd svih ispitnih slučajeva te prikaz rezultata izvođenja ispita u razvojnom okruženju (prolaz/pad ispita). }
 			
+			U poglavlju o ispitivanju komponenti, razvijeni su i izvršeni testovi kako bi se osigurala kvaliteta i funkcionalnost komponenata sustava, a istovremeno se time osigurava pouzdanost i održivost koda. U nastavku su prikazani primjeri nekoliko testova koji su implementirani kao dio ispitivanja komponenti sustava:
+
+			\textbf{Test sortiranja i ispisivanja događaja} provjerava ispravnu funkcionalnost sortiranja događaja prema određenom filtru, u ovom slučaju prema vremenu početka događaja. Također testirano je izlistavanje događaja, je li broj događaja jednak očekivanom broju. Korišten je JUnit za pisanje i izvršavanje testova te Mockito za stvaranje mock objekta i postavljanje očekivanja.
+
+
+			\textbf{Test registracije korisinika} ispituje uspješnost registracije korisnika. Također se koriste Mock objekti koji simuliraju ponašanje komponenti tijekom registracije. Prikazana su dva testa, u jednom se testira registracija koja je uspješa, u drugom se testira neuspješna registracija korisnika.
+
+			U nastavku su još prikazani sljedeći testovi: \textbf{Test slanja e-maila}, \textbf{Test spremanja recenzije}, \textbf{Test spremanja zainteresiranosti}. Oni redom provjeravaju točnost slanja e-maila, ispravnu funkcionalnost spremanja recenzije i zainteresiranosti. U navedenim testovima se također koriste spomenute tehnologije za provjeravanje ispravnosti. Osim testova, prikazano je i njihovo izvođenje te rezultat izvođenja.
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/dogadajTest.png}
+				\centering
+				\caption{Test za sortiranje i ispisivanje događaja}
+				\label{fig:promjene}
+			\end{figure}
+			
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/korisnikTest.png}
+				\centering
+				\caption{Test registracije korisnika}
+				\label{fig:promjene}
+			\end{figure}
+			
+			
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/emailTest.png}
+				\centering
+				\caption{Test slanja e-maila}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/recenzijeTest.png}
+				\centering
+				\caption{Test spremanja recenzije}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/zainteresiranostTest1.png}
+				\centering
+				\caption{Test spremanja nove zainteresiranosti}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/zainteresiranostTest2.png}
+				\centering
+				\caption{Test spremanja postojeće zainteresiranosti}
+				\label{fig:promjene}
+			\end{figure}
+			
+				\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/unit_testovi.jpeg}
+				\centering
+				\caption{Izvršavanje i rezultati testova}
+				\label{fig:promjene}
+			\end{figure}
 			
 			
 			\subsection{Ispitivanje sustava}
 			
-			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
-			 
-			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
-			 \begin{itemize}
-			 	\item \textit{dodatak za preglednik \textbf{Selenium IDE} - snimanje korisnikovih akcija radi automatskog ponavljanja ispita	}
-			 	\item \textit{\textbf{Selenium WebDriver} - podrška za pisanje ispita u jezicima Java, C\#, PHP koristeći posebno programsko sučelje.}
-			 \end{itemize}
-		 	\textit{Detalji o korištenju alata Selenium bit će prikazani na posebnom predavanju tijekom semestra.}
+			U procesu ispitivanja sustava koristili smo Selenium IDE koji nam je omogućio precizno i brzo testiranje funkcionalnosti web aplikacije. Selenium IDE predstavlja moćan alat za testiranje web aplikacija te se istovremeno olakšava proces automatizacije. \newline Na sljedećim slikama prikazani su ispitni slučajevima kojima smo testirali funkcionalnost aplikacije. \textbf{Test prijave organizatora} provjerava uspješnost prijave korisnika koji je organizator. \textbf{Test stvaranja novog događaja} provjerava funkcionalnost stvaranja novog događaja sa svim postavkama. Prikazano je i izvršavanje \textbf{Testa promjene cijene pretplate} i \textbf{Testa stvaranja nove recenzije}.
 			
-			\eject 
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/selOrgLogin.jpeg}
+				\centering
+				\caption{Test prijave organizatora}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/selNoviDogadaj.jpeg}
+				\centering
+				\caption{Test stvaranja novog događaja}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/selPretplata.jpeg}
+				\centering
+				\caption{Test promjena cijene pretplate}
+				\label{fig:promjene}
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[scale=0.45]{testovi/selRecenzija.jpeg}
+				\centering
+				\caption{Test stvaranje nove recenzije}
+				\label{fig:promjene}
+			\end{figure}
+			
 		
 		
 		\section{Dijagram razmještaja}
