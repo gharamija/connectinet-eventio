@@ -11,13 +11,32 @@
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Sekvencijski dijagram za UC16}}{28}{figure.3.7}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Sekvencijski dijagram za UC19}}{29}{figure.3.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitektura sustava}}{31}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Dijagram baze podataka}}{37}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Dijagram razreda - Kontroleri}}{41}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Dijagram razreda - Servisi}}{42}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Dijagram razreda - Data Transfer Objects}}{43}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Dijagram razreda - Models}}{44}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Dijagram stanja - Korisnik (Posjetitelj)}}{45}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Dijagram aktivnosti - Postavljanje događaja (Organizator)}}{47}{figure.4.8}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arhitektura sustava}}{32}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Dijagram baze podataka}}{38}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Dijagram razreda - Kontroleri}}{42}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Dijagram razreda - Servisi}}{43}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Dijagram razreda - Data Transfer Objects}}{44}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Dijagram razreda - Models}}{45}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Dijagram stanja - Korisnik (Posjetitelj)}}{46}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Dijagram aktivnosti - Postavljanje događaja (Organizator)}}{48}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Dijagram komponenti}}{49}{figure.4.9}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Test za sortiranje i ispisivanje događaja}}{52}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Test registracije korisnika}}{53}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Test slanja e-maila}}{53}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Test spremanja recenzije}}{54}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Test spremanja nove zainteresiranosti}}{54}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Test spremanja postojeće zainteresiranosti}}{55}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Izvršavanje i rezultati testova}}{55}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Test prijave organizatora}}{56}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Test stvaranja novog događaja}}{57}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Test promjena cijene pretplate}}{57}{figure.5.10}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Test stvaranje nove recenzije}}{58}{figure.5.11}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Dijagram razmještaja}}{59}{figure.5.12}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Postavke PostgreSQL baze podataka nakon kreiranja}}{60}{figure.5.13}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Environment varijable za backend}}{61}{figure.5.14}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Konfiguracijske postavke backend poslužitelja}}{62}{figure.5.15}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Dockerfile na putanju /docker/maven/Dockerfile}}{62}{figure.5.16}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Konfiguracijske postavke frontend poslužitelja}}{63}{figure.5.17}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Environment varijable za frontend}}{64}{figure.5.18}%
 \addvspace {10\p@ }

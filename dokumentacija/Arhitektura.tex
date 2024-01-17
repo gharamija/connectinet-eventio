@@ -214,53 +214,42 @@
 			
 		\section{Dijagram razreda}
 		
-			Na slikama \textbf{4.2, 4.3, 4.4 i 4.5} su prikazani razredi koji pripadaju \textit{backend} dijelu projekta. 
+			Na slikama \textbf{4.3, 4.4, 4.5 i 4.6} su prikazani razredi koji pripadaju \textit{backend} dijelu projekta te oni predstavljaju i odgovaraju stvarnom stanju implementacije sustava te su generirani iz same implementacije. 
 			\newline
 			\newline
-			Razredi prikazani na slici \textbf{4.2} su razredi kontroleri. Ti razredi su ključni dijelovi koji upravljaju pristiglim zahtjevima, određuju rute te obrađuju logiku aplikacije. Obično se koriste za implementaciju HTTP metoda poput \textbf{GET, POST, PUT i DELETE} za obrađivanje zahtjeva koji dolaze od klijenata. Razredi koji imaju svoje kontrolere su \textbf{Korisnik, Organizator, Admin, Posjetitelj, Događaj, Notifikacija, Recenzija i Zainteresiranost}.
+			Razredi prikazani na slici \textbf{4.3} su razredi kontroleri. Ti razredi su ključni dijelovi koji upravljaju pristiglim zahtjevima, određuju rute te obrađuju logiku aplikacije. Obično se koriste za implementaciju HTTP metoda poput \textbf{GET, POST, PUT i DELETE} za obrađivanje zahtjeva koji dolaze od klijenata. Razredi koji imaju svoje kontrolere su \textbf{Korisnik, Organizator,  Događaj, Notifikacija i Transakcije}. Na primjeru KorisnikControllera ćemo detaljnije opisati metode i članske varijable koje su korištene za spajanje sa servisnim slojem.
 			\newline
 			
 			\textbf{KorisnikController} ima metode: 
 			\begin{itemize}
 				\item getAll - vraća listu Korisnika
-				\item getKorisnikById - ako postoji Korisnik sa tim id, njega vraća
-				\item getCurrentUser - kao argument prima Korisnika, a vraća KorisnikDTO
+				\item delete - kao argument prima ID Korisnika te ga briše ukoliko postoji
+				\item validate - prima Korisnika te vraća ResponseEntity, služi validaciji Korisnika
 				\item register - kao argument prima KorsnikDTO, a vraća ResponseEntity koji je string
+				\item update - služi promjeni i ažuriranju podataka Korisnika
 			\end{itemize}
 			
-			Isto ima i člansku varijablu tipa KorisnikService preko koje se obavlja poslovna logika (operacije nad podacima, pristupanje bazi podataka ili komunikacija s vanjskim servisima).
+			Isto ima i članske varijable tipa KorisnikService i OrganizatorServiceJpa  preko kojih se obavlja poslovna logika (operacije nad podacima, pristupanje bazi podataka ili komunikacija s vanjskim servisima).
+			\newline
+
+			Razredi prikazani na slici \textbf{4.4} su razredi servisi. Razredi servisi u Spring Bootu predstavljaju komponente koje sadrže poslovnu logiku aplikacije, pristupaju podacima i obavljaju operacije koje nisu specifične za obradu HTTP zahtjeva. Oni često služe kao posrednici između kontrolera i sloja pristupa podacima (Repository sloj) te obavljaju ključne funkcije za obradu podataka, poslovnu logiku i vanjske integracije. U našem primjeru ostvarili smo prvo sučelja koja smo zatim implementirali.
+			Razredi koji imaju svoje servise su \textbf{Korisnik, Organizator, Događaj, Notifikacija, Zainteresiranost, EmailSender, Misc i Recenzija}. Na primjeru KorisnikSerivce ćemo detaljnije opisati metode i članske varijable.
 			\newline
 			
-				\textbf{OrganizatorController} ima metode: 
-			\begin{itemize}
-				\item getDetails - kao argument prima Korisnika, a vraća OrganizatorDTO
-				\item register - kao argument prima OrganizatorDTO, a vraća ResponseEntity koji je string
-			\end{itemize}
-			
-			Isto ima i članske varijable tipa KorisnikService i OrganizatorService preko koje se obavlja poslovna logika (operacije nad podacima, pristupanje bazi podataka ili komunikacija s vanjskim servisima).
-			\newline
-			\newline
-			Razredi prikazani na slici \textbf{4.3} su razredi servisi. Razredi servisi u Spring Bootu predstavljaju komponente koje sadrže poslovnu logiku aplikacije, pristupaju podacima i obavljaju operacije koje nisu specifične za obradu HTTP zahtjeva. Oni često služe kao posrednici između kontrolera i sloja pristupa podacima (Repository sloj) te obavljaju ključne funkcije za obradu podataka, poslovnu logiku i vanjske integracije.
-			Razredi koji imaju svoje servise su \textbf{Korisnik, Organizator, Admin, Posjetitelj, Događaj, Notifikacija, Recenzija i Zainteresiranost}.
-			\newline
-			
-			\textbf{KorisnikService} ima metode: 
+			\textbf{KorisnikService} sučelje ima metode: 
 			\begin{itemize}
 				\item listAll - vraća listu Korisnika
 				\item findById - prima id kao argument, a ako postoji Korisnik s tim id, njega vraća
 				\item findByUsername - prima username kao argument, a ako postoji korisnik s tim usernamom njega vraća
 				\item findByEmail - prima email kao argument, a ako postoji korisnik s tim emailom njega vraća
 				\item registerUser - kao argument prima KorsnikDTO, a boolean ovisno o uspješnosti
+				\item updateUser - kao argument prima KorsnikDTO i ID Korisnika, a boolean ovisno o uspješnosti
+				\item deleteUser - kao argument prima Korisnika i briše ga ukoliko postoji
 			\end{itemize}
 			
-			Isto ima i člansku varijablu tipa KorisnikRepository. Razred repozitorija u Spring Bootu predstavlja sloj pristupa podacima (data access layer) i obično se koristi za komunikaciju s bazom podataka. Ovi repozitoriji pružaju apstrakciju za operacije nad podacima, kao što su dohvaćanje, spremanje, ažuriranje ili brisanje podataka.
+			Implementacija sučelja KorisnikService, KorisnikServiceJpa, isto ima i članske varijable tipa KorisnikRepository i PasswordEncoder. Razred repozitorija u Spring Bootu predstavlja sloj pristupa podacima (data access layer) i obično se koristi za komunikaciju s bazom podataka. Ovi repozitoriji pružaju apstrakciju za operacije nad podacima, kao što su dohvaćanje, spremanje, ažuriranje ili brisanje podataka. Instanca PasswordEncoder služi nam za registraciju korisnika te za ažuriranje njegovih podataka kada dolazi do promjene lozinke.
 			\newline
-			
-			\textbf{OrganizatorService} ima metode: 
-			\begin{itemize}
-				\item findById - prima id kao argument, a ako postoji Organizator sa tim id, njega vraća
-				\item registerOrganizator - kao argument prima OrganizatorDTO, a vraća boolean ovisno o uspješnosti
-			\end{itemize}
+
 			\eject
 			Razredi prikazani na slici 4.5. su razredi modeli. Struktura baze podataka u aplikaciji odražava se upravo model razredima; osim što imaju svoje pripadne atributa, razredi također implementiraju metode koje ostvaruju interakciju s bazom podataka. \\ 
 			\\ Razred Korisnik reprezentira općeg korisnika aplikacije. Specificira ga atribut "uloga" koja određuje je li korisnik administrator, posjetitelj ili organizator.
@@ -269,25 +258,31 @@
 			\\ Razred Notifikacija reprezentira obavijest koja se šalje korisniku. Korisnik ima mogućnost uključiti notifikacije za određenu vrstu događaja te za lokaciju na kojoj se događaji organiziraju.
 			\\ Razred Zainteresiranost reprezentira korisnikovu interakciju s postavljenim događajima. Korisnikova zainteresiranost ima tri razine: "sigurno dolazim", "možda dolazim", "ne dolazim".
 			\\ Razred Dogadaj reprezentira događaj koji je postavio organizator. Lokacija događaja predstavljena je gradskom četvrti - kvartom.
+			\\ Razred Misc skraćeno od ”miscellaneous”, ovaj razred služi za spremanje globalnih postavki aplikacija u obliku ključ-vrijednost. Sadrži atribute ime i vrijednost.
+			Osim navedenih razreda na slici su također prikazane enumeracije: 
+					Kategorija - kategorija zainteresiranosti korisnika za događaj,
+					Kvartovi - kvartovi grada Zagreba gdje se organiziraju događaji,
+					Uloga - uloga korisnika i 
+					Vrste - različite vrste događaja
 			
 			\pagebreak
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.55]{dijagramiKlasa/Dijagram razreda - Kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.2]{dijagramiKlasa/kontroleri.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Kontroleri}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.55]{dijagramiKlasa/Dijagram razreda - Servisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.13]{dijagramiKlasa/servisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Servisi}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.43]{dijagramiKlasa/Dijagram razreda - DTO.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.12]{dijagramiKlasa/dtos.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Data Transfer Objects}
 				\label{fig:promjene}
@@ -295,16 +290,11 @@
 			
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.42]{dijagramiKlasa/Dijagram razreda - Models v5.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\includegraphics[scale=0.1]{dijagramiKlasa/models.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
 				\centering
 				\caption{Dijagram razreda - Models}
 				\label{fig:promjene}
 			\end{figure}
-			
-			\textbf{\textit{dio 2. revizije}}\\			
-			
-			\textit{Prilikom druge predaje projekta dijagram razreda i opisi moraju odgovarati stvarnom stanju implementacije}
-			
 			
 			
 			\eject
@@ -337,6 +327,11 @@
 			\eject
 		\section{Dijagram komponenti}
 		
-			\textbf{\textit{dio 2. revizije}}\\
+		Dijagram komponenti na slici opisuje organizaciju, međuovisnost komponenti i odnose prema okolini - prikazuje komponente aplikacije i glavna korištena sučelja. Korisnik pristupa aplikaciji koristeći web preglednik te preko sučelja za dohvaćanje HTML-a, CSS i JS-a poslužuje mu se frontend dio aplikacije.	REST API sučelje poslužuje podatke povezane s backend dijelom. Svaka od opisanih komponenti može imati ovisnosti prema drugim resursima, tako je backend dio povezan sa bazom podataka.
 		
-			 \textit{Potrebno je priložiti dijagram komponenti s pripadajućim opisom. Dijagram komponenti treba prikazivati strukturu cijele aplikacije.}
+		\begin{figure}[H]
+			\includegraphics[scale=0.45]{dijagrami/DijagramKomponenti.png}
+			\centering
+			\caption{Dijagram komponenti}
+			\label{fig:promjene}
+		\end{figure}
