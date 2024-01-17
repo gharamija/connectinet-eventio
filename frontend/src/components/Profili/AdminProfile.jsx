@@ -12,20 +12,32 @@ const AdminProfile = () => {
     const [changed, setChanged] = useState(false);
     const [editPass, setEditPass] = useState(false);
     const [editEmail, setEditEmail] = useState(false);
+    const [subscriptionPrice, setSubscriptionPrice] = useState(9.99);
+    const [isEditing, setIsEditing] = useState(false);
     const [profile, setProfile] = useState({
-        id: "",
-        username: "",
-        password: "",
-        email: "",
-        uloga: "",
+        id: "", username: "", password: "", email: "", uloga: "",
     });
 
     useEffect(() => {
         fetch("/api/user").then((response) => {
             response.json().then((details) => {
-                setProfile({ ...details, password: "" });
+                setProfile({...details, password: ""});
             });
         });
+
+        fetch("api/organizator/cijena").then((response) => {
+            try {
+                response.json().then((details) => {
+                    setSubscriptionPrice(parseFloat(details));
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }).catch((e) => {
+            console.log(e);
+        });
+
     }, []);
 
     function onChange(event) {
@@ -39,11 +51,9 @@ const AdminProfile = () => {
             return value;
         };
         const options = {
-            method: "PUT",
-            headers: {
+            method: "PUT", headers: {
                 "Content-Type": "application/json",
-            },
-            body: JSON.stringify(profile, replacer),
+            }, body: JSON.stringify(profile, replacer),
         };
         fetch(`/api/user/${id}`, options).then((response) => {
             if (response.status === 200) {
@@ -55,21 +65,25 @@ const AdminProfile = () => {
         });
     }
 
-    const [subscriptionPrice, setSubscriptionPrice] = useState(9.99);
-    const [isEditing, setIsEditing] = useState(false);
-
     const handleEditClick = () => {
         setIsEditing(true);
     };
 
     const handleSaveClick = () => {
-        // Ovdje treba ici slanje backendu
-        console.log('New subscription price:', subscriptionPrice);
+
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+
+        fetch(`/api/organizator/cijena/${subscriptionPrice.toString()}`, options).then();
+
         setIsEditing(false);
     };
 
-    return (
-        <>
+    return (<>
             <Box sx={{marginBottom: 15}}>
                 <Container maxWidth="sm" sx={{mb: 2}}>
                     <Typography variant="h4" mb={1}>
@@ -136,8 +150,8 @@ const AdminProfile = () => {
                     </Grid>
                 </Container>
 
-                <Box sx={{ my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
-                    <Divider />
+                <Box sx={{my: 2, mx: 1, marginBottom: 5, marginTop: 5}}>
+                    <Divider/>
                 </Box>
 
 
@@ -150,20 +164,18 @@ const AdminProfile = () => {
                             id="Pretplata"
                             label="Pretplata"
                             value={"Cijena pretplate: " + subscriptionPrice + "€"}
-                            style={{ marginBottom: '10px' }}
+                            style={{marginBottom: '10px'}}
                         />
                         <br/>
-                        {isEditing ? (
-                            <TextField
-                                type="number"
-                                step="0.01"
-                                value={subscriptionPrice}
-                                onChange={(e) => setSubscriptionPrice(parseFloat(e.target.value))}
-                                variant="outlined"
-                                size="small"
-                                style={{ marginBottom: '10px' }}
-                            />
-                        ) : null}
+                        {isEditing ? (<TextField
+                            type="number"
+                            step="0.01"
+                            value={subscriptionPrice}
+                            onChange={(e) => setSubscriptionPrice(parseFloat(e.target.value))}
+                            variant="outlined"
+                            size="small"
+                            style={{marginBottom: '10px'}}
+                        />) : null}
                         <br/>
                         <Button
                             variant="contained"
@@ -171,7 +183,7 @@ const AdminProfile = () => {
                             onClick={handleEditClick}
                             disabled={isEditing}
                             size="large"
-                            style={{ marginRight: '20px' }}
+                            style={{marginRight: '20px'}}
                         >
                             Edit
                         </Button>
