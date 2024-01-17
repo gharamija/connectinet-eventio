@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 22:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 22:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1226,7 +1226,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...: Prikaz aktivnosti grupe}{69}{chapter*.5}
+l.28 ...: Prikaz aktivnosti grupe}{70}{chapter*.5}
                                                   % [1
 
 ])
@@ -2176,12 +2176,12 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.734 				\eject
                 		 <./dijagrami/Posjetitelj_UC_dijagram.png>]
-<dijagrami/sd-UC1-Registracija.png, id=436, 822.07124pt x 702.37407pt>
+<dijagrami/sd-UC1-Registracija.png, id=436, 814.04124pt x 697.60625pt>
 File: dijagrami/sd-UC1-Registracija.png Graphic file (type png)
 <use dijagrami/sd-UC1-Registracija.png>
 Package pdftex.def Info: dijagrami/sd-UC1-Registracija.png  used on input line 
 750.
-(pdftex.def)             Requested size: 411.0346pt x 351.18617pt.
+(pdftex.def)             Requested size: 407.01962pt x 348.80226pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2221,12 +2221,12 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.769 				\eject
                 		 <./dijagrami/sd-UC16-Postavljanje-događaja.png>]
-<dijagrami/sd-UC19-Placanje-clanarine.png, id=452, 904.1278pt x 925.95938pt>
+<dijagrami/sd-UC19-Placanje-clanarine.png, id=452, 665.48625pt x 681.04437pt>
 File: dijagrami/sd-UC19-Placanje-clanarine.png Graphic file (type png)
 <use dijagrami/sd-UC19-Placanje-clanarine.png>
 Package pdftex.def Info: dijagrami/sd-UC19-Placanje-clanarine.png  used on inpu
 t line 778.
-(pdftex.def)             Requested size: 406.85374pt x 416.67787pt.
+(pdftex.def)             Requested size: 299.46603pt x 306.46713pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3265,7 +3265,7 @@ Here is how much of TeX's memory you used:
 /local/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (75 pages, 6618198 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (75 pages, 6662035 bytes).
 PDF statistics:
  930 PDF objects out of 1000 (max. 8388607)
  779 compressed objects within 8 object streams
