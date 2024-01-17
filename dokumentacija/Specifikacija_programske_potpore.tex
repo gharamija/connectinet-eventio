@@ -140,7 +140,7 @@
 						
 						\item Korisnik izabire opciju registracije
 						\item Korisnik unosi korisničke podatke koji se od njega traže
-						\item Sustav provjerava ispravnost unesenih podataka te šalje obavijest potvrde registracije
+						\item Sustav provjerava ispravnost unesenih podataka
 						\item Sustav šalje korisnika na prozor za prijavu na stranicu
 					\end{packed_enum}
 					
@@ -148,11 +148,11 @@
 					
 					\item[] \begin{packed_item}
 						
-						\item[2.a] Korisnik odabire već zauzeto korisničko ime ili e-mail ili navodi neispravni e-mail
+						\item[2.a] Korisnik odabire već zauzeto korisničko ime ili e-mail
 						\item[] \begin{packed_enum}
 							
-							\item Sustav obavještava korisnika o neuspješnoj registraciji, navodi razlog zašto
-							registracija nije uspjela te ga vraća na stranicu za registraciju
+							\item Sustav obavještava korisnika o neuspješnoj registraciji i navodi razlog zašto
+							registracija nije uspjela
 							\item Korisnik mijenja potrebne podatke, završi registraciju ili odustane od registracije
 							
 						\end{packed_enum}
@@ -172,19 +172,19 @@
 						
 						\item Korisnik izabire opciju registracije uz odabir polja "Organizator"
 						\item Korisnik unosi korisničke podatke koji se od njega traže
-						\item Sustav provjerava ispravnost unesenih podataka te šalje obavijest potvrde registracije
+						\item Sustav provjerava ispravnost unesenih podataka
 						\item Sustav šalje korisnika na prozor za prijavu na stranicu
 					\end{packed_enum}
 					
-											\item  \textbf{Opis mogućih odstupanja:}
+							\item  \textbf{Opis mogućih odstupanja:}
 					
 					\item[] \begin{packed_item}
 						
-						\item[2.a] Korisnik odabire već zauzeto korisničko ime ili e-mail, ili unosi neispravne podatke u ostalim poljima 
+						\item[2.a] Korisnik odabire već zauzeto korisničko ime ili e-mail 
 						\item[] \begin{packed_enum}
 							
-							\item Sustav obavještava korisnika o neuspješnoj registraciji, navodi razlog zašto
-							registracija nije uspjela te ga vraća na stranicu za registraciju
+							\item Sustav obavještava korisnika o neuspješnoj registraciji i navodi razlog zašto
+							registracija nije uspjela 
 							\item Korisnik mijenja potrebne podatke, završi registraciju ili odustane od registracije
 							
 						\end{packed_enum}
@@ -205,7 +205,7 @@
 					
 					\item Korisnik/Administrator otvara stranicu
 					\item Korisnik/Administrator unosi korisničke podatke za prijavu na stranicu
-					\item Sustav prepoznaje je li prijavljeni račun korisnički ili administratorski, daje obavijest o uspješnoj prijavi te otvara odgovarajuću početnu stranicu
+					\item Sustav prepoznaje je li prijavljeni račun korisnički ili administratorski te otvara odgovarajuću početnu stranicu
 				\end{packed_enum}
 				
 				\item  \textbf{Opis mogućih odstupanja:}
@@ -261,7 +261,7 @@
 						\item[1.a] Ne postoji događaj koji odgovara korisnikovoj kombinaciji filtera
 						\item[] \begin{packed_enum}
 							
-							\item Sustav korisniku javlja da ne postoji događaj koji odgovara njegovoj kombinacijom filtera
+							\item Sustav korisniku prikazuje stranicu bez događaja
 							
 						\end{packed_enum}
 					\end{packed_item}
@@ -278,7 +278,7 @@
 				\item[] \begin{packed_enum}
 		
 				\item Korisnik klikne na ime svog računa te odabire opciju "Profil"
-				\item Stranica prikazuje korisnikov osobni profil
+				\item Sustav prikazuje stranicu korisnikovog osobnog profila
 				\end{packed_enum}
 	
 			\end{packed_item}
@@ -295,10 +295,10 @@
 		
 		\item Korisnik na stranici osobnog profila pored podatka koji želi promijeniti pritsne ikonu olovke
 		\item Sustav omogućuje izmjenu podatka
-		\item Korisnik mijenja jedan ili više osobnih podataka
+		\item Korisnik mijenja podatak
 		\item Korisnik odabire ikonu kvačice
 		\item Korisnik odabire opciju "SPREMI"
-		\item Sustav korisniku javlja da su promjene uspješno pohranjene te ga vraća na stranicu profila
+		\item Sustav korisniku javlja da su promjene uspješno pohranjene
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
@@ -308,8 +308,8 @@
 		\item[4.a] Korisnik je promijenio korisničko ime ili e-mail u nešto što već postoji u sustavu
 		\item[] \begin{packed_enum}
 			
-			\item Sustav javlja korisniku da je novo korisničko ime ili e-mail zauzet
-			\item Korisnik ponovno upisuje ime/e-mail ili odustaje od promjena te odabire opciju "Odustani"
+			\item Sustav javlja korisniku da je došlo do pogreške
+			\item Korisnik ponovno upisuje ime/e-mail ili odustaje od promjena te ih briše pritiskom na ikonu križića
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -373,7 +373,7 @@
 	\item[] \begin{packed_enum}
 		
 		\item Posjetitelj na početnoj stranici odabire opciju "MOJI DOGAĐAJI"
-		\item Sustav posjetitelju otvara stranicu na kojoj je popis svih događaja za koje je postavio interes "sigurno dolazim" ili "možda dolazim"
+		\item Sustav posjetitelju otvara stranicu na kojoj je popis svih događaja za koje je postavio interes "DOLAZIM" ili "MOŽDA"
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
@@ -383,7 +383,7 @@
 		\item[2.a] Posjetitelj nije odabrao odgovarajuću opciju niti za jedan događaj
 		\item[] \begin{packed_enum}
 			
-			\item Sustav korisniku porukom javlja kako nema događaja za prikaz
+			\item Sustav korisniku prikazuje stranicu bez događaja
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -399,20 +399,24 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Posjetitelj dolazi do događaja kojeg želi recenzirati i odabire opciju "RECENZIRAJ!"
-		\item Ako je događaj završio i nije prošlo 48 sati od njegovog završetka, posjetitelju se otvara obrazac za recenziranje u kojem posjetitelj odabire ocjenu te piše recenziju
-		\item Posjetitelj završava recenziju i odabire opciju "Spremi recenziju"
-		\item Sustav pohranjuje recenziju te javlja posjetitelju da je recenzija uspješna
-		\item Ako događaj nije završio, ili je prošlo više od 48 sati od njegovog završetka, sustav javlja posjetitelju kako nije moguće ostaviti recenziju i navodi razlog
-	\end{packed_enum}
-			\item[2.a] Posjetitelj ostavio ocjenu, no nije ostavio opis recenzije
-	\item[] \begin{packed_enum}
-		
-		\item Sustav javlja posjetitelju da mora napisati opis
-		\item Posjetitelj piše opis i sprema recenziju, ili odustaje odabirom opcije "Odustani"
-		
+		\item Posjetitelj dolazi do događaja kojeg želi recenzirati
+		\item Ako je događaj završio i nije prošlo 48 sati od njegovog završetka, posjetitelju je otvoren obrazac za recenziranje u kojem može odabrati ocjenu te napisati recenziju
+		\item Posjetitelj završava recenziju i odabire opciju "Pohrani recenziju"
+		\item Sustav pohranjuje recenziju
+		\item Ako događaj nije završio, ili je prošlo više od 48 sati od njegovog završetka, posjetitelju nije otvoren obrazac za recenziranje
+
 	\end{packed_enum}
 	
+			\item  \textbf{Opis mogućih odstupanja:}
+			
+	\item[] \begin{packed_item}
+		\item[2.a] Posjetitelj napisao opis recenzije, no nije izabrao ocjenu
+			\item[] \begin{packed_enum}
+		\item Sustav ne dozovljava pohranjivanje recenzije dok ocjena nije odabrana
+		\item Posjetitelj odabire ocjenu i pohranjuje recenziju, ili odustaje
+		
+	\end{packed_enum}
+\end{packed_item}
 \end{packed_item}
 
 					\noindent \underbar{\textbf{UC12 - Automatsko slanje obavijesti}}
@@ -428,10 +432,18 @@
 		\item Korisnik ispod naznake "Pretplate na obavijesti" zadaje kriterij notifikacija - vrstu događaja te lokaciju
 		\item Korisnik sprema pretplatu na obavijesti pritiskom na ikonu plusa te sustav pohranjuje korisnikov odabir
 	\end{packed_enum}
-
+	
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+		\item[] \begin{packed_item}
+	\item[2.a] Korisnik odabrao pretplatu na obavijesti, ali se predomislio i ne želi je
+	\item[] \begin{packed_enum}
+		
+		\item Sustav omogućuje korisniku brisanje pretplate klikom na ikonu koša za smeće
+		
+	\end{packed_enum}
 \end{packed_item}
-
-
+\end{packed_item}
 
 					\noindent \underbar{\textbf{UC13 - Postavljanje događaja}}
 \begin{packed_item}
@@ -446,7 +458,7 @@
 		\item Organizator započinje proces izrade novog događaja pritiskom na ikonu plusa u desnom donjem kutu
 		\item Organizatoru se otvara obrazac za dodavanje događaja
 		\item Organizator popunjava sve potrebne podatke o događaju te postavlja događaj odabirom opcije "DODAJ"
-		\item Sustav organizatora pita za potvrdu postavljanja događaja; organizator potvrđuje te sustav javlja organizatoru da je događaj uspješno objavljen
+		\item Sustav pohranjuje novi događaj te vraća organizatora na stranicu "Moji događaji"
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
@@ -467,43 +479,26 @@
 	\item \textbf{Glavni sudionik:} Organizator
 	\item  \textbf{Cilj:} Postaviti događaj na kojem će biti naplaćivanje ulaznica
 	\item  \textbf{Sudionici:} Baza podataka
-	\item  \textbf{Preduvjet:} Korisnik prijavljen na stranicu i ima organizatorski korisnički račun
+	\item  \textbf{Preduvjet:} Korisnik prijavljen na stranicu, ima organizatorski korisnički račun i plaćenu pretplatu
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Organizator pri ispunjavanju podataka o događaju kojeg želi postaviti stavlja cijenu događaja veću od 0
-		\item Sustav javlja organizatoru da za postavljanje događaja s naplatom ulaznica mora platiti članarinu
-		\item Organizator odabire opciju "Nastavi" te započinje plaćanje članarine
-		\item Organizator ispunjava podatke za plaćanje
-		\item Sustav javlja organizatoru da je plaćanje članarine uspješno, te mu otvara obrazac za postavljanje novog događaja
-		\item Organizator ispunjava potrebne podatke te postavlja događaj odabirom opcije "DODAJ"
-		\item Sustav organizatora pita za potvrdu postavljanja događaja i organizator potvrđuje, te sustav javlja organizatoru da je događaj uspješno objavljen
+		\item Organizator pri ispunjavanju podataka o događaju kojeg želi postaviti stavlja željenu cijenu događaja (veću od 0) 
+		\item  Organizator odabire opciju "DODAJ", sustav pohranjuje novi događaj te vraća organizatora na stranicu "Moji događaji"
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
 	
 	\item[] \begin{packed_item}
 		
-		\item[3.a] Organizator ne želi platiti članarinu
+		\item[2.a] Organizator nema plaćenu članarinu
 		\item[] \begin{packed_enum}
 			
-			\item Organizator odabire opciju "Odustani" te odustaje od stvaranja novog događaja
+			\item Sustav javlja organizatoru kako nema plaćenu članarinu i ne objavljuje događaj
 			
 		\end{packed_enum}
-		\item[5.a] Organizator navodi pogrešne podatke za plaćanje
-		\item[] \begin{packed_enum}
-			
-			\item Sustav javlja organizatoru da je unio pogrešne podatke, organizator može ispraviti podatke ili odustati od stvaranja novog događaja
-			
-		\end{packed_enum}
-		
-		\item[5.b] Organizator unio točne podatke, no transakcija je neuspješna
-			\item[] \begin{packed_enum}
-			
-			\item Sustav javlja organizatoru da je transakcija neuspješna; organizator može promijeniti podatke ili odustati od stvaranja novog događaja
-			
-		\end{packed_enum}
+
 	\end{packed_item}
 \end{packed_item}
 
@@ -513,15 +508,28 @@
 	\item \textbf{Glavni sudionik:} Organizator
 	\item  \textbf{Cilj:} Platiti članarinu kako bi se mogao postaviti događaj na kojem će se naplaćivati ulaznice
 	\item  \textbf{Sudionici:} Baza podataka, PayPal, Banka
-	\item  \textbf{Preduvjet:} Organizator je prijavljen na stranicu, započeo je proces postavljanja događaja s plaćanjem ulaznice te odabrao opciju "Nastavi" kod obavijesti o plaćanju članarine
+	\item  \textbf{Preduvjet:} Organizator se nalazi na stranici osobnog korisničkog računa
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
-		
-		\item Organizator odabire način plaćanja članarine - plaćanje PayPal-om ili plaćanje bankovnom karticom
-		\item Organizatoru se otvara odgovarajuće sučelje u kojemu ispunjava tražene podatke za plaćanje
-		\item Sustav javlja organizatoru da je plaćanje članarine uspješno te vraća organizatora na obrazac za postavljanje događaja
+		\item Organizator odabire opciju "PRETPLATA"
+		\item Organizator odabire način plaćanja članarine - plaćanje PayPal-om ili plaćanje bankovnom karticom, ispunjava podatke i odabire opciju "Pretplati se"
+		\item Sustav javlja organizatoru da je plaćanje članarine uspješno
 	\end{packed_enum}
+	
+		\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{packed_item}
+		
+		\item[2.a] Transakcija je neuspješna
+		\item[] \begin{packed_enum}
+			
+			\item Sustav javlja organizatoru kako transakcija nije prošla
+			\item Organizator ponavlja postupak ili odustaje od plaćanja odabirom opcije "Povratak na profil"
+			
+		\end{packed_enum}
+		
+	\end{packed_item}
 	
 \end{packed_item}
 
@@ -546,7 +554,7 @@
 		\item[2.a] Organizator nema niti jedan postavljen događaj
 		\item[] \begin{packed_enum}
 			
-			\item Sustav organizatoru daje obavijest kako nema postavljenih događaja
+			\item Sustav korisniku prikazuje stranicu bez događaja
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -564,19 +572,17 @@
 		
 		\item Organizator pronalazi događaj kojeg želi urediti ili izbrisati i pritisne na ikonu olovke, odnosno koša za smeće
 		\item Ako je izabrana ikona olovke, sustav otvara organizatoru obrazac za postavljanje događaja ispunjen s njegovim podacima i dozvoljava uređivanje; organizator zatim uređuje podatke i bira opciju "Spremi"
-		\item Ako je izabrana ikona koša za smeće, sustav traži od organizatora potvrdu da želi izbrisati događaj te organizator potvrđuje odabirom opcije "Nastavi"
-		\item Sustav javlja organizatoru da je uređivanje/brisanje uspješno te ga vraća na pregled događaja
+		\item Ako je izabrana ikona koša za smeće, sustav briše događaj iz baze podataka
 	\end{packed_enum}
 	
 	\item  \textbf{Opis mogućih odstupanja:}
 	
 	\item[] \begin{packed_item}
 		
-		\item[3.a] Organizator greškom unese krive podatke ili slučajno obriše događaj
+		\item[2.a] Organizator greškom unio krive podatke
 		\item[] \begin{packed_enum}
 			
-			\item Sustav prije spremanja traži od organizatora da potvrdi željene promjene/brisanje događaja
-			\item Organizator potvrđuje željene promjene ili odustaje odabirom opcije "Odustani"
+			\item Sustav dozvoljava izmjenu podataka neograničen broj puta
 			
 		\end{packed_enum}
 	\end{packed_item}
@@ -601,39 +607,20 @@
 \end{packed_item}
 
 
-\noindent \underbar{\textbf{UC19 - Postavljanje cijene članstva}}
+\noindent \underbar{\textbf{UC19 - Postavljanje cijene pretplate}}
 \begin{packed_item}
 	\item \textbf{Glavni sudionik:} Administrator
-	\item  \textbf{Cilj:} Postaviti ili promijeniti cijenu članstva 
+	\item  \textbf{Cilj:} Postaviti ili promijeniti cijenu pretplate 
 	\item  \textbf{Sudionici:} Baza podataka
 	\item  \textbf{Preduvjet:} Korisnik je registriran, ima prava administratora i nalazi se na stranici osobnog profila
 	\item  \textbf{Opis osnovnog tijeka:}
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator ispod naznake "Cijena pretplate" ažurira cijenu članstva i odabire opciju "Spremi"
-		\item Sustav javlja administratoru da je postavljanje cijene članstva prošlo uspješno
+		\item Administrator ispod naznake "Cijena pretplate" ažurira cijenu pretplate i odabire opciju "Spremi"
+
 	\end{packed_enum}
 	
-	\item  \textbf{Opis mogućih odstupanja:}
-	
-	\item[] \begin{packed_item}
-		
-		\item[1.a] Administrator postavio neispravnu cijenu
-		\item[] \begin{packed_enum}
-			
-			\item Sustav javlja administratoru da je postavio neispravnu cijenu
-			\item Administrator ispravlja pogrešku ili odustaje odabirom opcije "Odustani"
-			
-		\end{packed_enum}
-		\item[1.b] Administrator postavio ispravnu, ali pogrešnu cijenu ili želi odustati od promjene
-		\item[] \begin{packed_enum}
-			
-			\item Sustav prije potvrđivanja postavljanje cijene od administratora traži potvrdu da on želi izvršiti napravljenu promjenu
-			\item Administrator potvrđuje promjenu ili odustaje odabirom opcije "Odustani"
-			
-		\end{packed_enum}
-	\end{packed_item}
 \end{packed_item}
 
 
@@ -682,10 +669,9 @@
 	
 	\item[] \begin{packed_enum}
 		
-		\item Administrator pronalazi željeni događaj te odabere opciju ikonu olovke ili ikonu koša za smeće
+		\item Administrator pronalazi događaj kojeg želi urediti ili izbrisati te pritisne opciju na ikonu olovke ili ikonu koša za smeće
 		\item Ako je odabrana ikona olovke, sustav otvara obrazac za postavljanje događaja ispunjen s njegovim podacima i dozvoljava uređivanje; administrator zatim uređuje podatke i bira opciju "Spremi"
-		\item Ako je izabrana ikona koša za smeće, sustav traži od administratora potvrdu da želi izbrisati događaj te administrator potvrđuje odabirom opcije "Nastavi"
-		\item Sustav javlja da je uređivanje/brisanje uspješno te vraća administratora na pregled događaja
+		\item Ako je izabrana ikona koša za smeće, sustav briše događaj iz baze podataka
 	\end{packed_enum}
 	
 \end{packed_item}
