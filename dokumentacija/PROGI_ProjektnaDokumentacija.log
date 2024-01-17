@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  17 JAN 2024 17:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  17 JAN 2024 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1417,6 +1417,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--38
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\OT1/jkp/m/n/12 Ha-ra-mija,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\OT1/jkp/m/n/12 Marko
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
 []\OT1/jkp/m/n/12 Ga[]spar
  []
 
@@ -1668,6 +1678,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--38
  []
 
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4]
 Underfull \hbox (badness 3557) in paragraph at lines 38--38
 []\OT1/jkp/m/n/12 Kori[]stene teh-no-lo-gije, is-pi-ti-va-nje kom-po-
  []
@@ -1678,14 +1696,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--38
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\OT1/jkp/m/n/12 Ha-ra-mija,
+ []
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\OT1/jkp/m/n/12 Marko
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 38--38
 []\OT1/jkp/m/n/12 Ga[]spar
  []
@@ -2651,16 +2671,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+jkptt on input line
- 28.
+ 30.
 (c:/texlive/2023/texmf-dist/tex/latex/kpfonts/ot1jkptt.fd
 File: ot1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for OT1/jkptt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
@@ -2682,7 +2702,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
@@ -2842,8 +2862,8 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 17846 strings out of 474398
- 314702 string characters out of 5754205
+ 17851 strings out of 474398
+ 314742 string characters out of 5754205
  2093036 words of memory out of 5000000
  39338 multiletter control sequences out of 15000+600000
  622817 words of font info for 171 fonts, out of 8000000 for 9000
@@ -2858,10 +2878,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 dist/fonts/type1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/
 type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public
 /kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (61 pages, 1575677 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (61 pages, 1576606 bytes).
 PDF statistics:
- 752 PDF objects out of 1000 (max. 8388607)
- 641 compressed objects within 7 object streams
- 242 named destinations out of 1000 (max. 500000)
+ 763 PDF objects out of 1000 (max. 8388607)
+ 652 compressed objects within 7 object streams
+ 247 named destinations out of 1000 (max. 500000)
  289 words of extra memory for PDF output out of 10000 (max. 10000000)
 
