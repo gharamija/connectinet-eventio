@@ -112,6 +112,10 @@ public class DogadajController {
     }
     @Value("${slika.upload.dir}") // Postavite putanju za spremanje slika u application.properties
     private String uploadDir;
+
+    @Autowired
+    FileService fileService;
+
     @PostMapping("/slika/{dogadajId}")    //treba jos istestirat
     public ResponseEntity<String> slika(
             @PathVariable(name = "dogadajId") Integer dogadajId,
@@ -119,23 +123,23 @@ public class DogadajController {
         if (slika.isEmpty()) {
             return ResponseEntity.badRequest().body("Molimo, odaberite sliku");
         }
+
+        String newName = null;
         try {
-            String filename = dogadajId + slika.getOriginalFilename().substring(slika.getOriginalFilename().lastIndexOf('.'));
-            // Spremi sliku na odredište
-            serviceDogadaj.saveFile(uploadDir, filename , slika);
-
-            // Ažurirajte galeriju u Dogadaj objektu
-            Optional<Dogadaj> OptDogadaj = serviceDogadaj.findById(dogadajId);
-            if (OptDogadaj.isPresent()) {
-                Dogadaj dogadaj = OptDogadaj.get();
-                dogadaj.setGalerija(filename);
-                serviceDogadaj.spremiDogadaj(dogadaj);
-            }
-
-            return ResponseEntity.ok("Slika uspješno spremljena");
+            newName = fileService.upload(slika);
         } catch (IOException e) {
-            return ResponseEntity.badRequest().body("Pogreška pri spremanju slike");
+            return ResponseEntity.internalServerError().body("Dogodila se pogreška u spremanju slike");
         }
+
+        // Ažurirajte galeriju u Dogadaj objektu
+        Optional<Dogadaj> OptDogadaj = serviceDogadaj.findById(dogadajId);
+        if (OptDogadaj.isPresent()) {
+            Dogadaj dogadaj = OptDogadaj.get();
+            dogadaj.setGalerija(newName);
+            serviceDogadaj.spremiDogadaj(dogadaj);
+        }
+
+        return ResponseEntity.ok("Slika uspješno spremljena");
     }
 
     @GetMapping("/organizator/{id}")

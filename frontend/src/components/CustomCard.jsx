@@ -56,7 +56,7 @@ export default function CustomCard({ event, children }) {
           component="img"
           key={Date.now()}
           height="200"
-          src={`/api/static/${event.galerija}`}
+          src={event.galerija}
           alt="Slika nije pronađena"
           sx={{ objectFit: "contain" }}
         />
