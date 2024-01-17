@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 22:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  17 JAN 2024 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1012,6 +1012,9 @@ LaTeX Warning: Label `fig:promjene' multiply defined.
 
 LaTeX Warning: Label `fig:promjene' multiply defined.
 
+
+LaTeX Warning: Label `fig:promjene' multiply defined.
+
 ) (./Implementacija.aux
 
 LaTeX Warning: Label `fig:promjene' multiply defined.
@@ -1067,14 +1070,17 @@ LaTeX Warning: Label `fig:promjene' multiply defined.
 
 LaTeX Warning: Label `fig:promjene' multiply defined.
 
-) (./Zakljucak.aux) (./Literatura.aux) (./Dodatak.aux))
+) (./Zakljucak.aux) (./Literatura.aux) (./Dodatak.aux
+
+LaTeX Warning: Label `fig:promjene' multiply defined.
+
+))
 \openout1 = `PROGI_ProjektnaDokumentacija.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 85.
 LaTeX Font Info:    Trying to load font information for OML+jkp on input line 8
 5.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/kpfonts/omljkp.fd
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/kpfonts/omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    ... okay on input line 85.
@@ -3242,7 +3248,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[73])
+[73]
+<slike/commits.png, id=852, 466.74374pt x 782.42313pt>
+File: slike/commits.png Graphic file (type png)
+<use slike/commits.png>
+Package pdftex.def Info: slike/commits.png  used on input line 154.
+(pdftex.def)             Requested size: 326.71838pt x 547.69246pt.
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3251,7 +3263,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[74] 
+[74
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.145 	\include{Dodatak}
+                         <./slike/commits.png>]
+
 enddocument/afterlastpage: lastpage setting LastPage.
 (./PROGI_ProjektnaDokumentacija.aux (./Dnevnik_promjena_dokumentacije.aux)
 (./Opis_projektnog_zadatka.aux) (./Specifikacija_programske_potpore.aux)
@@ -3265,10 +3284,10 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 18172 strings out of 476025
- 326560 string characters out of 5790016
+ 18180 strings out of 476025
+ 326714 string characters out of 5790016
  2019388 words of memory out of 5000000
- 37933 multiletter control sequences out of 15000+600000
+ 37939 multiletter control sequences out of 15000+600000
  576996 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,13n,116p,1166b,1078s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3277,10 +3296,10 @@ Here is how much of TeX's memory you used:
 /local/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (75 pages, 6667590 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (75 pages, 6772681 bytes).
 PDF statistics:
- 947 PDF objects out of 1000 (max. 8388607)
- 796 compressed objects within 8 object streams
- 302 named destinations out of 1000 (max. 500000)
- 384 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 951 PDF objects out of 1000 (max. 8388607)
+ 798 compressed objects within 8 object streams
+ 303 named destinations out of 1000 (max. 500000)
+ 389 words of extra memory for PDF output out of 10000 (max. 10000000)
 
