@@ -139,6 +139,7 @@ public class DogadajController {
         try {
             newName = fileService.upload(slika);
         } catch (IOException e) {
+            e.printStackTrace();
             return ResponseEntity.internalServerError().body("Dogodila se pogreška u spremanju slike");
         }
 
