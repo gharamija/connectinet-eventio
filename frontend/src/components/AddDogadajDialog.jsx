@@ -98,7 +98,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
       ? `/api/dogadaj/slika/${dogadajId}`
       : `/api/dogadaj/slika/${newId}`;
 
-    await fetch(url, options);
+    await fetch(url, options).catch((text) => setError(text));
   }
 
   function handleFileUpload(e) {
