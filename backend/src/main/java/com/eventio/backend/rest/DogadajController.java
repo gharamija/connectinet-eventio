@@ -83,6 +83,11 @@ public class DogadajController {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
+                try {
+                    Float.parseFloat(dto.getCijenaUlaznice());
+                } catch (NumberFormatException e) {
+                    return ResponseEntity.badRequest().body("Unesite broj za cijenu.");
+                }
                 if (!organizator.getClanarina() && !dto.getCijenaUlaznice().equals("0"))
                     return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
 
