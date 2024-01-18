@@ -17,6 +17,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -28,7 +29,7 @@ public class FileServiceImpl implements FileService {
         String DOWNLOAD_URL = "https://firebasestorage.googleapis.com/v0/b/" + bucketName + "/o/%s?alt=media";
         BlobId blobId = BlobId.of(bucketName, fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
-        Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("src/main/resources/firebase/eventio-slike-188db-firebase-adminsdk-rdzzd-cc85d56f2a.json"));
+        Credentials credentials = GoogleCredentials.fromStream(Objects.requireNonNull(getClass().getResourceAsStream("/firebase/eventio-slike-188db-firebase-adminsdk-rdzzd-cc85d56f2a.json")));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
         return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName, StandardCharsets.UTF_8));
