@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  18 JAN 2024 23:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.23)  19 JAN 2024 00:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1232,7 +1232,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...: Prikaz aktivnosti grupe}{70}{chapter*.5}
+l.28 ...: Prikaz aktivnosti grupe}{71}{chapter*.5}
                                                   % [1
 
 ])
@@ -2553,11 +2553,22 @@ l.283
 <dijagramiKlasa/dtos.png, id=514, 917.4275pt x 513.92pt>
 File: dijagramiKlasa/dtos.png Graphic file (type png)
 <use dijagramiKlasa/dtos.png>
-Package pdftex.def Info: dijagramiKlasa/dtos.png  used on input line 285.
+Package pdftex.def Info: dijagramiKlasa/dtos.png  used on input line 286.
 (pdftex.def)             Requested size: 458.71263pt x 256.95937pt.
+<dijagramiKlasa/dijagramRazeda-DTO.jpg, id=515, 1204.5pt x 1026.83624pt>
+File: dijagramiKlasa/dijagramRazeda-DTO.jpg Graphic file (type jpg)
+<use dijagramiKlasa/dijagramRazeda-DTO.jpg>
+Package pdftex.def Info: dijagramiKlasa/dijagramRazeda-DTO.jpg  used on input l
+ine 288.
+(pdftex.def)             Requested size: 481.79147pt x 410.72722pt.
 
-Overfull \hbox (23.10184pt too wide) in paragraph at lines 285--287
- [][] 
+Overfull \hbox (23.10184pt too wide) in paragraph at lines 285--291
+ [] 
+ []
+
+
+Overfull \hbox (46.18068pt too wide) in paragraph at lines 285--291
+ [] 
  []
 
 
@@ -2573,13 +2584,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.290 			
+l.294 			
           <./dijagramiKlasa/servisi.png (PNG copy)>]
-<dijagramiKlasa/models.png, id=522, 1899.095pt x 6426.0075pt>
-File: dijagramiKlasa/models.png Graphic file (type png)
-<use dijagramiKlasa/models.png>
-Package pdftex.def Info: dijagramiKlasa/models.png  used on input line 293.
-(pdftex.def)             Requested size: 189.92062pt x 642.63841pt.
+Overfull \vbox (65.68234pt too high) has occurred while \output is active []
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2594,8 +2602,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.298 			
-          <./dijagramiKlasa/dtos.png>]
+l.294 			
+          <./dijagramiKlasa/dtos.png> <./dijagramiKlasa/dijagramRazeda-DTO.jpg>
+]
+<dijagramiKlasa/models.png, id=531, 1899.095pt x 6426.0075pt>
+File: dijagramiKlasa/models.png Graphic file (type png)
+<use dijagramiKlasa/models.png>
+Package pdftex.def Info: dijagramiKlasa/models.png  used on input line 297.
+(pdftex.def)             Requested size: 189.92062pt x 642.63841pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2609,16 +2624,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.300 			\eject
+l.304 			\eject
                 <./dijagramiKlasa/models.png (PNG copy)>]
-<dijagrami/DijagramStanja-Korisnik.png, id=537, 913.16156pt x 639.13782pt>
+<dijagrami/DijagramStanja-Korisnik.png, id=538, 913.16156pt x 639.13782pt>
 File: dijagrami/DijagramStanja-Korisnik.png Graphic file (type png)
 <use dijagrami/DijagramStanja-Korisnik.png>
 Package pdftex.def Info: dijagrami/DijagramStanja-Korisnik.png  used on input l
-ine 308.
+ine 312.
 (pdftex.def)             Requested size: 456.57967pt x 319.56813pt.
 
-Overfull \hbox (20.96887pt too wide) in paragraph at lines 308--310
+Overfull \hbox (20.96887pt too wide) in paragraph at lines 312--314
  [][] 
  []
 
@@ -2635,15 +2650,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.7})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.314 			\eject
+l.318 			\eject
                 <./dijagrami/DijagramStanja-Korisnik.png>]
-<dijagrami/DijagramAktivnosti-Postavljanje_događaja.png, id=545, 907.89188pt x
+<dijagrami/DijagramAktivnosti-Postavljanje_događaja.png, id=546, 907.89188pt x
  1132.23pt>
 File: dijagrami/DijagramAktivnosti-Postavljanje_događaja.png Graphic file (typ
 e png)
 <use dijagrami/DijagramAktivnosti-Postavljanje_događaja.png>
 Package pdftex.def Info: dijagrami/DijagramAktivnosti-Postavljanje_događaja.pn
-g  used on input line 321.
+g  used on input line 325.
 (pdftex.def)             Requested size: 435.78316pt x 543.46423pt.
 
 
@@ -2668,18 +2683,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.8})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.327 			\eject
+l.331 			\eject
                 <./dijagrami/DijagramAktivnosti-Postavljanje_događaja.png>]
-Overfull \hbox (4.8968pt too wide) in paragraph at lines 330--332
+Overfull \hbox (4.8968pt too wide) in paragraph at lines 334--336
 \OT1/jkp/m/n/12 Web apli-ka-cija Ko-ris-nik pris-tupa apli-ka-ciji ko-riste[]ci
  web pre-gled-nik te preko su[]celja
  []
 
-<dijagrami/DijagramKomponenti.png, id=558, 906.88812pt x 709.65125pt>
+<dijagrami/DijagramKomponenti.png, id=559, 906.88812pt x 709.65125pt>
 File: dijagrami/DijagramKomponenti.png Graphic file (type png)
 <use dijagrami/DijagramKomponenti.png>
 Package pdftex.def Info: dijagrami/DijagramKomponenti.png  used on input line 3
-34.
+38.
 (pdftex.def)             Requested size: 435.30136pt x 340.62872pt.
 )
 
@@ -2750,7 +2765,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [51]
-<testovi/dogadajTest.png, id=603, 869.2475pt x 716.17563pt>
+<testovi/dogadajTest.png, id=604, 869.2475pt x 716.17563pt>
 File: testovi/dogadajTest.png Graphic file (type png)
 <use testovi/dogadajTest.png>
 Package pdftex.def Info: testovi/dogadajTest.png  used on input line 68.
@@ -2765,7 +2780,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [52]
-<testovi/korisnikTest.png, id=609, 838.63312pt x 671.50874pt>
+<testovi/korisnikTest.png, id=610, 838.63312pt x 671.50874pt>
 File: testovi/korisnikTest.png Graphic file (type png)
 <use testovi/korisnikTest.png>
 Package pdftex.def Info: testovi/korisnikTest.png  used on input line 76.
@@ -2786,12 +2801,12 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.81 			
          <./testovi/dogadajTest.png>]
-<testovi/emailTest.png, id=617, 832.61063pt x 452.18938pt>
+<testovi/emailTest.png, id=618, 832.61063pt x 452.18938pt>
 File: testovi/emailTest.png Graphic file (type png)
 <use testovi/emailTest.png>
 Package pdftex.def Info: testovi/emailTest.png  used on input line 85.
 (pdftex.def)             Requested size: 374.67133pt x 203.48334pt.
-<testovi/recenzijeTest.png, id=618, 887.315pt x 439.6425pt>
+<testovi/recenzijeTest.png, id=619, 887.315pt x 439.6425pt>
 File: testovi/recenzijeTest.png Graphic file (type png)
 <use testovi/recenzijeTest.png>
 Package pdftex.def Info: testovi/recenzijeTest.png  used on input line 92.
@@ -2818,7 +2833,7 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.97 			
          <./testovi/korisnikTest.png> <./testovi/emailTest.png>]
-<testovi/zainteresiranostTest1.png, id=629, 983.17313pt x 425.59pt>
+<testovi/zainteresiranostTest1.png, id=630, 983.17313pt x 425.59pt>
 File: testovi/zainteresiranostTest1.png Graphic file (type png)
 <use testovi/zainteresiranostTest1.png>
 Package pdftex.def Info: testovi/zainteresiranostTest1.png  used on input line 
@@ -2829,7 +2844,7 @@ Overfull \hbox (6.81303pt too wide) in paragraph at lines 99--101
  [][] 
  []
 
-<testovi/zainteresiranostTest2.png, id=630, 1022.82124pt x 477.785pt>
+<testovi/zainteresiranostTest2.png, id=631, 1022.82124pt x 477.785pt>
 File: testovi/zainteresiranostTest2.png Graphic file (type png)
 <use testovi/zainteresiranostTest2.png>
 Package pdftex.def Info: testovi/zainteresiranostTest2.png  used on input line 
@@ -2861,7 +2876,7 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.111 			
           <./testovi/recenzijeTest.png> <./testovi/zainteresiranostTest1.png>]
-<testovi/unit_testovi.jpeg, id=640, 714.67pt x 512.91624pt>
+<testovi/unit_testovi.jpeg, id=641, 714.67pt x 512.91624pt>
 File: testovi/unit_testovi.jpeg Graphic file (type jpg)
 <use testovi/unit_testovi.jpeg>
 Package pdftex.def Info: testovi/unit_testovi.jpeg  used on input line 113.
@@ -2888,12 +2903,12 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.123 			
           <./testovi/zainteresiranostTest2.png> <./testovi/unit_testovi.jpeg>]
-<testovi/uspjesnaOrg.jpg, id=649, 1432.35126pt x 382.42876pt>
+<testovi/uspjesnaOrg.jpg, id=650, 1432.35126pt x 382.42876pt>
 File: testovi/uspjesnaOrg.jpg Graphic file (type jpg)
 <use testovi/uspjesnaOrg.jpg>
 Package pdftex.def Info: testovi/uspjesnaOrg.jpg  used on input line 125.
 (pdftex.def)             Requested size: 429.7087pt x 114.7295pt.
-<testovi/neuspjesnaOrganizator.jpg, id=650, 1456.44125pt x 411.5375pt>
+<testovi/neuspjesnaOrganizator.jpg, id=651, 1456.44125pt x 411.5375pt>
 File: testovi/neuspjesnaOrganizator.jpg Graphic file (type jpg)
 <use testovi/neuspjesnaOrganizator.jpg>
 Package pdftex.def Info: testovi/neuspjesnaOrganizator.jpg  used on input line 
@@ -2904,7 +2919,7 @@ Overfull \hbox (1.32495pt too wide) in paragraph at lines 132--134
  [][] 
  []
 
-<testovi/noviDogadaj.jpg, id=651, 1505.625pt x 768.8725pt>
+<testovi/noviDogadaj.jpg, id=652, 1505.625pt x 768.8725pt>
 File: testovi/noviDogadaj.jpg Graphic file (type jpg)
 <use testovi/noviDogadaj.jpg>
 Package pdftex.def Info: testovi/noviDogadaj.jpg  used on input line 139.
@@ -2935,13 +2950,13 @@ has been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.144 			
           <./testovi/uspjesnaOrg.jpg> <./testovi/neuspjesnaOrganizator.jpg>]
-<testovi/promjenacijenepretplate.jpg, id=660, 1447.4075pt x 506.89375pt>
+<testovi/promjenacijenepretplate.jpg, id=661, 1447.4075pt x 506.89375pt>
 File: testovi/promjenacijenepretplate.jpg Graphic file (type jpg)
 <use testovi/promjenacijenepretplate.jpg>
 Package pdftex.def Info: testovi/promjenacijenepretplate.jpg  used on input lin
 e 146.
 (pdftex.def)             Requested size: 434.2256pt x 152.06929pt.
-<testovi/novarecenzija.jpg, id=661, 1460.45625pt x 512.91624pt>
+<testovi/novarecenzija.jpg, id=662, 1460.45625pt x 512.91624pt>
 File: testovi/novarecenzija.jpg Graphic file (type jpg)
 <use testovi/novarecenzija.jpg>
 Package pdftex.def Info: testovi/novarecenzija.jpg  used on input line 153.
@@ -2977,7 +2992,7 @@ Overfull \hbox (20.85681pt too wide) in paragraph at lines 163--165
 -u - pru[]zatelj poslu[]ziteljskih
  []
 
-<dijagrami/dijagramRazmjestaja.png, id=669, 929.97438pt x 617.30624pt>
+<dijagrami/dijagramRazmjestaja.png, id=670, 929.97438pt x 617.30624pt>
 File: dijagrami/dijagramRazmjestaja.png Graphic file (type png)
 <use dijagrami/dijagramRazmjestaja.png>
 Package pdftex.def Info: dijagrami/dijagramRazmjestaja.png  used on input line 
@@ -3013,7 +3028,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.13})
                                                   \__shipout_drop_firstpage_...
 l.173 			\eject
                 <./dijagrami/dijagramRazmjestaja.png>]
-<deploy/baza.png, id=684, 1000.73875pt x 599.23875pt>
+<deploy/baza.png, id=685, 1000.73875pt x 599.23875pt>
 File: deploy/baza.png Graphic file (type png)
 <use deploy/baza.png>
 Package pdftex.def Info: deploy/baza.png  used on input line 193.
@@ -3039,12 +3054,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.14})
 l.201 			N
           a slici 5.13. također su prikazane varijable koje će se koristit...
  <./deploy/baza.png>]
-<deploy/backendEnv.jpeg, id=696, 1433.355pt x 657.45625pt>
+<deploy/backendEnv.jpeg, id=697, 1433.355pt x 657.45625pt>
 File: deploy/backendEnv.jpeg Graphic file (type jpg)
 <use deploy/backendEnv.jpeg>
 Package pdftex.def Info: deploy/backendEnv.jpeg  used on input line 214.
 (pdftex.def)             Requested size: 430.00983pt x 197.23839pt.
-<deploy/backendConf.jpeg, id=697, 1135.24126pt x 601.24625pt>
+<deploy/backendConf.jpeg, id=698, 1135.24126pt x 601.24625pt>
 File: deploy/backendConf.jpeg Graphic file (type jpg)
 <use deploy/backendConf.jpeg>
 Package pdftex.def Info: deploy/backendConf.jpeg  used on input line 225.
@@ -3069,7 +3084,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.15})
                                                   \__shipout_drop_firstpage_...
 l.230 				
            <./deploy/backendEnv.jpeg>]
-<deploy/dockerFile.png, id=712, 954.06438pt x 688.07062pt>
+<deploy/dockerFile.png, id=713, 954.06438pt x 688.07062pt>
 File: deploy/dockerFile.png Graphic file (type png)
 <use deploy/dockerFile.png>
 Package pdftex.def Info: deploy/dockerFile.png  used on input line 232.
@@ -3096,7 +3111,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.17})
                                                   \__shipout_drop_firstpage_...
 l.241 				
            <./deploy/backendConf.jpeg> <./deploy/dockerFile.png>]
-<deploy/frontendConf.jpeg, id=722, 1120.185pt x 546.04pt>
+<deploy/frontendConf.jpeg, id=723, 1120.185pt x 546.04pt>
 File: deploy/frontendConf.jpeg Graphic file (type jpg)
 <use deploy/frontendConf.jpeg>
 Package pdftex.def Info: deploy/frontendConf.jpeg  used on input line 258.
@@ -3106,7 +3121,7 @@ Overfull \hbox (12.45526pt too wide) in paragraph at lines 258--260
  [][] 
  []
 
-<deploy/frontendEnv.jpeg, id=723, 1405.25pt x 627.34375pt>
+<deploy/frontendEnv.jpeg, id=724, 1405.25pt x 627.34375pt>
 File: deploy/frontendEnv.jpeg Graphic file (type jpg)
 <use deploy/frontendEnv.jpeg>
 Package pdftex.def Info: deploy/frontendEnv.jpeg  used on input line 268.
@@ -3286,7 +3301,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [74]
-<slike/commits.png, id=860, 466.74374pt x 782.42313pt>
+<slike/commits.png, id=862, 466.74374pt x 782.42313pt>
 File: slike/commits.png Graphic file (type png)
 <use slike/commits.png>
 Package pdftex.def Info: slike/commits.png  used on input line 154.
@@ -3321,10 +3336,10 @@ anged.
 (rerunfilecheck)             Checksum: C7BA501FFE4D56E1B0FC29A67283D3B1;4419.
  ) 
 Here is how much of TeX's memory you used:
- 18190 strings out of 476025
- 327029 string characters out of 5790016
+ 18197 strings out of 476025
+ 327304 string characters out of 5790016
  2019388 words of memory out of 5000000
- 37945 multiletter control sequences out of 15000+600000
+ 37951 multiletter control sequences out of 15000+600000
  576996 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,13n,116p,1048b,1078s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3333,10 +3348,10 @@ Here is how much of TeX's memory you used:
 /local/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (76 pages, 6135159 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (76 pages, 6569037 bytes).
 PDF statistics:
- 961 PDF objects out of 1000 (max. 8388607)
+ 962 PDF objects out of 1000 (max. 8388607)
  804 compressed objects within 9 object streams
  305 named destinations out of 1000 (max. 500000)
- 394 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 399 words of extra memory for PDF output out of 10000 (max. 10000000)
 
