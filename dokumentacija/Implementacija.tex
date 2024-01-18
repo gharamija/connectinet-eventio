@@ -60,7 +60,7 @@
 			\textbf{Test sortiranja i ispisivanja događaja} provjerava ispravnu funkcionalnost sortiranja događaja prema određenom filtru, u ovom slučaju prema vremenu početka događaja. Također testirano je izlistavanje događaja, je li broj događaja jednak očekivanom broju. Korišten je JUnit za pisanje i izvršavanje testova te Mockito za stvaranje mock objekta i postavljanje očekivanja.
 
 
-			\textbf{Test registracije korisinika} ispituje uspješnost registracije korisnika. Također se koriste Mock objekti koji simuliraju ponašanje komponenti tijekom registracije. Prikazana su dva testa, u jednom se testira registracija koja je uspješa, u drugom se testira neuspješna registracija korisnika.
+			\textbf{Test registracije korisinika} ispituje uspješnost registracije korisnika. Također se koriste Mock objekti koji simuliraju ponašanje komponenti tijekom registracije. Prikazana su dva testa, u jednom se testira registracija koja je uspješna, u drugom se testira neuspješna registracija korisnika.
 
 			U nastavku su još prikazani sljedeći testovi: \textbf{Test slanja e-maila}, \textbf{Test spremanja recenzije}, \textbf{Test spremanja zainteresiranosti}. Oni redom provjeravaju točnost slanja e-maila, ispravnu funkcionalnost spremanja recenzije i zainteresiranosti. U navedenim testovima se također koriste spomenute tehnologije za provjeravanje ispravnosti. Osim testova, prikazano je i njihovo izvođenje te rezultat izvođenja.
 			
@@ -119,33 +119,40 @@
 			
 			\subsection{Ispitivanje sustava}
 			
-			U procesu ispitivanja sustava koristili smo Selenium IDE koji nam je omogućio precizno i brzo testiranje funkcionalnosti web aplikacije. Selenium IDE predstavlja moćan alat za testiranje web aplikacija te se istovremeno olakšava proces automatizacije. \newline Na sljedećim slikama prikazani su ispitni slučajevima kojima smo testirali funkcionalnost aplikacije. \textbf{Test prijave organizatora} provjerava uspješnost prijave korisnika koji je organizator. \textbf{Test stvaranja novog događaja} provjerava funkcionalnost stvaranja novog događaja sa svim postavkama. Prikazano je i izvršavanje \textbf{Testa promjene cijene pretplate} i \textbf{Testa stvaranja nove recenzije}.
+			U procesu ispitivanja sustava koristili smo Selenium IDE koji nam je omogućio precizno i brzo testiranje funkcionalnosti web aplikacije. Selenium IDE predstavlja moćan alat za testiranje web aplikacija te se istovremeno olakšava proces automatizacije. \newline Na sljedećim slikama prikazani su ispitni slučajevi kojima smo testirali funkcionalnost aplikacije. \textbf{Test prijave organizatora} provjerava uspješnost prijave korisnika koji je organizator. \textbf{Test neuspješne prijave organizatora} provjerava neuspješnu prijavu korisnika koji je organizator. \textbf{Test stvaranja novog događaja} provjerava funkcionalnost stvaranja novog događaja sa svim postavkama. Prikazano je i izvršavanje \textbf{Testa promjene cijene pretplate} i \textbf{Testa stvaranja nove recenzije}.
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.45]{testovi/selOrgLogin.jpeg}
+				\includegraphics[scale=0.30]{testovi/uspjesnaOrg.jpg}
 				\centering
-				\caption{Test prijave organizatora}
+				\caption{Test uspješne prijave organizatora}
+				\label{fig:promjene}
+			\end{figure}
+			
+				\begin{figure}[H]
+				\includegraphics[scale=0.30]{testovi/neuspjesnaOrganizator.jpg}
+				\centering
+				\caption{Test neuspješne prijave organizatora}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.45]{testovi/selNoviDogadaj.jpeg}
+				\includegraphics[scale=0.30]{testovi/noviDogadaj.jpg}
 				\centering
 				\caption{Test stvaranja novog događaja}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.45]{testovi/selPretplata.jpeg}
+				\includegraphics[scale=0.30]{testovi/promjenacijenepretplate.jpg}
 				\centering
-				\caption{Test promjena cijene pretplate}
+				\caption{Test promjene cijene pretplate}
 				\label{fig:promjene}
 			\end{figure}
 			
 			\begin{figure}[H]
-				\includegraphics[scale=0.45]{testovi/selRecenzija.jpeg}
+				\includegraphics[scale=0.30]{testovi/novarecenzija.jpg}
 				\centering
-				\caption{Test stvaranje nove recenzije}
+				\caption{Test stvaranja nove recenzije}
 				\label{fig:promjene}
 			\end{figure}
 			
@@ -153,8 +160,8 @@
 		
 		\section{Dijagram razmještaja}
 			
-			Dijagrami razmještaja opisuju topologiju sklopovlja i programsku potporu koja se koristi u implementaciji sustava u njegovom radnom okruženju. Korisnici pristupaju web aplikaciji putem web preglednika na svojim osobnim računalima. Arhitektura sustava temelji se na jasno odvojenim slojevima: frontendu, backendu i bazi podataka. 
-			Frontend poslužitelj posvećen je izvršavanju i posluživanju resursa vezanih uz korisničko sučelje. Backend poslužitelj fokusiran  je na izvršavanje poslovne logike, pružanje API-ja te komunikaciju s bazom podataka. Na ovom sloju obavljaju se operacije i logika sustava, pružajući funkcionalnosti koje podržavaju rad aplikacije. Baza podataka poslužitelj je posvećen upravljanju bazom podataka. Ovdje se nalazi sama baza podataka i sustav za pohranu i dohvat podataka.  Komunikacija između korisnika i poslužitelja odvija se preko HTTP veze.
+			Dijagrami razmještaja opisuju topologiju sklopovlja i programsku potporu koja se koristi u implementaciji sustava u njegovom radnom okruženju. Korisnici pristupaju web aplikaciji putem web preglednika na svojim osobnim računalima. Arhitektura sustava temelji se na jasno odvojenim slojevima: frontendu, backendu i bazi podataka koji su na zasebnim posužiteljima na Render-u - pružatelj poslužiteljskih usluga. 
+			Frontend poslužitelj posvećen je izvršavanju i posluživanju resursa vezanih uz korisničko sučelje. Također je povezan sa Firebase poslužiteljem koji smo koristili za spremanje slika. Firebase poslužitelj također je u komunikaciji sa web preglednikom korisnika kako bi poslužio potrebnu sliku. Backend poslužitelj fokusiran  je na izvršavanje poslovne logike, pružanje API-ja te komunikaciju s bazom podataka. Na ovom sloju obavljaju se operacije i logika sustava, pružajući funkcionalnosti koje podržavaju rad aplikacije. Baza podataka poslužitelj je posvećen upravljanju bazom podataka. Ovdje se nalazi sama baza podataka i sustav za pohranu i dohvat podataka.  Komunikacija između korisnika i poslužitelja odvija se preko HTTPS veze.
 			 
 			 \begin{figure}[H]
 			 	\includegraphics[scale=0.45]{dijagrami/dijagramRazmjestaja.png}
