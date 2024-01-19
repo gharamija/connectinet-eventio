@@ -83,14 +83,25 @@ public class DogadajController {
             Optional<Organizator> optionalOrganizator = serviceOrganizator.findById(organizatorId);
             if (optionalOrganizator.isPresent()) {
                 Organizator organizator = optionalOrganizator.get();
+
+                double cijena;
                 try {
-                    Float.parseFloat(dto.getCijenaUlaznice());
+                    cijena = Double.parseDouble(dto.getCijenaUlaznice());
                 } catch (NumberFormatException e) {
                     return ResponseEntity.badRequest().body("Unesite broj za cijenu.");
                 }
-                if (!organizator.getClanarina() && !dto.getCijenaUlaznice().equals("0"))
-                    return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
 
+                if (cijena < 0) {
+                    return ResponseEntity.badRequest().body("Cijena ne može biti negativna.");
+                }
+
+                // zaokruzivanje na dvije decimale
+                cijena = (double) Math.round(cijena * 100) / 100;
+
+                if (!organizator.getClanarina() && cijena != 0)
+                    return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu.");
+
+                dto.setCijenaUlaznice(String.format("%.2f", cijena));
                 Dogadaj dogadaj = new Dogadaj(dto);
                 dogadaj.setOrganizator(organizator);
                 Dogadaj novi = serviceDogadaj.spremiDogadaj(dogadaj);
@@ -113,11 +124,26 @@ public class DogadajController {
             return ResponseEntity.badRequest()
                     .body("Nemate ovlasti za ažuriranje ovog događaja, niste vlasnik tog dogadaja.");
 
-        if (!dto.getCijenaUlaznice().equals("0")
+        double cijena;
+        try {
+            cijena = Double.parseDouble(dto.getCijenaUlaznice());
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body("Unesite broj za cijenu.");
+        }
+
+        if (cijena < 0) {
+            return ResponseEntity.badRequest().body("Cijena ne može biti negativna.");
+        }
+
+        // zaokruzivanje na dvije decimale
+        cijena = (double) Math.round(cijena * 100) / 100;
+
+        if (cijena != 0
                 && !serviceOrganizator.findById(dto.getOrganizatorId()).get().getClanarina()
                 && korisnik.getUloga() != Uloga.ADMIN)
             return ResponseEntity.badRequest().body("Organizator nema plaćenu preplatu");
 
+        dto.setCijenaUlaznice(String.format("%.2f", cijena));
         if (serviceDogadaj.updateDogadaj(dto, dogadajId)) {
             return ResponseEntity.ok().body("Dogadaj promjenjen");
         } else {
