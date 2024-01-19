@@ -1,6 +1,5 @@
 package com.eventio.backend.dao;
 
-import com.eventio.backend.domain.Dogadaj;
 import com.eventio.backend.domain.Kvartovi;
 import com.eventio.backend.domain.Notifikacija;
 import com.eventio.backend.domain.Vrste;

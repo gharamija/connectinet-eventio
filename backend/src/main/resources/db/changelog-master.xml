@@ -264,4 +264,11 @@
         </sql>
     </changeSet>
 
+    <changeSet author="grdic4" id="cijena-set">
+        <delete tableName="misc"/>
+        <sql>
+            INSERT INTO misc (ime, vrijednost) VALUES ('cijena', '9.99');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

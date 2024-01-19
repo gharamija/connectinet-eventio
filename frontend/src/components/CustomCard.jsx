@@ -56,7 +56,7 @@ export default function CustomCard({ event, children }) {
           component="img"
           key={Date.now()}
           height="200"
-          src={`/api/static/${event.galerija}`}
+          src={event.galerija}
           alt="Slika nije pronađena"
           sx={{ objectFit: "contain" }}
         />
@@ -88,7 +88,7 @@ export default function CustomCard({ event, children }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{event.opis}</Typography>
-          <Typography paragraph>Cijena: {event.cijenaUlaznice}</Typography>
+          <Typography paragraph>Cijena: {event.cijenaUlaznice} EUR</Typography>
           {event.recenzije.map((rec) => (
             <PrikazRecenzije key={rec.recenzijaId} rec={rec} />
           ))}

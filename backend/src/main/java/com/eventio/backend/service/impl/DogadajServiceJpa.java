@@ -178,12 +178,12 @@ public class DogadajServiceJpa implements DogadajService {
       switch (placanje) {
         case "placa se":
           sviDogadaji = sviDogadaji.stream()
-                  .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) > 0 )
+                  .filter(dogadaj -> Double.parseDouble(dogadaj.getCijenaUlaznice()) > 0 )
                   .collect(Collectors.toList());
           break;
         case "besplatno":
           sviDogadaji = sviDogadaji.stream()
-                  .filter(dogadaj -> Integer.parseInt(dogadaj.getCijenaUlaznice()) == 0 )
+                  .filter(dogadaj -> Double.parseDouble(dogadaj.getCijenaUlaznice()) == 0 )
                   .collect(Collectors.toList());
           break;
         default:

@@ -2,13 +2,22 @@
 
 Cilj ovog projekta je razviti programsku podršku za stvaranje web aplikacije ”Eventio”, koja će korisnicima omogućiti stvaranje, oglašavanje i sudjelovanje na različitim dogadanjima. Ova inovativna web aplikacija će korisnicima omogućiti lakši pristup društevnim dogadanjima koja odgovaraju njihovim interesima te olakšati organizaciju i promociju istih.
 
-## Prva revizija - deploy aplikacije kojoj su osnovne funkcionalnosti register i login korisnika
+## Završna predaja - deploy aplikacije sa svim funkcionalnostima
 
-  - Link na deploy: https://connectinet-eventio.onrender.com
+  - Link na deploy: https://eventio-fe.onrender.com
 
-  - Username i password postojećeg korisnika:
+  - Username i password za ulogu Admin:
 	- username: admin
 	- password: admin
+
+  - Username i password za ulogu Posjetitelj:
+	- username: Posjetitelj
+	- password: posjetitelj
+
+  - Username i password za ulogu Organizator:
+	- username: organizator
+	- password: organizator
+
 
 ## Razvoj i stvaranje promjena
 

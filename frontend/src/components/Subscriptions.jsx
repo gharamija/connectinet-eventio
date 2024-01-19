@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Container, Typography, Collapse, Alert, Grid, InputBase } from "@mui/material";
 import { styled } from '@mui/system';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
@@ -31,6 +31,23 @@ function Subscriptions() {
     const [postalCode, setPostalCode] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [subscriptionPrice, setSubscriptionPrice] = useState(9.99);
+
+
+    useEffect(() => {
+        fetch("api/organizator/cijena").then((response) => {
+            try {
+                response.json().then((details) => {
+                    setSubscriptionPrice(parseFloat(details));
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }).catch((e) => {
+            console.log(e);
+        });
+    }, []);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -82,6 +99,7 @@ function Subscriptions() {
         });
     };
 
+
     const pretplati = () => {
         setError("");
         setMessage("");
@@ -108,7 +126,7 @@ function Subscriptions() {
 
 
             <Typography variant="h5" mb={1} style={{ margin: '3px' }} >
-                Plati putem PayPal-a
+                Plati {subscriptionPrice}€ putem PayPal-a
             </Typography>
             <CustomInput aria-label="Demo input" placeholder="Email" onChange={handleEmailChange} style={{ margin: '3px' }} />
             <CustomInput aria-label="Demo input" placeholder="Lozinka" type="password" onChange={handlePasswordChange} style={{ margin: '3px' }} />
@@ -123,7 +141,7 @@ function Subscriptions() {
                 <img src={PayPalImage} alt="Icon" style={{ width: 'auto', height: '23px' }} />
             </Button>
             <Typography variant="h5" mb={1} style={{ margin: '3px' }}>
-                ili kartičnim plaćanjem
+                ili {subscriptionPrice}€ kartičnim plaćanjem
             </Typography>
             <CustomInput aria-label="Demo input" placeholder="Broj kartice" onChange={handleCardNumberChange} style={{ margin: '3px' }} />
             <CustomInput aria-label="Demo input" placeholder="CCV" onChange={handleCcvChange} style={{ margin: '3px' }} />
