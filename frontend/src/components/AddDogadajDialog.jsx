@@ -74,7 +74,7 @@ function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
         handleClose();
         if (file) {
           //response bi trebao imati novi id ako je događaj tek nastao, inace stari
-          await response.text().then((text) => uploadImage(text));
+          await response.text().then((newId) => uploadImage(newId));
         }
         fetchData();
       } else {
