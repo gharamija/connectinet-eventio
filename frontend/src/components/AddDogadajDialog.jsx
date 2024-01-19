@@ -69,16 +69,14 @@ function AddDogadajDialog({ handleClose, open, dogadajId, fetchData }) {
       ? `/api/dogadaj/update/${dogadajId}`
       : `/api/dogadaj/izrada/${id}`;
 
-    fetch(url, options).then((response) => {
+    fetch(url, options).then(async (response) => {
       if (response.status === 200) {
         handleClose();
         if (file) {
           //response bi trebao imati novi id ako je događaj tek nastao, inace stari
-          response
-            .text()
-            .then((text) => uploadImage(text))
-            .then(() => fetchData());
+          await response.text().then((text) => uploadImage(text));
         }
+        fetchData();
       } else {
         response.text().then((text) => setError(text));
       }
